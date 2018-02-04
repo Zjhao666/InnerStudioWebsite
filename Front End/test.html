@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src='js/jquery-2.2.3.min.js'></script>
+</head>
+<body>
+  <script>
+    $.post({
+      url:'http://101.200.37.220:8080/InternalWebsite/regis.do',
+      data:{
+        account:'',
+        nickname:'',
+        password:'',
+        realname:''
+      },
+      dataType:'JSON',
+      success:(rep)=>{
+        console.log(rep);
+      }
+    });
+  </script>
+</body>
+</html>
