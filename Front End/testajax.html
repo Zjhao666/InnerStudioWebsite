@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <script src='js/jquery-2.2.3.min.js'></script>
+  </head>
+  <body>
+    <div id='d'></div>
+    <script>
+      $.post({
+        url:'http://101.200.37.220:8080/InternalWebsite/regis.do',
+        data:{
+          account:"Hello123",
+          nickname:"sswsw",
+          password:"123",
+          realname:"张锦豪"
+        },
+        dataType:"JSON",
+        success:(rep)=>{
+          $('#d').html(rep.statuscode);
+        }
+      });
+    </script>
+  </body>
+</html>
