@@ -1,0 +1,25 @@
+
+@font-face{
+  font-family: 'ArtegraSansExtended';
+  src: url('../fonts/ArtegraSansExtended-ExtLtI.otf') format('OpenType');
+}
+*{
+  color: white;
+  font: 400 1em 'ArtegraSansExtended';
+  -moz-user-select: none;
+}
+body{
+  background-color: white;
+  margin: 0px;padding: 0px;
+  width: 100%;height: 100%;
+}
+.label{
+  font-weight: 600;
+  color: black;
+  background-color: rgb(80,180,80);
+  border-radius: 15px;
+  padding: 0px 5px;
+}
+ul,li{
+  padding: 0px;margin: 0px;border: 0px;
+}
