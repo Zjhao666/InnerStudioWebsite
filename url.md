@@ -33,7 +33,7 @@
         <td>regis.do</td>
         <td>注册</td>
         <td>POST</td>
-        <td>{"account":xxx,"nickname":xxx,"password":xxx,"realname":xxx}</td>
+        <td>{"account":xxx,"password":xxx,"realname":xxx}</td>
         <td>{"statuscode":200}</td>
         <td>200:ok</br>201:account exists</br>202:other</td>
     </tr>
@@ -90,8 +90,8 @@
         <td>工作室成员列表</td>
         <td>GET</td>
         <td></td>
-        <td>[{"id":xxx,"nickname":xxx,"isOnline":False,"pertag":xxx,"isCaptain":False},</br>{"id":xxx,"nickname":xxx,"isOnline":True,"pertag":xxx,"isCaptain":True}]</td>
-        <td>nickname:昵称</br>pertag:个人标签</br>isCaptain:是否是项目组长</br>isOnline:是否在线</td>
+        <td>[{"id":xxx,"account":xxx,"isOnline":False,"pertag":xxx,"isCaptain":False},</br>{"id":xxx,"account":xxx,"isOnline":True,"pertag":xxx,"isCaptain":True}]</td>
+        <td>account:..</br>pertag:个人标签</br>isCaptain:是否是项目组长</br>isOnline:是否在线</td>
     </tr>
     <tr>
         <td>8</td>
@@ -294,7 +294,7 @@
         <td>获取个人详细资料（个人信息、当前项目、历史项目）</td>
         <td>GET</td>
         <td></td>
-        <td>{"id":xxx,"nickname":xxx,"curProjectId":xxx,"achievements":[1,4,2]}</td>
+        <td>{"id":xxx,"account":xxx,"curProjectId":xxx,"achievements":[1,4,2]}</td>
         <td></td>
     </tr>
 </table>
