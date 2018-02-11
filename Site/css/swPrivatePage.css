@@ -1,4 +1,7 @@
 
+body{
+  -moz-user-select: none;
+}
 #main{
   position: absolute;
   margin: 50px 100px 50px 100px;

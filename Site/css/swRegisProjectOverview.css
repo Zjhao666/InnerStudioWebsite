@@ -1,0 +1,160 @@
+
+#overview{
+  position: relative;
+  display: block;
+  margin: 20px 0px;
+}
+
+#overview input{
+  margin: 0px;padding: 0px;
+  border: none;
+}
+#overview .title{
+  box-sizing: border-box;
+  display: block;
+  width: 400px;
+  border: 1px solid rgb(80,180,120);
+  font: normal 1.2em 'Kaiti';
+  padding: 2px;
+}
+
+#overview .projectDoc{
+  box-sizing: border-box;
+  width: 400px;height: 40px;
+  margin: 5px 0px;padding: 10px;
+  text-align: center;
+  color: white;
+  background: rgb(80,180,120);
+}
+#overview .projectDoc::before{
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 37px;left: 5px;
+  display: block;
+  width: 390px;height: 34px;
+  border: 1px dashed white;
+  cursor: pointer;
+}
+#overview .projectDoc .core{
+  display: none;
+}
+
+#overview .overview{
+  box-sizing: border-box;
+  display: block;
+  width: 400px;height: 150px;
+  margin: 5px 0px;padding: 5px;
+  border: 1px solid rgb(80,180,120);
+  font: normal 1em 'Kaiti';
+  resize: none;
+}
+
+#overview .members{
+  box-sizing: border-box;
+  width: 400px;height: auto;
+  min-height: 100px;
+  padding: 10px 10px 15px 10px;
+  border: 1px solid rgb(80,180,120);
+}
+#overview .members::before{
+  box-sizing: border-box;
+  content: 'Members';
+  position: absolute;
+  top: 270px;left: -55px;
+  display: block;
+  width: 90px;height: auto;
+  text-align: center;
+  transform: rotateZ(-90deg);
+  border-radius: 30px 30px 0px 0px / 10px 10px 0px 0px;
+  background-color: rgb(80,180,120);
+  font: 200 1em 'Fangsong';
+}
+#overview .members .item{
+  position: relative;
+  display: inline-block;
+}
+#overview .members .item .headimg{
+  display: block;
+  width: 40px;height: 40px;
+}
+#overview .members .item .account{
+  position: absolute;
+  top: 40px;left: 0px;
+  display: block;
+  width: 40px;height: auto;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+#overview .members .btn{
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 40px;height: 40px;
+  border: 2px solid rgb(150,150,150);
+  cursor: pointer;
+}
+#overview .members .add::before{
+  content: '';
+  position: absolute;
+  display: block;
+  width: 16px;height: 2px;
+  top: 17px;left: 10px;
+  background-color: rgb(150,150,150);
+}
+#overview .members .add::after{
+  content: '';
+  position: absolute;
+  display: block;
+  width: 2px;height: 16px;
+  top: 10px;left: 17px;
+  background-color: rgb(150,150,150);
+}
+#overview .members .del::before{
+  content: '';
+  position: absolute;
+  display: block;
+  width: 16px;height: 2px;
+  top: 17px;left: 10px;
+  background-color: rgb(150,150,150);
+}
+
+#overview .members .membersOperabox{
+  display: block;
+  position: relative;
+  width: 100%;
+  margin: 15px 0px 5px;padding: 15px 0px 0px;
+  border-top: 1px solid rgb(200,200,200);
+}
+#overview .members .membersOperabox .submit{
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  top: -10px;right: 0px;
+  width: 75px;height: 20px;
+  padding: 0px 5px;
+  background-color: white;
+  cursor: pointer;
+  font-weight: bold;
+  border: 0px solid rgb(200,200,200);
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+}
+#overview .members .membersOperabox .aitem{
+  width: 100%;height: 30px;
+  margin: 5px 0px;
+  background: repeating-linear-gradient(to right,rgba(160,160,160,1),rgba(160,160,160,1));
+}
+#overview .members .membersOperabox .aitem .headimg{
+  display: inline-block;
+  width: 30px;height: 30px;
+  margin-bottom: -5px;
+}
+#overview .members .membersOperabox .aitem .account{
+  display: inline-block;
+}
+#overview .members .membersOperabox .aitem .select{
+  float: right;
+  margin: 5px 5px 0px 0px;
+}

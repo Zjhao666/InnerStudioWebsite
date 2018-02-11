@@ -5,7 +5,156 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src='js/lib/jquery-3.2.1.min.js'></script>
+  <style>
+    #main{
+      position: relative;
+      top: 100px;left: 100px;
+      width: 400px;height: auto;
+      margin: 0px auto;padding: 0px 20px;
+    }
+  </style>
+  <link rel='stylesheet' href='css/clear.css'>
+  <link rel='stylesheet' href='css/swRegisProjectNavigate.css'>
+  <link rel='stylesheet' href='css/swRegisProjectOverview.css'>
+  <link rel='stylesheet' href='css/swRegisProjectEditstage.css'>
+  <link rel='stylesheet' href='css/swRegisProjectCheck.css'>
 </head>
 <body>
+  <div id='main'>
+    <div id='navigate'>
+      <a class='item'>Essential information</a>
+      <a class='item'>Edit stages</a>
+      <a class='item'>Check</a>
+    </div>
+    <div id='overview'>
+      <input class='title' type='text' placeholder='project name'/>
+      <div class='projectDoc'>
+        upload project document
+        <input class='core' type='file' />
+      </div>
+      <textarea class='overview' type='text' placeholder='project description'></textarea>
+      <div class='members'>
+        <div class='item'>
+          <img class='headimg' src='img/backgrounds/1.jpg'>
+          <span class='account'>Luncert</span>
+        </div>
+        <div class='item'>
+          <img class='headimg' src='img/backgrounds/2.jpg'>
+          <span class='account'>Silly</span>
+        </div>
+        <div class='item'>
+          <img class='headimg' src='img/backgrounds/3.jpg'>
+          <span class='account'>Tom</span>
+        </div>
+        <div class='btn add'></div>
+        <div class='btn del'></div>
+        <div class='membersOperabox'>
+          <a class='submit'>Submit</a>
+          <div class='aitem'>
+            <img class='headimg' src='img/backgrounds/1.jpg'>
+            <span class='account'>Luncert</span>
+            <input class='select' type='checkbox' />
+          </div>
+          <div class='aitem'>
+            <img class='headimg' src='img/backgrounds/2.jpg'>
+            <span class='account'>Silly</span>
+            <input class='select' type='checkbox' />
+          </div>
+          <div class='aitem'>
+            <img class='headimg' src='img/backgrounds/3.jpg'>
+            <span class='account'>Tom</span>
+            <input class='select' type='checkbox' />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id='editStage'>
+      <div class='addStage'>
+        <div class='timestamp'>
+          <input type='date' />
+        </div>
+        <div class='target'>
+          <textarea></textarea>
+        </div>
+        <a class='add'>Add</a>
+      </div>
+      <div class='stages'>
+        <div class='stage stateIcon'>
+          <span class='timestamp'>2017/11/24</span>
+          <span class='content'>learn HTTP protocal</span>
+        </div>
+        <div class='stage stateIcon'>
+          <span class='timestamp'>2017/11/20</span>
+          <span class='content'>learn HTML5</span>
+        </div>
+        <div class='stage stateIcon'>
+          <span class='timestamp'>2017/11/24</span>
+          <span class='content'>learn css</span>
+        </div>
+        <div class='stage stateIcon lastStage'>
+          <span class='timestamp'>2017/11/18</span>
+          <span class='content'>learn js</span>
+        </div>
+        <a class='remove'>Remove the last</a>
+      </div>
+      <a class='mask'></a>
+      <a class='mask'></a>
+    </div>
+    <div id='check'>
+      <div class='formitem title'>
+        <span class='label'>Project Name</span>
+        <span class='content'>Jpython Ex</span>
+      </div>
+      <div class='formitem projectDoc'>
+        <span class='label'>Project Document</span>
+        <span class='content'>Jpython Ex</span>
+      </div>
+      <div class='formitem overview'>
+        <span class='label'>Project Description</span>
+        <span class='content'>Hi,there!em,this project is point at ...</span>
+      </div>
+      <div class='formitem members'>
+        <span class='label'>Members</span>
+        <div class='content'>
+          <div class='item'>
+            <img class='headimg' src='img/backgrounds/1.jpg'>
+            <span class='account'>Luncert</span>
+          </div>
+          <div class='item'>
+            <img class='headimg' src='img/backgrounds/2.jpg'>
+            <span class='account'>Silly</span>
+          </div>
+          <div class='item'>
+            <img class='headimg' src='img/backgrounds/3.jpg'>
+            <span class='account'>Tom</span>
+          </div>
+        </div>
+      </div>
+      <div class='formitem stages'>
+        <span class='label'>Stages</span>
+        <div class='content'>
+          <div class='stage stateIcon'>
+            <span class='timestamp'>2017/11/24</span>
+            <span class='target'>learn HTTP protocal</span>
+          </div>
+          <div class='stage stateIcon'>
+            <span class='timestamp'>2017/11/20</span>
+            <span class='target'>learn HTML5</span>
+          </div>
+          <div class='stage stateIcon'>
+            <span class='timestamp'>2017/11/24</span>
+            <span class='target'>learn css</span>
+          </div>
+          <div class='stage stateIcon lastStage'>
+            <span class='timestamp'>2017/11/18</span>
+            <span class='target'>learn js</span>
+          </div>
+        </div>
+      </div>
+      <a class='line'></a>
+      <a class='submit'>Submit</a>
+    </div>
+  </div>
+  <script src='js/swRegisProject.js'></script>
 </body>
 </html>

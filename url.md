@@ -1,5 +1,3 @@
-
-
 <table>
     <tr>
         <td>id</td>
@@ -27,15 +25,6 @@
         <td></td>
         <td>{"statuscode":200,"admin":True}</td>
         <td>200:ok</br>201:account not exists</br>202:incorrect password</br>admin:是否为管理员账号</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>regis.do</td>
-        <td>注册</td>
-        <td>POST</td>
-        <td>{"account":xxx,"password":xxx,"realname":xxx}</td>
-        <td>{"statuscode":200}</td>
-        <td>200:ok</br>201:account exists</br>202:other</td>
     </tr>
 </table>
 <table>
