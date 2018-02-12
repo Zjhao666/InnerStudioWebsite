@@ -1,6 +1,5 @@
 package home;
 
-import beans.Member;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -14,32 +13,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONArray;
 import beans.ConnectDatabase;
-import beans.Captain;
+import net.sf.json.JSONObject;
 
 public class swMemberList extends HttpServlet {
     
-    public String Member(HttpServletRequest request, HttpServletResponse response)
+    public String Member()
     {
         try
         {
             ConnectDatabase C = new ConnectDatabase();
             Statement statement = C.conn.createStatement();
-            String sql = "select id, nickname, isOline, pertag from Member;";
-            List<Member> list = new ArrayList<>();
-            ResultSet rs = statement.executeQuery(sql);
+            List<JSONObject> list = new ArrayList<>();
+            ResultSet rs = statement.executeQuery("Select * from Member;");
             while(rs.next())
             {
-                Member tmp = new Member();
-                tmp.setId(rs.getInt("id"));
-                tmp.setNickname(rs.getString("nickname"));
-                tmp.setIsOnline(rs.getString("isOline"));
-                tmp.setPertag(rs.getString("pertag"));
-                Captain i = new Captain();
-                tmp.setIsCaptain(String.valueOf(i.isCaptain(rs.getString("realname"))));
-                list.add(tmp);
+                JSONObject json = new JSONObject();
+                json.put("id", String.valueOf(rs.getInt("id")));
+                json.put("isOline", rs.getString("isOnline"));
+                json.put("pertag", rs.getString("pertag"));
+                json.put("isCaptain", rs.getString("isCaptain"));
+                list.add(json);
             }
-            JSONArray json = JSONArray.fromObject(list);
-            return json.toString();
+            rs.close();
+            statement.close();
+            return JSONArray.fromObject(list).toString();
         }catch(SQLException e){
             System.out.println(e);
             return null;
@@ -53,7 +50,7 @@ public class swMemberList extends HttpServlet {
         response.setHeader("Access-Control-Allow-Origin", "*");
         try(PrintWriter out = response.getWriter())
         {
-         out.println(Member(request,response));
+            out.println(Member());
         }
     }
 
