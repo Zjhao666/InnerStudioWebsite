@@ -14,7 +14,7 @@ import net.sf.json.JSONObject;
 
 public class Regis extends HttpServlet {
     
-    public int register(String account, String password, String realname, String nickname) 
+    public int register(String account, String password, String realname) 
             throws IOException
     {
         try
@@ -24,10 +24,14 @@ public class Regis extends HttpServlet {
             ResultSet rs = statement.executeQuery("Select * from Member where account = '" + account +"';");
             if(rs.next())
             {
+                rs.close();
+                statement.close();
                 return 201;
             }
             else{
-                statement.execute("Insert into Member (account, password, realname, nickname) VALUES ('"+ account +"','"+password+"','"+realname+"','" + nickname+"');");
+                statement.execute("Insert into Member (account, password, realname) VALUES ('"+ account +"','"+password+"','"+realname+"');");
+                rs.close();
+                statement.close();
                 return 200;
             }
         } catch(SQLException  e){
@@ -57,10 +61,9 @@ public class Regis extends HttpServlet {
         try (PrintWriter out = new PrintWriter(response.getOutputStream())) {
             String pw = request.getParameter("password");
             String realname = request.getParameter("realname");
-            String nickname = request.getParameter("nickname");
             String account = request.getParameter("account");
             JSONObject json = new JSONObject();
-            json.put("statuscode", String.valueOf(register(account,pw,realname,nickname)));
+            json.put("statuscode", String.valueOf(register(account,pw,realname)));
             out.println(json.toString());
         }catch(Exception e)
         {

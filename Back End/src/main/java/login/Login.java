@@ -44,6 +44,7 @@ public class Login extends HttpServlet {
                 Statement statement = C.conn.createStatement();
                 String sql = "update Member set isOline = 'true' where account = '" + account +"';";
                 statement.executeUpdate(sql);
+                statement.close();
             }catch(SQLException e){
                 System.err.println(e);
             }
@@ -58,21 +59,23 @@ public class Login extends HttpServlet {
             Statement statement = C.conn.createStatement();
             ResultSet rs = statement.executeQuery("Select * from Member where account = '" + account +"';");
             String pw="";
-            if(rs.next()){
+            if(!rs.next()){
+                return 201;
+            }
+            else
+            {
                 pw=rs.getString("password");   
                 if(!pw.equals(password))//incorrect password
                {
-                   return 202;
+                    rs.close();
+                    statement.close();
+                    return 202;
                }
                else //correct password
                {
-                   AddCookie(account, pw, request, response);
-                   return 200;
+                    AddCookie(account, pw, request, response);
+                    return 200;
                }
-            }
-            else//inexistent account
-            {
-                return 201;
             }
             
             
@@ -95,6 +98,8 @@ public class Login extends HttpServlet {
             if(rs.next()){
              pw=rs.getString("password");
             }
+            rs.close();
+            statement.close();
             return pw.equals("password");
         }catch(SQLException e)
         {
@@ -107,11 +112,11 @@ public class Login extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setHeader("Access-Control-Allow-Origin", "*");
-        String nm = request.getParameter("ac");
+        String account = request.getParameter("ac");
         String pw = request.getParameter("pw");
         JSONObject json = new JSONObject();
-        json.put("statuscode", String.valueOf(check(nm, pw, request,response)));
-        json.put("admin", String.valueOf(checkAdministrator(nm, pw, request,response)));
+        json.put("statuscode", String.valueOf(check(account, pw, request, response)));
+        json.put("admin", String.valueOf(checkAdministrator(account, pw, request,response)));
         try (PrintWriter writer = response.getWriter()) {
             writer.write(json.toString());
         }catch(IOException e)
