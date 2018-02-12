@@ -35,35 +35,41 @@
   width: 1px;height: 40px;
   background-color: white;
 }
+
 #notify .item .title{
   display: block;
   width: 380px;
-  font-weight: bold;font-size: 1.5em;
-  word-break: break-all;
+  margin-bottom: 5px;
   text-indent: 1em;
+  word-break: break-all;
+  font-weight: bold;font-size: 1.5em;
+  border-bottom: 1px solid rgb(200,200,200);
 }
-#notify .item .line{
-  display: block;
+
+#notify .item .head{
   position: relative;
-  left: 45px;top: 20px;
-  width: 330px;height: 1px;
-  background-color: rgb(200,200,200);
+  font-size: 0.8em;
 }
-#notify .item .headimg{
-  display: inline-block;
-  height: 40px;width: 40px;
+#notify .item .head .headimg{
+  display: block;
+  height: 30px;width: 30px;
+  border-radius: 15px;
 }
-#notify .item .account{
-  display: inline-block;
+#notify .item .head .account{
+  display: block;
+  position: absolute;
+  top: 0px;left: 35px;
   font-family: 'Kaiti';
 }
-#notify .item .account::after{
-  content: ':';
-  display: inline-block;
+#notify .item .head .time{
+  display: block;
+  position: absolute;
+  bottom: 0px;left: 35px;
+  font-family: 'Kaiti';
 }
 #notify .item .content{
   display: block;
-  text-indent: 1em;
+  text-indent: 30px;
   word-break: break-all;
   /* white-space: nowrap;overflow: hidden;text-overflow: ellipsis; */
 }
@@ -71,6 +77,65 @@
 #notify .item .interact{
   border-top: 1px solid rgb(200,200,200);
 }
-#notify .item .interact .item{
+
+#notify .item .interact .nitem{
   position: relative;
+  border: 1px solid rgb(220,160,80);
+  border-right-width: 0px;
+}
+#notify .item .interact .nitem{
+  position: relative;
+  padding: 5px;
+  font-size: 0.8em;
+}
+#notify .item .interact .nitem .nhead{
+  position: relative;
+  font-size: 0.8em;
+}
+#notify .item .interact .nitem .nhead .headimg{
+  display: block;
+  width: 20px;height: 20px;
+  border-radius: 10px;
+}
+#notify .item .interact .nitem .nhead .account{
+  display: block;
+  position: absolute;
+  top: 0px;left: 25px;
+  font-family: 'Kaiti';
+}
+#notify .item .interact .nitem .nhead .time{
+  display: block;
+  position: absolute;
+  bottom: 0px;left: 25px;
+  font-family: 'Kaiti';
+}
+#notify .item .interact .nitem .ncontent{
+  display: block;
+  text-indent: 30px;
+  word-break: break-all;
+}
+
+#notify .item .interact .nitem .response{
+  margin-left: 25px;padding: 5px;
+  height: auto;width: 315px;
+  background-color: rgb(220,160,80);
+}
+#notify .item .interact .nitem .response .nlastitem{
+  margin: 5px 0px;
+  border-bottom: 1px solid rgb(200,200,200);
+}
+#notify .item .interact .nitem .response .at{
+  color: blue;
+}
+#notify .item .interact .nitem .response .at::before{
+  content: '@';
+  display: inline-block;
+  margin-left: 25px;
+}
+#notify .item .interact .nitem .response .at::after{
+  content: ':';
+}
+#notify .item .interact .nitem .response .mcontent{
+  display: inline-block;
+  word-break: break-all;
 }
