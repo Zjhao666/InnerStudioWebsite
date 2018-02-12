@@ -29,7 +29,9 @@
 }
 
 #Project .item .overview{
+  display: block;
   padding: 0px 5px;
+  word-break: break-all;
 }
 
 #Project .item .curstage{

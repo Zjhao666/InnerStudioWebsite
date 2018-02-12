@@ -1,0 +1,18 @@
+
+#Rightmenu{
+  position: absolute;
+  display: none;
+  width: 50px;
+  border: 1px solid rgba(80,80,200,0.7);
+  background-color: rgba(100,100,100,0.5);
+  z-index: 10;
+}
+#Rightmenu .item{
+  display: block;
+  width: 46px;
+  height: 16px;
+  font-size: 0.8em;
+  color: white;
+  padding: 0px 2px;
+  cursor: pointer;
+}

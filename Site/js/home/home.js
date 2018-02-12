@@ -2,8 +2,8 @@ let baseUrl=window.location.href;
 const jumpTo=(target)=>{
   window.location.href=target;
 };
-// ref
-$('#ref .btn').each((i,elem)=>{
+// Ref
+$('#Ref .btn').each((i,elem)=>{
   $(elem).bind({
     'click':()=>{},
     'mousedown':(e)=>{
@@ -14,15 +14,15 @@ $('#ref .btn').each((i,elem)=>{
     }
   });
 });
-$('#ref .profile').click(()=>{
-  jumpTo(baseUrl.replace('home.html','swPrivatePage.html'));
+$('#Ref .profile').click(()=>{
+  jumpTo(baseUrl.replace('home.html','privatePage.html'));
 });
-$('#ref .updateProject').click(()=>{});
-$('#ref .regisProject').click(()=>{
-  jumpTo(baseUrl.replace('home.html','swRegisProject.html'));
+$('#Ref .updateProject').click(()=>{});
+$('#Ref .regisProject').click(()=>{
+  jumpTo(baseUrl.replace('home.html','regisProject.html'));
 });
-$('#ref .serverConsole').click(()=>{
+$('#Ref .serverConsole').click(()=>{
 });
-$('#ref .library').click(()=>{
-  jumpTo(baseUrl.replace('home.html','swDocuments.html'));
+$('#Ref .library').click(()=>{
+  jumpTo(baseUrl.replace('home.html','documents.html'));
 });

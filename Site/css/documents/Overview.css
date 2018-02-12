@@ -1,0 +1,46 @@
+
+#Overview{
+  position: relative;
+  box-sizing: content-box;
+  width: 65%;
+  padding: 10px;
+  -moz-user-select: none;
+}
+#Overview .select_space{
+  position: absolute;
+}
+#Overview .select_space .item_single{
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid white;
+}
+#Overview .item{
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  margin-top: 10px;
+  height: 50px;
+}
+#Overview .item span{
+  position: absolute;
+  top: 50px;
+  left: 0px;
+  display: block;
+  width: 50px;
+  font-size: 0.6em;
+  overflow: hidden;
+  text-align: center;
+}
+#Overview .file_dir{
+  background-image: url(../../img/icon/dir_fileicon.png);
+}
+#Overview .file_pdf{
+  background-image: url(../../img/icon/pdf_fileicon.png);
+}
+#Overview .file_file{
+  background-image: url(../../img/icon/file_fileicon.png);
+}

@@ -1,12 +1,12 @@
 
-#Scrollwords{
+#Chat{
   position: relative;
   box-sizing: border-box;
   width: 300px;height: 202px;
   margin-top: 25px;
   border: 1px solid rgb(180,80,180);
 }
-#Scrollwords::before{
+#Chat::before{
   content: 'Chat';
   box-sizing: border-box;
   position: absolute;
@@ -18,7 +18,7 @@
   color: white;
   font: 200 1em 'Fangsong';
 }
-#Scrollwords::after{
+#Chat::after{
   content: '';
   display: block;
   position: absolute;
@@ -26,26 +26,52 @@
   background-color: white;
   top: 40px;right: -1px;
 }
-#Scrollwords .box{
-  width: 100%;height: 180px;
+
+#Chat .content{
+  width: 310px;height: 180px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
-#Scrollwords .foot{
+#Chat .content .item{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 5px;
+}
+#Chat .content .item .headimg{
+  width: 30px;height: 30px;
+  border-radius: 15px;
+}
+#Chat .content .item .message{
+  padding: 0px 5px;
+  max-width: 240px;
+  margin: 10px 2px 0px;
+  border-radius: 5px;
+  border: 1px solid rgb(200,200,200);
+}
+#Chat .content .leftItem,
+#Chat .content .leftItem .headimg,
+#Chat .content .leftItem .message{
+  float: left;
+}
+#Chat .content .rightItem,
+#Chat .content .rightItem .headimg,
+#Chat .content .rightItem .message{
+  float: right;
+}
+
+#Chat .foot{
   width: 100%;height: 20px%;
 }
-#Scrollwords .foot .headimg{
-  float: left;
-  width: 20px;height: 20px;
-}
-#Scrollwords .foot .input{
+#Chat .foot .input{
   box-sizing: border-box;
   float: left;
   border: none;
   font-family: 'Kaiti';
   margin: 0px;padding: 0px 5px;
-  width: 258px;height: 20px;
+  width: 278px;height: 20px;
   border-top: 1px solid rgb(180,80,180);
 }
-#Scrollwords .foot .send{
+#Chat .foot .send{
   float: left;
   width: 20px;height: 20px;
   background-color: gray;

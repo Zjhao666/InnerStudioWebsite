@@ -28,7 +28,9 @@
 }
 
 #Plan .item .overview{
+  display: block;
   padding: 0px 5px;
+  word-break: break-all;
 }
 
 #Plan .item .curstage{
