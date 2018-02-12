@@ -1,0 +1,136 @@
+
+#editStage{
+  position: relative;
+  display: none;
+  width: 400px;height: auto;
+  margin: 20px 0px;
+}
+
+#editStage .mask{
+  display: block;
+  position: absolute;
+  width: 120px;height: 1px;
+  background-color: white;
+}
+#editStage .mask:nth-of-type(1){
+  top: 238px;right: 50px;
+}
+#editStage .mask:nth-of-type(2){
+  top: 249px;left: 50px;
+}
+
+#editStage .addStage{
+  box-sizing: border-box;
+  position: relative;
+  width: 400px;height: auto;
+  padding: 30px 10px 10px;
+  border: 1px solid rgb(80,120,180);
+}
+#editStage .addStage::before{
+  content: '';
+  position: absolute;
+  top: 20px;left: 10px;
+  width: 380px;height: 1px;
+  border-top: 1px solid rgb(200,200,200);
+}
+#editStage .addStage .timestamp input{
+  margin: 10px 0px;
+}
+#editStage .addStage .timestamp::before{
+  content: 'Expected time';
+  display: block;
+}
+#editStage .addStage .target textarea{
+  box-sizing: border-box;
+  width: 378px;height: 80px;
+  margin: 10px 0px;padding: 2px 5px;
+  resize: none;
+}
+#editStage .addStage .target::before{
+  content: 'Target';
+  display: block;
+}
+#editStage .addStage .add{
+  display: block;
+  position: absolute;
+  top: 10px;right: 5px;
+  padding: 1px 4px;
+  width: 40px;height: 20px;
+  background-color: white;
+  font-weight: bold;
+  border-bottom: 1px solid rgb(200,200,200);
+  border-right: 1px solid rgb(200,200,200);
+  cursor: pointer;
+}
+
+#editStage .stages{
+  box-sizing: border-box;
+  position: relative;
+  width: 400px;height: auto;
+  margin: 10px 0px;padding: 30px 10px;
+  border: 1px solid rgb(80,120,180);
+}
+#editStage .stages::before{
+  content: '';
+  position: absolute;
+  top: 20px;left: 10px;
+  width: 380px;height: 1px;
+  background-color: rgb(200,200,200);
+}
+#editStage .stages::after{
+  content: 'Result';
+  display: block;
+  position: absolute;
+  top: 10px;left: 5px;
+  width: 60px;height: 20px;
+  padding: 1px 4px;
+  font-weight: bold;
+  background-color: white;
+}
+#editStage .stages .stage{
+  height: 40px;
+  margin: 0px 0px 10px 20px;
+}
+#editStage .stages .stateIcon::after{
+  content: '';
+  position: relative;
+  left: -11px;top: -5px;
+  display: block;
+  width: 2px;height: 45px;
+  background-color: gray;
+}
+#editStage .stages .stateIcon::before{
+  content: '';
+  position: relative;
+  display: block;
+  left: -20px;top: 25px;
+  box-sizing: border-box;
+  width: 20px;height: 20px;
+  border-radius: 10px;
+  border: 2px solid gray;
+  background-color: rgb(60,60,60);
+}
+#editStage .stages .lastStage::after{
+  background-color: rgba(0,0,0,0);
+}
+#editStage .stages .stage .timestamp{
+  display: inline-block;
+  background-color: green;
+  margin: 5px 5px 0px 5px;padding: 1px 2px 0px;
+  border-radius: 10px;
+}
+#editStage .stages .stage .content{
+  font-weight: bold;
+}
+#editStage .stages .remove{
+  display: block;
+  position: absolute;
+  top: 10px;right: 5px;
+  padding: 1px 4px;
+  width: 152px;height: 20px;
+  background-color: white;
+  font-weight: bold;
+  border-bottom: 1px solid rgb(200,200,200);
+  border-right: 1px solid rgb(200,200,200);
+  cursor: pointer;
+}

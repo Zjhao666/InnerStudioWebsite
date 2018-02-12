@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>注册</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/style.css" rel='stylesheet' type='text/css' media="all">
+</head>
+<body>
+<div class="banner">
+
+    <div class="container">
+        <!--登录框-->
+        <div class="col-md-4 col-md-offset-4 Content">
+            <h3 class="title">注册</h3>
+            <form action="http://101.200.37.220:8080/InnerStudioWebsite/regis.do" method="post">
+                <input class = "styled-input"type="text" name="ac" placeholder="姓名" required="">
+                <input class = "styled-input"type="password" name="pw" placeholder="密码" required="">         <!--为什么不能用type = password！！！-->
+                <div class="styled-input">
+                    <textarea name="self-intr" placeholder="个人介绍"></textarea>
+                </div>
+                <div>
+                    <input type="submit" value="点击注册">
+                </div>
+            </form>
+        </div>
+        <!--登陆框-->
+        <div class="clearfix"> </div>
+    </div>
+</div>
+
+</body>
+</html>

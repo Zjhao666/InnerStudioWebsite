@@ -1,0 +1,52 @@
+
+#swMemberList{
+  box-sizing: border-box;
+  position: relative;
+  width: 300px;
+  margin: 25px 0px 10px;padding: 5px 0px 0px 5px;
+  border: 1px solid rgb(80,120,180);
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+}
+#swMemberList::before{
+  content: 'Members';
+  box-sizing: border-box;
+  position: absolute;
+  width: 100px;
+  top: -20px;left: 0px;
+  text-align: center;
+  border-radius: 30px 30px 0px 0px / 10px 10px 0px 0px;
+  background-color: rgb(80,120,180);
+  color: white;
+  font: 200 1em 'Fangsong';
+}
+#swMemberList .item{
+  position: relative;
+  display: block;
+  width: 295px;height: 40px;
+  margin: 2px 0px;
+  color: white;
+  background: linear-gradient(to right,rgba(80,120,180,1),rgba(80,120,180,0.2));
+}
+#swMemberList .item .headimg{
+  display: block;
+  width: 40px;height: 40px;
+}
+#swMemberList .item .account{
+  display: block;
+  position: absolute;
+  top: 0px;left: 44px;
+}
+#swMemberList .item .pertag{
+  display: block;
+  position: absolute;
+  bottom: 0px;left: 44px;
+}
+#swMemberList .item .onlineIcon{
+  display: block;
+  position: absolute;
+}
+#swMemberList .item .captainIcon{
+  display: block;
+  position: absolute;
+}

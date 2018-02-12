@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Studio Website Documents</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src='js/lib/jquery-3.2.1.min.js'></script>
+  <style>
+    *{
+      font: 400 1em 'ArtegraSansExtended';
+      -moz-user-select: none;
+    }
+    #main{
+      position: relative;
+      top: 50px;left: 50px;
+      height: 1000px;
+    }
+    .left,.right{
+      float: left;
+      width: 400px;height: 1px;
+      margin: 10px 5px;
+    }
+  </style>
+  <link rel='stylesheet' href='css/clear.css' />
+  <link rel='stylesheet' href='css/home/homeSwplan.css' />
+  <link rel='stylesheet' href='css/home/homeSwnotify.css' />
+  <link rel='stylesheet' href='css/home/homeSwprojectlist.css' />
+  <link rel='stylesheet' href='css/home/homeSwmemberlist.css' />
+  <link rel='stylesheet' href='css/home/homeSwscrollwords.css' />
+  <link rel='stylesheet' href='css/home/homeRef.css' />
+</head>
+<body>
+  <div id='main'>
+    <div id='ref'>
+      <a class='btn viewProject'>Regis project</a>
+      <a class='btn viewProject'>Current project</a>
+      <a class='btn updateProject'>Update project</a>
+      <a class='btn serverConsole'>Server console</a>
+      <a class='btn documents'>Library</a>
+    </div>
+    <div class='left'>
+      <div id='swPlan'>
+        <div class='item' clicked=''>
+          <span class='title'>Learning Plan</span>
+          <span class='overview'>Hi,there!This plan is about how to earn money fast by take part in software-race.</span>
+          <div class='curstage'>
+            <span class='timestamp'>2017/11/24</span>
+            <span class='content'>learn HTTP protocal asdssddddddddddddd</span>
+          </div>
+          <div class='stages'>
+            <div class='stage nlaststage'>
+              <span class='timestamp'>2017/11/24</span>
+              <span class='content'>learn HTTP protocal</span>
+            </div>
+            <div class='stage nlaststage'>
+              <span class='timestamp'>2017/11/20</span>
+              <span class='content'>learn HTML5</span>
+            </div>
+            <div class='stage nlaststage'>
+              <span class='timestamp'>2017/11/24</span>
+              <span class='content'>learn css</span>
+            </div>
+            <div class='stage'>
+              <span class='timestamp'>2017/11/18</span>
+              <span class='content'>learn js</span>
+            </div>
+          </div>
+        </div>
+        <div class='item' clicked=''>
+          <span class='title'>Race Plan</span>
+          <span class='overview'>And how about this plan,blablabla....em!I got it...</span>
+          <div class='curstage'>
+            <span class='timestamp'>2017/11/24</span>
+            <span class='content'>learn HTTP protocal</span>
+          </div>
+          <div class='stages'>
+            <div class='stage nlaststage'>
+              <span class='timestamp'>2017/11/24</span>
+              <span class='content'>learn HTTP protocal,cool,asd,jjd..asdoi</span>
+            </div>
+            <div class='stage nlaststage'>
+              <span class='timestamp'>2017/11/20</span>
+              <span class='content'>learn HTML5</span>
+            </div>
+            <div class='stage nlaststage'>
+              <span class='timestamp'>2017/11/24</span>
+              <span class='content'>learn css</span>
+            </div>
+            <div class='stage lastStage'>
+              <span class='timestamp'>2017/11/18</span>
+              <span class='content'>learn js</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id='notify'>
+        <div class='item'>
+          <span class='title'>Netbeans is almost deploying project</span>
+          <div class='line'></div>
+          <img class='headimg' src='img/backgrounds/1.jpg'>
+          <span class='account'>Luncert</span>
+          <span class='content'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
+          <div class='interact'>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class='right'>
+      <div id='swProjectList'>
+        <div class='item' clicked=''>
+          <span class='title'>Learning Plan</span>
+          <span class='overview'>Hi,there!This plan is about how to earn money fast by take part in software-race.</span>
+          <div class='curstage'>
+            <span class='timestamp'>2017/11/24</span>
+            <span class='content'>learn HTTP protocal asdssddddddddddddd</span>
+          </div>
+          <div class='stages'>
+            <div class='stage nlaststage'>
+              <span class='timestamp'>2017/11/24</span>
+              <span class='content'>learn HTTP protocal</span>
+            </div>
+            <div class='stage nlaststage'>
+              <span class='timestamp'>2017/11/20</span>
+              <span class='content'>learn HTML5</span>
+            </div>
+            <div class='stage nlaststage'>
+              <span class='timestamp'>2017/11/24</span>
+              <span class='content'>learn css</span>
+            </div>
+            <div class='stage'>
+              <span class='timestamp'>2017/11/18</span>
+              <span class='content'>learn js</span>
+            </div>
+          </div>
+        </div>
+        <div class='item' clicked=''>
+          <span class='title'>Race Plan</span>
+          <span class='overview'>And how about this plan,blablabla....em!I got it...</span>
+          <div class='curstage'>
+            <span class='timestamp'>2017/11/24</span>
+            <span class='content'>learn HTTP protocal</span>
+          </div>
+          <div class='stages'>
+            <div class='stage nlaststage'>
+              <span class='timestamp'>2017/11/24</span>
+              <span class='content'>learn HTTP protocal,cool,asd,jjd..asdoi</span>
+            </div>
+            <div class='stage nlaststage'>
+              <span class='timestamp'>2017/11/20</span>
+              <span class='content'>learn HTML5</span>
+            </div>
+            <div class='stage nlaststage'>
+              <span class='timestamp'>2017/11/24</span>
+              <span class='content'>learn css</span>
+            </div>
+            <div class='stage lastStage'>
+              <span class='timestamp'>2017/11/18</span>
+              <span class='content'>learn js</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id='swMemberList'>
+        <div class='item'>
+          <img class='headimg' src='img/backgrounds/1.jpg'>
+          <a class='account'>Luncert</a>
+          <a class='pertag'>work hard</a>
+          <a class='captainIcon'></a>
+          <a class='onlineIcon'></a>
+        </div>
+        <div class='item'>
+          <img class='headimg' src='img/backgrounds/2.jpg'>
+          <a class='account'>Silly</a>
+          <a class='pertag'>wow!</a>
+          <a class='captainIcon'></a>
+          <a class='onlineIcon'></a>
+        </div>
+      </div>
+      <div id='scrollWords'>
+        <div class='box'>
+
+        </div>
+        <div class='foot'>
+          <img class='headimg' src='img/backgrounds/1.jpg'>
+          <input class='input' type='text' />
+          <a class='send'></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src='js/homeSwplan.js'></script>
+</body>
+</html>
