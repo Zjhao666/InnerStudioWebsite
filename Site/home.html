@@ -22,24 +22,24 @@
     }
   </style>
   <link rel='stylesheet' href='css/clear.css' />
-  <link rel='stylesheet' href='css/home/homeSwplan.css' />
-  <link rel='stylesheet' href='css/home/homeSwnotify.css' />
-  <link rel='stylesheet' href='css/home/homeSwprojectlist.css' />
-  <link rel='stylesheet' href='css/home/homeSwmemberlist.css' />
-  <link rel='stylesheet' href='css/home/homeSwscrollwords.css' />
-  <link rel='stylesheet' href='css/home/homeRef.css' />
+  <link rel='stylesheet' href='css/home/Plan.css' />
+  <link rel='stylesheet' href='css/home/Communicate.css' />
+  <link rel='stylesheet' href='css/home/Project.css' />
+  <link rel='stylesheet' href='css/home/Member.css' />
+  <link rel='stylesheet' href='css/home/Scrollwords.css' />
+  <link rel='stylesheet' href='css/home/Ref.css' />
 </head>
 <body>
   <div id='main'>
-    <div id='ref'>
-      <a class='btn viewProject'>Regis project</a>
-      <a class='btn viewProject'>Current project</a>
+    <div id='Ref'>
+      <a class='btn profile'>Profile</a>
       <a class='btn updateProject'>Update project</a>
+      <a class='btn regisProject'>Regis project</a>
       <a class='btn serverConsole'>Server console</a>
-      <a class='btn documents'>Library</a>
+      <a class='btn library'>Library</a>
     </div>
     <div class='left'>
-      <div id='swPlan'>
+      <div id='Plan'>
         <div class='item' clicked=''>
           <span class='title'>Learning Plan</span>
           <span class='overview'>Hi,there!This plan is about how to earn money fast by take part in software-race.</span>
@@ -93,7 +93,44 @@
           </div>
         </div>
       </div>
-      <div id='notify'>
+      <div id='Communicate'>
+        <div class='item'>
+          <span class='title'>Netbeans is almost deploying project</span>
+          <div class='head'>
+            <img class='headimg' src='img/backgrounds/1.jpg'>
+            <span class='account'>Luncert</span>
+            <span class='time'>2017/11/8</span>
+          </div>
+          <span class='content'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
+          <div class='interact'>
+            <div class='nitem'>
+              <div class='nhead'>
+                <img class='headimg' src='img/backgrounds/2.jpg'>
+                <span class='account'>Silly</span>
+                <span class='time'>11:23:54 2017/11/8</span>
+              </div>
+              <span class='ncontent'>How about use idea?^_^</span>
+              <div class='response'>
+                <div class='mitem nlastitem'>
+                  <div class='nhead'>
+                    <img class='headimg' src='img/backgrounds/1.jpg'>
+                    <span class='account'>Luncert</span>
+                    <span class='time'>11:30:00 2017/11/8</span>
+                  </div>
+                  <a class='at'>Silly</a><span class='mcontent'>It doesn't work...qwq</span>
+                </div>
+                <div class='mitem'>
+                  <div class='nhead'>
+                    <img class='headimg' src='img/backgrounds/2.jpg'>
+                    <span class='account'>Silly</span>
+                    <span class='time'>11:32:20 2017/11/8</span>
+                  </div>
+                  <a class='at'>Luncert</a><span class='mcontent'>Good lucky!^_^</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class='item'>
           <span class='title'>Netbeans is almost deploying project</span>
           <div class='head'>
@@ -134,7 +171,7 @@
       </div>
     </div>
     <div class='right'>
-      <div id='swProjectList'>
+      <div id='Project'>
         <div class='item' clicked=''>
           <span class='title'>Learning Plan</span>
           <span class='overview'>Hi,there!This plan is about how to earn money fast by take part in software-race.</span>
@@ -188,7 +225,7 @@
           </div>
         </div>
       </div>
-      <div id='swMemberList'>
+      <div id='Member'>
         <div class='item'>
           <img class='headimg' src='img/backgrounds/1.jpg'>
           <a class='account'>Luncert</a>
@@ -204,7 +241,7 @@
           <a class='onlineIcon'></a>
         </div>
       </div>
-      <div id='scrollWords'>
+      <div id='Scrollwords'>
         <div class='box'>
 
         </div>
@@ -216,6 +253,9 @@
       </div>
     </div>
   </div>
-  <script src='js/homeSwplan.js'></script>
+  <script src='js/home/home.js'></script>
+  <script src='js/home/Plan.js'></script>
+  <script src='js/home/Project.js'></script>
+  <script src='js/home/Communicate.js'></script>
 </body>
 </html>

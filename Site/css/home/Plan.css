@@ -1,25 +1,25 @@
 
-#swProjectList{
+#Plan{
   position: relative;
 }
 
-#swProjectList .item{
-  box-sizing: border-box;
+#Plan .item{
   position: relative;
-  width: 300px;height: auto;
+  width: 400px;height: auto;
   margin: 10px 0px;
-  border: 1px solid rgb(80,220,100);
+  border: 1px solid rgb(80,120,180);
+  cursor: pointer;
 }
-#swProjectList .item::after{
+#Plan .item::after{
   content: '';
   position: absolute;
-  top: 5px;right: -1px;
+  top: 5px;left: -1px;
   width: 1px;height: 80px;
   background-color: white;
   border-left-width: 0px;
 }
 
-#swProjectList .item .title{
+#Plan .item .title{
   display: block;
   font-variant: small-caps;
   font-size: 2em;
@@ -27,17 +27,19 @@
   text-overflow:ellipsis;white-space:nowrap;overflow:hidden;
 }
 
-#swProjectList .item .overview{
+#Plan .item .overview{
   padding: 0px 5px;
 }
 
-#swProjectList .item .curstage{
+#Plan .item .curstage{
   box-sizing: border-box;
-  width: 280px;height: 30px;
+  display: block;
+  width: 380px;height: 30px;
   margin: 10px 0px 5px 10px;padding: 0px;
   border-top: 1px solid rgb(200,200,200);
+  overflow: hidden;
 }
-#swProjectList .item .curstage::before{
+#Plan .item .curstage::before{
   content: '';
   position: relative;
   display: inline-block;
@@ -48,32 +50,33 @@
   border: 2px solid gray;
   background-color: rgb(60,60,60);
 }
-#swProjectList .item .curstage .timestamp{
+#Plan .item .curstage .timestamp{
   display: inline-block;
   background-color: green;
   margin: 5px 5px 0px 5px;padding: 1px 2px 0px;
   border-radius: 10px;
 }
-#swProjectList .item .curstage .content{
+#Plan .item .curstage .content{
   float: right;
-  width: 150px;
+  width: 250px;
   padding-top: 10px;
   font-weight: bold;
   text-overflow: ellipsis;overflow: hidden;white-space: nowrap;
 }
 
-#swProjectList .item .stages{
+#Plan .item .stages{
   box-sizing: border-box;
   display: none;
   position: relative;
   width: 380px;height: auto;
-  margin: 0px 0px 5px 10px;padding: 0px;
+  margin: 10px 0px 5px 10px;padding: 0px;
   border-top: 1px solid rgb(200,200,200);
+  overflow: hidden;
 }
-#swProjectList .item .stages .stage{
+#Plan .item .stages .stage{
   position: relative;
 }
-#swProjectList .item .stages .stage::before{
+#Plan .item .stages .stage::before{
   content: '';
   position: relative;
   display: inline-block;
@@ -84,19 +87,19 @@
   border: 2px solid gray;
   background-color: rgb(60,60,60);
 }
-#swProjectList .item .stages .stage .timestamp{
+#Plan .item .stages .stage .timestamp{
   display: inline-block;
   background-color: green;
   margin: 5px 5px 0px 5px;padding: 1px 2px 0px;
   border-radius: 10px;
 }
-#swProjectList .item .stages .stage .content{
+#Plan .item .stages .stage .content{
   display: block;
   font-weight: bold;
   margin: 5px 0px 0px 30px;
   word-break: break-all;
 }
-#swProjectList .item .stages .nlaststage .content::after{
+#Plan .item .stages .nlaststage .content::after{
   content: '';
   display: block;
   position: absolute;

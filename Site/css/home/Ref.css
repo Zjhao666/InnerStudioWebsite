@@ -1,10 +1,11 @@
 
-#ref{
+#Ref{
   position: relative;
 }
-#ref .btn{
+#Ref .btn{
   font-weight: bold;
   margin: 0px 5px;padding: 0px 4px;
   border-bottom: 1px solid rgb(200,200,200);
   border-right: 1px solid rgb(200,200,200);
+  cursor: pointer;
 }

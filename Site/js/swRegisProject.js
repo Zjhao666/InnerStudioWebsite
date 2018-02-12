@@ -93,4 +93,4 @@ $('#navigate').children('.item').each((i,elem)=>{
     }
   });
 });
-$('#navigate').children('.item').eq(2).click();
+$('#navigate').children('.item').eq(0).click();

@@ -1,5 +1,5 @@
 
-#swMemberList{
+#Member{
   box-sizing: border-box;
   position: relative;
   width: 300px;
@@ -8,7 +8,7 @@
   border-right-width: 0px;
   border-bottom-width: 0px;
 }
-#swMemberList::before{
+#Member::before{
   content: 'Members';
   box-sizing: border-box;
   position: absolute;
@@ -20,7 +20,7 @@
   color: white;
   font: 200 1em 'Fangsong';
 }
-#swMemberList .item{
+#Member .item{
   position: relative;
   display: block;
   width: 295px;height: 40px;
@@ -28,25 +28,25 @@
   color: white;
   background: linear-gradient(to right,rgba(80,120,180,1),rgba(80,120,180,0.2));
 }
-#swMemberList .item .headimg{
+#Member .item .headimg{
   display: block;
   width: 40px;height: 40px;
 }
-#swMemberList .item .account{
+#Member .item .account{
   display: block;
   position: absolute;
   top: 0px;left: 44px;
 }
-#swMemberList .item .pertag{
+#Member .item .pertag{
   display: block;
   position: absolute;
   bottom: 0px;left: 44px;
 }
-#swMemberList .item .onlineIcon{
+#Member .item .onlineIcon{
   display: block;
   position: absolute;
 }
-#swMemberList .item .captainIcon{
+#Member .item .captainIcon{
   display: block;
   position: absolute;
 }
