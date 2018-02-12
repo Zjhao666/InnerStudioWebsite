@@ -1,0 +1,105 @@
+
+#swPlan{
+  position: relative;
+}
+
+#swPlan .item{
+  position: relative;
+  width: 400px;height: auto;
+  margin: 10px 0px;
+  border: 1px solid rgb(80,120,180);
+}
+#swPlan .item::after{
+  content: '';
+  position: absolute;
+  top: 5px;left: -1px;
+  width: 1px;height: 80px;
+  background-color: white;
+  border-left-width: 0px;
+}
+
+#swPlan .item .title{
+  display: block;
+  font-variant: small-caps;
+  font-size: 2em;
+  font-weight: bold;
+  text-overflow:ellipsis;white-space:nowrap;overflow:hidden;
+}
+
+#swPlan .item .overview{
+  padding: 0px 5px;
+}
+
+#swPlan .item .curstage{
+  box-sizing: border-box;
+  width: 380px;height: 30px;
+  margin: 10px 0px 5px 10px;padding: 0px;
+  border-top: 1px solid rgb(200,200,200);
+}
+#swPlan .item .curstage::before{
+  content: '';
+  position: relative;
+  display: inline-block;
+  top: 5px;
+  box-sizing: border-box;
+  width: 20px;height: 20px;
+  border-radius: 10px;
+  border: 2px solid gray;
+  background-color: rgb(60,60,60);
+}
+#swPlan .item .curstage .timestamp{
+  display: inline-block;
+  background-color: green;
+  margin: 5px 5px 0px 5px;padding: 1px 2px 0px;
+  border-radius: 10px;
+}
+#swPlan .item .curstage .content{
+  float: right;
+  width: 250px;
+  padding-top: 10px;
+  font-weight: bold;
+  text-overflow: ellipsis;overflow: hidden;white-space: nowrap;
+}
+
+#swPlan .item .stages{
+  box-sizing: border-box;
+  display: none;
+  position: relative;
+  width: 380px;height: auto;
+  margin: 0px 0px 5px 10px;padding: 0px;
+  border-top: 1px solid rgb(200,200,200);
+}
+#swPlan .item .stages .stage{
+  position: relative;
+}
+#swPlan .item .stages .stage::before{
+  content: '';
+  position: relative;
+  display: inline-block;
+  top: 5px;
+  box-sizing: border-box;
+  width: 20px;height: 20px;
+  border-radius: 10px;
+  border: 2px solid gray;
+  background-color: rgb(60,60,60);
+}
+#swPlan .item .stages .stage .timestamp{
+  display: inline-block;
+  background-color: green;
+  margin: 5px 5px 0px 5px;padding: 1px 2px 0px;
+  border-radius: 10px;
+}
+#swPlan .item .stages .stage .content{
+  display: block;
+  font-weight: bold;
+  margin: 5px 0px 0px 30px;
+  word-break: break-all;
+}
+#swPlan .item .stages .nlaststage .content::after{
+  content: '';
+  display: block;
+  position: absolute;
+  top: 25px;left: 9px;
+  width: 100%;height: 100%;
+  border-left: 1px solid gray;
+}

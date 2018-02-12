@@ -1,0 +1,76 @@
+
+#notify{
+  position: relative;
+  box-sizing: border-box;
+  width: 400px;height: auto;
+  margin-top: 25px;padding: 10px 10px 0px 0px;
+  border: 1px solid rgb(220,160,80);
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+}
+#notify::before{
+  content: 'Notify';
+  box-sizing: border-box;
+  position: absolute;
+  width: 70px;
+  top: -20px;left: 1px;
+  text-align: center;
+  border-radius: 30px 30px 0px 0px / 10px 10px 0px 0px;
+  background-color: rgb(220,160,80);
+  color: white;
+  font: 200 1em 'Fangsong';
+}
+
+#notify .item{
+  position: relative;
+  box-sizing: border-box;
+  padding: 5px;
+  border-bottom: 1px solid rgb(220,160,80);
+  border-left: 1px solid rgb(220,160,80);
+}
+#notify .item::after{
+  content: '';
+  position: absolute;
+  top: 0px;left: -1px;
+  width: 1px;height: 40px;
+  background-color: white;
+}
+#notify .item .title{
+  display: block;
+  width: 380px;
+  font-weight: bold;font-size: 1.5em;
+  word-break: break-all;
+  text-indent: 1em;
+}
+#notify .item .line{
+  display: block;
+  position: relative;
+  left: 45px;top: 20px;
+  width: 330px;height: 1px;
+  background-color: rgb(200,200,200);
+}
+#notify .item .headimg{
+  display: inline-block;
+  height: 40px;width: 40px;
+}
+#notify .item .account{
+  display: inline-block;
+  font-family: 'Kaiti';
+}
+#notify .item .account::after{
+  content: ':';
+  display: inline-block;
+}
+#notify .item .content{
+  display: block;
+  text-indent: 1em;
+  word-break: break-all;
+  /* white-space: nowrap;overflow: hidden;text-overflow: ellipsis; */
+}
+
+#notify .item .interact{
+  border-top: 1px solid rgb(200,200,200);
+}
+#notify .item .interact .item{
+  position: relative;
+}

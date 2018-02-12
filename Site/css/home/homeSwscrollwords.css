@@ -1,0 +1,53 @@
+
+#scrollWords{
+  position: relative;
+  box-sizing: border-box;
+  width: 300px;height: 202px;
+  margin-top: 25px;
+  border: 1px solid rgb(180,80,180);
+}
+#scrollWords::before{
+  content: 'Chat';
+  box-sizing: border-box;
+  position: absolute;
+  width: 60px;
+  top: -20px;left: 0px;
+  text-align: center;
+  border-radius: 30px 30px 0px 0px / 10px 10px 0px 0px;
+  background-color: rgb(180,80,180);
+  color: white;
+  font: 200 1em 'Fangsong';
+}
+#scrollWords::after{
+  content: '';
+  display: block;
+  position: absolute;
+  width: 1px;height: 80px;
+  background-color: white;
+  top: 40px;right: -1px;
+}
+#scrollWords .box{
+  width: 100%;height: 180px;
+}
+#scrollWords .foot{
+  width: 100%;height: 20px%;
+}
+#scrollWords .foot .headimg{
+  float: left;
+  width: 20px;height: 20px;
+}
+#scrollWords .foot .input{
+  box-sizing: border-box;
+  float: left;
+  border: none;
+  font-family: 'Kaiti';
+  margin: 0px;padding: 0px 5px;
+  width: 258px;height: 20px;
+  border-top: 1px solid rgb(180,80,180);
+}
+#scrollWords .foot .send{
+  float: left;
+  width: 20px;height: 20px;
+  background-color: gray;
+  cursor: pointer;
+}
