@@ -24,17 +24,11 @@
 #Communicate .item{
   position: relative;
   box-sizing: border-box;
-  padding: 5px;
+  margin-bottom: 5px;padding: 5px;
   border-bottom: 1px solid rgb(220,160,80);
   border-left: 1px solid rgb(220,160,80);
   cursor: pointer;
-}
-#Communicate .item::after{
-  content: '';
-  position: absolute;
-  top: 0px;left: -1px;
-  width: 1px;height: 40px;
-  background-color: white;
+  background-color: rgba(200,200,200,0.8);
 }
 
 #Communicate .item .title{

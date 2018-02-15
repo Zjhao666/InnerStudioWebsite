@@ -5,17 +5,15 @@
   margin: 20px 0px;
 }
 
-#Overview input{
-  margin: 0px;padding: 0px;
-  border: none;
-}
 #Overview .title{
   box-sizing: border-box;
   display: block;
   width: 400px;
+  margin: 0px;padding: 0px;
   border: 1px solid rgb(80,180,120);
   font: normal 1.2em 'Kaiti';
   padding: 2px;
+  background-color: rgba(200,200,200,0.8);
 }
 
 #Overview .projectDoc{
@@ -24,7 +22,7 @@
   margin: 5px 0px;padding: 10px;
   text-align: center;
   color: white;
-  background: rgb(80,180,120);
+  background: rgba(80,180,120,0.8);
 }
 #Overview .projectDoc::before{
   content: '';
@@ -48,6 +46,7 @@
   border: 1px solid rgb(80,180,120);
   font: normal 1em 'Kaiti';
   resize: none;
+  background-color: rgba(200,200,200,0.8);
 }
 
 #Overview .members{
@@ -56,6 +55,7 @@
   min-height: 100px;
   padding: 10px 10px 5px 10px;
   border: 1px solid rgb(80,180,120);
+  background-color: rgba(200,200,200,0.8);
 }
 #Overview .members::before{
   box-sizing: border-box;

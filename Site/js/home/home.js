@@ -10,7 +10,10 @@ $('#Ref .btn').each((i,elem)=>{
       $(e.target).css('background-color','rgb(220,220,220)');
     },
     'mouseup':(e)=>{
-      $(e.target).css('background-color','white');
+      $(e.target).css('background-color','rgba(220,220,220,0.8)');
+    },
+    'mouseleave':(e)=>{
+      $(e.target).css('background-color','rgba(220,220,220,0.8)');
     }
   });
 });

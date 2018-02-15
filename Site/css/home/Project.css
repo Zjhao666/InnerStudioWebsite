@@ -10,16 +10,8 @@
   margin: 10px 0px;
   border: 1px solid rgb(80,220,100);
   cursor: pointer;
+  background-color: rgba(200,200,200,0.8);
 }
-#Project .item::after{
-  content: '';
-  position: absolute;
-  top: 5px;right: -1px;
-  width: 1px;height: 80px;
-  background-color: white;
-  border-left-width: 0px;
-}
-
 #Project .item .title{
   display: block;
   font-variant: small-caps;

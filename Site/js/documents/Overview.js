@@ -1,4 +1,7 @@
 
+let baseurl='http://localhost:8000/'
+
+// right menu behavior
 let state_rightmenu=false;
 document.oncontextmenu=(e)=>{
   let elem=$(e.target);
@@ -21,17 +24,18 @@ $('#main').click((e)=>{
   }
 });
 
+// overview behavior
 let overview_selected;
 $('#Overview .item').each((i,elem)=>{
   let target=$(elem),
       hovered=false;
   target.bind({
     'mousedown':()=>{
-      target.css('background-color','rgba(80,80,180,1)');
+      target.css('background-color','rgb(220,220,220,0.8)');
     },
     'mouseup':()=>{
       if(hovered){
-        target.css('background-color','rgba(80,100,220,1)');
+        target.css('background-color','rgba(200,200,200,0.8)');
       }
       else{
         target.css('background-color','rgba(0,0,0,0)');
@@ -39,7 +43,7 @@ $('#Overview .item').each((i,elem)=>{
     },
     'mouseenter':()=>{
       hovered=true;
-      target.css('background-color','rgba(80,100,220,1)');
+      target.css('background-color','rgba(200,200,200,0.8)');
     },
     'mouseleave':()=>{
       hovered=false;
@@ -71,3 +75,10 @@ $('#Overview .item').each((i,elem)=>{
     }
   });
 });
+
+// overview action
+// const readDir=()=>{
+//   $.get({
+//     url:
+//   })
+// };

@@ -3,7 +3,7 @@
   position: relative;
   display: block;
   width: 400px;height: 30px;
-  border-bottom: 1px solid rgb(180,180,180);
+  border-bottom: 1px solid white;
 }
 #Navigate::after{
   content: '';
@@ -11,8 +11,8 @@
   position: absolute;
   width: 10px;height: 10px;
   bottom: -6px;right: 0px;
-  border-bottom: 1px solid rgb(180,180,180);
-  border-right: 1px solid rgb(180,180,180);
+  border-bottom: 1px solid white;
+  border-right: 1px solid white;
   transform: rotateZ(-45deg);
 }
 #Navigate .item{

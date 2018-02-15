@@ -52,7 +52,7 @@ else:
 
 
 urlpath='/chat'
-workpath=os.path.join(os.path.dirname(__file__),'chat')
+workpath=os.path.join(WORKPATH,'chat')
 
 # database operation
 def query(sql):
@@ -65,7 +65,7 @@ def query(sql):
 
 def onCreate(im,ctx):
     # validate-send pk
-    n,e1,e2=RSA.make(100,500)
+    n,e1,e2=RSA.make(100,300)
     ctx.sk=(n,e1)
     im.send_message(json.dumps({
         'type':'*',
@@ -78,16 +78,16 @@ def onCreate(im,ctx):
 
 def onMessage(im,ctx,contact):
     data=json.loads(ctx.message)
-    if data['type'] is '*': # validate-check ac&pw
+    if data['type'].startswith('*'): # validate-check ac&pw
         ac,pw=RSA.decrypt(data['content'],ctx.sk[0],ctx.sk[1]).split('&')
         r=query('select * from Member where account='+ac)
         if r and r[0][5] is pw:
-            ctx.aid=ac
+            ctx.aid=r[0][0] # id
             statuscode=200
             # check file in disk
-            path=os.path.join(workpath,ctx.aid)
+            path=os.path.join(workpath,str(ctx.aid)+'.json')
             # load message records(JSON)
-            with open(path+'.json','rb') as f:
+            with open(path,'rb') as f:
                 if sys.version_info[0]<3:
                     data=f.read()
                 else:
@@ -100,7 +100,7 @@ def onMessage(im,ctx,contact):
             'type':'/',
             'content':{'statuscode':statuscode}
         }))
-    elif data['type'] is '+' and ctx.aid: # send message
+    elif data['type'].startswith('+') and hasattr(ctx,'aid'): # send message
         sour,dest=data['param'].split(':')
         if sour is dest:
             return
@@ -115,7 +115,7 @@ def onMessage(im,ctx,contact):
             im.send_message(ctx.message)
         else:
             pass
-    elif data['type'] is '?' and ctx.aid and data['target']:
+    elif data['type'].startswith('?') and hasattr(ctx,'aid') and data['target']>=0:
         for item in ctx.msgbox:
             if item['target']==data['target']:
                 im.send_message(json.dumps({
@@ -126,6 +126,5 @@ def onMessage(im,ctx,contact):
     else:
         im.close()
     # update msg record
-
 def onDestroy(im,ctx):
     pass

@@ -55,6 +55,7 @@ OPCODE_PONG         = 0xA
 
 class Properties(object):
     def __init__(self,param):
+        object.__init__(self)
         if not isinstance(param,dict):
             raise TypeError('param must be instance of dict')
         for key,value in param.items():
@@ -71,7 +72,7 @@ class Properties(object):
             else:
                 yield (item,getattr(self,item))
     def __str__(self):
-        return 'Properties instance:\n\t'+'\n\t'.join([item[0]+':'+str(item[1]) for item in self])
+        return '[Properties instance]:\n'+'\n'.join([item[0]+':\t'+str(item[1]) for item in self])
 
 class App(object):
     def __init__(self,appid,appname,codepath):
@@ -125,7 +126,8 @@ class WebSocket(ThreadingMixIn, TCPServer):
         TCPServer.__init__(self, (host, port), WebSocketHandler)
         # load app
         self.apps=[]
-        self.workpath=os.path.join(os.path.dirname(__file__),'Apps')
+        self.workpath=os.path.join(os.path.dirname(os.path.realpath(__file__)),'Apps')
+        Reflect.setworkpath(self.workpath)
         for filename in os.listdir(self.workpath):
             codepath=os.path.join(self.workpath,filename)
             if os.path.isfile(codepath):

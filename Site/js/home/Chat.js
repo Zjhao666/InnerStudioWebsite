@@ -1,5 +1,5 @@
-let ac=localStorage.getItem('ac'),pw=localStorage.getItem('pw');
-
+// let ac=localStorage.getItem('ac'),pw=localStorage.getItem('pw');
+let ac='1',pw='1';
 let ws=new WebSocket('ws://127.0.0.1:9001/chat');
 ws.onopen=function(evt){
   // connect check

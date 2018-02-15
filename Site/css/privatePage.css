@@ -1,13 +1,4 @@
 
-body{
-  -moz-user-select: none;
-}
-#main{
-  position: absolute;
-  margin: 50px 100px 50px 100px;
-  width: 100%;height: 100%;
-}
-
 #info{
   position: absolute;
 }
@@ -34,7 +25,7 @@ body{
   display: block;
   top: 0px;left: 220px;
   width: 60%;height: 30px;
-  border-bottom: 1px solid rgb(180,180,180);
+  border-bottom: 1px solid white;
 }
 #navigate .item{
   display: inline-block;

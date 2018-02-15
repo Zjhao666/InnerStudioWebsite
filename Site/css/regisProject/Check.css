@@ -20,7 +20,7 @@
   position: absolute;
   padding: 0px 10px;
   top: 0px;left: 0px;
-  background-color: white;
+  background-color: rgba(200,200,200,0.8);
 }
 #Check .formitem .content{
   box-sizing: border-box;

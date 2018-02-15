@@ -5,9 +5,6 @@
   width: 20%;
   overflow: hidden;
 }
-#Sidebox *{
-  color: white;
-}
 
 #Sidebox .filedetail{
   position: relative;
@@ -15,6 +12,7 @@
   padding: 20px;
   height: 300px;width: 100%;
   border-right: 1px solid rgb(200,200,200);
+  background-color: rgba(200,200,200,0.8);
 }
 #Sidebox .filedetail .thumbnail{
   display: block;
@@ -91,6 +89,7 @@
   height: 280px;width: 100%;
   overflow: scroll;
   -moz-user-select: none;
+  background-color: rgba(200,200,200,0.8);
 }
 #Sidebox .filetree::before{
   content: '';
