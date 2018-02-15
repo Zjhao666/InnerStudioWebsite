@@ -1,11 +1,12 @@
 
 #Rightmenu{
+  box-sizing: border-box;
   position: absolute;
   display: none;
   width: 50px;
-  border: 1px solid rgba(80,80,200,0.7);
-  background-color: rgba(100,100,100,0.5);
-  z-index: 10;
+  border: 1px solid rgb(80,160,220);
+  z-index: 100;
+  background-color: rgba(0,0,0,0.6);
 }
 #Rightmenu .item{
   display: block;

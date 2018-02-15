@@ -1,6 +1,7 @@
 
-// members
-$('#overview .members').children('.btn').each((i,elem)=>{
+// overview-members-behaviors
+let mpb_height;
+$('#Overview .members').children('.btn').each((i,elem)=>{
   let hovered=false;
   $(elem).bind({
     'click':()=>{
@@ -32,7 +33,7 @@ $('#overview .members').children('.btn').each((i,elem)=>{
     }
   });
 })
-$('#overview .members .membersOperabox .submit').bind({
+$('#Overview .members .membersOperabox .submit').bind({
   'mousedown':(e)=>{
     $(e.target).css('background-color','rgb(220,220,220)');
   },
@@ -40,10 +41,23 @@ $('#overview .members .membersOperabox .submit').bind({
     $(e.target).css('background-color','white');
   }
 });
-
-// navigate
+$('#Overview .members .add').click(()=>{
+  let target=$('#Overview .members .membersOperabox');
+  if(!mpb_height){
+    mpb_height=target.height();
+    target.height(0);
+  }
+  target.css('display','block');
+  target.animate({height:mpb_height},300);
+});
+$('#Overview .members .membersOperabox .submit').click(()=>{
+  let target=$('#Overview .members .membersOperabox');
+  target.animate({height:0},300);
+  setTimeout(()=>target.css('display','none'),300);
+});
+// navigate-behaviors
 let navigateSelected;
-$('#navigate').children('.item').each((i,elem)=>{
+$('#Navigate').children('.item').each((i,elem)=>{
   $(elem).bind({
     'click':()=>{
       if(navigateSelected!=elem){
@@ -61,19 +75,19 @@ $('#navigate').children('.item').each((i,elem)=>{
         // change frame
         let identifier=$(elem).html();
         if(identifier.includes('Essential information')){
-          $('#overview').css('display','block');
-          $('#editStage').css('display','none');
-          $('#check').css('display','none');
+          $('#Overview').css('display','block');
+          $('#EditStage').css('display','none');
+          $('#Check').css('display','none');
         }
         else if(identifier.includes('Edit stages')){
-          $('#overview').css('display','none');
-          $('#editStage').css('display','block');
-          $('#check').css('display','none');
+          $('#Overview').css('display','none');
+          $('#EditStage').css('display','block');
+          $('#Check').css('display','none');
         }
         else if(identifier.includes('Check')){
-          $('#overview').css('display','none');
-          $('#editStage').css('display','none');
-          $('#check').css('display','block');
+          $('#Overview').css('display','none');
+          $('#EditStage').css('display','none');
+          $('#Check').css('display','block');
         }
       }
     },
@@ -93,4 +107,4 @@ $('#navigate').children('.item').each((i,elem)=>{
     }
   });
 });
-$('#navigate').children('.item').eq(0).click();
+$('#Navigate').children('.item').eq(0).click();

@@ -23,19 +23,26 @@ $(document).ready(function() {
         }
         // submit
         $.get({
-          url:baseurl+'login.do?ac='+username+'&pw='+password,
+          url:baseurl+'requireArg.do',
           dataType:'JSON',
           success:(rep)=>{
-            if(rep.statuscode==200){
-              if(rep.admin){
-                window.location.href=baseurl+'admin.html';
+            let data=RSA.encryptAlone(username+'&'+password,rep.n,rep.e).join(':');
+            $.get({
+              url:baseurl+'login.do?p='+data,
+              dataType:'JSON',
+              success:(rep)=>{
+                if(rep.statuscode==200){
+                  if(rep.admin){
+                    window.location.href=baseurl+'admin.html';
+                  }
+                  else{
+                    window.location.href=baseurl+'home.html';
+                  }
+                }
+                else{}
               }
-              else{
-                window.location.href=baseurl+'home.html';
-              }
-            }
-            else{}
-          },
+            })
+          }
         });
     });
     $('.page-container .form .username, .page-container .form .password').keyup(function(){

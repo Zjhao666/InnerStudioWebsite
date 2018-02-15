@@ -1,20 +1,103 @@
 
 #Sidebox{
-  position: absolute;
-  right: 20px;
-  width: 35%;
+  box-sizing: border-box;
+  float: left;
+  width: 20%;
+  overflow: hidden;
+}
+#Sidebox *{
+  color: white;
+}
+
+#Sidebox .filedetail{
+  position: relative;
+  box-sizing: border-box;
+  padding: 20px;
+  height: 300px;width: 100%;
+  border-right: 1px solid rgb(200,200,200);
+}
+#Sidebox .filedetail .thumbnail{
+  display: block;
+  margin-bottom: 10px;
+  margin-left: -10px;
+  height: 80px;width: 80px;
+  background-size: cover;
+  background-image: url(../../img/icon/file_fileicon.png);
+  border: 0px;
+  padding: 0px;
+}
+#Sidebox .filedetail .btnWrapper{
+  position: relative;
+  display: block;
+  width: 100%;height: 30px;
+  margin: 10px 0px;
+}
+#Sidebox .filedetail .btnWrapper .item{
+  float: left;
+  width: 30px;height: 30px;
+  display: block;
+  background-size: cover;
+  cursor: pointer;
+}
+#Sidebox .filedetail .btnWrapper .edit{
+  background-image: url(../../img/btn/btn_edit.png);
+}
+#Sidebox .filedetail .btnWrapper .download{
+  background-image: url(../../img/btn/btn_download.png);
+}
+
+#Sidebox .filedetail .label{
+  display: block;
+  text-align: left;
+}
+#Sidebox .filedetail .title::before{
+  content: 'Title:';
+  display: inline-block;
+  font: bold 1em 'Kaiti';
+}
+#Sidebox .filedetail .location::before{
+  content: 'Location:';
+  display: inline-block;
+  font: bold 1em 'Kaiti';
+}
+#Sidebox .filedetail .type::before{
+  content: 'Type:';
+  display: inline-block;
+  font: bold 1em 'Kaiti';
+}
+#Sidebox .filedetail .size::before{
+  content: 'Size:';
+  display: inline-block;
+  font: bold 1em 'Kaiti';
+}
+#Sidebox .filedetail .create::before{
+  content: 'Create:';
+  display: inline-block;
+  font: bold 1em 'Kaiti';
+}
+#Sidebox .filedetail .modify::before{
+  content: 'Modify:';
+  display: inline-block;
+  font: bold 1em 'Kaiti';
+}
+#Sidebox .filedetail .access::before{
+  content: 'Access:';
+  display: inline-block;
+  font: bold 1em 'Kaiti';
 }
 
 #Sidebox .filetree{
-  position: absolute;
-  left: 30px;
-  width: 90%;
-  height: 280px;
-  border-radius: 10px;
-  border: 5px solid rgba(80,80,200,0.7);
-  background-color: rgba(100,100,100,0.5);
+  position: relative;
+  height: 280px;width: 100%;
   overflow: scroll;
   -moz-user-select: none;
+}
+#Sidebox .filetree::before{
+  content: '';
+  display: block;
+  margin: 0px 10px 10px;
+  width: 90%;height: 1px;
+  background-color: rgb(200,200,200);
 }
 #Sidebox .filetree .dir{
   display: block;
@@ -36,38 +119,4 @@
   background-repeat: no-repeat;
   cursor: pointer;
   text-indent: 1em;
-}
-
-#Sidebox .filedetail{
-  position: absolute;
-  top: 300px;
-  left: 30px;
-  padding: 20px;
-  border-radius: 10px;
-  border: 5px solid rgba(80,80,200,0.7);
-  background-color: rgba(100,100,100,0.5);
-}
-#Sidebox .filedetail .thumbnail{
-  display: block;
-  margin-bottom: 10px;
-  margin-left: -10px;
-  height: 80px;
-  width: 80px;
-  background: rgba(0,0,0,0) url(../img/icon/file_fileicon.png);
-  background-size: cover;
-  border: 0px;
-  padding: 0px;
-}
-#Sidebox .filedetail .btn_edit{
-  background-image: url(../img/btn/btn_edit.png);
-}
-#Sidebox .filedetail .btn_download{
-  background-image: url(../img/btn/btn_download.png);
-}
-#Sidebox .filedetail .label{
-  display: block;
-  text-align: left;
-}
-#Sidebox .filedetail .label span{
-  font: bold 1em 'Kaiti';
 }

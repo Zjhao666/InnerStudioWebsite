@@ -6,27 +6,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src='js/lib/jquery-3.2.1.min.js'></script>
   <style>
+    body{
+      overflow-y: scroll;
+    }
     #main{
       position: relative;
-      top: 100px;left: 100px;
       width: 400px;height: auto;
-      margin: 0px auto;padding: 0px 20px;
+      margin: 50px auto;padding: 0px 20px;
     }
   </style>
   <link rel='stylesheet' href='css/clear.css'>
-  <link rel='stylesheet' href='css/regisProject/swRegisProjectNavigate.css'>
-  <link rel='stylesheet' href='css/regisProject/swRegisProjectOverview.css'>
-  <link rel='stylesheet' href='css/regisProject/swRegisProjectEditstage.css'>
-  <link rel='stylesheet' href='css/regisProject/swRegisProjectCheck.css'>
+  <link rel='stylesheet' href='css/regisProject/Navigate.css'>
+  <link rel='stylesheet' href='css/regisProject/Overview.css'>
+  <link rel='stylesheet' href='css/regisProject/Editstage.css'>
+  <link rel='stylesheet' href='css/regisProject/Check.css'>
 </head>
 <body>
   <div id='main'>
-    <div id='navigate'>
+    <div id='Navigate'>
       <a class='item'>Essential information</a>
       <a class='item'>Edit stages</a>
       <a class='item'>Check</a>
     </div>
-    <div id='overview'>
+    <div id='Overview'>
       <input class='title' type='text' placeholder='project name'/>
       <div class='projectDoc'>
         upload project document
@@ -68,7 +70,7 @@
         </div>
       </div>
     </div>
-    <div id='editStage'>
+    <div id='EditStage'>
       <div class='addStage'>
         <div class='timestamp'>
           <input type='date' />
@@ -100,7 +102,7 @@
       <a class='mask'></a>
       <a class='mask'></a>
     </div>
-    <div id='check'>
+    <div id='Check'>
       <div class='formitem title'>
         <span class='label'>Project Name</span>
         <span class='content'>Jpython Ex</span>

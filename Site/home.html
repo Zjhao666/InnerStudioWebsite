@@ -5,21 +5,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src='js/lib/jquery-3.2.1.min.js'></script>
+  <script src='js/lib/jsbn.js'></script>
+  <script src='js/lib/rsa.js'></script>
   <style>
     *{
       font: 400 1em 'ArtegraSansExtended';
       -moz-user-select: none;
     }
+    body{
+      /* background-image: url(img/body_backimg.png); */
+      background-attachment: fixed;
+      background-size: cover;
+    }
     #main{
       position: relative;
-      top: 50px;left: 50px;
-      height: 1000px;
+      width: 720px;height: auto;
+      margin: 30px auto;
     }
     .left,.right{
       float: left;
-      width: 400px;height: 1px;
+      width: 400px;
       margin: 10px 5px;
     }
+    .right{width: 300px;}
   </style>
   <link rel='stylesheet' href='css/clear.css' />
   <link rel='stylesheet' href='css/home/Plan.css' />
@@ -271,5 +279,6 @@
   <script src='js/home/Plan.js'></script>
   <script src='js/home/Project.js'></script>
   <script src='js/home/Communicate.js'></script>
+  <script src='js/home/Chat.js'></script>
 </body>
 </html>

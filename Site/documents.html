@@ -7,38 +7,60 @@
   <script src='js/lib/jquery-3.2.1.min.js'></script>
   <script src="js/lib/pdf.js"></script>
   <script src="js/lib/pdf.worker.js"></script>
+  <style>
+    *{
+      color: white;
+      font-weight: 300;
+      font-family: 'Open Sans';
+    }
+    html,body{
+      margin: 0px;padding: 0px;
+      width: 100%;height: 100%;
+      background-image: url(img/body_backimg.png);
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    #main{
+      width: 100%;height: 100%;
+      background-color: rgba(100,80,160,0.6);
+      overflow-y: scroll;
+    }
+  </style>
   <link rel='stylesheet' href='css/documents/Navigate.css' />
   <link rel='stylesheet' href='css/documents/Sidebox.css' />
   <link rel='stylesheet' href='css/documents/Overview.css' />
   <link rel='stylesheet' href='css/documents/Rightmenu.css' />
   <link rel='stylesheet' href='css/documents/Tools.css' />
-  <link rel='stylesheet' href='css/documents/documents.css' />
 </head>
 <body>
   <div id='main'>
-    <input class='root_path' value="/home/Doc" type='hidden' />
-    <!-- <div class='loading'>
-    <a class='item'></a>
-    <a class='item'></a>
-  </div> -->
     <div id='Rightmenu'>
-      <a class='item edit'>edit</a>
-      <a class='item delete'>delete</a>
+      <a class='item edit'>Edit</a>
+      <a class='item delete'>Delete</a>
     </div>
     <div id='Navigate'>
       <input class='input_path' type='text' value="/home/Doc" disabled='disabled'/>
-      <a class='path_back btn'></a>
-      <a class='path_forward btn'></a>
-      <a class='btn_select btn'></a>
-      <a class='btn_download btn' href='' download=''></a>
-      <a class='btn_upload btn'></a>
+      <a class='item path_back'></a>
+      <a class='item path_forward'></a>
+      <a class='item btn_select'></a>
+      <a class='item btn_download' href='' download=''></a>
+      <a class='item btn_upload'></a>
     </div>
     <div id='Sidebox'>
-      <form action='upload.do' class='upload_form' method='POST' enctype='multipart/form-data' style='display:none'>
-        <input type='hidden' name='csrfmiddlewaretoken' value='EtQUjPZLd4q8hBeN4x6jwrgzTp276gzx' />
-        <input name='target' class='upload_file_path' type='text' />
-        <input name='file' class='upload_file_select' type='file' />
-      </form>
+      <div class='filedetail'>
+        <a class='thumbnail'></a>
+        <div class='btnWrapper'>
+          <a class='item edit'></a>
+          <a class='item download' href='' download=''></a>
+        </div>
+        <div class='label title'></div>
+        <div class='label location'></div>
+        <div class='label type'></div>
+        <div class='label size'></div>
+        <div class='label create'></div>
+        <div class='label modify'></div>
+        <div class='label access'></div>
+      </div>
       <div class='filetree'>
         <div class='dir'>
           <span>home</span>
@@ -50,49 +72,41 @@
           <div class='file'>javascript.pdf</div>
         </div>
       </div>
-      <div class='filedetail'>
-        <a class='thumbnail'></a>
-        <div style="width:100%;height:30px;margin-bottom:5px;">
-          <a class='btn btn_edit'></a>
-          <a class='btn btn_download' href='' download=''></a>
-        </div>
-        <div class='label title'>
-          <span>Title:</span>
-          <a></a>
-        </div>
-        <div class='label location'>
-          <span>Location:</span>
-          <a></a>
-        </div>
-        <div class='label type'>
-          <span>Type:</span>
-          <a></a>
-        </div>
-        <div class='label size'>
-          <span>Size:</span>
-          <a></a>
-        </div>
-        <div class='label create'>
-          <span>Create:</span>
-          <a></a>
-        </div>
-        <div class='label modify'>
-          <span>Modify:</span>
-          <a></a>
-        </div>
-        <div class='label access'>
-          <span>Access:</span>
-          <a></a>
-        </div>
-      </div>
     </div>
     <div id='Overview'>
-      <div class="itemlist">
-        <div class='item btn file_dir'><span>arduinoetc</span></div><div class='item btn file_dir'><span>assmbly</span></div><div class='item btn file_pdf'><span>Python高级编程.pdf</span></div><div class='item btn file_dir'><span>c&c++</span></div><div class='item btn file_pdf'><span>3DS MAX完全学习宝典.pdf</span></div><div class='item btn file_dir'><span>android</span></div><div class='item btn file_pdf'><span>Python数据分析与挖掘实战.pdf</span></div><div class='item btn file_dir'><span>os</span></div><div class='item btn file_dir'><span>css_code</span></div><div class='item btn file_pdf'><span>dsp.pdf</span></div><div class='item btn file_pdf'><span>疯狂的程序员.pdf</span></div><div class='item btn file_dir'><span>python</span></div><div class='item btn file_dir'><span>security</span></div><div class='item btn file_pdf'><span>这就是搜索引擎-核心技术详解.pdf</span></div><div class='item btn file_pdf'><span>THREE.JS开发指南.pdf</span></div><div class='item btn file_pdf'><span>CSS3.pdf</span></div><div class='item btn file_pdf'><span>DSP原理及其C编程开发技术.pdf</span></div><div class='item btn file_dir'><span>css</span></div><div class='item btn file_pdf'><span>3dsmax教程.pdf</span></div><div class='item btn file_dir'><span>react-learn</span></div><div class='item btn file_dir'><span>picture</span></div><div class='item btn file_dir'><span>java</span></div><div class='item btn file_dir'><span>javascript</span></div><div class='item btn file_pdf'><span>(完整版).pdf</span></div><div class='item btn file_pdf'><span>ReactJS by Example.pdf</span></div><div class='item btn file_pdf'><span>[www.java1234.com]REACT：引领未来的用户界面开发框架.pdf</span></div><div class='item btn file_pdf'><span>Unity3D从入门到精通.pdf</span></div>
-      </div>
-      <div class='select_space'></div>
+      <div class='item file_dir'><span>arduinoetc-for future</span></div>
+      <div class='item file_dir'><span>assmbly</span></div>
+      <div class='item file_pdf'><span>Python高级编程.pdf</span></div>
+      <div class='item file_dir'><span>c&c++</span></div>
+      <div class='item file_pdf'><span>3DS MAX完全学习宝典.pdf</span></div>
+      <div class='item file_dir'><span>android</span></div>
+      <div class='item file_pdf'><span>Python数据分析与挖掘实战.pdf</span></div>
+      <div class='item file_dir'><span>os</span></div>
+      <div class='item file_dir'><span>css_code</span></div>
+      <div class='item file_pdf'><span>dsp.pdf</span></div>
+      <div class='item file_pdf'><span>疯狂的程序员.pdf</span></div>
+      <div class='item file_dir'><span>python</span></div>
+      <div class='item file_dir'><span>security</span></div>
+      <div class='item file_pdf'><span>这就是搜索引擎-核心技术详解.pdf</span></div>
+      <div class='item file_pdf'><span>THREE.JS开发指南.pdf</span></div>
+      <div class='item file_pdf'><span>CSS3.pdf</span></div>
+      <div class='item file_pdf'><span>DSP原理及其C编程开发技术.pdf</span></div>
+      <div class='item file_dir'><span>css</span></div>
+      <div class='item file_pdf'><span>3dsmax教程.pdf</span></div>
+      <div class='item file_dir'><span>react-learn</span></div>
+      <div class='item file_dir'><span>picture</span></div>
+      <div class='item file_dir'><span>java</span></div>
+      <div class='item file_dir'><span>javascript</span></div>
+      <div class='item file_pdf'><span>(完整版).pdf</span></div>
+      <div class='item file_pdf'><span>ReactJS by Example.pdf</span></div>
+      <div class='item file_pdf'><span>[www.java1234.com]REACT：引领未来的用户界面开发框架.pdf</span></div>
+      <div class='item file_pdf'><span>Unity3D从入门到精通.pdf</span></div>
     </div>
-    <!-- <div id='Tools'>
+    <!-- <div class='loading'>
+      <a class='item'></a>
+      <a class='item'></a>
+    </div>
+    <div id='Tools'>
       <div class='picture_viewer'>
         <img src='' class='image'>
         <a class='btn_close'></a>
@@ -118,6 +132,7 @@
       </div>
     </div> -->
   </div>
-  <script src="js/documents/documents.js"></script>
+  <script src="js/documents/Navigate.js"></script>
+  <script src="js/documents/Overview.js"></script>
 </body>
 </html>

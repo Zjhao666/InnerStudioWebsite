@@ -1,15 +1,15 @@
 
-#overview{
+#Overview{
   position: relative;
   display: block;
   margin: 20px 0px;
 }
 
-#overview input{
+#Overview input{
   margin: 0px;padding: 0px;
   border: none;
 }
-#overview .title{
+#Overview .title{
   box-sizing: border-box;
   display: block;
   width: 400px;
@@ -18,7 +18,7 @@
   padding: 2px;
 }
 
-#overview .projectDoc{
+#Overview .projectDoc{
   box-sizing: border-box;
   width: 400px;height: 40px;
   margin: 5px 0px;padding: 10px;
@@ -26,7 +26,7 @@
   color: white;
   background: rgb(80,180,120);
 }
-#overview .projectDoc::before{
+#Overview .projectDoc::before{
   content: '';
   box-sizing: border-box;
   position: absolute;
@@ -36,11 +36,11 @@
   border: 1px dashed white;
   cursor: pointer;
 }
-#overview .projectDoc .core{
+#Overview .projectDoc .core{
   display: none;
 }
 
-#overview .overview{
+#Overview .overview{
   box-sizing: border-box;
   display: block;
   width: 400px;height: 150px;
@@ -50,14 +50,14 @@
   resize: none;
 }
 
-#overview .members{
+#Overview .members{
   box-sizing: border-box;
   width: 400px;height: auto;
   min-height: 100px;
-  padding: 10px 10px 15px 10px;
+  padding: 10px 10px 5px 10px;
   border: 1px solid rgb(80,180,120);
 }
-#overview .members::before{
+#Overview .members::before{
   box-sizing: border-box;
   content: 'Members';
   position: absolute;
@@ -70,15 +70,16 @@
   background-color: rgb(80,180,120);
   font: 200 1em 'Fangsong';
 }
-#overview .members .item{
+#Overview .members .item{
   position: relative;
   display: inline-block;
+  margin: 10px 0px;
 }
-#overview .members .item .headimg{
+#Overview .members .item .headimg{
   display: block;
   width: 40px;height: 40px;
 }
-#overview .members .item .account{
+#Overview .members .item .account{
   position: absolute;
   top: 40px;left: 0px;
   display: block;
@@ -87,15 +88,16 @@
   text-overflow:ellipsis;
   white-space: nowrap;
 }
-#overview .members .btn{
+#Overview .members .btn{
   position: relative;
   display: inline-block;
   box-sizing: border-box;
   width: 40px;height: 40px;
+  margin: 10px 0px;
   border: 2px solid rgb(150,150,150);
   cursor: pointer;
 }
-#overview .members .add::before{
+#Overview .members .add::before{
   content: '';
   position: absolute;
   display: block;
@@ -103,7 +105,7 @@
   top: 17px;left: 10px;
   background-color: rgb(150,150,150);
 }
-#overview .members .add::after{
+#Overview .members .add::after{
   content: '';
   position: absolute;
   display: block;
@@ -111,7 +113,7 @@
   top: 10px;left: 17px;
   background-color: rgb(150,150,150);
 }
-#overview .members .del::before{
+#Overview .members .del::before{
   content: '';
   position: absolute;
   display: block;
@@ -120,18 +122,26 @@
   background-color: rgb(150,150,150);
 }
 
-#overview .members .membersOperabox{
-  display: block;
+#Overview .members .membersOperabox{
+  display: none;
   position: relative;
   width: 100%;
-  margin: 15px 0px 5px;padding: 15px 0px 0px;
-  border-top: 1px solid rgb(200,200,200);
+  margin: 0px 0px 5px;padding: 20px 0px 0px;
+  overflow: hidden;
 }
-#overview .members .membersOperabox .submit{
+#Overview .members .membersOperabox::before{
+  content: '';
+  position: relative;
+  display: block;
+  width: 100%;height: 1px;
+  background-color: rgb(200,200,200);
+  margin: 0px 0px 25px;
+}
+#Overview .members .membersOperabox .submit{
   box-sizing: border-box;
   display: block;
   position: absolute;
-  top: -10px;right: 0px;
+  top: 10px;right: 0px;
   width: 75px;height: 20px;
   padding: 0px 5px;
   background-color: white;
@@ -141,20 +151,20 @@
   border-bottom-width: 1px;
   border-right-width: 1px;
 }
-#overview .members .membersOperabox .aitem{
+#Overview .members .membersOperabox .aitem{
   width: 100%;height: 30px;
   margin: 5px 0px;
   background: repeating-linear-gradient(to right,rgba(160,160,160,1),rgba(160,160,160,1));
 }
-#overview .members .membersOperabox .aitem .headimg{
+#Overview .members .membersOperabox .aitem .headimg{
   display: inline-block;
   width: 30px;height: 30px;
   margin-bottom: -5px;
 }
-#overview .members .membersOperabox .aitem .account{
+#Overview .members .membersOperabox .aitem .account{
   display: inline-block;
 }
-#overview .members .membersOperabox .aitem .select{
+#Overview .members .membersOperabox .aitem .select{
   float: right;
   margin: 5px 5px 0px 0px;
 }

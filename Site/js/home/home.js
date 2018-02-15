@@ -1,6 +1,6 @@
 let baseUrl=window.location.href;
-const jumpTo=(target)=>{
-  window.location.href=target;
+const open=(target)=>{
+  window.open(target);
 };
 // Ref
 $('#Ref .btn').each((i,elem)=>{
@@ -15,14 +15,17 @@ $('#Ref .btn').each((i,elem)=>{
   });
 });
 $('#Ref .profile').click(()=>{
-  jumpTo(baseUrl.replace('home.html','privatePage.html'));
+  open(baseUrl.replace('home.html','privatePage.html'));
 });
-$('#Ref .updateProject').click(()=>{});
+$('#Ref .updateProject').click(()=>{
+
+});
 $('#Ref .regisProject').click(()=>{
-  jumpTo(baseUrl.replace('home.html','regisProject.html'));
+  open(baseUrl.replace('home.html','regisProject.html'));
 });
 $('#Ref .serverConsole').click(()=>{
+  open(baseUrl.replace('home.html','serverConsole.html'));
 });
 $('#Ref .library').click(()=>{
-  jumpTo(baseUrl.replace('home.html','documents.html'));
+  open(baseUrl.replace('home.html','documents.html'));
 });

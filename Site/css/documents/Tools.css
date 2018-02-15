@@ -158,15 +158,15 @@
               0px -1px 3px rgba(100,100,250,0.6);
 }
 #Tools .pdfreader .control .btn_scale_dec{
-width:20px;
-height:20px;
+  width:20px;
+  height:20px;
   background-image: url(../img/btn/btn_scale_dec.png);
   background-size: cover;
   cursor: pointer;
 }
 #Tools .pdfreader .control .btn_scale_inc{
-width:20px;
-height:20px;
+  width:20px;
+  height:20px;
   background-image: url(../img/btn/btn_scale_inc.png);
   background-size: cover;
   cursor: pointer;
