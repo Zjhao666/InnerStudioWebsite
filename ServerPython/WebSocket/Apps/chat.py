@@ -53,7 +53,6 @@ else:
 
 urlpath='/chat'
 workpath=os.path.join(os.path.dirname(__file__),'chat')
-rsa=RSA()
 
 # database operation
 def query(sql):
@@ -62,26 +61,25 @@ def query(sql):
         if retnum:
             return cursor.fetchall()
 
-def makeIdentifier():
-    time=str(datetime.now())
-    h=hashlib.md5()
-    h.update(time.encode('utf-8'))
-    return h.hexdigest()
-
 # standard implements
 
 def onCreate(im,ctx):
     # validate-send pk
+    n,e1,e2=RSA.make(100,500)
+    ctx.sk=(n,e1)
     im.send_message(json.dumps({
         'type':'*',
-        'content':rsa.getPublickey()
+        'content':{
+            'n':n,
+            'e':e2
+        }
     }))
     return True
 
 def onMessage(im,ctx,contact):
     data=json.loads(ctx.message)
     if data['type'] is '*': # validate-check ac&pw
-        ac,pw=rsa.decrypt(data['content']).split('&')
+        ac,pw=RSA.decrypt(data['content'],ctx.sk[0],ctx.sk[1]).split('&')
         r=query('select * from Member where account='+ac)
         if r and r[0][5] is pw:
             ctx.aid=ac
@@ -104,6 +102,8 @@ def onMessage(im,ctx,contact):
         }))
     elif data['type'] is '+' and ctx.aid: # send message
         sour,dest=data['param'].split(':')
+        if sour is dest:
+            return
         if sour is ctx.aid: # to another instance
             if contact(lambda item:bool(item.aid==dest),ctx.message):
                 # contact successfully

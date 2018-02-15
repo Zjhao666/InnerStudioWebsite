@@ -1,4 +1,6 @@
-let baseurl='http://101.200.37.220:8080/InnerStudioWebsite/';
+// let baseurl='http://101.200.37.220:8080/InnerStudioWebsite/';
+let baseurl='http://localhost:8000/';
+
 $(document).ready(function() {
     $('.page-container .form .submit').click(()=>{
         let username=$('.form .username').val();
@@ -23,25 +25,31 @@ $(document).ready(function() {
         }
         // submit
         $.get({
-          url:baseurl+'requireArg.do',
+          url:baseurl+'login.do?p=0',
           dataType:'JSON',
           success:(rep)=>{
-            let data=RSA.encryptAlone(username+'&'+password,rep.n,rep.e).join(':');
+            let pk=rep,
+                data=RSA.encrypt(username+'&'+password,pk.n,pk.e);
             $.get({
-              url:baseurl+'login.do?p='+data,
+              url:baseurl+'login.do?p=1&kid='+pk.kid+'&param='+data,
               dataType:'JSON',
               success:(rep)=>{
                 if(rep.statuscode==200){
-                  if(rep.admin){
-                    window.location.href=baseurl+'admin.html';
-                  }
-                  else{
-                    window.location.href=baseurl+'home.html';
-                  }
+                  // if(rep.admin){
+                  //   window.location.href=baseurl+'admin.html';
+                  // }
+                  // else{
+                  //   window.location.href=baseurl+'home.html';
+                  // }
+                  localStorage.setItem('ac',username);
+                  localStorage.setItem('pw',password);
+                  window.location.href='home.html';
                 }
-                else{}
+                else{
+                  console.log('Validate failed');
+                }
               }
-            })
+            });
           }
         });
     });

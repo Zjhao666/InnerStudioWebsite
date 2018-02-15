@@ -96,6 +96,7 @@ class App(object):
             elif event is 'destroy':
                 self.context[props.cid].merge(props)
                 self.handler['onDestroy'](self.im,self.context[props.cid])
+                self.context.pop(props.cid)
             else:
                 logger.warning('[app] Uncaught event: %s(instance exists)'%event)
         elif event is 'create':
