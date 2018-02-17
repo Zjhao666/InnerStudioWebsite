@@ -130,7 +130,7 @@
     };
     ws.onclose=function(evt){console.log('close');};
     ws.onerror=function(evt){console.log('error');};
-    // !::om struct is not fix to shell command 
+    // !::om struct is not fix to shell command
     window.onunload=()=>ws.close();
     window.onresize=setSize;
     $('body').keypress((e)=>{

@@ -91,12 +91,6 @@
 #Project .item .list .current::before{
   background-color: yellow;
 }
-#Project .item .list .current .btn{
-  display: none;
-  float: right;
-  margin: 0px 5px;padding: 0px 5px;
-  box-shadow: 1px 1px 0px white;
-}
 #Project .item .list .stage .timestamp{
   display: inline-block;
   background-color: green;
