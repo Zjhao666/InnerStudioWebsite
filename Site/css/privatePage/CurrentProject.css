@@ -22,22 +22,14 @@
   margin: 0px;padding: 0px;
 }
 #CurrentProject .list .stage{
-  height: 40px;
+  position: relative;
   margin: 0px 0px 10px 20px;
 }
-#CurrentProject .list .stateIcon::after{
+#CurrentProject .list .stage::before{
   content: '';
-  position: relative;
-  left: -11px;top: -5px;
-  display: block;
-  width: 2px;height: 45px;
-  background-color: gray;
-}
-#CurrentProject .list .stateIcon::before{
-  content: '';
-  position: relative;
-  display: block;
-  left: -20px;top: 25px;
+  position: absolute;
+  top: 5px;left: -20px;
+  display: inline-block;
   box-sizing: border-box;
   width: 20px;height: 20px;
   border-radius: 10px;
@@ -53,9 +45,6 @@
 #CurrentProject .list .future::before{
   background-color: rgb(60,60,60);
 }
-#CurrentProject .list .lastStage::after{
-  background-color: rgba(0,0,0,0);
-}
 #CurrentProject .list .stage .timestamp{
   display: inline-block;
   background-color: green;
@@ -66,10 +55,12 @@
   font-weight: bold;
 }
 #CurrentProject .list .stage .comments{
-
+  margin: 10px 0px 0px 0px;
 }
 #CurrentProject .list .stage .comments .item{
-
+  border-radius: 10px;
+  margin: 10px 0px;
+  background-color: rgba(200,200,200,0.6);
 }
 #CurrentProject .list .stage .comments .item .head{
   position: relative;
@@ -92,6 +83,7 @@
   bottom: 0px;left: 35px;
   font: bold 1em 'Kaiti';
 }
-#CurrentProject .list .stage .comments .item  .content{
-
+#CurrentProject .list .stage .comments .item .ncontent{
+  display: block;
+  text-indent: 2em;
 }

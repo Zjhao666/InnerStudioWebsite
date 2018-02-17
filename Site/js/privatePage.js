@@ -60,4 +60,4 @@ $('#Navigate').children('.item').each((i,elem)=>{
     }
   });
 });
-$('#Navigate').children('.item').eq(0).click();
+$('#Navigate').children('.item').eq(1).click();
