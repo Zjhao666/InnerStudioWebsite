@@ -5,11 +5,12 @@
 
 #Plan .item{
   position: relative;
-  width: 400px;height: auto;
+  width: 600px;height: auto;
   margin: 10px 0px;
   border: 1px solid rgb(80,120,180);
   cursor: pointer;
   background-color: rgba(200,200,200,0.8);
+  overflow: hidden;
 }
 
 #Plan .item .title{
@@ -24,21 +25,20 @@
   display: block;
   padding: 0px 5px;
   word-break: break-all;
+  border-bottom: 1px solid white;
 }
 
 #Plan .item .curstage{
   box-sizing: border-box;
-  display: block;
-  width: 380px;height: 30px;
-  margin: 10px 0px 5px 10px;padding: 0px;
-  border-top: 1px solid rgb(200,200,200);
-  overflow: hidden;
+  position: relative;
+  width: 360px;height: 30px;
+  margin-left: 20px;
 }
 #Plan .item .curstage::before{
   content: '';
-  position: relative;
-  display: inline-block;
-  top: 5px;
+  position: absolute;
+  display: block;
+  top: 6px;left: -20px;
   box-sizing: border-box;
   width: 20px;height: 20px;
   border-radius: 10px;
@@ -59,46 +59,85 @@
   text-overflow: ellipsis;overflow: hidden;white-space: nowrap;
 }
 
-#Plan .item .stages{
-  box-sizing: border-box;
+#Plan .item .list{
   display: none;
-  position: relative;
-  width: 380px;height: auto;
-  margin: 10px 0px 5px 10px;padding: 0px;
-  border-top: 1px solid rgb(200,200,200);
+  list-style: none;
+  margin: 0px;padding: 0px;
   overflow: hidden;
 }
-#Plan .item .stages .stage{
+#Plan .item .list .stage{
   position: relative;
+  margin: 0px 0px 10px 20px;
+  cursor: pointer;
 }
-#Plan .item .stages .stage::before{
+#Plan .item .list .stage::before{
   content: '';
-  position: relative;
+  position: absolute;
+  top: 5px;left: -20px;
   display: inline-block;
-  top: 5px;
   box-sizing: border-box;
   width: 20px;height: 20px;
   border-radius: 10px;
   border: 2px solid gray;
+  background-color: black;
+}
+#Plan .item .list .completed::before{
+  background-color: green;
+}
+#Plan .item .list .future::before{
   background-color: rgb(60,60,60);
 }
-#Plan .item .stages .stage .timestamp{
+#Plan .item .list .current::before{
+  background-color: yellow;
+}
+#Plan .item .list .current .btn{
+  display: none;
+  float: right;
+  margin: 0px 5px;padding: 0px 5px;
+  box-shadow: 1px 1px 0px white;
+}
+#Plan .item .list .stage .timestamp{
   display: inline-block;
   background-color: green;
   margin: 5px 5px 0px 5px;padding: 1px 2px 0px;
   border-radius: 10px;
 }
-#Plan .item .stages .stage .content{
-  display: block;
+#Plan .item .list .stage .content{
   font-weight: bold;
-  margin: 5px 0px 0px 30px;
-  word-break: break-all;
+  word-wrap: break-word;
 }
-#Plan .item .stages .nlaststage .content::after{
-  content: '';
+#Plan .item .list .stage .comments{
+  display: none;
+  margin: 10px 0px 0px 5px;
+  overflow: hidden;
+}
+#Plan .item .list .stage .comments .item{
+  border-radius: 10px;
+  margin: 10px 0px;
+  background-color: rgba(200,200,200,0.6);
+}
+#Plan .item .list .stage .comments .item .head{
+  position: relative;
+  font-size: 0.8em;
+}
+#Plan .item .list .stage .comments .item .head .headimg{
+  display: block;
+  height: 30px;width: 30px;
+  border-radius: 15px;
+}
+#Plan .item .list .stage .comments .item .head .account{
   display: block;
   position: absolute;
-  top: 25px;left: 9px;
-  width: 100%;height: 100%;
-  border-left: 1px solid gray;
+  top: 0px;left: 35px;
+  font: bold 1em 'Kaiti';
+}
+#Plan .item .list .stage .comments .item .head .time{
+  display: block;
+  position: absolute;
+  bottom: 0px;left: 35px;
+  font: bold 1em 'Kaiti';
+}
+#Plan .item .list .stage .comments .item .ncontent{
+  display: block;
+  text-indent: 2em;
 }

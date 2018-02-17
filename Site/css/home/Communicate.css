@@ -2,7 +2,7 @@
 #Communicate{
   position: relative;
   box-sizing: border-box;
-  width: 400px;height: auto;
+  width: 600px;height: auto;
   margin-top: 25px;padding: 10px 10px 0px 0px;
   border: 1px solid rgb(220,160,80);
   border-bottom-width: 0px;
@@ -33,7 +33,7 @@
 
 #Communicate .item .title{
   display: block;
-  width: 380px;
+  width: 580px;
   margin-bottom: 5px;
   text-indent: 1em;
   word-break: break-all;

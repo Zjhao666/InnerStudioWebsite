@@ -6,9 +6,7 @@
   top: 50px;left: 220px;
   width: 60%;height: auto;
 }
-#CompletedProjects .project{
-  padding: 10px;
-}
+
 #CompletedProjects .project .title{
   display: block;
   font-size: 2em;
@@ -21,27 +19,23 @@
   word-wrap: break-word;
   font-size: 1.2em;
 }
+
+
 #CompletedProjects .project .list{
   list-style: none;
   margin: 0px;padding: 0px;
 }
+
 #CompletedProjects .project .list .stage{
-  height: 40px;
+  position: relative;
   margin: 0px 0px 10px 20px;
+  cursor: pointer;
 }
-#CompletedProjects .project .list .stateIcon::after{
+#CompletedProjects .project .list .stage::before{
   content: '';
-  position: relative;
-  left: -11px;top: -5px;
-  display: block;
-  width: 2px;height: 45px;
-  background-color: gray;
-}
-#CompletedProjects .project .list .stateIcon::before{
-  content: '';
-  position: relative;
-  display: block;
-  left: -20px;top: 25px;
+  position: absolute;
+  top: 5px;left: -20px;
+  display: inline-block;
   box-sizing: border-box;
   width: 20px;height: 20px;
   border-radius: 10px;
@@ -51,15 +45,19 @@
 #CompletedProjects .project .list .completed::before{
   background-color: green;
 }
-#CompletedProjects .project .list .current::before{
-  background-color: yellow;
-}
 #CompletedProjects .project .list .future::before{
   background-color: rgb(60,60,60);
 }
-#CompletedProjects .project .list .lastStage::after{
-  background-color: rgba(0,0,0,0);
+#CompletedProjects .project .list .current::before{
+  background-color: yellow;
 }
+#CompletedProjects .project .list .current .btn{
+  display: none;
+  float: right;
+  margin: 0px 5px;padding: 0px 5px;
+  box-shadow: 1px 1px 0px white;
+}
+
 #CompletedProjects .project .list .stage .timestamp{
   display: inline-block;
   background-color: green;
@@ -68,4 +66,40 @@
 }
 #CompletedProjects .project .list .stage .content{
   font-weight: bold;
+}
+
+#CompletedProjects .project .list .stage .comments{
+  display: none;
+  margin: 10px 0px 0px 5px;
+  overflow: hidden;
+}
+#CompletedProjects .project .list .stage .comments .item{
+  border-radius: 10px;
+  margin: 10px 0px;
+  background-color: rgba(200,200,200,0.6);
+}
+#CompletedProjects .project .list .stage .comments .item .head{
+  position: relative;
+  font-size: 0.8em;
+}
+#CompletedProjects .project .list .stage .comments .item .head .headimg{
+  display: block;
+  height: 30px;width: 30px;
+  border-radius: 15px;
+}
+#CompletedProjects .project .list .stage .comments .item .head .account{
+  display: block;
+  position: absolute;
+  top: 0px;left: 35px;
+  font: bold 1em 'Kaiti';
+}
+#CompletedProjects .project .list .stage .comments .item .head .time{
+  display: block;
+  position: absolute;
+  bottom: 0px;left: 35px;
+  font: bold 1em 'Kaiti';
+}
+#CompletedProjects .project .list .stage .comments .item .ncontent{
+  display: block;
+  text-indent: 2em;
 }

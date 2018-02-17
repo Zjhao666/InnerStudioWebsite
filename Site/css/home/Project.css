@@ -6,12 +6,14 @@
 #Project .item{
   box-sizing: border-box;
   position: relative;
-  width: 300px;height: auto;
+  width: 400px;height: auto;
   margin: 10px 0px;
   border: 1px solid rgb(80,220,100);
   cursor: pointer;
   background-color: rgba(200,200,200,0.8);
+  overflow: hidden;
 }
+
 #Project .item .title{
   display: block;
   font-variant: small-caps;
@@ -24,20 +26,20 @@
   display: block;
   padding: 0px 5px;
   word-break: break-all;
+  border-bottom: 1px solid white;
 }
 
 #Project .item .curstage{
   box-sizing: border-box;
-  width: 280px;height: 30px;
-  margin: 10px 0px 5px 10px;padding: 0px;
-  border-top: 1px solid rgb(200,200,200);
-  overflow: hidden;
+  position: relative;
+  width: 360px;height: 30px;
+  margin-left: 20px;
 }
 #Project .item .curstage::before{
   content: '';
-  position: relative;
-  display: inline-block;
-  top: 5px;
+  position: absolute;
+  display: block;
+  top: 6px;left: -20px;
   box-sizing: border-box;
   width: 20px;height: 20px;
   border-radius: 10px;
@@ -52,52 +54,91 @@
 }
 #Project .item .curstage .content{
   float: right;
-  width: 150px;
+  width: 250px;
   padding-top: 10px;
   font-weight: bold;
   text-overflow: ellipsis;overflow: hidden;white-space: nowrap;
 }
 
-#Project .item .stages{
-  box-sizing: border-box;
+#Project .item .list{
   display: none;
-  position: relative;
-  width: 280px;height: auto;
-  margin: 10px 0px 5px 10px;padding: 0px;
-  border-top: 1px solid rgb(200,200,200);
+  list-style: none;
+  margin: 0px;padding: 0px;
   overflow: hidden;
 }
-#Project .item .stages .stage{
+#Project .item .list .stage{
   position: relative;
+  margin: 0px 0px 10px 20px;
+  cursor: pointer;
 }
-#Project .item .stages .stage::before{
+#Project .item .list .stage::before{
   content: '';
-  position: relative;
+  position: absolute;
+  top: 5px;left: -20px;
   display: inline-block;
-  top: 5px;
   box-sizing: border-box;
   width: 20px;height: 20px;
   border-radius: 10px;
   border: 2px solid gray;
+  background-color: black;
+}
+#Project .item .list .completed::before{
+  background-color: green;
+}
+#Project .item .list .future::before{
   background-color: rgb(60,60,60);
 }
-#Project .item .stages .stage .timestamp{
+#Project .item .list .current::before{
+  background-color: yellow;
+}
+#Project .item .list .current .btn{
+  display: none;
+  float: right;
+  margin: 0px 5px;padding: 0px 5px;
+  box-shadow: 1px 1px 0px white;
+}
+#Project .item .list .stage .timestamp{
   display: inline-block;
   background-color: green;
   margin: 5px 5px 0px 5px;padding: 1px 2px 0px;
   border-radius: 10px;
 }
-#Project .item .stages .stage .content{
-  display: block;
+#Project .item .list .stage .content{
   font-weight: bold;
-  margin: 5px 0px 0px 30px;
-  word-break: break-all;
+  word-wrap: break-word;
 }
-#Project .item .stages .nlaststage .content::after{
-  content: '';
+#Project .item .list .stage .comments{
+  display: none;
+  margin: 10px 0px 0px 5px;
+  overflow: hidden;
+}
+#Project .item .list .stage .comments .item{
+  border-radius: 10px;
+  margin: 10px 0px;
+  background-color: rgba(200,200,200,0.6);
+}
+#Project .item .list .stage .comments .item .head{
+  position: relative;
+  font-size: 0.8em;
+}
+#Project .item .list .stage .comments .item .head .headimg{
+  display: block;
+  height: 30px;width: 30px;
+  border-radius: 15px;
+}
+#Project .item .list .stage .comments .item .head .account{
   display: block;
   position: absolute;
-  top: 25px;left: 9px;
-  width: 100%;height: 100%;
-  border-left: 1px solid gray;
+  top: 0px;left: 35px;
+  font: bold 1em 'Kaiti';
+}
+#Project .item .list .stage .comments .item .head .time{
+  display: block;
+  position: absolute;
+  bottom: 0px;left: 35px;
+  font: bold 1em 'Kaiti';
+}
+#Project .item .list .stage .comments .item .ncontent{
+  display: block;
+  text-indent: 2em;
 }

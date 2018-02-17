@@ -1,7 +1,7 @@
 
 #CurrentProject{
   position: relative;
-  display: inline-block;
+  display: none;
   top: 50px;left: 220px;
   width: 60%;height: auto;
   }
@@ -17,13 +17,16 @@
   word-wrap: break-word;
   font-size: 1.2em;
 }
+
 #CurrentProject .list{
   list-style: none;
   margin: 0px;padding: 0px;
 }
+
 #CurrentProject .list .stage{
   position: relative;
   margin: 0px 0px 10px 20px;
+  cursor: pointer;
 }
 #CurrentProject .list .stage::before{
   content: '';
@@ -39,12 +42,19 @@
 #CurrentProject .list .completed::before{
   background-color: green;
 }
-#CurrentProject .list .current::before{
-  background-color: yellow;
-}
 #CurrentProject .list .future::before{
   background-color: rgb(60,60,60);
 }
+#CurrentProject .list .current::before{
+  background-color: yellow;
+}
+#CurrentProject .list .current .btn{
+  display: none;
+  float: right;
+  margin: 0px 5px;padding: 0px 5px;
+  box-shadow: 1px 1px 0px white;
+}
+
 #CurrentProject .list .stage .timestamp{
   display: inline-block;
   background-color: green;
@@ -54,8 +64,11 @@
 #CurrentProject .list .stage .content{
   font-weight: bold;
 }
+
 #CurrentProject .list .stage .comments{
-  margin: 10px 0px 0px 0px;
+  display: none;
+  margin: 10px 0px 0px 5px;
+  overflow: hidden;
 }
 #CurrentProject .list .stage .comments .item{
   border-radius: 10px;

@@ -1,4 +1,34 @@
 
+const projectBindAction=(target)=>{
+  $(target).find('.stage').each((i,elem)=>{
+    let visiable=false,height,stage=$(elem),
+        comments=stage.find('.comments'),
+        beCurrent=stage.attr('class').includes('current');
+    stage.click(()=>{
+      if(visiable){
+        visiable=false;
+        if(beCurrent){
+          stage.find('.btn').css('display','none');
+        }
+        comments.animate({height:0},300);
+        setTimeout(()=>comments.css('display','none'),300);
+      }
+      else{
+        visiable=true;
+        if(!height){
+          height=comments.height();
+          comments.height(0);
+        }
+        if(beCurrent){
+          stage.find('.btn').css('display','block');
+        }
+        comments.css('display','block');
+        comments.animate({height:height},300);
+      }
+    });
+  });
+};
+
 // navigate
 let navigateSelected;
 $('#Navigate').children('.item').each((i,elem)=>{
@@ -60,4 +90,9 @@ $('#Navigate').children('.item').each((i,elem)=>{
     }
   });
 });
+
+projectBindAction('#CurrentProject');
+projectBindAction('#CompletedProjects');
+
 $('#Navigate').children('.item').eq(1).click();
+$('#CurrentProject .list .current').click();
