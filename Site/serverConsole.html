@@ -4,7 +4,7 @@
   <title>Server Console</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="img/logo/single.jpg">
+  <link rel="shortcut icon" href="img/logo/single.png">
   <style>
     body{
       background: url(img/logo/single.svg) 0px -150px,url(img/backimg.jpg);
@@ -130,7 +130,7 @@
     };
     ws.onclose=function(evt){console.log('close');};
     ws.onerror=function(evt){console.log('error');};
-    // !::om struct is not fix to shell command 
+    // !::om struct is not fix to shell command
     window.onunload=()=>ws.close();
     window.onresize=setSize;
     $('body').keypress((e)=>{
