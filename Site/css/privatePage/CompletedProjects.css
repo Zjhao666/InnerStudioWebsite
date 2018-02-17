@@ -1,0 +1,71 @@
+
+
+#CompletedProjects{
+  position: relative;
+  display: none;
+  top: 50px;left: 220px;
+  width: 60%;height: auto;
+}
+#CompletedProjects .project{
+  padding: 10px;
+}
+#CompletedProjects .project .title{
+  display: block;
+  font-size: 2em;
+  font-weight: 900;
+  text-transform: uppercase;
+  background: linear-gradient(to right,rgba(80,80,150,1),rgba(0,0,0,0.2));
+}
+#CompletedProjects .project .overview{
+  display: block;
+  word-wrap: break-word;
+  font-size: 1.2em;
+}
+#CompletedProjects .project .list{
+  list-style: none;
+  margin: 0px;padding: 0px;
+}
+#CompletedProjects .project .list .stage{
+  height: 40px;
+  margin: 0px 0px 10px 20px;
+}
+#CompletedProjects .project .list .stateIcon::after{
+  content: '';
+  position: relative;
+  left: -11px;top: -5px;
+  display: block;
+  width: 2px;height: 45px;
+  background-color: gray;
+}
+#CompletedProjects .project .list .stateIcon::before{
+  content: '';
+  position: relative;
+  display: block;
+  left: -20px;top: 25px;
+  box-sizing: border-box;
+  width: 20px;height: 20px;
+  border-radius: 10px;
+  border: 2px solid gray;
+  background-color: black;
+}
+#CompletedProjects .project .list .completed::before{
+  background-color: green;
+}
+#CompletedProjects .project .list .current::before{
+  background-color: yellow;
+}
+#CompletedProjects .project .list .future::before{
+  background-color: rgb(60,60,60);
+}
+#CompletedProjects .project .list .lastStage::after{
+  background-color: rgba(0,0,0,0);
+}
+#CompletedProjects .project .list .stage .timestamp{
+  display: inline-block;
+  background-color: green;
+  margin: 5px 5px 0px 5px;padding: 1px 2px 0px;
+  border-radius: 10px;
+}
+#CompletedProjects .project .list .stage .content{
+  font-weight: bold;
+}

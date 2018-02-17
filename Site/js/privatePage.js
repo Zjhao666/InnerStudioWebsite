@@ -1,7 +1,7 @@
 
 // navigate
 let navigateSelected;
-$('#navigate').children('.item').each((i,elem)=>{
+$('#Navigate').children('.item').each((i,elem)=>{
   $(elem).bind({
     'click':()=>{
       if(navigateSelected!=elem){
@@ -18,20 +18,29 @@ $('#navigate').children('.item').each((i,elem)=>{
         navigateSelected=elem;
         // display frame
         let identifier=$(elem).html();
-        if(identifier.includes('Current')){
-          $('#currentProject').css('display','inline-block');
-          $('#completedProjects').css('display','none');
-          $('#editProfile').css('display','none');
+        if(identifier.includes('Profile')){
+          $('#Profile').css('display','inline-block');
+          $('#CurrentProject').css('display','none');
+          $('#CompletedProjects').css('display','none');
+          $('#Evaluate').css('display','none');
+        }
+        else if(identifier.includes('Current')){
+          $('#Profile').css('display','none');
+          $('#CurrentProject').css('display','inline-block');
+          $('#CompletedProjects').css('display','none');
+          $('#Evaluate').css('display','none');
         }
         else if(identifier.includes('Completed')){
-          $('#currentProject').css('display','none');
-          $('#completedProjects').css('display','inline-block');
-          $('#editProfile').css('display','none');
+          $('#Profile').css('display','none');
+          $('#CurrentProject').css('display','none');
+          $('#CompletedProjects').css('display','inline-block');
+          $('#Evaluate').css('display','none');
         }
-        else if(identifier.includes('Profile')){
-          $('#currentProject').css('display','none');
-          $('#completedProjects').css('display','none');
-          $('#editProfile').css('display','inline-block');
+        else if(identifier.includes('Evaluate')){
+          $('#Profile').css('display','none');
+          $('#CurrentProject').css('display','none');
+          $('#CompletedProjects').css('display','none');
+          $('#Evaluate').css('display','inline-block');
         }
       }
     },
@@ -51,4 +60,4 @@ $('#navigate').children('.item').each((i,elem)=>{
     }
   });
 });
-$('#navigate').children('.item').eq(0).click();
+$('#Navigate').children('.item').eq(0).click();

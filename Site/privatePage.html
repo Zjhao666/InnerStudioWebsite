@@ -6,7 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="img/logo/single.jpg">
   <link rel='stylesheet' href='css/clear.css'>
-  <link rel='stylesheet' href='css/privatePage.css'>
+  <link rel='stylesheet' href='css/privatePage/CompletedProjects.css'>
+  <link rel='stylesheet' href='css/privatePage/CurrentProject.css'>
+  <link rel='stylesheet' href='css/privatePage/Navigate.css'>
+  <link rel='stylesheet' href='css/privatePage/Profile.css'>
+  <link rel='stylesheet' href='css/privatePage/Evaluate.css'>
+  <link rel='stylesheet' href='css/privatePage/Info.css'>
   <style>
     body{
       -moz-user-select: none;
@@ -24,24 +29,37 @@
 </head>
 <body>
   <div id='main'>
-    <div id='info'>
+    <div id='Info'>
       <img class='headimg' src='img/backgrounds/2.jpg'>
       <a class='account'>Luncert  </a>
       <a class='pertag'>work hard,a ha!do you agree?</a>
     </div>
-    <div id='navigate'>
+    <div id='Navigate'>
       <a class='item'>Profile</a>
       <a class='item'>Current</a>
       <a class='item'>Completed</a>
       <a class='item'>Evaluate</a>
     </div>
-    <div id='currentProject'>
+    <div id='Profile'>
+      Not supported.
+    </div>
+    <div id='CurrentProject'>
       <span class='title'>project in python</span>
       <span class='overview'>Hi,there!This plan is about how to earn money fast by take part in software-race.How do you think of my idea?</span>
       <ul class='list'>
         <li class='stage stateIcon future'>
           <span class='timestamp'>2017/11/24</span>
           <span class='content'>learn HTTP protocal</span>
+          <div class='comments'>
+            <div class='item'>
+              <div class='head'>
+                <img class='headimg' src='img/backgrounds/1.jpg'>
+                <span class='account'>Luncert</span>
+                <span class='time'>2017/11/8</span>
+              </div>
+              <span class='content'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
+            </div>
+          </div>
         </li>
         <li class='stage stateIcon current'>
           <span class='timestamp'>2017/11/20</span>
@@ -56,8 +74,11 @@
           <span class='content'>learn js</span>
         </li>
       </ul>
+      <div class='update'>
+
+      </div>
     </div>
-    <div id='completedProjects'>
+    <div id='CompletedProjects'>
       <div class='project'>
         <span class='title'>project in python</span>
         <span class='overview'>Hi,there!This plan is about how to earn money fast by take part in software-race.How do you think of my idea?</span>
@@ -103,7 +124,7 @@
         </ul>
       </div>
     </div>
-    <div id='editProfile'>
+    <div id='Evaluate'>
       Not supported.
     </div>
   </div>

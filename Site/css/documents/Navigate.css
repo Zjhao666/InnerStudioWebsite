@@ -21,6 +21,7 @@
   border-radius: 0px 10px 10px 0px;
   border: 1px solid rgb(80,160,220);
   background-color: rgba(0,0,0,0);
+  color: white;
 }
 #Navigate .path_back{
   background-image: url(../../img/btn/path_back.png);

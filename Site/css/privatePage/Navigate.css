@@ -1,0 +1,17 @@
+
+#Navigate{
+  position: absolute;
+  display: block;
+  top: 0px;left: 220px;
+  width: 60%;height: 30px;
+  border-bottom: 1px solid white;
+}
+#Navigate .item{
+  display: inline-block;
+  margin: 0px 5px;
+  height: 30px;
+  border-width: 0px;
+  border-color: rgb(220,120,80);
+  border-style: solid;
+  cursor: pointer;
+}

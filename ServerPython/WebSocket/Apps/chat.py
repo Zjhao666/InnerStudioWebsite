@@ -126,5 +126,6 @@ def onMessage(im,ctx,contact):
     else:
         im.close()
     # update msg record
+    
 def onDestroy(im,ctx):
     pass

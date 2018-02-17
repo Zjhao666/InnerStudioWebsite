@@ -15,7 +15,7 @@ else:
 
 keyStore=[]
 tokens=[]
-DocRootPath='/home/lijingwei/Documents'
+DocRootPath='/home/lijingwei'
 
 # database operation
 def query(sql):
@@ -75,10 +75,11 @@ def plan(request):
 # @chktoken
 def documents(request):
     ret=[]
-    target=DocRootPath
+    target=request.GET.get('target',False)
+    target=target if target else DocRootPath
     for filename in os.listdir(target):
         if os.path.isdir(os.path.join(target,filename)):
-            ret.append({'name':filename,'isdir':True})
-        else:
-            ret.append({'name':filename,'isdir':False})
-    return HttpResponse(json.dumps(ret))
+            ret.append({'name':filename,'type':0})
+        elif filename.endswith('.pdf'):
+            ret.append({'name':filename,'type':1})
+    return HttpResponse(json.dumps({'basepath':target,'items':ret}))

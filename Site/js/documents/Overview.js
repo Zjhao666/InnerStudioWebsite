@@ -25,8 +25,8 @@ $('#main').click((e)=>{
 });
 
 // overview behavior
-let overview_selected;
-$('#Overview .item').each((i,elem)=>{
+let overview_selected,overviewCurPath;
+const overviewBindAction=()=>$('#Overview .item').each((i,elem)=>{
   let target=$(elem),
       hovered=false;
   target.bind({
@@ -70,15 +70,37 @@ $('#Overview .item').each((i,elem)=>{
       // get file info from server
       $('#Sidebox .filedetail .thumbnail').css('background-image',target.css('background-image'));
     },
-    'dblclick':()=>{
-
+    'dblclick':(e)=>{
+      readDir(overviewCurPath+(overviewCurPath.endsWith('/')?'':'/')+$(e.target).children('span').html());
     }
   });
 });
+const readDir=(target)=>{
+  if(!target)
+    target='';
+  $.get({
+    url:baseurl+'documents.do?target='+target,
+    dataType:'JSON',
+    success:(rep)=>{
+      let buf='';
+      rep.items.forEach((item,i)=>{
+        switch (item.type) {
+          case 0: // dir
+            buf+=`<div class='item file_dir'><span>`+item.name+`</span></div>`;
+            break;
+          case 1: // pdf
+            buf+=`<div class='item file_pdf'><span>`+item.name+`</span></div>`;
+            break;
+          case -1: // unknown
+            buf+=`<div class='item file_file'><span>`+item.name+`</span></div>`;
+        }
+      });
+      overviewCurPath=rep.basepath;
+      $('#Overview').html(buf);
+      overviewBindAction();
+      $('#Navigate .input_path').val(rep.basepath);
+    }
+  });
+};
 
-// overview action
-// const readDir=()=>{
-//   $.get({
-//     url:
-//   })
-// };
+readDir();
