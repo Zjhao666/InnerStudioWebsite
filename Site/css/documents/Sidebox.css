@@ -10,9 +10,17 @@
   position: relative;
   box-sizing: border-box;
   padding: 20px;
-  height: 300px;width: 100%;
+  width: 100%;
   border-right: 1px solid rgb(200,200,200);
   background-color: rgba(200,200,200,0.8);
+}
+#Sidebox .filedetail::after{
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0px;left: 10px;
+  width: 90%;height: 1px;
+  background-color: white;
 }
 #Sidebox .filedetail .thumbnail{
   display: block;
@@ -58,28 +66,8 @@
   display: inline-block;
   font: bold 1em 'Kaiti';
 }
-#Sidebox .filedetail .type::before{
-  content: 'Type:';
-  display: inline-block;
-  font: bold 1em 'Kaiti';
-}
 #Sidebox .filedetail .size::before{
   content: 'Size:';
-  display: inline-block;
-  font: bold 1em 'Kaiti';
-}
-#Sidebox .filedetail .create::before{
-  content: 'Create:';
-  display: inline-block;
-  font: bold 1em 'Kaiti';
-}
-#Sidebox .filedetail .modify::before{
-  content: 'Modify:';
-  display: inline-block;
-  font: bold 1em 'Kaiti';
-}
-#Sidebox .filedetail .access::before{
-  content: 'Access:';
   display: inline-block;
   font: bold 1em 'Kaiti';
 }
@@ -87,35 +75,28 @@
 #Sidebox .filetree{
   position: relative;
   height: 280px;width: 100%;
-  overflow: scroll;
-  -moz-user-select: none;
   background-color: rgba(200,200,200,0.8);
+  overflow: scroll;
+  white-space: nowrap;
+  padding: 10px 0px;
+  -moz-user-select: none;
 }
-#Sidebox .filetree::before{
-  content: '';
+#Sidebox .filetree .dir,
+#Sidebox .filetree .file{
   display: block;
-  margin: 0px 10px 10px;
-  width: 90%;height: 1px;
-  background-color: rgb(200,200,200);
-}
-#Sidebox .filetree .dir{
-  display: block;
-  margin-left: 10px;
-  padding: 0px;
+  margin: 0px 0px 0px 10px;padding: 0px;
   list-style: none;
   background-image: url(../../img/icon/thumbnail/dir_fileicon.png);
   background-repeat: no-repeat;
   cursor: pointer;
 }
-#Sidebox .filetree .dir span{
+#Sidebox .filetree span{
+  display: inline-block;
+  vertical-align: top;
+  height: 15px;
+  line-height: 15px;
   margin-left: 15px;
 }
 #Sidebox .filetree .file{
-  display: block;
-  margin-left: 10px;
-  height: 15px;
   background-image: url(../../img/icon/thumbnail/file_fileicon.png);
-  background-repeat: no-repeat;
-  cursor: pointer;
-  text-indent: 1em;
 }

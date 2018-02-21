@@ -9,19 +9,19 @@
   <script src='js/lib/jsbn.js'></script>
   <script src='js/lib/rsa.js'></script>
   <style>
-    *{
-      font: 400 1em 'ArtegraSansExtended';
-      -moz-user-select: none;
-    }
     body{
+      -moz-user-select: none;
+      font: 400 1em 'ArtegraSansExtended';
       background: url(img/logo/single.svg) 0px -150px,url(img/backimg.jpg);
       background-attachment: fixed;
       background-size: cover;
     }
     #main{
       position: relative;
+      box-sizing: border-box;
       width: 1020px;height: auto;
       margin: 30px auto;
+      overflow: hidden;
     }
     .left,.right{
       float: left;

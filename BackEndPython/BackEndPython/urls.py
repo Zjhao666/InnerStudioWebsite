@@ -21,7 +21,6 @@ from Services import *
 
 urlpatterns = [
     url(r'^login.do$', main.login),
-    url(r'^plan.do$', main.plan),
     url(r'^documents.do$', main.documents),
     url(r'^admin/', admin.site.urls),
 ]

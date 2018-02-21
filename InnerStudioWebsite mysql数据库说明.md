@@ -18,13 +18,13 @@ id | 英文名 | 中文释义 | 类型| 其他说明
 8|curProject|能否被分配任务|varchar|有任务即不可被分配其他任务
 9|achievements|已完成项目|varchar
 
-# plan（（小写p）计划）
+# Plan
 id | 英文名 | 中文释义 | 类型| 其他说明
 ---|---|---|---|---
 1|id|编号|int|代理键
 2|content|简介|varchar|非空
 
-# Plan（（大写P）项目）
+# Project
 id | 英文名 | 中文释义 | 类型| 其他说明
 ---|---|---|---|---
 1|id|编号|int|代理键

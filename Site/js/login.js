@@ -43,6 +43,7 @@ $(document).ready(function() {
                   // }
                   localStorage.setItem('ac',username);
                   localStorage.setItem('pw',password);
+                  localStorage.setItem('istoken',rep.istoken);
                   window.location.href='home.html';
                 }
                 else{

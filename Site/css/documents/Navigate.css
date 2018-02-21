@@ -32,10 +32,6 @@
 #Navigate .btn_select{
   background-image: url(../../img/btn/btn_select.png);
 }
-#Navigate .btn_download{
-  text-decoration: none;
-  background-image: url(../../img/btn/btn_download.png);
-}
 #Navigate .btn_upload{
   background-image: url(../../img/btn/btn_upload.png);
   background-size: cover;
