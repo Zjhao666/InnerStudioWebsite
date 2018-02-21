@@ -1,5 +1,5 @@
 
-#### 文档并不完善，仅作参考
+#### !文档并不完善，仅作参考
 
 # 登录模块
 
@@ -14,32 +14,32 @@
 
 一条计划结构：
 
-### title:计划名
-### overview:描述
-### state:状态（已完成、未完成、正在进行、挂起）
-### stages:
-#### timestamp:预期达成时间
-#### content:阶段目标描述
-#### stage:状态（已完成、未完成、正在进行）
-#### comments:
-##### aid:注释者数据表id
-##### content:注释内容
-##### timestamp:注释时间
++ title:计划名
++ overview:描述
++ state:状态（已完成、未完成、正在进行、挂起）
++ stages:
++ + timestamp:预期达成时间
++ + content:阶段目标描述
++ + stage:状态（已完成、未完成、正在进行）
++ + comments:
++ + + aid:注释者数据表id
++ + + content:注释内容
++ + + timestamp:注释时间
 
 # 项目模块
 
-### title:计划名
-### overview:描述
-### state:状态（已完成、未完成、正在进行、挂起）
-### stages:
-#### timestamp:预期达成时间
-#### content:阶段目标描述
-#### stage:状态（已完成、未完成、正在进行）
-#### comments:
-##### aid:注释者数据表id
-##### content:注释内容
-##### timestamp:注释时间
-
++ title:计划名
++ overview:描述
++ state:状态（已完成、未完成、正在进行、挂起）
++ stages:
++ + timestamp:预期达成时间
++ + content:阶段目标描述
++ + stage:状态（已完成、未完成、正在进行）
++ + comments:
++ + + aid:注释者数据表id
++ + + content:注释内容
++ + + timestamp:注释时间
+---
 * 每个成员同一时间可参与一个项目。
 * 项目申请需要：队长，成员，title，简介，项目文案（可选）
 * 项目审核后，需要队长建立总体规划（时间戳列表），再跟随项目进度不定时更新项目状态。（这一条要求成员严格执行，可反映成员状态，对老师和负责人很有价值）
@@ -49,21 +49,23 @@
 
 一条博客结构：
 
-### title:博客名
-### overview:正文前xx字截取
-### content:正文
-### comments:
-#### aid:评论人id
-#### timestamp:评论时间
-#### content:评论内容
-#### responses:
-##### aid:回复者id:
-##### target:被回复者id
-##### content:回复内容
-##### timestamp:回复时间
++ title:博客名
++ overview:正文前xx字截取
++ content:正文
++ comments:
++ + aid:评论人id
++ + timestamp:评论时间
++ + content:评论内容
++ + responses:
++ + + aid:回复者id:
++ + + target:被回复者id
++ + + content:回复内容
++ + + timestamp:回复时间
 
-主页留一个链接，定向到写博客的页面。
-添加博客的数据表。
+---
+
+* 主页留一个链接，定向到写博客的页面。
+* 添加博客的数据表。
 
 # 成员社交模块
 
