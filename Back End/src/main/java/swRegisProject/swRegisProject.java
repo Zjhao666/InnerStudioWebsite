@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import beans.ConnectDatabase;
 import java.sql.Statement;
 import beans.Document;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.OutputStreamWriter;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import net.sf.json.JSONObject;
 
@@ -19,12 +23,32 @@ public class swRegisProject extends HttpServlet {
             Document D = new Document();
             ConnectDatabase C = new ConnectDatabase();
             Statement statement = C.conn.createStatement();
-            String sql = "insert into Plan (captain, member, title, content) values ('"+captainId+"','"+members+"','"+title+"','"+overview+"');";
+            String sql = "insert into Project (captainId, members, title, overview) values ("+captainId+",'"+members+"','"+title+"','"+overview+"');";
             statement.execute(sql);
             String[] Members = members.split(",");
+            sql = "select id from Project where title = '" + title+"'";
+            ResultSet rs = statement.executeQuery(sql);
+            String project_id = null;
+            if(rs.next()){
+                project_id = rs.getString("id");
+            }
             for(String member : Members){
-                sql = "update Member set canBeUsed = 'false' where id = " + member +";";
+                sql = "update Member set curProject = "+ project_id +" where id = " + member +"";
                 statement.execute(sql);
+            }
+            if(projectDoc != null){
+                File file = new File("/usr/doc/InnerStudioWebsite/"+title+".txt");
+                if(!file.exists()){
+                    try {
+                        file.createNewFile();
+                        PrintWriter out = new PrintWriter(file);
+                        out.write(projectDoc);
+                        out.flush();
+                        out.close();
+                    } catch (IOException e) {
+                    System.err.println(e);
+                    }
+                }
             }
             return 200;
        }catch(SQLException e){
@@ -48,6 +72,7 @@ public class swRegisProject extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setContentType("text/html;charset=utf-8"); 
         try(PrintWriter out = response.getWriter()){
             String captainId = request.getParameter("captainId");
             String members = request.getParameter("members");
