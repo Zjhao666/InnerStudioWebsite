@@ -19,18 +19,11 @@ public class swAddPlan extends HttpServlet {
         try{
             ConnectDatabase C = new ConnectDatabase();
             Statement statement = C.conn.createStatement();
-            int i = 1;
-            String sql = "select * from plan where id = "+i+";";
+            String sql = "insert into Plan (content) values ('"+content+"')";
+            statement.execute(sql);
+            sql = "select * from Plan where content = '"+content+"'";
             ResultSet rs = statement.executeQuery(sql);
-            while(rs.next()){
-                i++;
-            }
-            sql = "insert plan (id, content) values ("+i+",'"+content+"',');";
-            if(statement.execute(sql)){
-                return 200;
-            }else{
-                return 201;
-            }
+            return 200;
         }catch(SQLException e){
             System.err.println(e);
             return 201;

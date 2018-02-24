@@ -17,13 +17,9 @@ public class swPlanUpdate extends HttpServlet {
         try{
             ConnectDatabase C = new ConnectDatabase();
             Statement statement = C.conn.createStatement();
-            String sql = "update plan set content = '" + content +"' where id ="+ target_id +"';";
-            if(statement.execute(sql))
-            {
-                return 200;
-            }else{
-                return 201;
-            }
+            String sql = "update Plan set content = '" + content +"' where id ="+ target_id;
+            statement.execute(sql);
+            return 200;
         }catch(SQLException e){
             System.err.println(e);
             return 201;

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import beans.ConnectDatabase;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import net.sf.json.JSONObject;
@@ -16,11 +17,17 @@ public class swSendNotice extends HttpServlet {
     public int SendNotice(String target_id, String content)
     {
         try{
-            String[] ids = target_id.split("'");
+            String[] ids = target_id.split(",");
             ConnectDatabase C = new ConnectDatabase();
             Statement statement = C.conn.createStatement();
+            String sql = "select * from Plan where content = '"+content+"'";
+            ResultSet rs = statement.executeQuery(sql);
+            String Plan_id = null;
+            if(rs.next()){
+                Plan_id = rs.getString("id");
+            }
             for(String id : ids){
-                String sql = "update Member set information = '您的项目"+content+"的申请已经获得管理员通过;";
+                sql = "update Member set curPlan = "+ Plan_id +", curPlan_content = '"+ content +"' where id = "+ id;
                 statement.execute(sql);
             }
             return 200;
