@@ -19,10 +19,6 @@ body{
   vertical-align: top;
 }
 
-#Left #AudioClickEffect{
-  display: none;
-}
-
 #Left #Overview,#Members{
   display: none;
   width: 220px;height: 100%;

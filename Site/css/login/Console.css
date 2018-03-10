@@ -1,0 +1,52 @@
+
+/* Console */
+
+#Login .mask .Console{
+  display: none;
+  opacity: 0;
+  box-sizing: border-box;
+  position: absolute;
+  top: 5%;right: 5%;
+  width: 60%;height: 90%;
+  border-radius: 10px;
+  background-color: rgba(120,120,255,0.12);
+  border: 2px solid rgba(80,60,240,0.9);
+  box-shadow: 0px 0px 20px rgba(80,60,200,0.8);
+  color: white;
+  letter-spacing: 2px;
+  overflow: hidden;
+}
+
+#Login .mask .Console .content{
+  width: 100%;height: 92%;
+  margin-left: 2%;margin-top: 2%;
+  font: bold 1em 'Fangsong';
+  overflow-y: scroll;
+}
+#Login .mask .Console .content::after{
+  display: inline-block;
+  content: 'I';
+  font: bold 1em 'ArtegraSansExtended';
+  animation: CursorShining 1s infinite;
+}
+#Login .mask .Console .content .label{
+  color: rgba(150,120,220,0.8);
+}
+#Login .mask .Console .content .line{
+  font-weight: normal;
+  font-style: italic;
+}
+#Login .mask .Console .content .retline{
+  font-size: 0.8em;
+}
+@keyframes CursorShining {
+  0%{
+    opacity: 1;
+  }
+  50%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}

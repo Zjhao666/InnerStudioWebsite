@@ -1,5 +1,5 @@
 
-let consoleContent=$('#Login .console .content');
+let consoleContent=$('#Login .Console .content');
 
 let programCounter=-1;
 let account,password;
@@ -18,7 +18,9 @@ const handleCmd=(cmd)=>{
       password=cmd;
       // ajax login
       programCounter=-1;
+      consoleContent.append(`<br /><span class='line retline'>Validate successfully.</span>`);
       consoleContent.append(`<br /><span class='label'>Guest Sessin:</span>\n<span class='line'></span>`);
+      window.open('home.html');
     }
   }
   else{

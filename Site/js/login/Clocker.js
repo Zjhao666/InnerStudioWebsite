@@ -1,6 +1,30 @@
 
 let clocker=document.getElementById('Clocker'),
     clockCtx=clocker.getContext('2d'),lineLength,numberWidth=30;
+
+let beConsole=false;
+$(clocker).click((e)=>{
+  bing();
+  if(beConsole){
+    beConsole=false;
+    $('#Login .mask .Console').animate({opacity:0},200);
+    setTimeout(()=>{
+      $('#Login .mask .Console').css('display','none');
+      $('#Login .mask .Overview').css('display','block');
+      $('#Login .mask .Overview').animate({opacity:1},200);
+    },200);
+  }
+  else{
+    beConsole=true;
+    $('#Login .mask .Overview').animate({opacity:0},200);
+    setTimeout(()=>{
+      $('#Login .mask .Overview').css('display','none');
+      $('#Login .mask .Console').css('display','block');
+      $('#Login .mask .Console').animate({opacity:1},200);
+    },200);
+  }
+  e.stopPropagation();
+});
 const getCurTime=()=>{
   let time=new Date();
   return {h:24-time.getHours()-1,m:60-time.getMinutes()-1,s:60-time.getSeconds()};
