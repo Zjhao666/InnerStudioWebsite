@@ -1,61 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Home</title>
+  <title>Mobile AI</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="img/logo/single.png">
   <script src='js/lib/jquery-3.2.1.min.js'></script>
   <script src='js/lib/jsbn.js'></script>
   <script src='js/lib/rsa.js'></script>
-  <style>
-    body{
-      -moz-user-select: none;
-      font: 400 1em 'ArtegraSansExtended';
-      background: url(img/logo/single.svg) 0px -150px,url(img/backimg.jpg);
-      background-attachment: fixed;
-      background-size: cover;
-    }
-    #main{
-      position: relative;
-      box-sizing: border-box;
-      width: 1020px;height: auto;
-      margin: 30px auto;
-      overflow: hidden;
-    }
-    .left,.right{
-      float: left;
-      width: 600px;
-      margin: 10px 5px;
-    }
-    .right{width: 400px;}
-  </style>
   <link rel='stylesheet' href='css/clear.css' />
+  <link rel='stylesheet' href='css/home/Main.css' />
   <link rel='stylesheet' href='css/home/Plan.css' />
-  <link rel='stylesheet' href='css/home/Communicate.css' />
   <link rel='stylesheet' href='css/home/Project.css' />
-  <link rel='stylesheet' href='css/home/Member.css' />
-  <link rel='stylesheet' href='css/home/Chat.css' />
-  <link rel='stylesheet' href='css/home/Ref.css' />
+  <link rel='stylesheet' href='css/home/Communicate.css' />
+  <!-- regisProject -->
+  <link rel='stylesheet' href='css/home/regisProject/Main.css'>
+  <link rel='stylesheet' href='css/home/regisProject/Navigate.css'>
+  <link rel='stylesheet' href='css/home/regisProject/Overview.css'>
+  <link rel='stylesheet' href='css/home/regisProject/Editstage.css'>
+  <link rel='stylesheet' href='css/home/regisProject/Check.css'>
+  <!-- profile -->
+  <link rel='stylesheet' href='css/home/profile/Main.css'>
+  <link rel='stylesheet' href='css/home/profile/CompletedProjects.css'>
+  <link rel='stylesheet' href='css/home/profile/CurrentProject.css'>
+  <link rel='stylesheet' href='css/home/profile/Navigate.css'>
+  <link rel='stylesheet' href='css/home/profile/Evaluate.css'>
+  <!-- serverConsole -->
+  <link rel='stylesheet' href='css/home/Serverconsole.css'>
 </head>
 <body>
   <div id='main'>
-    <div id='Ref'>
-      <a class='btn profile'>Profile</a>
-      <a class='btn updateProject'>Update project</a>
-      <a class='btn regisProject'>Regis project</a>
-      <a class='btn serverConsole'>Server console</a>
-      <a class='btn library'>Library</a>
-    </div>
-    <div class='left'>
-      <div id='Plan'>
-        <div class='item' clicked=''>
-          <span class='title'>Learning Plan</span>
-          <span class='overview'>Hi,there!This plan is about how to earn money fast by take part in software-race.</span>
-          <div class='curstage'>
-            <span class='timestamp'>2017/11/24</span>
-            <span class='content'>learn HTTP protocal asdssddddddddddddd</span>
+    <div id='Left'>
+      <audio id='AudioClickEffect' src='sounds/click.mp3' type='audio/mp3'></audio>
+      <div id='Overview'>
+        <div class='Profile'>
+          <img class='headimg' src='img/backgrounds/3.jpg'>
+          <a class='account'>Luncert</a>
+          <a class='pertag'>work hard,a ha!do you agree?</a>
+        </div>
+        <svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='220' height='50'>
+          <path style='fill:rgba(0,0,0,0.6);stroke-width:0;' d='M 0 0 L 220 0 L 0 50 Z' />
+        </svg>
+        <div class='Ref'>
+          <a class='item Profile'>Profile</a>
+          <a class='item Plan'>Plans</a>
+          <a class='item Project'>Projects</a>
+          <a class='item Communicate'>Communicate</a>
+          <a class='item Updateproject'>Update project</a>
+          <a class='item Regisproject'>Regis project</a>
+          <a class='item Serverconsole'>Server console</a>
+          <a class='item Document'>Documents</a>
+        </div>
+        <svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='220' height='50' style='position:relative;top:-13px;'>
+          <path style='fill:rgba(0,0,0,0.6);stroke-width:0;' d='M 0 50 L 220 0 L 220 50 Z' />
+        </svg>
+        <div class='Other'>
+
+        </div>
+      </div>
+      <div id='Members'>
+        <span class='title'>Members</span>
+        <div class='wrapper'>
+          <div class='item'>
+            <img class='headimg' src='img/backgrounds/1.jpg'>
+            <a class='account'>Luncert</a>
           </div>
+          <div class='item offline'>
+            <img class='headimg' src='img/backgrounds/2.jpg'>
+            <a class='account'>Silly</a>
+          </div>
+          <div class='item offline'>
+            <img class='headimg' src='img/backgrounds/3.jpg'>
+            <a class='account'>爱奇艺</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id='Right'>
+      <div id='Profile'>
+        <div id='Navigate'>
+          <a class='item'>Current</a>
+          <a class='item'>Completed</a>
+          <a class='item'>Evaluate</a>
+        </div>
+        <div id='CurrentProject'>
+          <span class='title'>project in python</span>
+          <span class='overview'>Hi,there!This plan is about how to earn money fast by take part in software-race.How do you think of my idea?</span>
           <ul class='list'>
             <li class='stage future'>
               <span class='timestamp'>2017/11/24</span>
@@ -94,226 +124,557 @@
               <span class='content'>learn js</span>
             </li>
           </ul>
+        </div>
+        <div id='CompletedProjects'>
+          <div class='project'>
+            <span class='title'>project in python</span>
+            <span class='overview'>Hi,there!This plan is about how to earn money fast by take part in software-race.How do you think of my idea?</span>
+            <ul class='list'>
+              <li class='stage stateIcon future'>
+                <span class='timestamp'>2017/11/24</span>
+                <span class='content'>learn HTTP protocal</span>
+              </li>
+              <li class='stage stateIcon current'>
+                <span class='timestamp'>2017/11/20</span>
+                <span class='content'>learn HTML5</span>
+              </li>
+              <li class='stage stateIcon completed'>
+                <span class='timestamp'>2017/11/24</span>
+                <span class='content'>learn css</span>
+              </li>
+              <li class='stage stateIcon completed lastStage'>
+                <span class='timestamp'>2017/11/18</span>
+                <span class='content'>learn js</span>
+              </li>
+            </ul>
+          </div>
+          <div class='project'>
+            <span class='title'>project in python</span>
+            <span class='overview'>Hi,there!This plan is about how to earn money fast by take part in software-race.How do you think of my idea?</span>
+            <ul class='list'>
+              <li class='stage stateIcon future'>
+                <span class='timestamp'>2017/11/24</span>
+                <span class='content'>learn HTTP protocal</span>
+              </li>
+              <li class='stage stateIcon current'>
+                <span class='timestamp'>2017/11/20</span>
+                <span class='content'>learn HTML5</span>
+              </li>
+              <li class='stage stateIcon completed'>
+                <span class='timestamp'>2017/11/24</span>
+                <span class='content'>learn css</span>
+              </li>
+              <li class='stage stateIcon completed lastStage'>
+                <span class='timestamp'>2017/11/18</span>
+                <span class='content'>learn js</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div id='Evaluate'>
+          Not supported.
+        </div>
+      </div>
+      <div id='Plan'>
+        <div class='showOne'>
+          <span class='title'>project in python</span>
+          <span class='overview'>Hi,there!This plan is about how to earn money fast by take part in software-race.How do you think of my idea?</span>
+          <ul class='list'>
+            <li class='stage future'>
+              <span class='timestamp'>2017/11/24</span>
+              <span class='content'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
+              <div class='comments'>
+              </div>
+            </li>
+            <li class='stage current'>
+              <span class='timestamp'>2017/11/20</span>
+              <span class='content'>learn HTML5</span>
+              <div class='comments'>
+                <div class='item'>
+                  <div class='head'>
+                    <img class='headimg' src='img/backgrounds/1.jpg'>
+                    <span class='account'>Luncert</span>
+                    <span class='time'>2017/11/8</span>
+                  </div>
+                  <span class='ncontent'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
+                </div>
+                <div class='item'>
+                  <div class='head'>
+                    <img class='headimg' src='img/backgrounds/1.jpg'>
+                    <span class='account'>Luncert</span>
+                    <span class='time'>2017/11/8</span>
+                  </div>
+                  <span class='ncontent'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
+                </div>
+              </div>
+            </li>
+            <li class='stage completed'>
+              <span class='timestamp'>2017/11/24</span>
+              <span class='content'>learn css</span>
+            </li>
+            <li class='stage completed'>
+              <span class='timestamp'>2017/11/18</span>
+              <span class='content'>learn js</span>
+            </li>
+          </ul>
+        </div>
+        <div class='itemlist'>
+          <div class='item pmain'>
+            <span class='title'>Workspace</span>
+            <span class='overview'>Sometime you just need to do somethind to ....</span>
+          </div>
+          <div class='item pimportant'>
+            <span class='title'>Look out</span>
+            <span class='overview'>Wow,it's so diffcult to write some ....</span>
+          </div>
+          <div class='item pcompleted'>
+            <span class='title'>Huawei race</span>
+            <span class='overview'>You know,you know nothing!!!....</span>
+          </div>
+        </div>
+      </div>
+      <div id='Project'>
+        <div class='showOne'>
+          <span class='title'>project in python</span>
+          <span class='overview'>Hi,there!This plan is about how to earn money fast by take part in software-race.How do you think of my idea?</span>
+          <ul class='list'>
+            <li class='stage future'>
+              <span class='timestamp'>2017/11/24</span>
+              <span class='content'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
+              <div class='comments'>
+              </div>
+            </li>
+            <li class='stage current'>
+              <span class='timestamp'>2017/11/20</span>
+              <span class='content'>learn HTML5</span>
+              <div class='comments'>
+                <div class='item'>
+                  <div class='head'>
+                    <img class='headimg' src='img/backgrounds/1.jpg'>
+                    <span class='account'>Luncert</span>
+                    <span class='time'>2017/11/8</span>
+                  </div>
+                  <span class='ncontent'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
+                </div>
+                <div class='item'>
+                  <div class='head'>
+                    <img class='headimg' src='img/backgrounds/1.jpg'>
+                    <span class='account'>Luncert</span>
+                    <span class='time'>2017/11/8</span>
+                  </div>
+                  <span class='ncontent'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
+                </div>
+              </div>
+            </li>
+            <li class='stage completed'>
+              <span class='timestamp'>2017/11/24</span>
+              <span class='content'>learn css</span>
+            </li>
+            <li class='stage completed'>
+              <span class='timestamp'>2017/11/18</span>
+              <span class='content'>learn js</span>
+            </li>
+          </ul>
+        </div>
+        <div class='itemlist'>
+          <div class='item pmain'>
+            <span class='title'>Workspace</span>
+            <span class='overview'>Sometime you just need to do somethind to ....</span>
+          </div>
+          <div class='item pimportant'>
+            <span class='title'>Look out</span>
+            <span class='overview'>Wow,it's so diffcult to write some ....</span>
+          </div>
+          <div class='item pcompleted'>
+            <span class='title'>Huawei race</span>
+            <span class='overview'>You know,you know nothing!!!....</span>
+          </div>
         </div>
       </div>
       <div id='Communicate'>
-        <div class='item'>
-          <span class='title'>Netbeans is almost deploying project</span>
-          <div class='head'>
-            <img class='headimg' src='img/backgrounds/1.jpg'>
-            <span class='account'>Luncert</span>
-            <span class='time'>2017/11/8</span>
-          </div>
-          <span class='content'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
-          <div class='interact'>
-            <div class='nitem'>
-              <div class='nhead'>
-                <img class='headimg' src='img/backgrounds/2.jpg'>
-                <span class='account'>Silly</span>
-                <span class='time'>11:23:54 2017/11/8</span>
-              </div>
-              <span class='ncontent'>How about use idea?^_^</span>
-              <div class='response'>
-                <div class='mitem nlastitem'>
-                  <div class='nhead'>
-                    <img class='headimg' src='img/backgrounds/1.jpg'>
-                    <span class='account'>Luncert</span>
-                    <span class='time'>11:30:00 2017/11/8</span>
-                  </div>
-                  <a class='at'>Silly</a><span class='mcontent'>It doesn't work...qwq</span>
+        <div class='controll'>
+          <a class='item csearch'>search</a>
+          <a class='item csort'>sort</a>
+          <a class='item cwrite'>write</a>
+        </div>
+        <div class='wrapper'>
+          <div class='item'>
+            <span class='title'>Netbeans is almost deploying project</span>
+            <div class='head'>
+              <img class='headimg' src='img/backgrounds/1.jpg'>
+              <span class='account'>Luncert</span>
+              <span class='time'>2017/11/8</span>
+            </div>
+            <span class='content'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
+            <div class='interact'>
+              <div class='nitem'>
+                <div class='nhead'>
+                  <img class='headimg' src='img/backgrounds/2.jpg'>
+                  <span class='account'>Silly</span>
+                  <span class='time'>11:23:54 2017/11/8</span>
                 </div>
-                <div class='mitem'>
-                  <div class='nhead'>
-                    <img class='headimg' src='img/backgrounds/2.jpg'>
-                    <span class='account'>Silly</span>
-                    <span class='time'>11:32:20 2017/11/8</span>
+                <span class='ncontent'>How about use idea?^_^</span>
+                <div class='response'>
+                  <div class='mitem nlastitem'>
+                    <div class='nhead'>
+                      <img class='headimg' src='img/backgrounds/1.jpg'>
+                      <span class='account'>Luncert</span>
+                      <span class='time'>11:30:00 2017/11/8</span>
+                    </div>
+                    <a class='at'>Silly</a><span class='mcontent'>It doesn't work...qwq</span>
                   </div>
-                  <a class='at'>Luncert</a><span class='mcontent'>Good lucky!^_^</span>
+                  <div class='mitem'>
+                    <div class='nhead'>
+                      <img class='headimg' src='img/backgrounds/2.jpg'>
+                      <span class='account'>Silly</span>
+                      <span class='time'>11:32:20 2017/11/8</span>
+                    </div>
+                    <a class='at'>Luncert</a><span class='mcontent'>Good lucky!^_^</span>
+                  </div>
+                </div>
+              </div>
+              <div class='nitem'>
+                <div class='nhead'>
+                  <img class='headimg' src='img/backgrounds/2.jpg'>
+                  <span class='account'>Silly</span>
+                  <span class='time'>11:23:54 2017/11/8</span>
+                </div>
+                <span class='ncontent'>How about use idea?^_^</span>
+                <div class='response'>
+                  <div class='mitem nlastitem'>
+                    <div class='nhead'>
+                      <img class='headimg' src='img/backgrounds/1.jpg'>
+                      <span class='account'>Luncert</span>
+                      <span class='time'>11:30:00 2017/11/8</span>
+                    </div>
+                    <a class='at'>Silly</a><span class='mcontent'>It doesn't work...qwq</span>
+                  </div>
+                  <div class='mitem'>
+                    <div class='nhead'>
+                      <img class='headimg' src='img/backgrounds/2.jpg'>
+                      <span class='account'>Silly</span>
+                      <span class='time'>11:32:20 2017/11/8</span>
+                    </div>
+                    <a class='at'>Luncert</a><span class='mcontent'>Good lucky!^_^</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class='item'>
+            <span class='title'>Netbeans is almost deploying project</span>
+            <div class='head'>
+              <img class='headimg' src='img/backgrounds/1.jpg'>
+              <span class='account'>Luncert</span>
+              <span class='time'>2017/11/8</span>
+            </div>
+            <span class='content'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
+            <div class='interact'>
+              <div class='nitem'>
+                <div class='nhead'>
+                  <img class='headimg' src='img/backgrounds/2.jpg'>
+                  <span class='account'>Silly</span>
+                  <span class='time'>11:23:54 2017/11/8</span>
+                </div>
+                <span class='ncontent'>How about use idea?^_^</span>
+                <div class='response'>
+                  <div class='mitem nlastitem'>
+                    <div class='nhead'>
+                      <img class='headimg' src='img/backgrounds/1.jpg'>
+                      <span class='account'>Luncert</span>
+                      <span class='time'>11:30:00 2017/11/8</span>
+                    </div>
+                    <a class='at'>Silly</a><span class='mcontent'>It doesn't work...qwq</span>
+                  </div>
+                  <div class='mitem'>
+                    <div class='nhead'>
+                      <img class='headimg' src='img/backgrounds/2.jpg'>
+                      <span class='account'>Silly</span>
+                      <span class='time'>11:32:20 2017/11/8</span>
+                    </div>
+                    <a class='at'>Luncert</a><span class='mcontent'>Good lucky!^_^</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class='item'>
+            <span class='title'>Netbeans is almost deploying project</span>
+            <div class='head'>
+              <img class='headimg' src='img/backgrounds/1.jpg'>
+              <span class='account'>Luncert</span>
+              <span class='time'>2017/11/8</span>
+            </div>
+            <span class='content'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
+            <div class='interact'>
+              <div class='nitem'>
+                <div class='nhead'>
+                  <img class='headimg' src='img/backgrounds/2.jpg'>
+                  <span class='account'>Silly</span>
+                  <span class='time'>11:23:54 2017/11/8</span>
+                </div>
+                <span class='ncontent'>How about use idea?^_^</span>
+                <div class='response'>
+                  <div class='mitem nlastitem'>
+                    <div class='nhead'>
+                      <img class='headimg' src='img/backgrounds/1.jpg'>
+                      <span class='account'>Luncert</span>
+                      <span class='time'>11:30:00 2017/11/8</span>
+                    </div>
+                    <a class='at'>Silly</a><span class='mcontent'>It doesn't work...qwq</span>
+                  </div>
+                  <div class='mitem'>
+                    <div class='nhead'>
+                      <img class='headimg' src='img/backgrounds/2.jpg'>
+                      <span class='account'>Silly</span>
+                      <span class='time'>11:32:20 2017/11/8</span>
+                    </div>
+                    <a class='at'>Luncert</a><span class='mcontent'>Good lucky!^_^</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class='item'>
-          <span class='title'>Netbeans is almost deploying project</span>
-          <div class='head'>
-            <img class='headimg' src='img/backgrounds/1.jpg'>
-            <span class='account'>Luncert</span>
-            <span class='time'>2017/11/8</span>
+      </div>
+      <div id='Regisproject'>
+        <div id='Navigate'>
+          <a class='item'>Essential information</a>
+          <a class='item'>Edit stages</a>
+          <a class='item'>Check</a>
+        </div>
+        <div id='Overview'>
+          <input class='title' type='text' placeholder='project name'/>
+          <div class='projectDoc'>
+            upload project document
+            <input class='core' type='file' />
           </div>
-          <span class='content'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
-          <div class='interact'>
-            <div class='nitem'>
-              <div class='nhead'>
+          <textarea class='overview' type='text' placeholder='project description'></textarea>
+          <div class='members'>
+            <div class='item'>
+              <img class='headimg' src='img/backgrounds/1.jpg'>
+              <span class='account'>Luncert</span>
+            </div>
+            <div class='item'>
+              <img class='headimg' src='img/backgrounds/2.jpg'>
+              <span class='account'>Silly</span>
+            </div>
+            <div class='item'>
+              <img class='headimg' src='img/backgrounds/3.jpg'>
+              <span class='account'>Tom</span>
+            </div>
+            <div class='btn add'></div>
+            <div class='btn del'></div>
+            <div class='membersOperabox'>
+              <a class='submit'>Submit</a>
+              <div class='aitem'>
+                <img class='headimg' src='img/backgrounds/1.jpg'>
+                <span class='account'>Luncert</span>
+                <input class='select' type='checkbox' />
+              </div>
+              <div class='aitem'>
                 <img class='headimg' src='img/backgrounds/2.jpg'>
                 <span class='account'>Silly</span>
-                <span class='time'>11:23:54 2017/11/8</span>
+                <input class='select' type='checkbox' />
               </div>
-              <span class='ncontent'>How about use idea?^_^</span>
-              <div class='response'>
-                <div class='mitem nlastitem'>
-                  <div class='nhead'>
-                    <img class='headimg' src='img/backgrounds/1.jpg'>
-                    <span class='account'>Luncert</span>
-                    <span class='time'>11:30:00 2017/11/8</span>
-                  </div>
-                  <a class='at'>Silly</a><span class='mcontent'>It doesn't work...qwq</span>
-                </div>
-                <div class='mitem'>
-                  <div class='nhead'>
-                    <img class='headimg' src='img/backgrounds/2.jpg'>
-                    <span class='account'>Silly</span>
-                    <span class='time'>11:32:20 2017/11/8</span>
-                  </div>
-                  <a class='at'>Luncert</a><span class='mcontent'>Good lucky!^_^</span>
-                </div>
+              <div class='aitem'>
+                <img class='headimg' src='img/backgrounds/3.jpg'>
+                <span class='account'>Tom</span>
+                <input class='select' type='checkbox' />
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class='right'>
-      <div id='Project'>
-        <div class='item' clicked=''>
-          <span class='title'>Learning Plan</span>
-          <span class='overview'>Hi,there!This plan is about how to earn money fast by take part in software-race.</span>
-          <div class='curstage'>
-            <span class='timestamp'>2017/11/24</span>
-            <span class='content'>learn HTTP protocal asdssddddddddddddd</span>
+        <div id='EditStage'>
+          <div class='addStage'>
+            <div class='timestamp'>
+              <input type='date' />
+            </div>
+            <div class='target'>
+              <textarea></textarea>
+            </div>
+            <a class='add'>Add</a>
           </div>
-          <ul class='list'>
-            <li class='stage future'>
+          <div class='stages'>
+            <div class='stage stateIcon'>
               <span class='timestamp'>2017/11/24</span>
-              <span class='content'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
-              <div class='comments'>
-              </div>
-            </li>
-            <li class='stage current'>
+              <span class='content'>learn HTTP protocal</span>
+            </div>
+            <div class='stage stateIcon'>
               <span class='timestamp'>2017/11/20</span>
               <span class='content'>learn HTML5</span>
-              <div class='comments'>
-                <div class='item'>
-                  <div class='head'>
-                    <img class='headimg' src='img/backgrounds/1.jpg'>
-                    <span class='account'>Luncert</span>
-                    <span class='time'>2017/11/8</span>
-                  </div>
-                  <span class='ncontent'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
-                </div>
-                <div class='item'>
-                  <div class='head'>
-                    <img class='headimg' src='img/backgrounds/1.jpg'>
-                    <span class='account'>Luncert</span>
-                    <span class='time'>2017/11/8</span>
-                  </div>
-                  <span class='ncontent'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
-                </div>
-              </div>
-            </li>
-            <li class='stage completed'>
+            </div>
+            <div class='stage stateIcon'>
               <span class='timestamp'>2017/11/24</span>
               <span class='content'>learn css</span>
-            </li>
-            <li class='stage completed'>
+            </div>
+            <div class='stage stateIcon lastStage'>
               <span class='timestamp'>2017/11/18</span>
               <span class='content'>learn js</span>
-            </li>
-          </ul>
-        </div>
-        <div class='item' clicked=''>
-          <span class='title'>Race Plan</span>
-          <span class='overview'>And how about this,what?????oh,no plan,blablabla....em!I got it...</span>
-          <div class='curstage'>
-            <span class='timestamp'>2017/11/24</span>
-            <span class='content'>learn HTTP protocal</span>
+            </div>
+            <a class='remove'>Remove the last</a>
           </div>
-          <ul class='list'>
-            <li class='stage future'>
-              <span class='timestamp'>2017/11/24</span>
-              <span class='content'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
-              <div class='comments'>
+        </div>
+        <div id='Check'>
+          <div class='formitem title'>
+            <span class='label'>Project Name</span>
+            <span class='content'>Jpython Ex</span>
+          </div>
+          <div class='formitem projectDoc'>
+            <span class='label'>Project Document</span>
+            <span class='content'>Jpython Ex</span>
+          </div>
+          <div class='formitem overview'>
+            <span class='label'>Project Description</span>
+            <span class='content'>Hi,there!em,this project is point at ...</span>
+          </div>
+          <div class='formitem members'>
+            <span class='label'>Members</span>
+            <div class='content'>
+              <div class='item'>
+                <img class='headimg' src='img/backgrounds/1.jpg'>
+                <span class='account'>Luncert</span>
               </div>
-            </li>
-            <li class='stage current'>
-              <span class='timestamp'>2017/11/20</span>
-              <span class='content'>learn HTML5</span>
-              <div class='comments'>
-                <div class='item'>
-                  <div class='head'>
-                    <img class='headimg' src='img/backgrounds/1.jpg'>
-                    <span class='account'>Luncert</span>
-                    <span class='time'>2017/11/8</span>
-                  </div>
-                  <span class='ncontent'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
-                </div>
-                <div class='item'>
-                  <div class='head'>
-                    <img class='headimg' src='img/backgrounds/1.jpg'>
-                    <span class='account'>Luncert</span>
-                    <span class='time'>2017/11/8</span>
-                  </div>
-                  <span class='ncontent'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
-                </div>
+              <div class='item'>
+                <img class='headimg' src='img/backgrounds/2.jpg'>
+                <span class='account'>Silly</span>
               </div>
-            </li>
-            <li class='stage completed'>
-              <span class='timestamp'>2017/11/24</span>
-              <span class='content'>learn css</span>
-            </li>
-            <li class='stage completed'>
-              <span class='timestamp'>2017/11/18</span>
-              <span class='content'>learn js</span>
-            </li>
-          </ul>
+              <div class='item'>
+                <img class='headimg' src='img/backgrounds/3.jpg'>
+                <span class='account'>Tom</span>
+              </div>
+            </div>
+          </div>
+          <div class='formitem stages'>
+            <span class='label'>Stages</span>
+            <div class='content'>
+              <div class='stage stateIcon'>
+                <span class='timestamp'>2017/11/24</span>
+                <span class='target'>learn HTTP protocal</span>
+              </div>
+              <div class='stage stateIcon'>
+                <span class='timestamp'>2017/11/20</span>
+                <span class='target'>learn HTML5</span>
+              </div>
+              <div class='stage stateIcon'>
+                <span class='timestamp'>2017/11/24</span>
+                <span class='target'>learn css</span>
+              </div>
+              <div class='stage stateIcon lastStage'>
+                <span class='timestamp'>2017/11/18</span>
+                <span class='target'>learn js</span>
+              </div>
+            </div>
+          </div>
+          <a class='line'></a>
+          <a class='submit'>Submit</a>
         </div>
       </div>
-      <div id='Member'>
-        <div class='item'>
-          <img class='headimg' src='img/backgrounds/1.jpg'>
-          <a class='account'>Luncert</a>
-          <a class='pertag'>work hard</a>
-          <a class='captainIcon'></a>
-          <a class='onlineIcon'></a>
-        </div>
-        <div class='item'>
-          <img class='headimg' src='img/backgrounds/2.jpg'>
-          <a class='account'>Silly</a>
-          <a class='pertag'>wow!</a>
-          <a class='captainIcon'></a>
-          <a class='onlineIcon'></a>
-        </div>
-      </div>
-      <div id='Chat'>
-        <div class='content'>
-          <div class='item leftItem'>
-            <img class='headimg' src='img/backgrounds/2.jpg'>
-            <span class='message'>How is it going?</span>
-          </div>
-          <div class='item rightItem'>
-            <img class='headimg' src='img/backgrounds/1.jpg'>
-            <span class='message'>Not bad,how about u?</span>
-          </div>
-          <div class='item rightItem'>
-            <img class='headimg' src='img/backgrounds/1.jpg'>
-            <span class='message'>I heard Luna has left,is that really?</span>
-          </div>
-          <div class='item rightItem'>
-            <img class='headimg' src='img/backgrounds/1.jpg'>
-            <span class='message'>Hei!</span>
-          </div>
-        </div>
-        <div class='foot'>
-          <input class='input' type='text' placeholder=':Silly'/>
-          <a class='send'></a>
-        </div>
-      </div>
+      <div id='Serverconsole'></div>
     </div>
   </div>
-  <script src='js/home/home.js'></script>
+  <!-- serverConsole -->
+  <!-- <script>
+    let serverConsole=$('#ServerConsole'),command;
+    const setSize=()=>{
+      serverConsole.width($(window).width());
+      serverConsole.height($(window).height());
+    };
+    const show=(path,command,result)=>{
+      serverConsole.append(`<span class='host'>server</span>`);
+      if(path) serverConsole.append(`<span class='path'>`+path+`</span>`);
+      if(command) serverConsole.append(`<span class='command'>`+command+`</span>`);
+      if(result) serverConsole.append(`<span class='result'>`+result.replace('\n','<br />')+`</span>`);
+    };
+    const sendcmd=(workpath,cmd)=>{
+      ws.send(JSON.stringify({
+        type:'+',
+        target:workpath,
+        command:cmd
+      }));
+    };
+    const newCommand=()=>{
+      let ret=$(`<span class='command'></span>`);
+      serverConsole.append(ret);
+      return ret;
+    };
+
+    let ac='1',pw='1';
+    let ws=new WebSocket('ws://localhost:9001/serverConsole');
+    ws.onopen=function(evt){};
+    ws.onmessage=function(evt){
+      let data=JSON.parse(evt.data);
+      if(data.type=='*'){
+        let n=data.content.n,
+            e=data.content.e;
+        ws.send(JSON.stringify({
+          type:'*',
+          content:RSA.encrypt(ac+'&'+pw,n,e)
+        }));
+      }
+      else if(data.type=='/'){
+        if(data.content.statuscode==200){
+          console.log('Validate successfully');
+          show(data.content.path,'','');
+          command=newCommand();
+        }
+        else{
+          console.log('Validate failed');
+        }
+      }
+      else if(data.type=='+'){
+        let {path,command,result}=data.content;
+        show(path,command,result);
+      }
+    };
+    ws.onclose=function(evt){console.log('close');};
+    ws.onerror=function(evt){console.log('error');};
+    // !::om struct is not fix to shell command
+    window.onunload=()=>ws.close();
+    window.onresize=setSize;
+    $('body').keypress((e)=>{
+      // console.log(e);
+      let key=e.originalEvent.key;
+      if(e.originalEvent.ctrlKey){
+
+      }
+      else{
+        switch (key) {
+          case 'Backspace':
+            break;
+          case 'ArrowLeft':
+            break;
+          case 'ArrowRight':
+            break;
+          case 'ArrowUp':
+            break;
+          case 'ArrowDown':
+            break;
+          case 'Enter':
+            break;
+          case 'Delete':
+            break;
+          case 'Insert':
+            break;
+          case 'Escape':
+            break;
+          case 'Tab':
+            break;
+          default:
+            command.html(command.html()+e.originalEvent.key);
+            break;
+        }
+      }
+      e.stopPropagation();
+      e.preventDefault();
+    });
+    setSize();
+  </script> -->
+  <script src='js/home/Main.js'></script>
   <script src='js/home/Plan.js'></script>
   <script src='js/home/Project.js'></script>
   <script src='js/home/Communicate.js'></script>
-  <script src='js/home/Chat.js'></script>
+  <script src='js/home/RegisProject.js'></script>
+  <script src='js/home/Profile.js'></script>
 </body>
 </html>

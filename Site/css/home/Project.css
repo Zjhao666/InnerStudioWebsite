@@ -1,77 +1,40 @@
-
 #Project{
-  position: relative;
-}
-
-#Project .item{
-  box-sizing: border-box;
-  position: relative;
-  width: 400px;height: auto;
-  margin: 10px 0px;
-  border: 1px solid rgb(80,220,100);
-  cursor: pointer;
-  background-color: rgba(200,200,200,0.8);
-  overflow: hidden;
-}
-
-#Project .item .title{
-  display: block;
-  font-variant: small-caps;
-  font-size: 2em;
-  font-weight: bold;
-  text-overflow:ellipsis;white-space:nowrap;overflow:hidden;
-}
-
-#Project .item .overview{
-  display: block;
-  padding: 0px 5px;
-  word-break: break-all;
-  border-bottom: 1px solid white;
-}
-
-#Project .item .curstage{
-  box-sizing: border-box;
-  position: relative;
-  width: 360px;height: 30px;
-  margin-left: 20px;
-}
-#Project .item .curstage::before{
-  content: '';
-  position: absolute;
-  display: block;
-  top: 6px;left: -20px;
-  box-sizing: border-box;
-  width: 20px;height: 20px;
-  border-radius: 10px;
-  border: 2px solid gray;
-  background-color: rgb(60,60,60);
-}
-#Project .item .curstage .timestamp{
-  display: inline-block;
-  background-color: green;
-  margin: 5px 5px 0px 5px;padding: 1px 2px 0px;
-  border-radius: 10px;
-}
-#Project .item .curstage .content{
-  float: right;
-  width: 250px;
-  padding-top: 10px;
-  font-weight: bold;
-  text-overflow: ellipsis;overflow: hidden;white-space: nowrap;
-}
-
-#Project .item .list{
   display: none;
+  width: 100%;height: 100%;
+}
+
+#Project .showOne{
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  width: 60%;height: auto;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+#Project .showOne .title{
+  display: block;
+  font-size: 2em;
+  font-weight: 900;
+  text-transform: uppercase;
+  background: linear-gradient(to right,rgba(80,80,150,1),rgba(0,0,0,0.2));
+}
+#Project .showOne .overview{
+  display: block;
+  word-wrap: break-word;
+  font-size: 1.2em;
+}
+
+#Project .showOne .list{
   list-style: none;
   margin: 0px;padding: 0px;
-  overflow: hidden;
 }
-#Project .item .list .stage{
+
+#Project .showOne .list .stage{
   position: relative;
   margin: 0px 0px 10px 20px;
   cursor: pointer;
 }
-#Project .item .list .stage::before{
+#Project .showOne .list .stage::before{
   content: '';
   position: absolute;
   top: 5px;left: -20px;
@@ -82,57 +45,99 @@
   border: 2px solid gray;
   background-color: black;
 }
-#Project .item .list .completed::before{
+#Project .showOne .list .completed::before{
   background-color: green;
 }
-#Project .item .list .future::before{
+#Project .showOne .list .future::before{
   background-color: rgb(60,60,60);
 }
-#Project .item .list .current::before{
+#Project .showOne .list .current::before{
   background-color: yellow;
 }
-#Project .item .list .stage .timestamp{
+#Project .showOne .list .current .btn{
+  display: none;
+  float: right;
+  margin: 0px 5px;padding: 0px 5px;
+  box-shadow: 1px 1px 0px white;
+}
+
+#Project .showOne .list .stage .timestamp{
   display: inline-block;
   background-color: green;
   margin: 5px 5px 0px 5px;padding: 1px 2px 0px;
   border-radius: 10px;
 }
-#Project .item .list .stage .content{
+#Project .showOne .list .stage .content{
   font-weight: bold;
-  word-wrap: break-word;
 }
-#Project .item .list .stage .comments{
+
+#Project .showOne .list .stage .comments{
   display: none;
   margin: 10px 0px 0px 5px;
   overflow: hidden;
 }
-#Project .item .list .stage .comments .item{
+#Project .showOne .list .stage .comments .item{
   border-radius: 10px;
   margin: 10px 0px;
   background-color: rgba(200,200,200,0.6);
 }
-#Project .item .list .stage .comments .item .head{
+#Project .showOne .list .stage .comments .item .head{
   position: relative;
   font-size: 0.8em;
 }
-#Project .item .list .stage .comments .item .head .headimg{
+#Project .showOne .list .stage .comments .item .head .headimg{
   display: block;
   height: 30px;width: 30px;
   border-radius: 15px;
 }
-#Project .item .list .stage .comments .item .head .account{
+#Project .showOne .list .stage .comments .item .head .account{
   display: block;
   position: absolute;
   top: 0px;left: 35px;
   font: bold 1em 'Kaiti';
 }
-#Project .item .list .stage .comments .item .head .time{
+#Project .showOne .list .stage .comments .item .head .time{
   display: block;
   position: absolute;
   bottom: 0px;left: 35px;
   font: bold 1em 'Kaiti';
 }
-#Project .item .list .stage .comments .item .ncontent{
+#Project .showOne .list .stage .comments .item .ncontent{
   display: block;
   text-indent: 2em;
+}
+
+#Project .itemlist{
+  display: inline-block;
+  width: 30%;
+  vertical-align: top;
+  margin-left: 10px;
+}
+#Project .itemlist .item{
+  position: relative;
+  width: 100%;height: 50px;
+  margin: 5px 0px;
+  overflow: hidden;
+  background: linear-gradient(to right,rgba(200,200,200,0.8),rgba(200,200,200,0.3));
+  background-color: ;
+}
+#Project .itemlist .item::before{
+  content: '';
+  top: 0px;left: 0px;
+  position: absolute;
+  display: block;
+  background-color: rgb(100,80,200,0.8);
+  width: 10px;
+  height: 50px;
+}
+#Project .itemlist .item .title{
+  display: block;
+  font-weight: bold;
+  font-size: 1.3em;
+  padding-left: 15px;
+}
+#Project .itemlist .item .overview{
+  display: block;
+  padding-left: 15px;
+  overflow: hidden;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;
 }

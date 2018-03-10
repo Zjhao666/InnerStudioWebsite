@@ -8,24 +8,26 @@
 #Check .formitem{
   position: relative;
   padding: 10px 0px;
+  width: 380px;
 }
 #Check .formitem::before{
   content: '';
   display: block;
   width: 380px;height: auto;
-  border-top: 1px solid rgb(200,80,200);
+  border-top: 1px solid rgb(200,80,120);
 }
 #Check .formitem .label{
   display: block;
   position: absolute;
   padding: 0px 10px;
   top: 0px;left: 0px;
-  background-color: rgba(200,200,200,0.8);
+  background-color: rgba(200,200,200,1);
 }
 #Check .formitem .content{
-  box-sizing: border-box;
   display: block;
-  padding: 20px 10px 5px;
+  margin: 20px auto 5px;
+  padding: 10px 0px 12px;
+  background-color:rgba(200,200,200,0.8);
 }
 
 #Check .title .content{
@@ -108,11 +110,11 @@
   display: block;
   width: 70px;height: 20px;
   margin: 10px auto;
-  border-bottom: 1px solid rgb(200,200,200);
-  border-right: 1px solid rgb(200,200,200);
   text-align: center;
   font-weight: bold;
   cursor: pointer;
+  box-shadow: 1px 1px 0px rgb(100,100,100);
+  background-color:rgba(200,200,200,0.8);
 }
 #Check .line{
   display: block;

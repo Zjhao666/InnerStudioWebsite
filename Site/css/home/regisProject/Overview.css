@@ -1,11 +1,11 @@
 
-#Overview{
+#Regisproject #Overview{
   position: relative;
   display: block;
   margin: 20px 0px;
 }
 
-#Overview .title{
+#Regisproject #Overview .title{
   box-sizing: border-box;
   display: block;
   width: 400px;
@@ -16,7 +16,7 @@
   background-color: rgba(200,200,200,0.8);
 }
 
-#Overview .projectDoc{
+#Regisproject #Overview .projectDoc{
   box-sizing: border-box;
   width: 400px;height: 40px;
   margin: 5px 0px;padding: 10px;
@@ -24,7 +24,7 @@
   color: white;
   background: rgba(80,180,120,0.8);
 }
-#Overview .projectDoc::before{
+#Regisproject #Overview .projectDoc::before{
   content: '';
   box-sizing: border-box;
   position: absolute;
@@ -34,11 +34,11 @@
   border: 1px dashed white;
   cursor: pointer;
 }
-#Overview .projectDoc .core{
+#Regisproject #Overview .projectDoc .core{
   display: none;
 }
 
-#Overview .overview{
+#Regisproject #Overview .overview{
   box-sizing: border-box;
   display: block;
   width: 400px;height: 150px;
@@ -49,7 +49,7 @@
   background-color: rgba(200,200,200,0.8);
 }
 
-#Overview .members{
+#Regisproject #Overview .members{
   box-sizing: border-box;
   width: 400px;height: auto;
   min-height: 100px;
@@ -57,7 +57,7 @@
   border: 1px solid rgb(80,180,120);
   background-color: rgba(200,200,200,0.8);
 }
-#Overview .members::before{
+#Regisproject #Overview .members::before{
   box-sizing: border-box;
   content: 'Members';
   position: absolute;
@@ -70,16 +70,16 @@
   background-color: rgb(80,180,120);
   font: 200 1em 'Fangsong';
 }
-#Overview .members .item{
+#Regisproject #Overview .members .item{
   position: relative;
   display: inline-block;
   margin: 10px 0px;
 }
-#Overview .members .item .headimg{
+#Regisproject #Overview .members .item .headimg{
   display: block;
   width: 40px;height: 40px;
 }
-#Overview .members .item .account{
+#Regisproject #Overview .members .item .account{
   position: absolute;
   top: 40px;left: 0px;
   display: block;
@@ -88,7 +88,7 @@
   text-overflow:ellipsis;
   white-space: nowrap;
 }
-#Overview .members .btn{
+#Regisproject #Overview .members .btn{
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -97,7 +97,7 @@
   border: 2px solid rgb(150,150,150);
   cursor: pointer;
 }
-#Overview .members .add::before{
+#Regisproject #Overview .members .add::before{
   content: '';
   position: absolute;
   display: block;
@@ -105,7 +105,7 @@
   top: 17px;left: 10px;
   background-color: rgb(150,150,150);
 }
-#Overview .members .add::after{
+#Regisproject #Overview .members .add::after{
   content: '';
   position: absolute;
   display: block;
@@ -113,7 +113,7 @@
   top: 10px;left: 17px;
   background-color: rgb(150,150,150);
 }
-#Overview .members .del::before{
+#Regisproject #Overview .members .del::before{
   content: '';
   position: absolute;
   display: block;
@@ -122,14 +122,14 @@
   background-color: rgb(150,150,150);
 }
 
-#Overview .members .membersOperabox{
+#Regisproject #Overview .members .membersOperabox{
   display: none;
   position: relative;
   width: 100%;
   margin: 0px 0px 5px;padding: 20px 0px 0px;
   overflow: hidden;
 }
-#Overview .members .membersOperabox::before{
+#Regisproject #Overview .members .membersOperabox::before{
   content: '';
   position: relative;
   display: block;
@@ -137,7 +137,7 @@
   background-color: rgb(200,200,200);
   margin: 0px 0px 25px;
 }
-#Overview .members .membersOperabox .submit{
+#Regisproject #Overview .members .membersOperabox .submit{
   box-sizing: border-box;
   display: block;
   position: absolute;
@@ -151,20 +151,20 @@
   border-bottom-width: 1px;
   border-right-width: 1px;
 }
-#Overview .members .membersOperabox .aitem{
+#Regisproject #Overview .members .membersOperabox .aitem{
   width: 100%;height: 30px;
   margin: 5px 0px;
   background: repeating-linear-gradient(to right,rgba(160,160,160,1),rgba(160,160,160,1));
 }
-#Overview .members .membersOperabox .aitem .headimg{
+#Regisproject #Overview .members .membersOperabox .aitem .headimg{
   display: inline-block;
   width: 30px;height: 30px;
   margin-bottom: -5px;
 }
-#Overview .members .membersOperabox .aitem .account{
+#Regisproject #Overview .members .membersOperabox .aitem .account{
   display: inline-block;
 }
-#Overview .members .membersOperabox .aitem .select{
+#Regisproject #Overview .members .membersOperabox .aitem .select{
   float: right;
   margin: 5px 5px 0px 0px;
 }

@@ -1,34 +1,34 @@
 
-#CurrentProject{
-  position: relative;
+#Profile #CurrentProject{
   display: none;
-  top: 50px;left: 220px;
-  width: 60%;height: auto;
-  }
-#CurrentProject .title{
+  width: 80%;height: auto;
+  margin-top: 20px;
+}
+
+#Profile #CurrentProject .title{
   display: block;
   font-size: 2em;
   font-weight: 900;
   text-transform: uppercase;
   background: linear-gradient(to right,rgba(80,80,150,1),rgba(0,0,0,0.2));
 }
-#CurrentProject .overview{
+#Profile #CurrentProject .overview{
   display: block;
   word-wrap: break-word;
   font-size: 1.2em;
 }
 
-#CurrentProject .list{
+#Profile #CurrentProject .list{
   list-style: none;
   margin: 0px;padding: 0px;
 }
 
-#CurrentProject .list .stage{
+#Profile #CurrentProject .list .stage{
   position: relative;
   margin: 0px 0px 10px 20px;
   cursor: pointer;
 }
-#CurrentProject .list .stage::before{
+#Profile #CurrentProject .list .stage::before{
   content: '';
   position: absolute;
   top: 5px;left: -20px;
@@ -39,64 +39,64 @@
   border: 2px solid gray;
   background-color: black;
 }
-#CurrentProject .list .completed::before{
+#Profile #CurrentProject .list .completed::before{
   background-color: green;
 }
-#CurrentProject .list .future::before{
+#Profile #CurrentProject .list .future::before{
   background-color: rgb(60,60,60);
 }
-#CurrentProject .list .current::before{
+#Profile #CurrentProject .list .current::before{
   background-color: yellow;
 }
-#CurrentProject .list .current .btn{
+#Profile #CurrentProject .list .current .btn{
   display: none;
   float: right;
   margin: 0px 5px;padding: 0px 5px;
   box-shadow: 1px 1px 0px white;
 }
 
-#CurrentProject .list .stage .timestamp{
+#Profile #CurrentProject .list .stage .timestamp{
   display: inline-block;
   background-color: green;
   margin: 5px 5px 0px 5px;padding: 1px 2px 0px;
   border-radius: 10px;
 }
-#CurrentProject .list .stage .content{
+#Profile #CurrentProject .list .stage .content{
   font-weight: bold;
 }
 
-#CurrentProject .list .stage .comments{
+#Profile #CurrentProject .list .stage .comments{
   display: none;
   margin: 10px 0px 0px 5px;
   overflow: hidden;
 }
-#CurrentProject .list .stage .comments .item{
+#Profile #CurrentProject .list .stage .comments .item{
   border-radius: 10px;
   margin: 10px 0px;
   background-color: rgba(200,200,200,0.6);
 }
-#CurrentProject .list .stage .comments .item .head{
+#Profile #CurrentProject .list .stage .comments .item .head{
   position: relative;
   font-size: 0.8em;
 }
-#CurrentProject .list .stage .comments .item .head .headimg{
+#Profile #CurrentProject .list .stage .comments .item .head .headimg{
   display: block;
   height: 30px;width: 30px;
   border-radius: 15px;
 }
-#CurrentProject .list .stage .comments .item .head .account{
+#Profile #CurrentProject .list .stage .comments .item .head .account{
   display: block;
   position: absolute;
   top: 0px;left: 35px;
   font: bold 1em 'Kaiti';
 }
-#CurrentProject .list .stage .comments .item .head .time{
+#Profile #CurrentProject .list .stage .comments .item .head .time{
   display: block;
   position: absolute;
   bottom: 0px;left: 35px;
   font: bold 1em 'Kaiti';
 }
-#CurrentProject .list .stage .comments .item .ncontent{
+#Profile #CurrentProject .list .stage .comments .item .ncontent{
   display: block;
   text-indent: 2em;
 }

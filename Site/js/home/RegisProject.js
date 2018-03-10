@@ -1,7 +1,7 @@
 
 // overview-members-behaviors
 let mpb_height;
-$('#Overview .members').children('.btn').each((i,elem)=>{
+$('#Regisproject #Overview .members').children('.btn').each((i,elem)=>{
   let hovered=false;
   $(elem).bind({
     'click':()=>{
@@ -33,7 +33,7 @@ $('#Overview .members').children('.btn').each((i,elem)=>{
     }
   });
 })
-$('#Overview .members .membersOperabox .submit').bind({
+$('#Regisproject #Overview .members .membersOperabox .submit').bind({
   'mousedown':(e)=>{
     $(e.target).css('background-color','rgb(220,220,220)');
   },
@@ -41,7 +41,7 @@ $('#Overview .members .membersOperabox .submit').bind({
     $(e.target).css('background-color','white');
   }
 });
-$('#Overview .members .add').click(()=>{
+$('#Regisproject #Overview .members .add').click(()=>{
   let target=$('#Overview .members .membersOperabox');
   if(!mpb_height){
     mpb_height=target.height();
@@ -50,14 +50,14 @@ $('#Overview .members .add').click(()=>{
   target.css('display','block');
   target.animate({height:mpb_height},300);
 });
-$('#Overview .members .membersOperabox .submit').click(()=>{
+$('#Regisproject #Overview .members .membersOperabox .submit').click(()=>{
   let target=$('#Overview .members .membersOperabox');
   target.animate({height:0},300);
   setTimeout(()=>target.css('display','none'),300);
 });
 // navigate-behaviors
 let navigateSelected;
-$('#Navigate').children('.item').each((i,elem)=>{
+$('#Regisproject #Navigate').children('.item').each((i,elem)=>{
   $(elem).bind({
     'click':()=>{
       if(navigateSelected!=elem){
@@ -75,19 +75,19 @@ $('#Navigate').children('.item').each((i,elem)=>{
         // change frame
         let identifier=$(elem).html();
         if(identifier.includes('Essential information')){
-          $('#Overview').css('display','block');
-          $('#EditStage').css('display','none');
-          $('#Check').css('display','none');
+          $('#Regisproject #Overview').css('display','block');
+          $('#Regisproject #EditStage').css('display','none');
+          $('#Regisproject #Check').css('display','none');
         }
         else if(identifier.includes('Edit stages')){
-          $('#Overview').css('display','none');
-          $('#EditStage').css('display','block');
-          $('#Check').css('display','none');
+          $('#Regisproject #Overview').css('display','none');
+          $('#Regisproject #EditStage').css('display','block');
+          $('#Regisproject #Check').css('display','none');
         }
         else if(identifier.includes('Check')){
-          $('#Overview').css('display','none');
-          $('#EditStage').css('display','none');
-          $('#Check').css('display','block');
+          $('#Regisproject #Overview').css('display','none');
+          $('#Regisproject #EditStage').css('display','none');
+          $('#Regisproject #Check').css('display','block');
         }
       }
     },
@@ -107,4 +107,4 @@ $('#Navigate').children('.item').each((i,elem)=>{
     }
   });
 });
-$('#Navigate').children('.item').eq(0).click();
+$('#Regisproject #Navigate').children('.item').eq(0).click();

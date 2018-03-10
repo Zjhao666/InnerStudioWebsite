@@ -1,0 +1,146 @@
+
+body{
+  -moz-user-select: none;
+  font: 400 1em 'ArtegraSansExtended';
+  background: url(../../img/logo/single.svg) 0px -150px,url(../../img/backimg.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#main{
+  position: relative;
+  width: 100%;height: 100%;
+  overflow: hidden;
+}
+
+#Left{
+  display: inline-block;
+  width: 220px;height: 100%;
+  vertical-align: top;
+}
+
+#Left #AudioClickEffect{
+  display: none;
+}
+
+#Left #Overview,#Members{
+  display: none;
+  width: 220px;height: 100%;
+  background-color: rgba(200,200,200,0.5);
+  box-shadow: 1px 0px 10px black;
+}
+
+#Left #Overview{
+  display: block;
+  overflow: hidden;
+  background-color: rgba(0,0,0,0.6);
+}
+
+#Left #Overview .Profile{
+  color: white;
+  padding: 20px 0px 0px;
+  background-color: rgba(0,0,0,0.6);
+}
+#Left #Overview .Profile .headimg{
+  display: block;
+  margin: 0px auto;
+  width: 150px;height: 150px;
+  border-radius: 75px;
+  background-size: cover;
+  box-shadow: 0px 0px 3px black;
+}
+#Left #Overview .Profile .account{
+  display: block;
+  text-align: center;
+  margin: 5px 0px;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+#Left #Overview .Profile .pertag{
+  display: block;
+  text-align: center;
+}
+#Left #Overview .Ref{
+  position: relative;
+  width: 100%;height: 280px;
+  overflow: visible;
+}
+#Left #Overview .Ref .item{
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  width: 240px;height: 30px;
+  top: -30px;Left: -10px;
+  margin: 10px 0px;padding: 2px 5px 0px;
+  box-shadow: 0px 0px 5px black;
+  background-color: rgba(255,255,255,0.8);
+  transform: rotateZ(-12.8deg);
+  text-indent: 10px;text-align: center;
+  font-size: 1.2em;font-weight: bold;
+  color: black;cursor: pointer;
+}
+#Left #Overview .Other{
+  position: relative;
+  top: -20px;
+  width: 100%;height: 0px;
+  background-color: rgba(0,0,0,0.6);
+}
+
+#Left #Members{
+  /* display: block; */
+  overflow: hidden;
+  background-color: rgba(50,50,50,0.6);
+}
+#Left #Members .title{
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  padding: 5px 0px;
+  box-shadow: 0px 0px 10px black;
+  background-color: rgba(100,100,100,0.7);
+}
+#Left #Members .wrapper .item{
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  width: 210px;height: 30px;
+  margin: 10px 0px 10px 5px;
+  border-radius: 15px 2px 2px 15px;
+  box-shadow: 0px 0px 5px black;
+  background-color: rgba(70,70,70,0.5);
+  cursor: pointer;
+  overflow: hidden;
+}
+#Left #Members .wrapper .offline .headimg{
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+#Left #Members .wrapper .offline .account{
+  color: rgb(150,150,150) !important;
+}
+#Left #Members .wrapper .item .headimg{
+  position: absolute;
+  width: 30px;height: 30px;
+  border-radius: 15px;
+  box-shadow: 0px -1px 5px black,-1px 0px 5px black,1px 0px 5px black,0px 1px 5px black;
+}
+#Left #Members .wrapper .item .account{
+  position: absolute;
+  left: 30px;
+  color: white;
+  width: 169px;height: 30px;
+  padding-top: 2px;
+  line-height: 30px;
+  font-weight: bold;
+  text-indent: 5px;
+  text-shadow: 3px 0px 5px black;
+  overflow: hidden;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;
+}
+
+#Right{
+  display: inline-block;
+  height: 100%;width: 0px;
+  vertical-align: top;
+  overflow: scroll;
+}

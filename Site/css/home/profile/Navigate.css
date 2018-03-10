@@ -1,12 +1,10 @@
 
-#Navigate{
-  position: absolute;
+#Profile #Navigate{
   display: block;
-  top: 0px;left: 220px;
-  width: 60%;height: 30px;
+  width: 80%;height: 30px;
   border-bottom: 1px solid white;
 }
-#Navigate .item{
+#Profile #Navigate .item{
   display: inline-block;
   margin: 0px 5px;
   height: 30px;

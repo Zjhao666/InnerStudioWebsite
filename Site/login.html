@@ -5,22 +5,59 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="img/logo/single.png">
+  <link rel='stylesheet' href='css/clear.css' />
+  <link rel='stylesheet' href='css/login/main.css' />
   <script src='js/lib/jquery-3.2.1.min.js'></script>
+  <script src='js/lib/jquery-rotate.min.js'></script>
   <script src='js/lib/jquery.cookie.js'></script>
   <script src='js/lib/jsbn.js'></script>
   <script src='js/lib/rsa.js'></script>
-  <link rel='stylesheet' href='css/login.css' />
 </head>
 <body>
-  <div class="page-container">
-    <h1>Sign in</h1>
-    <div class='form'>
-      <input type="text" class="username" placeholder="Username">
-      <input type="password" class="password" placeholder="Password">
-      <button class='submit'>Sign me in</button>
-      <div class="error"><span>+</span></div>
+  <div id='Login'>
+    <div class='mask'>
+      <canvas id='Clocker'></canvas>
+      <div class='dataDisplay'>
+        <div class='item'>
+          <span class='title'>Current online members</span>
+          <span class='content'>15</span>
+        </div>
+        <div class='item'>
+          <span class='title'>Total members</span>
+          <span class='content'>42</span>
+        </div>
+        <div class='item'>
+          <span class='title'>Current plans</span>
+          <span class='content'>2</span>
+        </div>
+        <div class='item'>
+          <span class='title'>Completed plans</span>
+          <span class='content'>4</span>
+        </div>
+        <div class='item'>
+          <span class='title'>Current projects</span>
+          <span class='content'>1</span>
+        </div>
+        <div class='item'>
+          <span class='title'>Completed projects</span>
+          <span class='content'>10</span>
+        </div>
+        <div class='item'>
+          <span class='title'>Total blogs</span>
+          <span class='content'>2</span>
+        </div>
+      </div>
+      <div class='console'>
+        <div class='content'>
+          <span class='label'>Guest Sessin:</span>
+          <span class='line'>login</span>
+        </div>
+      </div>
     </div>
   </div>
-  <script src="js/login.js"></script>
+  <!-- <script src="js/login/animation.js"></script> -->
+  <script src="js/login/Clocker.js"></script>
+  <script src="js/login/Console.js"></script>
+  <script src="js/login/main.js"></script>
 </body>
 </html>
