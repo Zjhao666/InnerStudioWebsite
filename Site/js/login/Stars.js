@@ -40,4 +40,4 @@ const starsUpdate=()=>{
   starsContainer.css('box-shadow',shadow);
 };
 makeStars();
-setInterval(starsUpdate,200);
+setInterval(starsUpdate,100);
