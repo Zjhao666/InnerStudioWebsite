@@ -1,54 +1,29 @@
 
-/* Left */
-
-$('#Overview .Other').height($(document).height()-$('#Overview .Other').offset().top);
-
 // click effect
 let audioClickEffect=document.getElementById('AudioClickEffect');
-
-// Ref
-$('#Overview .Ref .item').each((i,elem)=>{
-  let mask;
-  $(elem).bind({
-    mouseenter:()=>{
-      if(mask) mask.remove();
-      mask=$(`<a style='
-      display:block;
-      position:absolute;
-      height:30px;width:0px;
-      left:0px;top:0px;
-      background:rgb(0,0,0,0.7);
-      z-index:-1;
-      '></a>`);
-      mask.appendTo(elem);
-      mask.animate({width:240},300);
-    },
-    mouseleave:()=>{
-      mask.animate({left:240},300);
-    },
-    mousedown:()=>{
-      mask.css('background-color','rgb(20,20,20,0.7)');
-    },
-    mouseup:()=>{
-      mask.css('background-color','rgb(0,0,0,0.7)');
-    }
-  });
-});
+const bing=()=>{
+  if(!audioClickEffect.paused) audioClickEffect.pause();
+  audioClickEffect.currentTime=0;
+  audioClickEffect.play();
+};
+// Ref item clicked
+$('#HomeNavigate .Ref .item').each((i,elem)=>$(elem).mousedown(()=>{
+  bing();
+  $(elem).css('opacity',0);
+  $(elem).animate({opacity:1},500);
+}));
 
 let lastItemSelected;
-const refItemBind=(itemNames)=>{
-  for(let name of itemNames){
-    $('#Overview .Ref .'+name).click(()=>{
-      if(!audioClickEffect.paused) audioClickEffect.pause();
-      audioClickEffect.currentTime=0;
-      audioClickEffect.play();
-      if(lastItemSelected) lastItemSelected.css('display','none');
-      lastItemSelected=$('#Right #'+name);
-      lastItemSelected.css('display','block');
+(function refItemBind(){
+  for(let name of ['Profile','Plan','Project','Communicate','Regisproject','Serverconsole']){
+    $('#HomeNavigate .Ref .ref'+name).click(()=>{
+      // if(lastItemSelected) lastItemSelected.css('display','none');
+      // lastItemSelected=$('#Right #'+name);
+      // lastItemSelected.css('display','block');
     });
   }
-};
-refItemBind(['Profile','Plan','Project','Communicate','Regisproject','Serverconsole']);
+})();
+
 $('#Overview .Ref .Document').click(()=>{
   window.open('documents.html');
 });
@@ -80,11 +55,3 @@ $('#Members .item').each((i,elem)=>{
     }
   });
 });
-
-// ----------------------------------------
-
-/* Right */
-
-$('#Right').width($(document).width()-$('#Left').width()-4);
-
-// ----------------------------------------
