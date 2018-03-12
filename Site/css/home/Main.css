@@ -104,9 +104,13 @@ body{
 
 #HomeNavigate .Ref{
   width: 100%;
-  margin-top: 20px;
+  overflow: hidden;
 }
-#HomeNavigate .Ref .item{
+#HomeNavigate .wrapper{
+  width: 230px;height: 0px;
+  overflow-y: scroll;
+}
+#HomeNavigate .Ref .wrapper .item{
   box-sizing: border-box;
   display: block;
   position: relative;
@@ -119,7 +123,7 @@ body{
   color: white;cursor: pointer;
   box-shadow: 5px 0px 10px black;
 }
-#HomeNavigate .Ref .item:hover{
+#HomeNavigate .Ref .wrapper .item:hover{
   color: rgba(80,50,150);
   animation: RefItemShock 0.5s;
 }

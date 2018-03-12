@@ -1,4 +1,8 @@
 
+// init
+$('#HomeNavigate .Ref .wrapper').height($('#HomeNavigate').height()-$('#HomeNavigate .Ref').offset().top);
+
+
 // click effect
 let audioClickEffect=document.getElementById('AudioClickEffect');
 const bing=()=>{
