@@ -19,7 +19,8 @@ body{
 }
 
 #HomeNavigate{
-  display: block;
+  display: inline-block;
+  vertical-align: middle;
   position: relative;
   width: 220px;height: 100%;
   /* background: linear-gradient(to right,rgb(70,50,80,0.7),rgb(50,50,70,0.7) 93%,rgb(10,10,10) 100%); */
@@ -147,62 +148,27 @@ body{
   }
 }
 
-#HomeNavigate #MemberList{
-  display: block;
-  position: absolute;
-  width: 220px;max-height: 60%;
-  left: 240px;bottom: 0px;
-  overflow: hidden;
-  border-radius: 5px 5px 0px 0px;
-  background-color: rgba(50,50,50,0.5);
-  box-shadow: 5px 0px 10px black;
-}
-#HomeNavigate #MemberList::after{
-  display: block;
-  content: 'Member list';
-  text-align: center;
-  font-weight: bold;
-  font-family: 'Fangsong';
-  color: gray;
-  padding: 5px 0px;
-  background-color: rgba(70,50,160,0.5);
-  box-shadow: 0px 0px 10px black;
-}
-#HomeNavigate #MemberList .item{
+#Frames{
   box-sizing: border-box;
-  display: block;
+  display: inline-block;
+  vertical-align: middle;
   position: relative;
-  width: 210px;height: 30px;
-  margin: 10px 0px 10px 5px;
-  border-right: 10px solid rgba(100,80,220,0.5);
-  border-radius: 15px 2px 2px 15px;
-  background-color: rgba(70,70,100,0.5);
-  cursor: pointer;
-  overflow: hidden;
-  box-shadow: 5px 0px 10px black;
+  width: 0px 10px;height: 100%;
+  left: 20px;padding: 10px;
+  border: 2px solid black;
 }
-#HomeNavigate #MemberList .offline{
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
+#Frames .taskBar{
+
 }
-#HomeNavigate #MemberList .offline .account{
-  color: rgb(150,150,150) !important;
+#Frames .taskBar .statusBox{
+
 }
-#HomeNavigate #MemberList .item .headimg{
-  position: absolute;
-  width: 30px;height: 30px;
-  border-radius: 15px;
-  box-shadow: 5px 0px 10px black;
+#Frames .taskBar .winChangeBox{
+
 }
-#HomeNavigate #MemberList .item .account{
-  position: absolute;
-  left: 40px;
-  color: white;
-  width: 169px;height: 30px;
-  padding-top: 2px;
-  line-height: 30px;
-  font-weight: bold;
-  text-indent: 5px;
-  text-shadow: 5px 0px 2px black;
-  overflow: hidden;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;
+#Frames .mainWin{
+
+}
+#Frames .footWin{
+
 }

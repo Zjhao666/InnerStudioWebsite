@@ -1,4 +1,5 @@
 
+
 let gheight=$('#Login').height();
 
 let audioClickEffect=document.getElementById('AudioClickEffect');
@@ -8,30 +9,25 @@ const bing=()=>{
   audioClickEffect.play();
 };
 
-$('#Login .upper').click((e)=>{
-  bing();
+$('#Login .content').click((e)=>{
   e.stopPropagation();
-  $('#Login .mask').animate({bottom:parseInt(gheight/2)},300);
-});
-$('#Login .lower').click((e)=>{
   bing();
-  e.stopPropagation();
-  $('#Login .mask').animate({bottom:0},300);
+  // to public website
 });
-$('#Login .publicWay').click((e)=>{
+$('#Login .Clocker').click((e)=>{
+  e.stopPropagation();
   bing();
-  e.stopPropagation();
+  // console
+  $('#Login .Console').css('display','block');
+  $('#Login .Console').animate({opacity:1},300);
 });
+$('#Login .Console').click((e)=>e.stopPropagation());
 
-let curWordsPointer=0,wordsContainer=$('#Login .mask .Overview .words'),
-    overWordsList=['Nothing is impossible!What do you think?','Be honest rather clever.','Being on sea, sail; being on land, settle.','Be just to all, but trust not all.'];
-wordsContainer.html(overWordsList[curWordsPointer]);
-const wordsUpdate=()=>{
-  wordsContainer.animate({opacity:0},200);
-  setTimeout(()=>{
-    curWordsPointer=(curWordsPointer+1)%overWordsList.length;
-    wordsContainer.html(overWordsList[curWordsPointer]);
-    wordsContainer.animate({opacity:1},200);
-  },200);
+// Clocker
+
+let Clocker=$('#Login .content .Clocker');
+const updateClocker=()=>{
+  let time=new Date();
+  Clocker.html(''+(24-time.getHours()-1)+':'+(60-time.getMinutes()-1)+':'+(60-time.getSeconds()));
 };
-setInterval(wordsUpdate,6000);
+setInterval(updateClocker,500);

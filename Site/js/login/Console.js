@@ -1,5 +1,5 @@
 
-let consoleContent=$('#Login .Console .content');
+let consoleContent=$('#Login .Console .c_content');
 
 let programCounter=-1;
 let account,password;

@@ -1,5 +1,7 @@
 
 #Profile{
   display: none;
-  margin-left: 50px;margin-top: 30px;
+  position: absolute;
+  width: 80%;
+  top: 100px;left: 200px;
 }
