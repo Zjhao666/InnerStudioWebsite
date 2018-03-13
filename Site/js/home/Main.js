@@ -1,7 +1,7 @@
 
 // init
 $('#HomeNavigate .Ref .wrapper').height($('#HomeNavigate').height()-$('#HomeNavigate .Ref').offset().top);
-$('#Frames').width($('#main').width()-220-70);
+$('#Frames').width($('#main').width()-220-50);
 
 // click effect
 let audioClickEffect=document.getElementById('AudioClickEffect');

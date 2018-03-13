@@ -1,31 +1,26 @@
 
 const projectBindAction=(target)=>{
+  $(target).attr('projectBinded','true');
   $(target).find('.stage').each((i,elem)=>{
-    let visiable=false,height,stage=$(elem),
-        comments=stage.find('.comments'),
-        beCurrent=stage.attr('class').includes('current');
-    stage.click(()=>{
-      if(visiable){
-        visiable=false;
-        if(beCurrent){
-          stage.find('.btn').css('display','none');
+    let stage=$(elem);
+    if(stage.find('.comments').length>0){
+      let comments=$(elem).find('.comments'),
+          height=comments.height(),visible=true;
+      stage.css('cursor','pointer');
+      stage.click(()=>{
+        if(visible){
+          visible=false;
+          comments.animate({height:0},300);
+          setTimeout(()=>comments.css('display','none'),300);
         }
-        comments.animate({height:0},300);
-        setTimeout(()=>comments.css('display','none'),300);
-      }
-      else{
-        visiable=true;
-        if(!height){
-          height=comments.height();
-          comments.height(0);
+        else{
+          visible=true;
+          comments.css('display','block');
+          comments.animate({height:height},300);
         }
-        if(beCurrent){
-          stage.find('.btn').css('display','block');
-        }
-        comments.css('display','block');
-        comments.animate({height:height},300);
-      }
-    });
+      });
+      stage.click();
+    }
   });
 };
 
@@ -49,19 +44,16 @@ $('#Profile .Navigate').children('.item').each((i,elem)=>{
         // display frame
         let identifier=$(elem).html();
         if(identifier.includes('Current')){
-          $('#Profile .CurrentProject').css('display','inline-block');
+          $('#Profile .CurrentProject').css('display','block');
           $('#Profile .CompletedProjects').css('display','none');
-          $('#Profile .Evaluate').css('display','none');
+          if(!$('#Profile .CurrentProject').attr('projectBinded'))
+            projectBindAction($('#Frames #Profile .CurrentProject'));
         }
         else if(identifier.includes('Completed')){
           $('#Profile .CurrentProject').css('display','none');
-          $('#Profile .CompletedProjects').css('display','inline-block');
-          $('#Profile .Evaluate').css('display','none');
-        }
-        else if(identifier.includes('Evaluate')){
-          $('#Profile .CurrentProject').css('display','none');
-          $('#Profile .CompletedProjects').css('display','none');
-          $('#Profile .Evaluate').css('display','inline-block');
+          $('#Profile .CompletedProjects').css('display','block');
+          if(!$('#Profile .CompletedProjects').attr('projectBinded'))
+            projectBindAction($('#Frames #Profile .CompletedProjects'));
         }
       }
     },
@@ -82,8 +74,4 @@ $('#Profile .Navigate').children('.item').each((i,elem)=>{
   });
 });
 
-projectBindAction('#Profile .CurrentProject');
-projectBindAction('#Profile .CompletedProjects');
-
-$('#Profile .Navigate').children('.item').eq(0).click();
-$('#Profile .CurrentProject .list .current').click();
+window.onload=()=>$('#Profile .Navigate').children('.item').eq(1).click();

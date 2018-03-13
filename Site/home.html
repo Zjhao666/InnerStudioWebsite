@@ -10,11 +10,12 @@
   <script src='js/lib/rsa.js'></script>
   <link rel='stylesheet' href='css/clear.css' />
   <link rel='stylesheet' href='css/home/Main.css' />
-  <link rel='stylesheet' href='css/home/MemberList.css' />
+  <link rel='stylesheet' href='css/home/HomeNavigate.css' />
   <link rel='stylesheet' href='css/home/Pitem.css' />
-  <!-- profile -->
-  <link rel='stylesheet' href='css/home/profile/Main.css'>
-  <link rel='stylesheet' href='css/home/profile/CompletedProjects.css'>
+  <link rel='stylesheet' href='css/home/Members.css' />
+  <link rel='stylesheet' href='css/home/Profile.css' />
+  <link rel='stylesheet' href='css/home/RegisProject.css' />
+  <link rel='stylesheet' href='css/home/Serverconsole.css'>
 
   <link rel='stylesheet' href='css/home/Plan.css' />
   <link rel='stylesheet' href='css/home/Project.css' />
@@ -25,8 +26,6 @@
   <link rel='stylesheet' href='css/home/regisProject/Overview.css'>
   <link rel='stylesheet' href='css/home/regisProject/Editstage.css'>
   <link rel='stylesheet' href='css/home/regisProject/Check.css'>
-  <!-- serverConsole -->
-  <link rel='stylesheet' href='css/home/Serverconsole.css'>
 </head>
 <body>
   <div id='main'>
@@ -72,70 +71,64 @@
           <a class='item refDocument'>Documents</a>
         </div>
       </div>
+      <span class='statistics'>[statistics]</span>
     </div>
     <div id='Frames'>
       <div class='contentWrapper'>
         <div id='Profile'>
           <div class='Navigate'>
+            <a class='item'>Details</a>
             <a class='item'>Current</a>
             <a class='item'>Completed</a>
-            <a class='item'>Evaluate</a>
+            <a class='item'>Statistics</a>
           </div>
           <div class='Pitem CurrentProject'>
             <span class='title'>project in python</span>
             <span class='description'>Hi,there!This plan is about how to earn money fast by take part in software-race.How do you think of my idea?</span>
-            <div class='statics'>
-              <div class='item'>
+            <div class='statistics'>
+              <div class='labelData'>
                 <span class='label'>注册时间</span>
                 <span class='value'>2018/01/02</span>
               </div>
-              <div class='item'>
+              <div class='labelData'>
                 <span class='label'>截止时间</span>
                 <span class='value'>2018/03/21</span>
               </div>
-              <div class='item'>
+              <div class='labelData'>
                 <span class='label'>项目时长</span>
                 <span class='value'>23</span>
               </div>
-              <div class='item'>
+              <div class='labelData'>
                 <span class='label'>计划阶段数</span>
                 <span class='value'>13</span>
               </div>
-              <div class='item'>
+              <div class='percentData'>
                 <span class='label'>项目完成度</span>
-                <span class='value'>41%</span>
+                <span class='value' style='width: 37%;'>41%</span>
               </div>
-              <div class='item'>
+              <div class='percentData'>
                 <span class='label'>项目活跃度</span>
-                <span class='value'>82%</span>
+                <span class='value' style='width: 71%;'>82点</span>
               </div>
             </div>
             <ul class='list'>
-              <li class='stage future'>
+              <li class='stage incompleted'>
                 <span class='timestamp'>2017/11/24</span>
                 <span class='content'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
-                <div class='comments'>
-                </div>
               </li>
               <li class='stage current'>
                 <span class='timestamp'>2017/11/20</span>
                 <span class='content'>learn HTML5</span>
                 <div class='comments'>
                   <div class='item'>
-                    <div class='head'>
-                      <img class='headimg' src='img/backgrounds/1.jpg'>
-                      <span class='account'>Luncert</span>
-                      <span class='time'>2017/11/8</span>
-                    </div>
-                    <span class='ncontent'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
+                    <span class='account'>Luncert</span>
+                    <span class='time'>2017/11/8 12:11:20</span>
+                    <span class='words'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
                   </div>
                   <div class='item'>
-                    <div class='head'>
-                      <img class='headimg' src='img/backgrounds/1.jpg'>
-                      <span class='account'>Luncert</span>
-                      <span class='time'>2017/11/8</span>
-                    </div>
-                    <span class='ncontent'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
+                    <span class='account'>Luncert</span>
+                    <span class='time'>2017/11/8 10:12:10</span>
+                    <span class='words'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
                   </div>
                 </div>
               </li>
@@ -150,9 +143,35 @@
             </ul>
           </div>
           <div class='CompletedProjects'>
-            <div class='project'>
+            <div class='Pitem'>
               <span class='title'>project in python</span>
-              <span class='overview'>Hi,there!This plan is about how to earn money fast by take part in software-race.How do you think of my idea?</span>
+              <span class='description'>Hi,there!This plan is about how to earn money fast by take part in software-race.How do you think of my idea?</span>
+              <div class='statistics'>
+                <div class='labelData'>
+                  <span class='label'>注册时间</span>
+                  <span class='value'>2018/01/02</span>
+                </div>
+                <div class='labelData'>
+                  <span class='label'>截止时间</span>
+                  <span class='value'>2018/03/21</span>
+                </div>
+                <div class='labelData'>
+                  <span class='label'>项目时长</span>
+                  <span class='value'>23</span>
+                </div>
+                <div class='labelData'>
+                  <span class='label'>计划阶段数</span>
+                  <span class='value'>13</span>
+                </div>
+                <div class='percentData'>
+                  <span class='label'>项目完成度</span>
+                  <span class='value' style='width: 37%;'>41%</span>
+                </div>
+                <div class='percentData'>
+                  <span class='label'>项目活跃度</span>
+                  <span class='value' style='width: 71%;'>82点</span>
+                </div>
+              </div>
               <ul class='list'>
                 <li class='stage stateIcon future'>
                   <span class='timestamp'>2017/11/24</span>
@@ -161,6 +180,18 @@
                 <li class='stage stateIcon current'>
                   <span class='timestamp'>2017/11/20</span>
                   <span class='content'>learn HTML5</span>
+                  <div class='comments'>
+                    <div class='item'>
+                      <span class='account'>Luncert</span>
+                      <span class='time'>2017/11/8 12:11:20</span>
+                      <span class='words'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
+                    </div>
+                    <div class='item'>
+                      <span class='account'>Luncert</span>
+                      <span class='time'>2017/11/8 10:12:10</span>
+                      <span class='words'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
+                    </div>
+                  </div>
                 </li>
                 <li class='stage stateIcon completed'>
                   <span class='timestamp'>2017/11/24</span>
@@ -172,9 +203,35 @@
                 </li>
               </ul>
             </div>
-            <div class='project'>
+            <div class='Pitem'>
               <span class='title'>project in python</span>
-              <span class='overview'>Hi,there!This plan is about how to earn money fast by take part in software-race.How do you think of my idea?</span>
+              <span class='description'>Hi,there!This plan is about how to earn money fast by take part in software-race.How do you think of my idea?</span>
+              <div class='statistics'>
+                <div class='labelData'>
+                  <span class='label'>注册时间</span>
+                  <span class='value'>2018/01/02</span>
+                </div>
+                <div class='labelData'>
+                  <span class='label'>截止时间</span>
+                  <span class='value'>2018/03/21</span>
+                </div>
+                <div class='labelData'>
+                  <span class='label'>项目时长</span>
+                  <span class='value'>23</span>
+                </div>
+                <div class='labelData'>
+                  <span class='label'>计划阶段数</span>
+                  <span class='value'>13</span>
+                </div>
+                <div class='percentData'>
+                  <span class='label'>项目完成度</span>
+                  <span class='value' style='width: 37%;'>41%</span>
+                </div>
+                <div class='percentData'>
+                  <span class='label'>项目活跃度</span>
+                  <span class='value' style='width: 71%;'>82点</span>
+                </div>
+              </div>
               <ul class='list'>
                 <li class='stage stateIcon future'>
                   <span class='timestamp'>2017/11/24</span>
@@ -195,8 +252,157 @@
               </ul>
             </div>
           </div>
-          <div class='Evaluate'>
-            Not supported.
+        </div>
+        <div id='Members'>
+          <div class='MemberList'>
+            <div class='item'>
+              <img class='headimg' src='img/backgrounds/1.jpg'>
+              <a class='account'>Luncert</a>
+            </div>
+            <div class='item offline'>
+              <img class='headimg' src='img/backgrounds/2.jpg'>
+              <a class='account'>Silly</a>
+            </div>
+            <div class='item offline'>
+              <img class='headimg' src='img/backgrounds/3.jpg'>
+              <a class='account'>爱奇艺</a>
+            </div>
+          </div>
+          <div class='ChatBox'></div>
+          <div class='MemberProfile'>
+            <img class='headimg' src='img/backgrounds/2.jpg'>
+            <a class='account'>Silly</a>
+            <a class='pertag'>To be better!</a>
+            <div class='details'>[details]</div>
+            <div class='statistics'>[statistics]</div>
+          </div>
+        </div>
+        <div id='Regisproject'>
+          <div class='Essential'>
+            <input class='title' type='text' placeholder='project name'/>
+            <div class='projectDoc'>
+              upload project document
+              <input class='core' type='file' />
+            </div>
+            <textarea class='overview' type='text' placeholder='project description'></textarea>
+            <div class='members'>
+              <div class='item'>
+                <img class='headimg' src='img/backgrounds/1.jpg'>
+                <span class='account'>Luncert</span>
+              </div>
+              <div class='item'>
+                <img class='headimg' src='img/backgrounds/2.jpg'>
+                <span class='account'>Silly</span>
+              </div>
+              <div class='item'>
+                <img class='headimg' src='img/backgrounds/3.jpg'>
+                <span class='account'>Tom</span>
+              </div>
+              <div class='btn add'></div>
+              <div class='btn del'></div>
+              <div class='membersOperabox'>
+                <a class='submit'>Submit</a>
+                <div class='aitem'>
+                  <img class='headimg' src='img/backgrounds/1.jpg'>
+                  <span class='account'>Luncert</span>
+                  <input class='select' type='checkbox' />
+                </div>
+                <div class='aitem'>
+                  <img class='headimg' src='img/backgrounds/2.jpg'>
+                  <span class='account'>Silly</span>
+                  <input class='select' type='checkbox' />
+                </div>
+                <div class='aitem'>
+                  <img class='headimg' src='img/backgrounds/3.jpg'>
+                  <span class='account'>Tom</span>
+                  <input class='select' type='checkbox' />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class='Editstage'>
+            <div class='addStage'>
+              <div class='timestamp'>
+                <input type='date' />
+              </div>
+              <div class='target'>
+                <textarea></textarea>
+              </div>
+              <a class='add'>Add</a>
+            </div>
+            <div class='stages'>
+              <div class='stage stateIcon'>
+                <span class='timestamp'>2017/11/24</span>
+                <span class='content'>learn HTTP protocal</span>
+              </div>
+              <div class='stage stateIcon'>
+                <span class='timestamp'>2017/11/20</span>
+                <span class='content'>learn HTML5</span>
+              </div>
+              <div class='stage stateIcon'>
+                <span class='timestamp'>2017/11/24</span>
+                <span class='content'>learn css</span>
+              </div>
+              <div class='stage stateIcon lastStage'>
+                <span class='timestamp'>2017/11/18</span>
+                <span class='content'>learn js</span>
+              </div>
+              <a class='remove'>Remove the last</a>
+            </div>
+          </div>
+          <div class='Check'>
+            <div class='formitem title'>
+              <span class='label'>Project Name</span>
+              <span class='content'>Jpython Ex</span>
+            </div>
+            <div class='formitem projectDoc'>
+              <span class='label'>Project Document</span>
+              <span class='content'>Jpython Ex</span>
+            </div>
+            <div class='formitem overview'>
+              <span class='label'>Project Description</span>
+              <span class='content'>Hi,there!em,this project is point at ...</span>
+            </div>
+            <div class='formitem members'>
+              <span class='label'>Members</span>
+              <div class='content'>
+                <div class='item'>
+                  <img class='headimg' src='img/backgrounds/1.jpg'>
+                  <span class='account'>Luncert</span>
+                </div>
+                <div class='item'>
+                  <img class='headimg' src='img/backgrounds/2.jpg'>
+                  <span class='account'>Silly</span>
+                </div>
+                <div class='item'>
+                  <img class='headimg' src='img/backgrounds/3.jpg'>
+                  <span class='account'>Tom</span>
+                </div>
+              </div>
+            </div>
+            <div class='formitem stages'>
+              <span class='label'>Stages</span>
+              <div class='content'>
+                <div class='stage stateIcon'>
+                  <span class='timestamp'>2017/11/24</span>
+                  <span class='target'>learn HTTP protocal</span>
+                </div>
+                <div class='stage stateIcon'>
+                  <span class='timestamp'>2017/11/20</span>
+                  <span class='target'>learn HTML5</span>
+                </div>
+                <div class='stage stateIcon'>
+                  <span class='timestamp'>2017/11/24</span>
+                  <span class='target'>learn css</span>
+                </div>
+                <div class='stage stateIcon lastStage'>
+                  <span class='timestamp'>2017/11/18</span>
+                  <span class='target'>learn js</span>
+                </div>
+              </div>
+            </div>
+            <a class='line'></a>
+            <a class='submit'>Submit</a>
           </div>
         </div>
         <div class='mainWin' id='Plan'>
@@ -461,154 +667,7 @@
             </div>
           </div>
         </div>
-        <div class='mainWin' id='Regisproject'>
-          <div id='Navigate'>
-            <a class='item'>Essential information</a>
-            <a class='item'>Edit stages</a>
-            <a class='item'>Check</a>
-          </div>
-          <div id='Overview'>
-            <input class='title' type='text' placeholder='project name'/>
-            <div class='projectDoc'>
-              upload project document
-              <input class='core' type='file' />
-            </div>
-            <textarea class='overview' type='text' placeholder='project description'></textarea>
-            <div class='members'>
-              <div class='item'>
-                <img class='headimg' src='img/backgrounds/1.jpg'>
-                <span class='account'>Luncert</span>
-              </div>
-              <div class='item'>
-                <img class='headimg' src='img/backgrounds/2.jpg'>
-                <span class='account'>Silly</span>
-              </div>
-              <div class='item'>
-                <img class='headimg' src='img/backgrounds/3.jpg'>
-                <span class='account'>Tom</span>
-              </div>
-              <div class='btn add'></div>
-              <div class='btn del'></div>
-              <div class='membersOperabox'>
-                <a class='submit'>Submit</a>
-                <div class='aitem'>
-                  <img class='headimg' src='img/backgrounds/1.jpg'>
-                  <span class='account'>Luncert</span>
-                  <input class='select' type='checkbox' />
-                </div>
-                <div class='aitem'>
-                  <img class='headimg' src='img/backgrounds/2.jpg'>
-                  <span class='account'>Silly</span>
-                  <input class='select' type='checkbox' />
-                </div>
-                <div class='aitem'>
-                  <img class='headimg' src='img/backgrounds/3.jpg'>
-                  <span class='account'>Tom</span>
-                  <input class='select' type='checkbox' />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id='EditStage'>
-            <div class='addStage'>
-              <div class='timestamp'>
-                <input type='date' />
-              </div>
-              <div class='target'>
-                <textarea></textarea>
-              </div>
-              <a class='add'>Add</a>
-            </div>
-            <div class='stages'>
-              <div class='stage stateIcon'>
-                <span class='timestamp'>2017/11/24</span>
-                <span class='content'>learn HTTP protocal</span>
-              </div>
-              <div class='stage stateIcon'>
-                <span class='timestamp'>2017/11/20</span>
-                <span class='content'>learn HTML5</span>
-              </div>
-              <div class='stage stateIcon'>
-                <span class='timestamp'>2017/11/24</span>
-                <span class='content'>learn css</span>
-              </div>
-              <div class='stage stateIcon lastStage'>
-                <span class='timestamp'>2017/11/18</span>
-                <span class='content'>learn js</span>
-              </div>
-              <a class='remove'>Remove the last</a>
-            </div>
-          </div>
-          <div id='Check'>
-            <div class='formitem title'>
-              <span class='label'>Project Name</span>
-              <span class='content'>Jpython Ex</span>
-            </div>
-            <div class='formitem projectDoc'>
-              <span class='label'>Project Document</span>
-              <span class='content'>Jpython Ex</span>
-            </div>
-            <div class='formitem overview'>
-              <span class='label'>Project Description</span>
-              <span class='content'>Hi,there!em,this project is point at ...</span>
-            </div>
-            <div class='formitem members'>
-              <span class='label'>Members</span>
-              <div class='content'>
-                <div class='item'>
-                  <img class='headimg' src='img/backgrounds/1.jpg'>
-                  <span class='account'>Luncert</span>
-                </div>
-                <div class='item'>
-                  <img class='headimg' src='img/backgrounds/2.jpg'>
-                  <span class='account'>Silly</span>
-                </div>
-                <div class='item'>
-                  <img class='headimg' src='img/backgrounds/3.jpg'>
-                  <span class='account'>Tom</span>
-                </div>
-              </div>
-            </div>
-            <div class='formitem stages'>
-              <span class='label'>Stages</span>
-              <div class='content'>
-                <div class='stage stateIcon'>
-                  <span class='timestamp'>2017/11/24</span>
-                  <span class='target'>learn HTTP protocal</span>
-                </div>
-                <div class='stage stateIcon'>
-                  <span class='timestamp'>2017/11/20</span>
-                  <span class='target'>learn HTML5</span>
-                </div>
-                <div class='stage stateIcon'>
-                  <span class='timestamp'>2017/11/24</span>
-                  <span class='target'>learn css</span>
-                </div>
-                <div class='stage stateIcon lastStage'>
-                  <span class='timestamp'>2017/11/18</span>
-                  <span class='target'>learn js</span>
-                </div>
-              </div>
-            </div>
-            <a class='line'></a>
-            <a class='submit'>Submit</a>
-          </div>
-        </div>
-        <div class='mainWin' id='Serverconsole'></div>
-        <div class='footWin' id='MemberList'>
-          <div class='item'>
-            <img class='headimg' src='img/backgrounds/1.jpg'>
-            <a class='account'>Luncert</a>
-          </div>
-          <div class='item offline'>
-            <img class='headimg' src='img/backgrounds/2.jpg'>
-            <a class='account'>Silly</a>
-          </div>
-          <div class='item offline'>
-            <img class='headimg' src='img/backgrounds/3.jpg'>
-            <a class='account'>爱奇艺</a>
-          </div>
-        </div>
+        <div id='Serverconsole'></div>
       </div>
       <div class='taskBar'>
         <div class='status'>

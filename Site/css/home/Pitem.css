@@ -1,7 +1,6 @@
 
 .Pitem{
-  /* display: none; */
-  width: 80%;height: auto;
+  width: 100%;height: auto;
   margin: 20px 0px;
   border: 1px solid white;
   box-sizing: border-box;
@@ -14,6 +13,7 @@
   font-size: 2em;
   font-weight: 900;
   text-transform: Capitalize;
+  text-shadow: 5px 0px 1px black;
   border-radius: 5px;
   background: linear-gradient(to right,rgba(80,80,150,1),rgba(0,0,0,0.2));
 }
@@ -22,13 +22,74 @@
   margin: 5px 0px;
   word-wrap: break-word;
   font-size: 1.2em;
+  font-weight: bold;
 }
-.Pitem .statics{
+
+.Pitem .statistics{
   width: 90%;
+  position: relative;
   margin: 0px auto;
-  border: 1px solid white;
-  border-radius: 10px;
+  text-shadow: 5px 0px 2px black;
+  font-family: 'Fangsong';
 }
+.Pitem .statistics::before{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 3%;
+  top: 0px;left: -5%;
+  border: 2px solid white;
+  border-left: 0px;
+  border-radius: 0px 10px 10px 0px;
+}
+.Pitem .statistics .labelData{
+  display: inline-block;
+  vertical-align: bottom;
+  height: 20px;
+}
+.Pitem .statistics .labelData .label,
+.Pitem .statistics .labelData .value{
+  display: block;
+  float: left;
+  height: 20px;
+  line-height: 20px;
+  padding: 0px 5px;
+  background-color: rgb(220,120,120);
+  border-radius: 6px 0px 0px 6px;
+}
+.Pitem .statistics .labelData .value{
+  background-color: rgb(80,180,200);
+  border-radius:  0px 6px 6px 0px;
+}
+.Pitem .statistics .percentData{
+  display: block;
+  position: relative;
+  height: 20px;width: 85%;
+  margin: 10px 0px;
+  border-radius: 6px;
+  border: 1px solid rgb(120,220,120);
+  overflow: hidden;
+}
+.Pitem .statistics .percentData .label{
+  box-sizing: border-box;
+  display: block;
+  float: left;
+  height: 20px;width: 15%;
+  overflow: hidden;
+  line-height: 20px;
+  padding: 0px 5px;
+  background-color: rgb(120,220,120);
+}
+.Pitem .statistics .percentData .value{
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  height: 100%;width: 0px; /* 87%*x% */
+  padding: 0px 5px;
+  background-color: rgb(120,180,230);
+  text-align: right;
+}
+
 .Pitem .list{
   list-style: none;
   margin: 0px;padding: 0px;
@@ -36,78 +97,83 @@
 
 .Pitem .list .stage{
   position: relative;
-  margin: 0px 0px 10px 20px;
-  cursor: pointer;
+  margin: 0px 20px 10px 20px;
 }
 .Pitem .list .stage::before{
   content: '';
   position: absolute;
   top: 5px;left: -20px;
-  display: inline-block;
   box-sizing: border-box;
   width: 20px;height: 20px;
   border-radius: 10px;
   border: 2px solid gray;
   background-color: black;
 }
-.Pitem .list .completed::before{
-  background-color: green;
+.Pitem .list .stage::after{
+  content: '';
+  position: absolute;
+  top: 15px;left: 0px;
+  width: 7px;height: 1px;
+  background-color: white;
 }
-.Pitem .list .future::before{
+.Pitem .list .completed::before{
+  background-color: rgb(80,255,120);
+}
+.Pitem .list .incompleted::before{
   background-color: rgb(60,60,60);
 }
 .Pitem .list .current::before{
   background-color: yellow;
 }
-.Pitem .list .current .btn{
-  display: none;
-  float: right;
-  margin: 0px 5px;padding: 0px 5px;
-  box-shadow: 1px 1px 0px white;
-}
 
 .Pitem .list .stage .timestamp{
   display: inline-block;
-  background-color: green;
+  box-sizing: border-box;
+  height: 20px;line-height: 20px;
   margin: 5px 5px 0px 5px;padding: 1px 2px 0px;
-  border-radius: 10px;
+  border-radius: 5px;
+  border: 2px solid white;
+  font: bold 0.9em 'Fangsong';
 }
 .Pitem .list .stage .content{
   font-weight: bold;
 }
-
 .Pitem .list .stage .comments{
-  display: none;
-  margin: 10px 0px 0px 5px;
+  margin: 10px;
   overflow: hidden;
 }
 .Pitem .list .stage .comments .item{
-  border-radius: 10px;
-  margin: 10px 0px;
-  background-color: rgba(200,200,200,0.6);
-}
-.Pitem .list .stage .comments .item .head{
+  box-sizing: border-box;
   position: relative;
-  font-size: 0.8em;
+  width: 100%;
+  padding: 5px;margin-bottom: 10px;
+  border-radius: 10px;
+  border: 2px solid white;
 }
-.Pitem .list .stage .comments .item .head .headimg{
-  display: block;
-  height: 30px;width: 30px;
-  border-radius: 15px;
+.Pitem .list .stage .comments .item .account{
+  vertical-align: middle;
+  font: bold 1em 'Fangsong';
+  animation: AccountShining 4s linear infinite;
 }
-.Pitem .list .stage .comments .item .head .account{
-  display: block;
-  position: absolute;
-  top: 0px;left: 35px;
-  font: bold 1em 'Kaiti';
+.Pitem .list .stage .comments .item .time{
+  vertical-align: middle;
+  font-family: 'Fangsong';
 }
-.Pitem .list .stage .comments .item .head .time{
+.Pitem .list .stage .comments .item .words{
   display: block;
-  position: absolute;
-  bottom: 0px;left: 35px;
-  font: bold 1em 'Kaiti';
+  text-indent: 1em;
+  word-break: break-all;
+  vertical-align: bottom;
+  font-weight: bold;
 }
-.Pitem .list .stage .comments .item .ncontent{
-  display: block;
-  text-indent: 2em;
+@keyframes AccountShining {
+  0%{
+    text-shadow: 0px 0px 0px white;
+  }
+  50%{
+    text-shadow: 0px 0px 5px white;
+  }
+  100%{
+    text-shadow: 0px 0px 0px white;
+  }
 }

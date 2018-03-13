@@ -22,7 +22,7 @@ const makeStars=()=>{
     let star=randInfo();
     starsArray.push(star);
     shadow+=star.x+'px '+star.y+'px '+star.m+'px '+star.c;
-    if(i<100) shadow+=',';
+    if(i<200) shadow+=',';
     else break;
   }
   starsContainer.css('box-shadow',shadow);

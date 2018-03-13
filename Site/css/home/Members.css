@@ -1,0 +1,113 @@
+
+#Members{
+  display: none;
+  box-sizing: border-box;
+  width: 90%;height: 92%;
+  margin: 5% auto 0px;
+}
+#Members .MemberList,
+#Members .MemberProfile,
+#Members .ChatBox{
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  height: 80%;
+  margin: 0px 10px;
+  border-radius: 5px;
+  box-shadow: 5px 0px 10px black;
+  overflow: hidden;
+}
+/* 20% */
+#Members .MemberList{
+  background-color: rgba(50,50,50,0.5);
+  width: 20%;
+}
+#Members .MemberList::before{
+  display: block;
+  content: 'Member list';
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Fangsong';
+  color: white;
+  padding: 5px 0px;
+  background-color: rgba(70,50,160,0.5);
+  box-shadow: 0px 0px 10px black;
+}
+#Members .MemberList .item{
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  width: 95%;height: 30px;
+  margin: 10px 2.5%;
+  border-right: 10px solid rgba(100,80,220,0.5);
+  border-radius: 15px 2px 2px 15px;
+  background-color: rgba(70,70,100,0.5);
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 5px 0px 10px black;
+}
+#Members .MemberList .offline{
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+#Members .MemberList .offline .account{
+  color: rgb(150,150,150) !important;
+}
+#Members .MemberList .item .headimg{
+  position: absolute;
+  width: 30px;height: 30px;
+  border-radius: 15px;
+  box-shadow: 5px 0px 10px black;
+}
+#Members .MemberList .item .account{
+  position: absolute;
+  left: 40px;
+  color: white;
+  width: 169px;height: 30px;
+  padding-top: 2px;
+  line-height: 30px;
+  font-weight: bold;
+  text-indent: 5px;
+  text-shadow: 5px 0px 2px black;
+  overflow: hidden;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;
+}
+/* 45% */
+#Members .ChatBox{
+  width: 45%;
+  background-color: rgba(100,70,180,0.5);
+}
+#Members .ChatBox::before{
+  position: absolute;
+  content: '';
+  box-sizing: border-box;
+  width: 100%;height: 100%;
+  border-radius: 5px;
+  border: 10px solid rgba(50,50,50,0.5);
+}
+/* 25% */
+#Members .MemberProfile{
+  width: 25%;
+  background-color: rgba(100,70,180,0.5);
+}
+#Members .MemberProfile .headimg{
+  display: block;
+  margin: 20px auto 0px;
+  width: 200px;height: 200px;
+  border-radius: 100px;
+  border: 3px solid rgba(100,70,180,0.8);
+  box-shadow: 0px 0px 10px rgba(100,70,180,0.8);
+}
+#Members .MemberProfile .account{
+  display: block;
+  text-align: center;
+  margin: 10px 0px;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+#Members .MemberProfile .pertag{
+  display: block;
+  padding: 0px 10%;
+  text-align: center;
+  word-break: break-all;
+}

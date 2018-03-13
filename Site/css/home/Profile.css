@@ -1,6 +1,6 @@
 
 #Profile{
-  /* display: none; */
+  display: none;
   width: 80%;
   margin: 0px auto;
 }
@@ -19,6 +19,7 @@
   cursor: pointer;
 }
 
-#Profile .Evaluate{
+#Profile .CurrentProject,
+#Profile .CompletedProjects{
   display: none;
 }
