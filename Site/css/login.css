@@ -20,11 +20,11 @@ body{
   border-radius: 50%;
 }
 #Login .backOne{
-  animation: BackOne 4s infinite linear;
+  animation: BackOne 4s linear 2s infinite;
   box-shadow: -300px 0px 200px rgba(255,0,0,0.7);
 }
 #Login .backTwo{
-  animation: BackTwo 4s infinite linear;
+  animation: BackTwo 4s linear 2s infinite;
   box-shadow: 300px 0px 200px rgba(0,255,0,0.7);
 }
 #Login .backOne::before{
@@ -33,7 +33,6 @@ body{
   top: 0px;left: 0px;
   width: 50%;height: 100%;
   border-radius: 300px 0px 0px 300px;
-  background: rgba(255,0,0,0.7);
   background: linear-gradient(to left,rgb(100,100,150),rgba(255,0,0,0.7) 80%);
 }
 #Login .backTwo::before{

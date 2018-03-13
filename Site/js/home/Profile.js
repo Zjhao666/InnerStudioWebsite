@@ -31,37 +31,37 @@ const projectBindAction=(target)=>{
 
 // navigate
 let pNavigateSelected;
-$('#Profile #Navigate').children('.item').each((i,elem)=>{
+$('#Profile .Navigate').children('.item').each((i,elem)=>{
   $(elem).bind({
     'click':()=>{
       if(pNavigateSelected!=elem){
         if(pNavigateSelected){
           $(pNavigateSelected).css({
             borderBottomWidth:0,
-            fontWeight:'normal'
+            color:'white'
           });
         }
         $(elem).css({
           borderBottomWidth:2,
-          fontWeight:'bold'
+          color:'rgb(200,180,120)'
         });
         pNavigateSelected=elem;
         // display frame
         let identifier=$(elem).html();
         if(identifier.includes('Current')){
-          $('#Profile #CurrentProject').css('display','inline-block');
-          $('#Profile #CompletedProjects').css('display','none');
-          $('#Profile #Evaluate').css('display','none');
+          $('#Profile .CurrentProject').css('display','inline-block');
+          $('#Profile .CompletedProjects').css('display','none');
+          $('#Profile .Evaluate').css('display','none');
         }
         else if(identifier.includes('Completed')){
-          $('#Profile #CurrentProject').css('display','none');
-          $('#Profile #CompletedProjects').css('display','inline-block');
-          $('#Profile #Evaluate').css('display','none');
+          $('#Profile .CurrentProject').css('display','none');
+          $('#Profile .CompletedProjects').css('display','inline-block');
+          $('#Profile .Evaluate').css('display','none');
         }
         else if(identifier.includes('Evaluate')){
-          $('#Profile #CurrentProject').css('display','none');
-          $('#Profile #CompletedProjects').css('display','none');
-          $('#Profile #Evaluate').css('display','inline-block');
+          $('#Profile .CurrentProject').css('display','none');
+          $('#Profile .CompletedProjects').css('display','none');
+          $('#Profile .Evaluate').css('display','inline-block');
         }
       }
     },
@@ -82,8 +82,8 @@ $('#Profile #Navigate').children('.item').each((i,elem)=>{
   });
 });
 
-projectBindAction('#Profile #CurrentProject');
-projectBindAction('#Profile #CompletedProjects');
+projectBindAction('#Profile .CurrentProject');
+projectBindAction('#Profile .CompletedProjects');
 
-$('#Profile #Navigate').children('.item').eq(0).click();
-$('#Profile #CurrentProject .list .current').click();
+$('#Profile .Navigate').children('.item').eq(0).click();
+$('#Profile .CurrentProject .list .current').click();

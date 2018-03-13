@@ -11,6 +11,10 @@
   <link rel='stylesheet' href='css/clear.css' />
   <link rel='stylesheet' href='css/home/Main.css' />
   <link rel='stylesheet' href='css/home/MemberList.css' />
+  <link rel='stylesheet' href='css/home/Pitem.css' />
+  <!-- profile -->
+  <link rel='stylesheet' href='css/home/profile/Main.css'>
+  <link rel='stylesheet' href='css/home/profile/CompletedProjects.css'>
 
   <link rel='stylesheet' href='css/home/Plan.css' />
   <link rel='stylesheet' href='css/home/Project.css' />
@@ -21,12 +25,6 @@
   <link rel='stylesheet' href='css/home/regisProject/Overview.css'>
   <link rel='stylesheet' href='css/home/regisProject/Editstage.css'>
   <link rel='stylesheet' href='css/home/regisProject/Check.css'>
-  <!-- profile -->
-  <link rel='stylesheet' href='css/home/profile/Main.css'>
-  <link rel='stylesheet' href='css/home/profile/CompletedProjects.css'>
-  <link rel='stylesheet' href='css/home/profile/CurrentProject.css'>
-  <link rel='stylesheet' href='css/home/profile/Navigate.css'>
-  <link rel='stylesheet' href='css/home/profile/Evaluate.css'>
   <!-- serverConsole -->
   <link rel='stylesheet' href='css/home/Serverconsole.css'>
 </head>
@@ -76,22 +74,42 @@
       </div>
     </div>
     <div id='Frames'>
-      <div class='taskBar'>
-        <div class='statusBox'>
-          <a class='timeRest'>10:23:12</a>
-          <a class='curDate'>2018/3/13</a>
-        </div>
-      </div>
       <div class='contentWrapper'>
-        <div class='mainWin' id='Profile'>
-          <div id='Navigate'>
+        <div id='Profile'>
+          <div class='Navigate'>
             <a class='item'>Current</a>
             <a class='item'>Completed</a>
             <a class='item'>Evaluate</a>
           </div>
-          <div id='CurrentProject'>
+          <div class='Pitem CurrentProject'>
             <span class='title'>project in python</span>
-            <span class='overview'>Hi,there!This plan is about how to earn money fast by take part in software-race.How do you think of my idea?</span>
+            <span class='description'>Hi,there!This plan is about how to earn money fast by take part in software-race.How do you think of my idea?</span>
+            <div class='statics'>
+              <div class='item'>
+                <span class='label'>注册时间</span>
+                <span class='value'>2018/01/02</span>
+              </div>
+              <div class='item'>
+                <span class='label'>截止时间</span>
+                <span class='value'>2018/03/21</span>
+              </div>
+              <div class='item'>
+                <span class='label'>项目时长</span>
+                <span class='value'>23</span>
+              </div>
+              <div class='item'>
+                <span class='label'>计划阶段数</span>
+                <span class='value'>13</span>
+              </div>
+              <div class='item'>
+                <span class='label'>项目完成度</span>
+                <span class='value'>41%</span>
+              </div>
+              <div class='item'>
+                <span class='label'>项目活跃度</span>
+                <span class='value'>82%</span>
+              </div>
+            </div>
             <ul class='list'>
               <li class='stage future'>
                 <span class='timestamp'>2017/11/24</span>
@@ -131,7 +149,7 @@
               </li>
             </ul>
           </div>
-          <div id='CompletedProjects'>
+          <div class='CompletedProjects'>
             <div class='project'>
               <span class='title'>project in python</span>
               <span class='overview'>Hi,there!This plan is about how to earn money fast by take part in software-race.How do you think of my idea?</span>
@@ -177,7 +195,7 @@
               </ul>
             </div>
           </div>
-          <div id='Evaluate'>
+          <div class='Evaluate'>
             Not supported.
           </div>
         </div>
@@ -592,9 +610,19 @@
           </div>
         </div>
       </div>
+      <div class='taskBar'>
+        <div class='status'>
+          <a class='timeRest'>10:23:12</a>
+          <a class='curDate'>2018/3/13</a>
+        </div>
+        <div class='notification'>
+          You have a new message from Keil!
+        </div>
+      </div>
     </div>
   </div>
   <script src='js/home/Stars.js'></script>
+  <script src='js/home/Profile.js'></script>
   <script src='js/home/Main.js'></script>
   <!-- serverConsole -->
   <!-- <script>

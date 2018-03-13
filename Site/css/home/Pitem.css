@@ -1,34 +1,45 @@
 
-#Profile #CurrentProject{
-  display: none;
+.Pitem{
+  /* display: none; */
   width: 80%;height: auto;
-  margin-top: 20px;
+  margin: 20px 0px;
+  border: 1px solid white;
+  box-sizing: border-box;
+  padding: 10px;background-color: rgba(100,80,155,0.4);
+  border-left: 0px;border-radius: 0px 20px 20px 0px;
 }
 
-#Profile #CurrentProject .title{
+.Pitem .title{
   display: block;
   font-size: 2em;
   font-weight: 900;
-  text-transform: uppercase;
+  text-transform: Capitalize;
+  border-radius: 5px;
   background: linear-gradient(to right,rgba(80,80,150,1),rgba(0,0,0,0.2));
 }
-#Profile #CurrentProject .overview{
+.Pitem .description{
   display: block;
+  margin: 5px 0px;
   word-wrap: break-word;
   font-size: 1.2em;
 }
-
-#Profile #CurrentProject .list{
+.Pitem .statics{
+  width: 90%;
+  margin: 0px auto;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+.Pitem .list{
   list-style: none;
   margin: 0px;padding: 0px;
 }
 
-#Profile #CurrentProject .list .stage{
+.Pitem .list .stage{
   position: relative;
   margin: 0px 0px 10px 20px;
   cursor: pointer;
 }
-#Profile #CurrentProject .list .stage::before{
+.Pitem .list .stage::before{
   content: '';
   position: absolute;
   top: 5px;left: -20px;
@@ -39,64 +50,64 @@
   border: 2px solid gray;
   background-color: black;
 }
-#Profile #CurrentProject .list .completed::before{
+.Pitem .list .completed::before{
   background-color: green;
 }
-#Profile #CurrentProject .list .future::before{
+.Pitem .list .future::before{
   background-color: rgb(60,60,60);
 }
-#Profile #CurrentProject .list .current::before{
+.Pitem .list .current::before{
   background-color: yellow;
 }
-#Profile #CurrentProject .list .current .btn{
+.Pitem .list .current .btn{
   display: none;
   float: right;
   margin: 0px 5px;padding: 0px 5px;
   box-shadow: 1px 1px 0px white;
 }
 
-#Profile #CurrentProject .list .stage .timestamp{
+.Pitem .list .stage .timestamp{
   display: inline-block;
   background-color: green;
   margin: 5px 5px 0px 5px;padding: 1px 2px 0px;
   border-radius: 10px;
 }
-#Profile #CurrentProject .list .stage .content{
+.Pitem .list .stage .content{
   font-weight: bold;
 }
 
-#Profile #CurrentProject .list .stage .comments{
+.Pitem .list .stage .comments{
   display: none;
   margin: 10px 0px 0px 5px;
   overflow: hidden;
 }
-#Profile #CurrentProject .list .stage .comments .item{
+.Pitem .list .stage .comments .item{
   border-radius: 10px;
   margin: 10px 0px;
   background-color: rgba(200,200,200,0.6);
 }
-#Profile #CurrentProject .list .stage .comments .item .head{
+.Pitem .list .stage .comments .item .head{
   position: relative;
   font-size: 0.8em;
 }
-#Profile #CurrentProject .list .stage .comments .item .head .headimg{
+.Pitem .list .stage .comments .item .head .headimg{
   display: block;
   height: 30px;width: 30px;
   border-radius: 15px;
 }
-#Profile #CurrentProject .list .stage .comments .item .head .account{
+.Pitem .list .stage .comments .item .head .account{
   display: block;
   position: absolute;
   top: 0px;left: 35px;
   font: bold 1em 'Kaiti';
 }
-#Profile #CurrentProject .list .stage .comments .item .head .time{
+.Pitem .list .stage .comments .item .head .time{
   display: block;
   position: absolute;
   bottom: 0px;left: 35px;
   font: bold 1em 'Kaiti';
 }
-#Profile #CurrentProject .list .stage .comments .item .ncontent{
+.Pitem .list .stage .comments .item .ncontent{
   display: block;
   text-indent: 2em;
 }

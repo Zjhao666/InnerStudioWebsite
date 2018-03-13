@@ -12,7 +12,7 @@ const randInfo=()=>{
   return {
     x:parseInt(Math.random()*swidth-xrange),
     y:parseInt(Math.random()*sheight-yrange),
-    m:parseInt(Math.random()*5+3),
+    m:parseInt(Math.random()*5),
     c:'rgb('+randNum()+','+randNum()+','+randNum()+')'
   };
 };
@@ -40,4 +40,4 @@ const starsUpdate=()=>{
   starsContainer.css('box-shadow',shadow);
 };
 makeStars();
-setInterval(starsUpdate,100);
+// setInterval(starsUpdate,100);
