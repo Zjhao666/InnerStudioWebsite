@@ -58,12 +58,12 @@
           <a class='item refProfile'>Profile</a>
           <a class='item refPlan'>Plans</a>
           <a class='item refProject'>Projects</a>
-          <a class='item refProfile'>Members</a>
+          <a class='item refMembers'>Members</a>
           <a class='item refCommunicate'>Communicate</a>
           <a class='item refUpdateproject'>Update project</a>
           <a class='item refRegisproject'>Regis project</a>
           <a class='item refServerconsole'>Server console</a>
-          <a class='item refDocument'>Documents</a>
+          <a class='item refDocuments'>Documents</a>
         </div>
       </div>
       <span class='statistics'>[statistics]</span>
@@ -511,24 +511,39 @@
         </div>
         <div id='Serverconsole'></div>
         <div id='Documents'>
-          <div class='left'>
-
-          </div>
-          <div class='right'>
-            <div class='Filetree'>
-              <div class='dir'>
-                <span></span>
-              </div>
+          <div class='Fileview'>
+            <div class='controller'>
+              <input class='input_path' type='text' value="/home/Doc" disabled='disabled'/>
+              <a class='item path_back'></a>
+              <a class='item path_forward'></a>
+              <a class='item btn_select'></a>
+              <a class='item btn_upload'></a>
             </div>
-            <div class='Filedetail'>
-              <a class='thumbnail'></a>
-              <div class='btnWrapper'>
-                <a class='item edit'></a>
-                <a class='item download' href='' download=''></a>
+            <div class='content'>
+              <div class='item file_pdf'><span>CSS3.pdf</span></div>
+              <div class='item file_pdf'><span>CSS3.pdf</span></div>
+              <div class='item file_pdf'><span>CSS3.pdf</span></div>
+              <div class='item file_pdf'><span>CSS3.pdf</span></div>
+              <div class='item file_pdf'><span>CSS3.pdf</span></div>
+              <div class='item file_pdf'><span>CSS3.pdf</span></div>
+              <div class='item file_pdf'><span>CSS3.pdf</span></div>
+              <div class='item file_pdf'><span>CSS3.pdf</span></div>
+              <div class='item file_pdf'><span>CSS3.pdf</span></div>
+              <div class='item file_pdf'><span>CSS3.pdf</span></div>
+              <div class='item file_pdf'><span>CSS3.pdf</span></div>
+              <div class='item file_pdf'><span>CSS3.pdf</span></div>
+              <div class='item file_pdf'><span>CSS3.pdf</span></div>
+              <div class='item file_pdf'><span>CSS3.pdf</span></div>
+              <div class='item file_pdf'><span>CSS3.pdf</span></div>
+            </div>
+          </div>
+          <div class='Filetree'>
+            <div class='wrapper'>
+              <div class='dir'>
+                <span>home</span>
+                <div class='dir'><span>Luncert</span></div>
+                <div class='file'><span>css3.pdf</span></div>
               </div>
-              <div class='label title'></div>
-              <div class='label location'></div>
-              <div class='label size'></div>
             </div>
           </div>
         </div>
@@ -546,7 +561,6 @@
   </div>
   <script src='js/home/Stars.js'></script>
   <script src='js/home/Profile.js'></script>
-  <script src='js/home/Communicate.js'></script>
   <script src='js/home/Main.js'></script>
   <!-- serverConsole -->
   <!-- <script>

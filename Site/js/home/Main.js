@@ -11,26 +11,28 @@ const bing=()=>{
   audioClickEffect.play();
 };
 // Ref item clicked
+let homeNavigateSelected=$('#Profile');
 $('#HomeNavigate .Ref .item').each((i,elem)=>$(elem).mousedown(()=>{
   bing();
   $(elem).css('opacity',0);
   $(elem).animate({opacity:1},500);
 }));
-
-let lastItemSelected;
-(function refItemBind(){
-  for(let name of ['Profile','Plan','Project','Communicate','Regisproject','Serverconsole']){
-    $('#HomeNavigate .Ref .ref'+name).click(()=>{
-      // if(lastItemSelected) lastItemSelected.css('display','none');
-      // lastItemSelected=$('#Right #'+name);
-      // lastItemSelected.css('display','block');
+(function(){
+  for(let item of ['Profile','Plan','Project','Communicate','Regisproject','Serverconsole','Documents','Members']){
+    let target=$('#HomeNavigate .Ref .wrapper .ref'+item);
+    target.click(()=>{
+      let view=$('#'+item);
+      if(homeNavigateSelected){
+        homeNavigateSelected.css('display','none');
+        homeNavigateSelected=undefined;
+      }
+      view.css('display','block');
+      homeNavigateSelected=view;
     });
   }
 })();
 
-$('#Overview .Ref .Document').click(()=>{
-  window.open('documents.html');
-});
+
 // Members
 $('#Members .item').each((i,elem)=>{
   let mask;
