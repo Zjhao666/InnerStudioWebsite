@@ -1,0 +1,108 @@
+
+#Documents{
+  /* display: none; */
+  box-sizing: border-box;
+  width: 90%;height: 92%;
+  margin: 5% auto 0px;
+}
+#Documents .left{
+
+}
+#Documents .right{
+  box-sizing: border-box;
+  width: 20%;
+  overflow: hidden;
+}
+
+#Documents .right .Filetree{
+  position: relative;
+  height: 280px;width: 100%;
+  overflow: scroll;
+  white-space: nowrap;
+  padding: 10px 0px;
+  -moz-user-select: none;
+}
+#Documents .right .Filetree .dir,
+#Documents .right .Filetree .file{
+  display: block;
+  margin: 0px 0px 0px 10px;padding: 0px;
+  list-style: none;
+  background-image: url(../../img/icon/thumbnail/dir_fileicon.png);
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+#Documents .right .Filetree span{
+  display: inline-block;
+  vertical-align: top;
+  height: 15px;
+  line-height: 15px;
+  margin-left: 15px;
+}
+#Documents .right .Filetree .file{
+  background-image: url(../../img/icon/thumbnail/file_fileicon.png);
+}
+
+#Documents .right .Filedetail{
+  position: relative;
+  box-sizing: border-box;
+  padding: 20px;
+  width: 100%;
+  border-right: 1px solid rgb(200,200,200);
+}
+#Documents .right .Filedetail::after{
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0px;left: 10px;
+  width: 90%;height: 1px;
+  background-color: white;
+}
+#Documents .right .Filedetail .thumbnail{
+  display: block;
+  margin-bottom: 10px;
+  margin-left: -10px;
+  height: 80px;width: 80px;
+  background-size: cover;
+  background-image: url(../../img/icon/file_fileicon.png);
+  border: 0px;
+  padding: 0px;
+}
+#Documents .right .Filedetail .btnWrapper{
+  position: relative;
+  display: block;
+  width: 100%;height: 30px;
+  margin: 10px 0px;
+}
+#Documents .right .Filedetail .btnWrapper .item{
+  float: left;
+  width: 30px;height: 30px;
+  display: block;
+  background-size: cover;
+  cursor: pointer;
+}
+#Documents .right .Filedetail .btnWrapper .edit{
+  background-image: url(../../img/btn/btn_edit.png);
+}
+#Documents .right .Filedetail .btnWrapper .download{
+  background-image: url(../../img/btn/btn_download.png);
+}
+
+#Documents .right .Filedetail .label{
+  display: block;
+  text-align: left;
+}
+#Documents .right .Filedetail .title::before{
+  content: 'Title:';
+  display: inline-block;
+  font: bold 1em 'Kaiti';
+}
+#Documents .right .Filedetail .location::before{
+  content: 'Location:';
+  display: inline-block;
+  font: bold 1em 'Kaiti';
+}
+#Documents .right .Filedetail .size::before{
+  content: 'Size:';
+  display: inline-block;
+  font: bold 1em 'Kaiti';
+}

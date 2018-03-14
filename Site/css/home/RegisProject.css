@@ -1,8 +1,9 @@
 
 #Regisproject{
-  /* display: none; */
+  display: none;
   box-sizing: border-box;
-  width: 90%;height: 92%;
+  position: relative;
+  width: 90%;height: 85%;
   margin: 5% auto 0px;
 }
 #Regisproject input,#Regisproject textarea{
@@ -13,6 +14,7 @@
   color: white;
   resize: none;
 }
+
 #Regisproject .Essential,
 #Regisproject .Editstage,
 #Regisproject .Check{
@@ -20,7 +22,7 @@
   display: inline-block;
   vertical-align: top;
   position: relative;
-  height: 80%;
+  height: 100%;
   padding: 5px 10px;
   margin: 0px 10px;
   border-radius: 5px;
@@ -28,6 +30,7 @@
   background-color: rgba(100,70,180,0.5);
   overflow: hidden;
 }
+
 #Regisproject .Essential .title,
 #Regisproject .Essential .projectDoc,
 #Regisproject .Essential .description,
@@ -35,6 +38,7 @@
 #Regisproject .Editstage .addStage,
 #Regisproject .Editstage .stages{
   position: relative;
+  display: block;
   box-sizing: border-box;
   width: 100%;height: 30px;
   margin: 5px 0px;
@@ -42,10 +46,11 @@
   border-radius: 5px;
   box-shadow: 5px 0px 10px black;
 }
+
 /* Essential */
 #Regisproject .Essential{
   position: relative;
-  width: 20%;
+  width: 30%;
 }
 #Regisproject .Essential *{
   text-shadow: 5px 0px 2px black;
@@ -106,7 +111,7 @@
 }
 /* Editstage */
 #Regisproject .Editstage{
-  width: 45%;
+  width: 60%;
 }
 #Regisproject .Editstage .addStage{
   height: 30%;
@@ -125,6 +130,7 @@
   box-sizing: border-box;
   width: 80%;height: 100%;
   padding: 0px 5px;
+  /* border: 1px solid white; */
 }
 #Regisproject .Editstage .addStage .timestamp .add{
   float: right;
@@ -151,12 +157,61 @@
 }
 #Regisproject .Editstage .stages{
   width: 100%;height: 68%;
+  padding: 10px 0px;
+}
+#Regisproject .Editstage .stages .item{
+  position: relative;
+  box-sizing: border-box;
+}
+#Regisproject .Editstage .stages .item::before{
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  box-sizing: border-box;
+  width: 20px;height: 20px;
+  border-radius: 10px;
+  border: 2px solid gray;
+  background-color: rgb(200,60,120);
+}
+#Regisproject .Editstage .stages .item::after{
+  content: '';
+  position: absolute;
+  top: 10px;left: 20px;
+  width: 5px;height: 2px;
+  background-color: white;
+}
+#Regisproject .Editstage .stages .item .timestamp{
+  display: inline-block;
+  box-sizing: border-box;
+  vertical-align: middle;
+  height: 20px;line-height: 20px;
+  padding: 1px 2px 0px;
+  border-radius: 5px;
+  border: 2px solid white;
+  font: bold 0.9em 'Fangsong';
+}
+#Regisproject .Editstage .stages .item .content{
+  display: block;
+  padding: 0px 25px;
+  font-weight: bold;
+  word-break: break-all;
 }
 /* Check */
-#Regisproject .Check{
-  width: 25%;
+#Regisproject .Submit{
+  display: block;
+  position: absolute;
+  right: 40px;bottom: -20px;
+  box-sizing: border-box;
+  padding-top: 25px;
+  text-align: center;
+  width: 70px;height: 70px;
+  border-radius: 35px;
+  background-color: rgba(20,80,190,0.8);
+  box-shadow: 5px 0px 20px black;
+  font-weight: bold;
+  cursor: pointer;
+  overflow: hidden;
 }
-
 
 #Regisproject .Essential .membersOperabox{
   display: none;

@@ -1,133 +1,150 @@
 
 #Communicate{
   display: none;
-  width: 600px;height: auto;
+  width:80%;
+  margin: 0px auto;
   padding: 50px;
 }
 
-#Communicate .controll{
-  /* position: relative; */
-  /* width: 0px;height: 0px; */
+#Communicate .left{
+  display: inline-block;
+  vertical-align: top;
+  width: 60%;
 }
-#Communicate .controll .item{
-  /* position: absolute; */
-  /* animation: FrameControllItem 4s linear infinite; */
-}
-#Communicate .wrapper{
-  width: 100%;
-  margin: 10px 0px;
-}
-#Communicate .wrapper .item{
+#Communicate .left .item{
   position: relative;
-  box-sizing: border-box;
-  margin-bottom: 5px;padding: 5px;
-  border-bottom: 1px solid rgb(220,160,80);
-  border-left: 1px solid rgb(220,160,80);
-  cursor: pointer;
-  background-color: rgba(200,200,200,0.8);
-}
-#Communicate .wrapper .item .title{
   display: block;
-  width: 580px;
+  box-sizing: border-box;
+  width: 100%;margin-bottom: 20px;padding: 0px 5px;
+  background-color: rgba(120,60,180,0.7);
+  border-radius: 5px;
+  box-shadow: 5px 0px 10px black;
+  cursor: pointer;
+}
+#Communicate .left .item .title{
+  display: block;
   margin-bottom: 5px;
   text-indent: 1em;
   word-break: break-all;
   font-weight: bold;font-size: 1.5em;
   border-bottom: 1px solid rgb(200,200,200);
 }
-#Communicate .wrapper .item .head{
+#Communicate .left .item .user{
   position: relative;
   font-size: 0.8em;
 }
-#Communicate .wrapper .item .head .headimg{
+#Communicate .left .item .user .headimg{
   display: block;
   height: 30px;width: 30px;
   border-radius: 15px;
 }
-#Communicate .wrapper .item .head .account{
+#Communicate .left .item .user .account{
   display: block;
   position: absolute;
   top: 0px;left: 35px;
   font: bold 1em 'Kaiti';
 }
-#Communicate .wrapper .item .head .time{
+#Communicate .left .item .user .publishDate{
   display: block;
   position: absolute;
   bottom: 0px;left: 35px;
   font: bold 1em 'Kaiti';
 }
-#Communicate .wrapper .item .content{
+#Communicate .left .item .overview{
   display: block;
-  text-indent: 30px;
-  word-break: break-all;
-  text-overflow: ellipsis;
+  width: 100%;
+  text-indent: 1em;
+  max-height: 100px;
   overflow: hidden;
-  white-space: nowrap;
-}
-
-#Communicate .wrapper .item .interact{
-  display: none;
-  overflow: hidden;
-}
-#Communicate .wrapper .item .interact .nitem{
-  position: relative;
-  margin: 10px 0px;
-  box-shadow: 0px 0px 5px rgb(100,100,100);
-  background-color: rgba(210,210,210,0.8);
-}
-#Communicate .wrapper .item .interact .nitem{
-  position: relative;
-  padding: 5px;
-  font-size: 0.8em;
-}
-#Communicate .wrapper .item .interact .nitem .nhead{
-  position: relative;
-  font-size: 0.8em;
-}
-#Communicate .wrapper .item .interact .nitem .nhead .headimg{
-  display: block;
-  width: 20px;height: 20px;
-  border-radius: 10px;
-}
-#Communicate .wrapper .item .interact .nitem .nhead .account{
-  display: block;
-  position: absolute;
-  top: 0px;left: 25px;
-  font: bold 1em 'Kaiti';
-}
-#Communicate .wrapper .item .interact .nitem .nhead .time{
-  display: block;
-  position: absolute;
-  bottom: 0px;left: 25px;
-  font: bold 1em 'Kaiti';
-}
-#Communicate .wrapper .item .interact .nitem .ncontent{
-  display: block;
-  text-indent: 30px;
   word-break: break-all;
 }
 
-#Communicate .wrapper .item .interact .nitem .response{
-  margin-left: 25px;padding: 5px;
-  height: auto;width: 89%;
-  background-color: rgb(220,160,80);
-}
-#Communicate .wrapper .item .interact .nitem .response .nlastitem{
-  margin: 5px 0px;
-  border-bottom: 1px solid rgb(200,200,200);
-}
-#Communicate .wrapper .item .interact .nitem .response .at{
-  color: blue;
-}
-#Communicate .wrapper .item .interact .nitem .response .at::before{
-  content: '@';
+#Communicate .right{
   display: inline-block;
-  margin-left: 25px;
+  vertical-align: top;
+  width: 30%;
+  margin: 0px 10px;
 }
-#Communicate .wrapper .item .interact .nitem .response .at::after{
-  content: ':';
+#Communicate .right .writeBlog,
+#Communicate .right .sortBy,
+#Communicate .right .rank{
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;margin-bottom: 20px;padding: 0px 5px;
+  background-color: rgba(120,60,180,0.7);
+  border-radius: 5px;
+  box-shadow: 5px 0px 10px black;
+  cursor: pointer;
 }
-#Communicate .wrapper .item .interact .nitem .response .mcontent{
+
+#Communicate .right .sortBy{
+  height: 30px;
+}
+#Communicate .right .sortBy .label{
   display: inline-block;
-  word-break: break-all;
+  vertical-align: top;
+  height: 20px;
+  line-height: 20px;
+  margin-top: 8px;
 }
+#Communicate .right .sortBy .wrapper{
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  height: 20px;width: 80%;
+  border: 1px solid white;
+  border-radius: 5px;
+  margin-top: 5px;margin-left: 5px;
+  overflow: hidden;
+}
+#Communicate .right .sortBy .wrapper .item{
+  float: left;
+  height: 18px;
+  text-align: center;
+  font-weight: bold;
+  overflow: hidden;
+}
+#Communicate .right .sortBy .item:nth-of-type(1){
+  background-color: green;
+  width: 20%;
+}
+#Communicate .right .sortBy .item:nth-of-type(2){
+  background-color: blue;
+  width: 30%;
+}
+#Communicate .right .sortBy .item:nth-of-type(3){
+  background-color: red;
+  width: 50%;
+}
+
+#Communicate .right .rank .item{
+  height: 30px;
+  overflow: hidden;
+}
+#Communicate .right .rank .item::before{
+  display: inline-block;
+  width: 5%;
+  line-height: 30px;
+}
+#Communicate .right .rank .item .title{
+  display: inline-block;
+  vertical-align: top;
+  width: 70%;height: 30px;line-height: 30px;
+  white-space: nowrap;overflow: hidden;text-overflow: ellipsis;
+}
+#Communicate .right .rank .item .hotnum{
+  display: inline-block;
+  vertical-align: top;
+  height: 30px;line-height: 30px;
+}
+#Communicate .right .rank .item:nth-of-type(1)::before{content: '1';}
+#Communicate .right .rank .item:nth-of-type(2)::before{content: '2';}
+#Communicate .right .rank .item:nth-of-type(3)::before{content: '3';}
+#Communicate .right .rank .item:nth-of-type(4)::before{content: '4';}
+#Communicate .right .rank .item:nth-of-type(5)::before{content: '5';}
+#Communicate .right .rank .item:nth-of-type(6)::before{content: '6';}
+#Communicate .right .rank .item:nth-of-type(7)::before{content: '7';}
+#Communicate .right .rank .item:nth-of-type(8)::before{content: '8';}
+#Communicate .right .rank .item:nth-of-type(9)::before{content: '8';}
+#Communicate .right .rank .item:nth-of-type(10)::before{content: '10';}

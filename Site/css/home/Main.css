@@ -2,6 +2,7 @@
 body{
   -moz-user-select: none;
   font: 400 1em 'ArtegraSansExtended';
+  overflow: hidden;
 }
 
 #main{
@@ -29,23 +30,22 @@ body{
 #Frames .contentWrapper{
   position: relative;
   box-sizing: border-box;
-  width: 103%;height: 97%;
+  width: 105%;height: 97%;
   margin-top: 10px;padding: 10px;padding-right: 50px;
   overflow-y: scroll;
 }
 #Frames .taskBar{
-  position: relative;
+  position: absolute;
   width: 90%;height: 20px;
-  margin: 0px auto;
+  bottom: 0px;left: 5%;
   border-radius: 10px 10px 0px 0px;
   box-shadow: 5px 0px 10px black;
   text-shadow: 5px 0px 2px black;
   background: rgb(70,50,120);
 }
 #Frames .taskBar .status{
-  position: absolute;
+  float: left;
   box-sizing: border-box;
-  top: 0px;left: 0px;
   padding: 0px 5px;
 }
 #Frames .taskBar .notification{
