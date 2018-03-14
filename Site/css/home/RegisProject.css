@@ -1,0 +1,163 @@
+
+#Regisproject{
+  /* display: none; */
+  box-sizing: border-box;
+  width: 90%;height: 92%;
+  margin: 5% auto 0px;
+}
+#Regisproject input,#Regisproject textarea{
+  border: none;padding: 0px;margin: 0px;
+  background-color: transparent;
+  font-family: 'ArtegraSansExtended';
+  font-weight: bold;
+  color: white;
+  resize: none;
+}
+#Regisproject .Essential,
+#Regisproject .Editstage,
+#Regisproject .Check{
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  height: 80%;
+  padding: 5px 10px;
+  margin: 0px 10px;
+  border-radius: 5px;
+  box-shadow: 5px 0px 10px black;
+  background-color: rgba(100,70,180,0.5);
+  overflow: hidden;
+}
+#Regisproject .Essential .title,
+#Regisproject .Essential .projectDoc,
+#Regisproject .Essential .description,
+#Regisproject .Essential .members,
+#Regisproject .Editstage .addStage,
+#Regisproject .Editstage .stages{
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;height: 30px;
+  margin: 5px 0px;
+  background-color: rgba(120,60,180,0.7);
+  border-radius: 5px;
+  box-shadow: 5px 0px 10px black;
+}
+/* Essential */
+#Regisproject .Essential{
+  position: relative;
+  width: 20%;
+}
+#Regisproject .Essential *{
+  text-shadow: 5px 0px 2px black;
+}
+
+#Regisproject .Essential .title{height: 5%;}
+#Regisproject .Essential .title .inner{
+  position: absolute;
+  box-sizing: border-box;
+  top: 0px;left: 0px;
+  width: 100%;height: 100%;
+  font-size: 1.1em;
+  padding: 0px 5px;
+}
+
+#Regisproject .Essential .projectDoc{
+  overflow: hidden;
+  text-align: center;
+  height: 6%;
+}
+#Regisproject .Essential .projectDoc .inner{display: none;}
+
+#Regisproject .Essential .description{height: 15%;}
+#Regisproject .Essential .description .inner{
+  position: absolute;
+  box-sizing: border-box;
+  top: 0px;left: 0px;
+  width: 100%;height: 100%;
+  padding: 0px 5px;
+}
+
+#Regisproject .Essential .members{
+  height: 70%;padding: 10px;
+}
+#Regisproject .Essential .members .item{
+  box-sizing: border-box;
+  width: 100%;height: 30px;
+  margin-bottom: 10px;
+  position: relative;
+}
+#Regisproject .Essential .members .item .headimg{
+  position: absolute;
+  width: 30px;height: 30px;
+  border-radius: 15px;
+  box-shadow: 5px 0px 10px black;
+}
+#Regisproject .Essential .members .item .account{
+  position: absolute;
+  left: 40px;
+  color: white;
+  width: 169px;height: 30px;
+  padding-top: 2px;
+  line-height: 30px;
+  font-weight: bold;
+  text-indent: 5px;
+  text-shadow: 5px 0px 2px black;
+  overflow: hidden;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;
+}
+/* Editstage */
+#Regisproject .Editstage{
+  width: 45%;
+}
+#Regisproject .Editstage .addStage{
+  height: 30%;
+  padding: 10px;
+}
+#Regisproject .Editstage .addStage .timestamp{
+  position: relative;
+  width: 220px;height: 22px;
+  background-color: rgb(220,120,120);
+  border-radius: 10px;
+  margin: 0px auto 10px;
+  overflow: hidden;
+}
+#Regisproject .Editstage .addStage .timestamp .inner{
+  float: left;
+  box-sizing: border-box;
+  width: 80%;height: 100%;
+  padding: 0px 5px;
+}
+#Regisproject .Editstage .addStage .timestamp .add{
+  float: right;
+  box-sizing: border-box;
+  width: 20%;height: 100%;line-height: 100%;
+  background-color: rgba(100,255,100,0.5);
+  border-radius: 0px 10px 10px 0px;
+  font: bold 1em 'Fangsong';
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid white;
+}
+#Regisproject .Editstage .addStage .target{
+  width: 100%;height: 80%;
+  box-sizing: border-box;
+  padding: 10px;
+  background-color: rgba(90,60,120,0.5);
+  border: 1px solid rgba(140,60,220,1);
+  box-shadow: 0px 0px 10px rgba(140,60,220,1);
+  border-radius: 10px;
+}
+#Regisproject .Editstage .addStage .target .inner{
+  width: 100%;height: 100%;
+}
+#Regisproject .Editstage .stages{
+  width: 100%;height: 68%;
+}
+/* Check */
+#Regisproject .Check{
+  width: 25%;
+}
+
+
+#Regisproject .Essential .membersOperabox{
+  display: none;
+}

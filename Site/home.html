@@ -279,12 +279,15 @@
         </div>
         <div id='Regisproject'>
           <div class='Essential'>
-            <input class='title' type='text' placeholder='project name'/>
-            <div class='projectDoc'>
-              upload project document
-              <input class='core' type='file' />
+            <div class='title'>
+              <input class='inner' type='text' placeholder='项目名称' spellcheck='false' />
             </div>
-            <textarea class='overview' type='text' placeholder='project description'></textarea>
+            <div class='projectDoc'>
+              <input class='inner' type='file' />[icon]项目文件
+            </div>
+            <div class='description'>
+              <textarea class='inner' type='text' placeholder='项目描述' spellcheck='false'></textarea>
+            </div>
             <div class='members'>
               <div class='item'>
                 <img class='headimg' src='img/backgrounds/1.jpg'>
@@ -298,37 +301,37 @@
                 <img class='headimg' src='img/backgrounds/3.jpg'>
                 <span class='account'>Tom</span>
               </div>
-              <div class='btn add'></div>
-              <div class='btn del'></div>
-              <div class='membersOperabox'>
-                <a class='submit'>Submit</a>
-                <div class='aitem'>
-                  <img class='headimg' src='img/backgrounds/1.jpg'>
-                  <span class='account'>Luncert</span>
-                  <input class='select' type='checkbox' />
-                </div>
-                <div class='aitem'>
-                  <img class='headimg' src='img/backgrounds/2.jpg'>
-                  <span class='account'>Silly</span>
-                  <input class='select' type='checkbox' />
-                </div>
-                <div class='aitem'>
-                  <img class='headimg' src='img/backgrounds/3.jpg'>
-                  <span class='account'>Tom</span>
-                  <input class='select' type='checkbox' />
-                </div>
+              <div class='btn add'>[btn add]</div>
+              <div class='btn del'>[btn del]</div>
+            </div>
+            <div class='membersOperabox'>
+              <a class='submit'>Submit</a>
+              <div class='aitem'>
+                <img class='headimg' src='img/backgrounds/1.jpg'>
+                <span class='account'>Luncert</span>
+                <input class='select' type='checkbox' />
+              </div>
+              <div class='aitem'>
+                <img class='headimg' src='img/backgrounds/2.jpg'>
+                <span class='account'>Silly</span>
+                <input class='select' type='checkbox' />
+              </div>
+              <div class='aitem'>
+                <img class='headimg' src='img/backgrounds/3.jpg'>
+                <span class='account'>Tom</span>
+                <input class='select' type='checkbox' />
               </div>
             </div>
           </div>
           <div class='Editstage'>
             <div class='addStage'>
               <div class='timestamp'>
-                <input type='date' />
+                <input class='inner' type='date' />
+                <a class='add'>Add</a>
               </div>
               <div class='target'>
-                <textarea></textarea>
+                <textarea class='inner' placeholder='阶段目标' spellcheck='false'></textarea>
               </div>
-              <a class='add'>Add</a>
             </div>
             <div class='stages'>
               <div class='stage stateIcon'>
