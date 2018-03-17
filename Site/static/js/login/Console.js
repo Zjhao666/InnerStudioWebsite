@@ -45,6 +45,7 @@ $(document).keypress((e)=>{
   if(e.which==13){ // enter
     handleCmd(getLastLine().html());
     consoleContent.scrollTop(consoleContent[0].scrollHeight-consoleContent.height());
+    e.stopPropagation();
   }
   else if(e.which==8){ // backspace
     let line=getLastLine();
@@ -52,6 +53,7 @@ $(document).keypress((e)=>{
       let tmp=line.html();
       line.html(tmp.substring(0,tmp.length-1));
     }
+    e.stopPropagation();
   }
   else if(e.originalEvent.charCode>0&&e.originalEvent.key){
     //e.originalEvent.charCode
