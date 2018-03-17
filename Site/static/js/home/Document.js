@@ -1,6 +1,7 @@
 
-let baseurl='http://localhost:8000/'
-let istoken=localStorage.getItem('istoken');
+
+let docViewContainer=$('#Documents .Fileview .content');
+let docItemSelected,docCurPath;
 
 class Lnode{
   constructor(data){
@@ -95,65 +96,53 @@ const urlToArray=(url)=>{
   if(tmp) ret.push(tmp);
   return ret;
 };
-
-const readDetail=(target)=>{
-  if(target!=$('.filedetail .location')){
-    $.get({
-      url:baseurl+'documents.do?param=detail&target='+target+'&istoken='+istoken,
-      dataType:'JSON',
-      success:(rep)=>{
-        let detail=rep.detail;
-        $('.filedetail .title').html(detail.filename);
-        $('.filedetail .location').html(detail.location);
-        $('.filedetail .size').html(detail.size);
-        $('.filedetail .type').html(detail.type);
-      }
-    });
-  }
-};
-const readDir=(target)=>{
-  if(!target)
-    target='';
+const readDir=(target,callback)=>{
+  console.log(target);
+  if(!target) target='';
   $.get({
-    url:baseurl+'documents.do?param=dir&target='+target+'&istoken='+istoken,
+    url:global_host+'document/open?target='+target,
     dataType:'JSON',
     success:(rep)=>{
-      if(rep.statuscode==199){
-        console.log(rep.description);
-      }
-      else{
+      if(rep.statuscode==200&&rep.data.length>0){
+        // group sort
         let headnode=new Headnode(),
           dir_c=0,pdf_c=0,file_c=0;
-        rep.items.forEach((item,i)=>{
-          if(item.type==0){
+        rep.data.forEach((item)=>{
+          if(item.isdir){
             headnode.insNode(dir_c-1,`<div class='item file_dir'><span>`+item.name+`</span></div>`);
             dir_c++;
             pdf_c++;
             file_c++;
           }
-          else if(item.type==1){
+          else if(item.name.endsWith('.pdf')){
             headnode.insNode(pdf_c-1,`<div class='item file_pdf'><span>`+item.name+`</span></div>`);
             pdf_c++;
             file_c++;
           }
-          else if(item.type==2){
+          else{
             headnode.insNode(file_c-1,`<div class='item file_file'><span>`+item.name+`</span></div>`);
             file_c++;
           }
         });
-        overviewCurPath=rep.basepath;
-        $('#Overview').html(headnode.lnodeToArray().join(''));
+        docViewContainer.html(headnode.lnodeToArray().join(''));
+        // bind event for each item
         overviewBindAction();
-        $('#Navigate .input_path').val(rep.basepath);
+        // update path
+        docCurPath=rep.curpath;
+        $('#Documents .Fileview .controller .input_path').val(docCurPath);
         // update maxPath
-        if(urlToArray(maxPath).length<urlToArray(overviewCurPath).length||!maxPath.includes(overviewCurPath)){
-          maxPath=overviewCurPath;
-        }
+        if(urlToArray(docMaxPath).length<urlToArray(docCurPath).length||!docMaxPath.includes(docCurPath))
+          docMaxPath=docCurPath;
+        if(callback) callback(docCurPath);
+      }
+      else{
+        // notify user target path is invalid
+        console.log('target path is invalid');
       }
     }
   });
-};
-const filetree_open=(target,elem)=>{
+}
+const docTreeOpenTarget=(target,elem)=>{
   const actionBind=(basepath,baseelem)=>{
     $(baseelem).children('div').each((i,dir)=>{
       let name=$(dir).children('span'),folded=false,loaded=false;
@@ -172,7 +161,7 @@ const filetree_open=(target,elem)=>{
             }
             else{
               loaded=true;
-              filetree_open(basepath+'/'+name.html(),dir);
+              docTreeOpenTarget(basepath+'/'+name.html(),dir);
             }
           },
           'dblclick':()=>{
@@ -183,36 +172,35 @@ const filetree_open=(target,elem)=>{
       }
     });
   }
+  console.log(target);
+  if(!target) target='';
   $.get({
-    url:baseurl+'documents.do?param=dir&target='+target+'&istoken='+istoken,
+    url:global_host+'document/open?target='+target,
     dataType:'JSON',
     success:(rep)=>{
-      let html='';
-      rep.items.forEach((item,i)=>{
-        if(item.type==0) {
-          html+='<div class="dir"><span>'+item.name+'</span></div>';
-        }
-        else{
-          html+='<div class="file"><span>'+item.name+'</span></div>';
-        }
-      });
-      $(elem).append($(html));
-      actionBind(rep.basepath,elem);
+      if(rep.statuscode==200&&rep.data.length>0){
+        let html='';
+        rep.data.forEach((item,i)=>{
+          if(item.isdir) {
+            html+='<div class="dir"><span>'+item.name+'</span></div>';
+          }
+          else{
+            html+='<div class="file"><span>'+item.name+'</span></div>';
+          }
+        });
+        $(elem).append($(html));
+        actionBind(rep.curpath,elem);
+      }
+      else{
+        // notify user target path is invalid
+        console.log('target path is invalid');
+      }
     }
   });
 };
-const pdfReadPage=(target,page)=>{
-  $.get({
-    url:baseurl+'documents.do?param=pdf&istoken='+istoken+'&target='+target+'&exten='+page,
-    dataType:'JSON',
-    success:(rep)=>{
-      console.log(rep);
-    }
-  });
-};
-const openTarget=(e)=>{
+const docViewOpenTarget=(e)=>{
   let filename=$(e.target).children('span').html(),
-      base=overviewCurPath+(overviewCurPath.endsWith('/')?'':'/'),
+      base=docCurPath+(docCurPath.endsWith('/')?'':'/'),
       identi=$(e.target).attr('class');
   if(identi.includes('file_dir')){
     readDir(base+filename);
@@ -221,11 +209,55 @@ const openTarget=(e)=>{
     pdfReadPage(base+filename,1);
   }
 };
-(function(){
-  let target=$('.filetree .dir'),
+const overviewBindAction=()=>$('#Documents .Fileview .content .item').each((i,elem)=>{
+  let target=$(elem),
+      hovered=false;
+  target.bind({
+    'mousedown':()=>{
+      target.css('background-color','rgb(120,50,220)');
+    },
+    'mouseup':()=>{
+      if(hovered){
+        target.css('background-color','rgb(150,100,255)');
+      }
+      else{
+        target.css('background-color','rgba(0,0,0,0)');
+      }
+    },
+    'mouseenter':()=>{
+      hovered=true;
+      target.css('background-color','rgb(150,100,255)');
+    },
+    'mouseleave':()=>{
+      hovered=false;
+      target.css('background-color','rgba(0,0,0,0)');
+    },
+    'click':(e)=>{
+      // 1.behavior
+      if(docItemSelected&&docItemSelected!==target){
+        docItemSelected[0].classList.remove('selected');
+        docItemSelected.children('span').css({
+          whiteSpace:'nowrap',
+          height:15,
+          zIndex:0
+        });
+      }
+      target[0].classList.add('selected');
+      target.children('span').css({
+        whiteSpace:'normal',
+        height:'auto',
+        zIndex:100
+      });
+      docItemSelected=target;
+    },
+    'dblclick':(e)=>docViewOpenTarget(e)
+  });
+});
+
+readDir('',(basepath)=>{
+  let target=$('#Documents .Filetree .dir'),
       name=target.children('span'),
-      folded=false,loaded=false,
-      basepath='/home/lijingwei/Documents';
+      folded=false,loaded=false;
   name.html(basepath);
   name.bind({
     'click':()=>{
@@ -241,7 +273,7 @@ const openTarget=(e)=>{
       }
       else{
         loaded=true;
-        filetree_open(basepath,target);
+        docTreeOpenTarget(basepath,target);
       }
     },
     'dblclick':()=>{
@@ -250,44 +282,18 @@ const openTarget=(e)=>{
     }
   });
   name.click();
-})();
-readDir();
-
-// right menu behavior
-let state_rightmenu=false;
-document.oncontextmenu=(e)=>{
-  let elem=$(e.target);
-  if(elem.attr('class')&&elem.attr('class').includes('file')){
-    state_rightmenu=true;
-    elem.click();
-    let pos=elem.offset();
-    $('#Rightmenu').css({
-      'top':pos.top+40,
-      'left':pos.left+40
-    });
-    $('#Rightmenu').css('display','block');
-    return false;
-  }
-};
-$('#main').click((e)=>{
-  if(e.which==1&&state_rightmenu){
-    state_rightmenu=false;
-    $('#Rightmenu').css('display','none');
-  }
 });
-
-// overview behavior
-let overview_selected,overviewCurPath;
-const overviewBindAction=()=>$('#Overview .item').each((i,elem)=>{
+// controller behavior
+$('#Documents .Fileview .controller .item').each((i,elem)=>{
   let target=$(elem),
       hovered=false;
   target.bind({
     'mousedown':()=>{
-      target.css('background-color','rgb(220,220,220,0.8)');
+      target.css('background-color','rgba(80,120,220,0.8)');
     },
     'mouseup':()=>{
       if(hovered){
-        target.css('background-color','rgba(200,200,200,0.8)');
+        target.css('background-color','rgba(80,160,220,0.8)');
       }
       else{
         target.css('background-color','rgba(0,0,0,0)');
@@ -295,56 +301,7 @@ const overviewBindAction=()=>$('#Overview .item').each((i,elem)=>{
     },
     'mouseenter':()=>{
       hovered=true;
-      target.css('background-color','rgba(200,200,200,0.8)');
-    },
-    'mouseleave':()=>{
-      hovered=false;
-      target.css('background-color','rgba(0,0,0,0)');
-    },
-    'click':(e)=>{
-      // 1.behavior
-      if(overview_selected&&overview_selected!==target){
-        overview_selected[0].classList.remove('selected');
-        overview_selected.children('span').css({
-          whiteSpace:'nowrap',
-          height:15,
-          zIndex:0
-        });
-      }
-      target[0].classList.add('selected');
-      target.children('span').css({
-        whiteSpace:'normal',
-        height:'auto',
-        zIndex:100
-      });
-      overview_selected=target;
-      // 2.update [file detail]
-      $('#Sidebox .filedetail .thumbnail').css('background-image',target.css('background-image'));
-      readDetail(overviewCurPath+(overviewCurPath.endsWith('/')?'':'/')+$(e.target).children('span').html());
-    },
-    'dblclick':(e)=>openTarget(e)
-  });
-});
-
-// navigate behavior
-$('#Navigate .item').each((i,elem)=>{
-  let target=$(elem),
-      hovered=false;
-  target.bind({
-    'mousedown':()=>{
-      target.css('background-color','rgba(80,120,220,1)');
-    },
-    'mouseup':()=>{
-      if(hovered){
-        target.css('background-color','rgba(80,160,220,1)');
-      }
-      else{
-        target.css('background-color','rgba(0,0,0,0)');
-      }
-    },
-    'mouseenter':()=>{
-      hovered=true;
-      target.css('background-color','rgba(80,160,220,1)');
+      target.css('background-color','rgba(80,160,220,0.8)');
     },
     'mouseleave':()=>{
       hovered=false;
@@ -352,18 +309,19 @@ $('#Navigate .item').each((i,elem)=>{
     }
   });
 });
-
-// path back&forward
-let maxPath='';
-$('#Navigate .path_back').click(()=>{
-  let cur=urlToArray($('#Navigate .input_path').val());
+// controller back&forward
+let docMaxPath='';
+$('#Documents .Fileview .controller .path_back').click(()=>{
+  let cur=urlToArray($('#Documents .Fileview .controller .input_path').val());
+  // access controll
   if(cur.length>2){
     cur.pop();
     readDir('/'+cur.join('/'));
   }
 });
-$('#Navigate .path_forward').click(()=>{
-  let cur=urlToArray($('#Navigate .input_path').val()),tmp=urlToArray(maxPath);
+$('#Documents .Fileview .controller .path_forward').click(()=>{
+  let cur=urlToArray($('#Documents .Fileview .controller .input_path').val()),
+      tmp=urlToArray(docMaxPath);
   if(cur.length<tmp.length){
     cur.push(tmp[cur.length]);
     readDir('/'+cur.join('/'));

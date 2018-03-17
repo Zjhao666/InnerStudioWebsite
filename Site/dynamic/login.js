@@ -1,7 +1,6 @@
 
-let express = require('express');
+let express=require('express');
 let ursa=require('ursa');
-let node_rsa=require('node-rsa');
 let bodyParser=require('body-parser');
 let encoding=require('encoding');
 let urlencodedParser=bodyParser.urlencoded({extended:false});
@@ -20,6 +19,7 @@ app.post('/validate',urlencodedParser,(req,rep)=>{
   let data=decrypt(req.body.cipher,privatePem,maxBits/8,padding);
   // match database
   rep.end(JSON.stringify({statuscode:200}));
+  console.log(data);
 });
 
 module.exports=app;

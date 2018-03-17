@@ -2,7 +2,7 @@
 let consoleContent=$('#Login .Console .c_content');
 
 let programCounter=-1;
-let account,password;
+let account='',password='';
 const getLastLine=()=>{
   return consoleContent.children('.line').last();
 };
@@ -15,12 +15,19 @@ const handleCmd=(cmd)=>{
       consoleContent.append(`<br /><span class='line retline'></span>`);
     }
     else if(programCounter==1){
-      password=cmd;
       // ajax login
       programCounter=-1;
-      consoleContent.append(`<br /><span class='line retline'>Validate successfully.</span>`);
-      consoleContent.append(`<br /><span class='label'>Guest Sessin:</span>\n<span class='line'></span>`);
-      window.open('home.html');
+      validate(account,password,(flag)=>{
+        if(flag){
+          consoleContent.append(`<br /><span class='line retline'>Validate successfully.</span>`);
+          consoleContent.append(`<br /><span class='label'>Guest Sessin:</span>\n<span class='line'></span>`);
+          window.location.href=base+'/home.html';
+        }
+        else{
+          consoleContent.append(`<br /><span class='line retline'>Validate failed.</span>`);
+          consoleContent.append(`<br /><span class='label'>Guest Sessin:</span>\n<span class='line'></span>`);
+        }
+      });
     }
   }
   else{
@@ -43,8 +50,11 @@ const handleCmd=(cmd)=>{
 };
 $(document).keypress((e)=>{
   if(e.which==13){ // enter
-    handleCmd(getLastLine().html());
-    consoleContent.scrollTop(consoleContent[0].scrollHeight-consoleContent.height());
+    let tmp=getLastLine().html();
+    if(programCounter==-1||tmp.length!=0){
+      handleCmd(tmp);
+      consoleContent.scrollTop(consoleContent[0].scrollHeight-consoleContent.height());
+    }
     e.stopPropagation();
   }
   else if(e.which==8){ // backspace
@@ -58,7 +68,10 @@ $(document).keypress((e)=>{
   else if(e.originalEvent.charCode>0&&e.originalEvent.key){
     //e.originalEvent.charCode
     let line=getLastLine();
-    if(programCounter==1) line.append('*');
+    if(programCounter==1){
+      line.append('*');
+      password+=e.originalEvent.key;
+    }
     else line.append(e.originalEvent.key);
   }
 });

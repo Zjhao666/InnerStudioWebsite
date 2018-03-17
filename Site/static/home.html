@@ -8,16 +8,16 @@
   <script src='js/lib/jquery-3.2.1.min.js'></script>
   <script src='js/lib/jsbn.js'></script>
   <script src='js/lib/rsa.js'></script>
-  <link rel='stylesheet' href='css/clear.css' />
-  <link rel='stylesheet' href='css/home/Main.css' />
-  <link rel='stylesheet' href='css/home/HomeNavigate.css' />
-  <link rel='stylesheet' href='css/home/Pitem.css' />
-  <link rel='stylesheet' href='css/home/Members.css' />
-  <link rel='stylesheet' href='css/home/Profile.css' />
-  <link rel='stylesheet' href='css/home/RegisProject.css' />
-  <link rel='stylesheet' href='css/home/Serverconsole.css'>
-  <link rel='stylesheet' href='css/home/Communicate.css' />
-  <link rel='stylesheet' href='css/home/Documents.css' />
+  <link rel='stylesheet' href='css/Clear.css' />
+  <link rel='stylesheet' href='css/Main.css' />
+  <link rel='stylesheet' href='css/HomeNavigate.css' />
+  <link rel='stylesheet' href='css/Pitem.css' />
+  <link rel='stylesheet' href='css/Members.css' />
+  <link rel='stylesheet' href='css/Profile.css' />
+  <link rel='stylesheet' href='css/RegisProject.css' />
+  <link rel='stylesheet' href='css/Serverconsole.css'>
+  <link rel='stylesheet' href='css/Communicate.css' />
+  <link rel='stylesheet' href='css/Documents.css' />
 
   <link rel='stylesheet' href='css/home/Plan.css' />
   <link rel='stylesheet' href='css/home/Project.css' />
@@ -249,21 +249,10 @@
           </div>
         </div>
         <div id='Members'>
-          <div class='MemberList'>
-            <div class='item'>
-              <img class='headimg' src='img/backgrounds/1.jpg'>
-              <a class='account'>Luncert</a>
-            </div>
-            <div class='item offline'>
-              <img class='headimg' src='img/backgrounds/2.jpg'>
-              <a class='account'>Silly</a>
-            </div>
-            <div class='item offline'>
-              <img class='headimg' src='img/backgrounds/3.jpg'>
-              <a class='account'>爱奇艺</a>
-            </div>
+          <div class='MemberList'></div>
+          <div class='ChatBox'>
+            
           </div>
-          <div class='ChatBox'></div>
           <div class='MemberProfile'>
             <img class='headimg' src='img/backgrounds/2.jpg'>
             <a class='account'>Silly</a>
@@ -516,7 +505,8 @@
               <input class='input_path' type='text' value="/home/Doc" disabled='disabled'/>
               <a class='item path_back'></a>
               <a class='item path_forward'></a>
-              <a class='item btn_select'></a>
+              <!-- <a class='item btn_select'></a> -->
+              <a class='item btn_download'></a>
               <a class='item btn_upload'></a>
             </div>
             <div class='content'>
@@ -538,12 +528,10 @@
             </div>
           </div>
           <div class='Filetree'>
-            <div class='wrapper'>
-              <div class='dir'>
-                <span>home</span>
-                <div class='dir'><span>Luncert</span></div>
-                <div class='file'><span>css3.pdf</span></div>
-              </div>
+            <div class='dir'>
+              <span>home</span>
+              <div class='dir'><span>Luncert</span></div>
+              <div class='file'><span>css3.pdf</span></div>
             </div>
           </div>
         </div>
@@ -559,8 +547,13 @@
       </div>
     </div>
   </div>
+  <script>
+    let global_host='http://localhost:8081/';
+  </script>
   <script src='js/home/Stars.js'></script>
   <script src='js/home/Profile.js'></script>
+  <script src='js/home/Document.js'></script>
+  <script src='js/home/Member.js'></script>
   <script src='js/home/Main.js'></script>
   <!-- serverConsole -->
   <!-- <script>

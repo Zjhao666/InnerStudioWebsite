@@ -1,7 +1,7 @@
 
 let base='http://localhost:8081/'
 
-function validate(ac,pw){
+function validate(ac,pw,callback){
   $.get({
     url:base+'login/pk',
     dataType:'JSON',
@@ -14,11 +14,10 @@ function validate(ac,pw){
         data:{cipher:data},
         dataType:'JSON',
         success:(rep)=>{
-          console.log(rep);
+          if(rep.statuscode==200) callback(true);// validate successfully
+          else callback(false);
         }
       });
     }
   })
 }
-
-validate('Luncert','123456');

@@ -2,7 +2,7 @@
 let express=require('express');
 let util=require('util');
 let bodyParser=require('body-parser');
-let multer  = require('multer');
+let multer=require('multer');
 
 let app=express();
 let urlencodedParser = bodyParser.urlencoded({ extended: false });
@@ -11,6 +11,8 @@ app.use(express.static('static'));
 app.use(multer({ dest: '/tmp/'}).array('image'));
 
 app.use('/login',require('./dynamic/login.js'));
+app.use('/document',require('./dynamic/document.js'));
+app.use('/member',require('./dynamic/member.js'));
 
 app.get('/',(req,rep)=>{
   rep.send('Hello,world!');

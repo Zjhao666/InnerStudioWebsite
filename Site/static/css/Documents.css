@@ -30,6 +30,7 @@
   width: 30px;
   cursor: pointer;
   background-size: cover;
+  border-radius: 7px;
 }
 #Documents .Fileview .controller .input_path{
   box-sizing: border-box;
@@ -52,6 +53,10 @@
 }
 #Documents .Fileview .controller .btn_select{
   background-image: url(../../img/btn/btn_select.png);
+}
+#Documents .Fileview .controller .btn_download{
+  background-image: url(../../img/btn/btn_download.png);
+  background-size: cover;
 }
 #Documents .Fileview .controller .btn_upload{
   background-image: url(../../img/btn/btn_upload.png);
@@ -103,29 +108,27 @@
   width: 20%;
   padding: 10px;
   -moz-user-select: none;
-}
-#Documents .Filetree .wrapper{
   position: relative;
-  width: 120%;height: 106%;
   box-sizing: border-box;
   overflow: scroll;
 }
-#Documents .Filetree .wrapper .dir,
-#Documents .Filetree .wrapper .file{
+#Documents .Filetree .dir,
+#Documents .Filetree .file{
   display: block;
-  margin: 0px 0px 0px 10px;padding: 0px;
+  margin: 0px 15px 0px 10px;padding: 0px;
   list-style: none;
   background-image: url(../../img/icon/thumbnail/dir_fileicon.png);
   background-repeat: no-repeat;
   cursor: pointer;
 }
-#Documents .Filetree .wrapper span{
+#Documents .Filetree span{
   display: inline-block;
   vertical-align: top;
-  height: 15px;
+  height: 15px;width: 200px;
   line-height: 15px;
   margin-left: 15px;
+  white-space: nowrap;
 }
-#Documents .Filetree .wrapper .file{
+#Documents .Filetree .file{
   background-image: url(../../img/icon/thumbnail/file_fileicon.png);
 }
