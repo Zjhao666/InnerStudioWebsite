@@ -17,16 +17,22 @@ const handleCmd=(cmd)=>{
     else if(programCounter==1){
       // ajax login
       programCounter=-1;
-      validate(account,password,(flag)=>{
-        if(flag){
+      validate(account,password,(rep)=>{
+        if(rep.statuscode==200){
           consoleContent.append(`<br /><span class='line retline'>Validate successfully.</span>`);
           consoleContent.append(`<br /><span class='label'>Guest Sessin:</span>\n<span class='line'></span>`);
           window.location.href=base+'/home.html';
         }
-        else{
+        else if(rep.statuscode==201||rep.statuscode==202){
           consoleContent.append(`<br /><span class='line retline'>Validate failed.</span>`);
           consoleContent.append(`<br /><span class='label'>Guest Sessin:</span>\n<span class='line'></span>`);
         }
+        else{
+          consoleContent.append(`<br /><span class='line retline'>Server inner error.</span>`);
+          consoleContent.append(`<br /><span class='label'>Guest Sessin:</span>\n<span class='line'></span>`);
+        }
+        password='';
+        account='';
       });
     }
   }

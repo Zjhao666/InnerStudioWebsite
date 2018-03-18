@@ -87,6 +87,56 @@
   border-radius: 5px;
   border: 10px solid rgba(50,50,50,0.5);
 }
+#Members .ChatBox .content{
+  padding: 5px 0px;
+}
+#Members .ChatBox .content .item{
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  width: 95%;min-height: 30px;
+  margin: 10px 2.5%;
+  cursor: pointer;
+}
+#Members .ChatBox .content .item .headimg{
+  display: block;
+  position: absolute;
+  left: 0px;top: 0px;
+  width: 30px;height: 30px;
+  border-radius: 15px;
+  box-shadow: 5px 0px 10px black;
+  z-index: 100;
+}
+#Members .ChatBox .content .item .message{
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  margin: 5px 35px;
+}
+#Members .ChatBox .content .item .message span{
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 5px;
+  max-width: 100%;line-height: 25px;
+  text-shadow: 5px 0px 3px white;
+  word-break: break-all;
+}
+#Members .ChatBox .content .rightitem .headimg{
+  right: 0px;left: auto;
+}
+#Members .ChatBox .content .rightitem .message{
+  text-align: right;
+}
+#Members .ChatBox .inputfield{
+  position: absolute;
+  box-sizing: border-box;
+  bottom: 15px;left: 5%;
+  width: 90%;height: 20px;
+  padding: 0px 5px;margin: 0px;border: none;
+  border-radius: 10px;
+  color: white;
+  background-color: rgba(60,150,255,0.8);
+}
 /* 25% */
 #Members .MemberProfile{
   width: 25%;

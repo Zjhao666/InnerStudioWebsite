@@ -73,7 +73,7 @@ const getMemberList=()=>{
   })
 };
 const memberItemActionBind=()=>
-  $('#Members .item').each((i,elem)=>{
+  $('#Members .MemberList .item').each((i,elem)=>{
     let mask;
     $(elem).bind({
       mouseenter:()=>{
@@ -81,15 +81,15 @@ const memberItemActionBind=()=>
         mask=$(`<a style='
         display:block;
         position:absolute;
-        height:30px;width:0px;
-        left:0px;top:0px;
+        height:30px;width:100%;
+        left:-100%;top:0px;
         background:rgba(100,80,200,0.6);
         '></a>`);
         mask.appendTo(elem);
-        mask.animate({width:210},300);
+        mask.animate({left:0},300);
       },
       mouseleave:()=>{
-        mask.animate({left:210},300);
+        mask.animate({left:'100%'},300);
       },
       mousedown:()=>{
         mask.css('background-color','rgba(100,80,160,1)');

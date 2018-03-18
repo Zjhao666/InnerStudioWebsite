@@ -10,7 +10,7 @@ let pool=mysql.createPool({
 
 
 module.exports={
-  query:(sql,callback)=>
+  execute:(sql,callback)=>
     pool.getConnection((err,connection)=>
       connection.query(sql,(err,rows)=>{
         callback(err,rows);

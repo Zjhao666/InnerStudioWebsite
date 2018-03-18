@@ -8,14 +8,15 @@ function validate(ac,pw,callback){
     success:(rep)=>{
       let encryptObj=new JSEncrypt();
       encryptObj.setKey(rep.key);
-      let data=encryptObj.encrypt(ac+'&'+pw);
       $.post({
         url:base+'login/validate',
-        data:{cipher:data},
+        data:{
+          cipher_ac:encryptObj.encrypt(ac),
+          cipher_pw:encryptObj.encrypt(pw)
+        },
         dataType:'JSON',
         success:(rep)=>{
-          if(rep.statuscode==200) callback(true);// validate successfully
-          else callback(false);
+          callback(rep);
         }
       });
     }

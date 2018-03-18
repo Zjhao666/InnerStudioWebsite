@@ -1,9 +1,11 @@
 
-let express=require('express');
-let ursa=require('ursa');
-let bodyParser=require('body-parser');
-let encoding=require('encoding');
-let urlencodedParser=bodyParser.urlencoded({extended:false});
+let express=require('express'),
+    ursa=require('ursa'),
+    bodyParser=require('body-parser'),
+    encoding=require('encoding'),
+    dbAccess=require('./lib/dbAccess'),
+    util=require('util'),
+    urlencodedParser=bodyParser.urlencoded({extended:false});
 
 let app=express();
 let privatePem,maxBits=512,padding=ursa.RSA_PKCS1_PADDING;
@@ -16,10 +18,15 @@ app.get('/pk',(req,rep)=>{
 });
 // check account & password
 app.post('/validate',urlencodedParser,(req,rep)=>{
-  let data=decrypt(req.body.cipher,privatePem,maxBits/8,padding);
+  let account=decrypt(req.body.cipher_ac,privatePem,maxBits/8,padding),
+      password=decrypt(req.body.cipher_pw,privatePem,maxBits/8,padding);
   // match database
-  rep.end(JSON.stringify({statuscode:200}));
-  console.log(data);
+  dbAccess.execute('select password from Member where account="'+account+'"',(err,rows)=>{
+    if(err) rep.end(JSON.stringify({statuscode:203,description:util.inspect(err)}));
+    else if(rows.length==0) rep.end(JSON.stringify({statuscode:201,description:'account not exists'}))
+    else if(rows[0].password==password) rep.end(JSON.stringify({statuscode:200}));
+    else rep.end(JSON.stringify({statuscode:202,description:'incorrect password'}));
+  });
 });
 
 module.exports=app;
@@ -29,7 +36,6 @@ function bytes(text, coding) {
     if (typeof text === 'undefined') {
         throw new Error("must have a arg.");
     }
-
     coding = coding || 'utf8';
     return Buffer.byteLength(text.toString(), coding);
 }
