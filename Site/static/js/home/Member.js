@@ -1,52 +1,17 @@
-/*
-// let ac=localStorage.getItem('ac'),pw=localStorage.getItem('pw');
-let ac='1',pw='1';
-let ws=new WebSocket('ws://127.0.0.1:9001/chat');
-ws.onopen=function(evt){
-  // connect check
-};
+
+let mmid=1,chatbox=$('#Members .ChatBox .content');
+console.log(chatbox)
+let ws=new WebSocket('ws://localhost:8081/ws/chat');
 ws.onmessage=(evt)=>{
-  // new message received
-  let data=JSON.parse(evt.data);
-  if(data.type=='*'){
-    let n=data.content.n,
-        e=data.content.e;
-    ws.send(JSON.stringify({
-      type:'*',
-      content:RSA.encrypt(ac+'&'+pw,n,e)
-    }));
-  }
-  else if(data.type=='/'){
-    if(data.content.statuscode==200){
-      console.log('Validate successfully');
-      ws.send(JSON.stringify({
-        type:'?',
-        target:2
-      }));
-    }
-    else{
-      console.log('Validate failed');
-    }
-  }
-  else if(data.type=='+'){
-    console.log(data.param,data.content);
-  }
-  else if(data.type=='?'){
-    console.log(data.content);
-  }
+  console.log(evt.data);
 };
-ws.onclose=(evt)=>{
-
-};
-ws.onerror=(evt)=>{
-
-};
+// ws.onclose=(evt)=>{};
+// ws.onerror=(evt)=>{};
 
 $(window).on('beforeunload',()=>{
   ws.close();
 });
 
-*/
 const getMemberList=()=>{
   $.get({
     url:global_host+'member/getMembers',
@@ -99,5 +64,41 @@ const memberItemActionBind=()=>
       }
     });
   });
+const chatboxAddItem=(oldmsg)=>{
+  for(let item of oldmsg){
+    let pos='';
+    if(item.source==mmid) pos='rightitem';
+    chatbox.append(`<div class='item `+pos+`'>
+      <img class='headimg' src='img/defaultHeadimg.png'>
+      <div class='message'><span>`+item.message+`</span></div>
+    </div>`);
+  }
+};
+
+let inputfield=$('#Members .ChatBox .inputfield');
+inputfield.bind('input propertychange','textarea',()=>{
+  inputfield.css('height',20);
+  inputfield.css('height',inputfield[0].scrollHeight);
+});
 
 getMemberList();
+// get old msg
+const getOldmsg=()=>$.get({
+  url:global_host+'member/getOldmsg?user='+mmid,
+  dataType:'JSON',
+  success:(rep)=>{
+    if(rep.statuscode==200) chatboxAddItem(rep.data);
+    else if(rep.statuscode==201) console.log('no old msg');// no old msg
+    else notify(rep.description);// error
+  }
+});
+const getNewmsg=()=>$.get({
+  url:global_host+'member/getNewmsg?user='+mmid,
+  dataType:'JSON',
+  success:(rep)=>{
+    if(rep.statuscode==200) chatboxAddItem(rep.data);
+    else if(rep.statuscode==201) console.log('no old msg');// no old msg
+    else notify(rep.description);// error
+  }
+});
+getOldmsg();

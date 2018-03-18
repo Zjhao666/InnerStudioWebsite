@@ -10,5 +10,12 @@ app.get('/getMembers',(req,rep)=>{
     else rep.end(JSON.stringify({statuscode:200,data:ret}));
   });
 });
-
+app.get('/getOldmsg',(req,rep)=>{
+  let mmid=req.query.user;
+  dbAccess.execute('select source,target,message,timestamp from Oldmsg where source='+mmid+' or target='+mmid,(err,ret)=>{
+    if(err) rep.end(JSON.stringify({statuscode:202,description:util.inspect(err)}));
+    else if(ret.length==0) rep.end(JSON.stringify({statuscode:201}));
+    else rep.end(JSON.stringify({statuscode:200,data:ret}));
+  });
+});
 module.exports=app;
