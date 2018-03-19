@@ -1,0 +1,37 @@
+
+#Rank{
+  display: none;
+  box-sizing: border-box;
+  width: 90%;height: 92%;
+  margin: 5% auto 0px;
+}
+#Rank .wrapper{
+  width: 90%;max-height: 100%;
+  margin: 0px auto;
+  box-shadow: 5px 0px 10px black;
+  font-weight: bold;
+}
+#Rank .wrapper th{
+  position: relative;
+  background-color: rgb(80,120,200);
+}
+#Rank .wrapper td{
+  position: relative;
+  text-align: center;
+  background-color: rgb(100,50,150);
+}
+#Rank .wrapper .st_name{
+  text-decoration: underline;
+  cursor: pointer;
+}
+#Rank .wrapper .t_dollars::before{
+  float: left;
+  margin-left: 5px;
+  content: '$';
+}
+
+#Rank .wrapper .t_percentage::after{
+  float: right;
+  margin-right: 5px;
+  content: '%';
+}

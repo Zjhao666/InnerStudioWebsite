@@ -1,0 +1,157 @@
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+* {
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	box-sizing:border-box; }
+html {
+	width: 100%;
+	height:100%;
+	-moz-user-select: none;
+	user-select: none;
+	overflow:hidden;
+}
+body {
+	width: 100%;
+	height:100%;
+	font-family: 'Open Sans', sans-serif;
+	background: #092756;
+	background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%),-moz-linear-gradient(top,  rgba(57,173,219,.25) 0%, rgba(42,60,87,.4) 100%), -moz-linear-gradient(-45deg,  #670d10 0%, #092756 100%);
+	background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -webkit-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -webkit-linear-gradient(-45deg,  #670d10 0%,#092756 100%);
+	background: -o-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -o-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -o-linear-gradient(-45deg,  #670d10 0%,#092756 100%);
+	background: -ms-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), -ms-linear-gradient(top,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), -ms-linear-gradient(-45deg,  #670d10 0%,#092756 100%);
+	background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), linear-gradient(to bottom,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), linear-gradient(135deg,  #670d10 0%,#092756 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3E1D6D', endColorstr='#092756',GradientType=1 );
+}
+.login {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -150px 0 0 -150px;
+	width:300px;
+	height:300px;
+}
+.login h1 {
+	color: #fff;
+	text-shadow: 0 0 10px rgba(0,0,0,0.3);
+	letter-spacing:1px;
+	text-align:center;
+}
+input {
+	width: 100%;
+	margin-bottom: 10px;
+	background: rgba(0,0,0,0.3);
+	border: none;
+	outline: none;
+	padding: 10px;
+	font-size: 13px;
+	color: #fff;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+	border: 1px solid rgba(0,0,0,0.3);
+	border-radius: 4px;
+	box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);
+	-webkit-transition: box-shadow .5s ease;
+	-moz-transition: box-shadow .5s ease;
+	-o-transition: box-shadow .5s ease;
+	-ms-transition: box-shadow .5s ease;
+	transition: box-shadow .5s ease;
+}
+input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2); }
+.btn_wrapper{
+	width: 60%;
+	margin: 0px auto;
+}
+.btn_login,.btn_regis{
+	display: block;
+	position: relative;
+	float: left;
+	width: 48%;
+	padding: 0px;
+	border: none;
+	font-size: 1.2em;
+	color: white;
+	border-radius: 3px;
+	box-shadow: 0px 0px 5px rgb(20,20,20);
+	background: linear-gradient(to bottom,rgba(70,150,255) 5%,rgb(70,100,220) 100%);
+}
+.btn_regis{
+	float: right;
+	text-align: center;
+	cursor: default;
+}
+
+.btn_wrapper *:hover{
+  color: rgba(80,50,150);
+  animation: RefItemShock 0.5s;
+}
+
+.regis{
+  display: none;
+  opacity: 0;
+  position: absolute;
+  top: 0px;left: 0px;
+  width: 100%;height: 100%;
+  background-color: rgba(20,20,20,0.4);
+  overflow: hidden;
+}
+.regis form{
+  position: relative;
+  display: block;
+  width: 300px;height: 100%;
+  top: 30%;
+  margin:0px auto;
+}
+.regis form h1 {
+	color: #fff;
+	text-shadow: 0 0 10px rgba(0,0,0,0.3);
+	letter-spacing:1px;
+	text-align:center;
+}
+.regis form .btn_upload{
+	position: relative;
+  display: block;
+  text-align: center;
+	width: 20%;
+  margin: 0px auto;padding: 0px;
+	border: none;
+	font-size: 1.2em;
+	color: white;
+	border-radius: 3px;
+	box-shadow: 0px 0px 5px rgb(20,20,20);
+	background: linear-gradient(to bottom,rgb(70,150,255) 5%,rgb(70,100,220) 100%);
+}
+.btn_upload:hover{
+  color: rgba(80,50,150);
+  animation: RefItemShock 0.5s;
+}
+@keyframes RefItemShock {
+  0%{
+    color: white;
+    top: 0px;left: 0px;
+  }
+  25%{
+    top: 2px;left: -1px;
+  }
+  50%{
+    color: rgba(80,50,150);
+    top: -1px;left: 0px;
+  }
+  75%{
+    top: 0px;left: 2px;
+  }
+  100%{
+    top: 0px;left: 0px;
+  }
+}
+
+#notification{
+	display: none;
+	position: absolute;
+	background-color: rgba(70,150,220);
+	border-radius: 5px;
+	padding: 5px;
+	color: white;
+	z-index: 1000;
+}
