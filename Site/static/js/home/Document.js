@@ -97,7 +97,6 @@ const urlToArray=(url)=>{
   return ret;
 };
 const readDir=(target,callback)=>{
-  console.log(target);
   if(!target) target='';
   $.get({
     url:global_host+'document/open?target='+target,
@@ -137,7 +136,7 @@ const readDir=(target,callback)=>{
       }
       else{
         // notify user target path is invalid
-        console.log('target path is invalid');
+        console.log(rep.description);
       }
     }
   });
@@ -172,7 +171,6 @@ const docTreeOpenTarget=(target,elem)=>{
       }
     });
   }
-  console.log(target);
   if(!target) target='';
   $.get({
     url:global_host+'document/open?target='+target,
@@ -246,7 +244,7 @@ const overviewBindAction=()=>$('#Documents .Fileview .content .item').each((i,el
       target.children('span').css({
         whiteSpace:'normal',
         height:'auto',
-        zIndex:100
+        zIndex:1000
       });
       docItemSelected=target;
     },

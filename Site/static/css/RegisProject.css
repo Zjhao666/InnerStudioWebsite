@@ -1,6 +1,6 @@
 
 #Regisproject{
-  display: none;
+  /* display: none; */
   box-sizing: border-box;
   position: relative;
   width: 90%;height: 85%;
@@ -67,9 +67,11 @@
 }
 
 #Regisproject .Essential .projectDoc{
+  width: 100%;height: 5%;
+  font-size: 1.1em;
+  padding: 2px 5px;
+  cursor: pointer;
   overflow: hidden;
-  text-align: center;
-  height: 6%;
 }
 #Regisproject .Essential .projectDoc .inner{display: none;}
 
@@ -85,19 +87,38 @@
 #Regisproject .Essential .members{
   height: 70%;padding: 10px;
 }
-#Regisproject .Essential .members .item{
+#Regisproject .Essential .members .btn_add,
+#Regisproject .Essential .members .btn_del{
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  width: 30px;height: 30px;
+  background: url(../img/btn/btn_dec.png),rgb(200,200,200);
+  border-radius: 15px;
+  box-shadow: 1px 1px 2px black;
+  background-size: cover;
+  cursor: pointer;
+}
+#Regisproject .Essential .members .btn_add{
+  background: url(../img/btn/btn_inc.png),rgb(200,200,200);
+  background-size: cover;
+}
+#Regisproject .Essential .members .wrapper{
+  margin-top: 10px;
+}
+#Regisproject .Essential .members .wrapper .item{
   box-sizing: border-box;
   width: 100%;height: 30px;
   margin-bottom: 10px;
   position: relative;
 }
-#Regisproject .Essential .members .item .headimg{
+#Regisproject .Essential .members .wrapper .item .headimg{
   position: absolute;
   width: 30px;height: 30px;
   border-radius: 15px;
   box-shadow: 5px 0px 10px black;
 }
-#Regisproject .Essential .members .item .account{
+#Regisproject .Essential .members .wrapper .item .account{
   position: absolute;
   left: 40px;
   color: white;

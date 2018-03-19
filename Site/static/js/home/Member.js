@@ -1,6 +1,5 @@
 
 let mmid=1,chatbox=$('#Members .ChatBox .content');
-console.log(chatbox)
 let ws=new WebSocket('ws://localhost:8081/ws/chat');
 ws.onmessage=(evt)=>{
   console.log(evt.data);
@@ -97,8 +96,31 @@ const getNewmsg=()=>$.get({
   dataType:'JSON',
   success:(rep)=>{
     if(rep.statuscode==200) chatboxAddItem(rep.data);
-    else if(rep.statuscode==201) console.log('no old msg');// no old msg
+    else if(rep.statuscode==201) console.log('no new msg');// no old msg
     else notify(rep.description);// error
+  },
+  error:(err)=>{
+    if(err) console.log(err);
   }
 });
+const sendMsg=(target,msg)=>$.post({
+  url:global_host+'member/sendMsg',
+  data:{
+    source:mmid,
+    target:target,
+    message:msg
+  },
+  success:(rep)=>{
+    if(rep.statuscode==200){
+
+    }
+  }
+});
+const getTargetProfile=(target)=>{
+
+};
 getOldmsg();
+getNewmsg();
+
+// 1.chat,redius
+// 2.get detail

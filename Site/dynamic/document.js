@@ -5,11 +5,10 @@ let express=require('express'),
 
 let app=express();
 
-let rootPath='/home/lijingwei';
+let rootPath='/home/luncert';
 
 app.get('/open',(req,rep)=>{
   let target=req.query.target;
-  console.log(target);
   if(!target) target=rootPath;
   if(!fs.existsSync(target)||!target.startsWith(rootPath)){
     rep.end(JSON.stringify({statuscode:201,description:'invalid path'}));
