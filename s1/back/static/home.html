@@ -1,353 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>网站名称</title>
+  <title>外利宝</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src='js/lib/jquery-3.2.1.min.js'></script>
   <link rel='stylesheet' href='css/clear.css' />
-  <link rel='stylesheet' href='css/home/Main.css' />
-  <link rel='stylesheet' href='css/home/Navigate.css' />
-  <link rel='stylesheet' href='css/home/Analysis.css' />
-  <link rel='stylesheet' href='css/home/Rank.css' />
-  <link rel='stylesheet' href='css/home/Detail.css' />
+  <link rel='stylesheet' href='css/Home.css' />
+  <script src='js/lib/jquery-3.2.1.min.js'></script>
 </head>
 <body>
   <div id='main'>
     <audio id='AudioClickEffect' style='display:none;' src='sounds/click.mp3' type='audio/mp3'></audio>
-    <div id='Navigate'>
-      <div class='Profile'>
-        <a class='headimg'></a>
-        <a class='nickName'>昵称</a>
-        <a class='mitAccount'>MT4账号</a>
-      </div>
-      <div class='titleWrapper'><span class='title'>网站名称</span></div>
-      <div class='Ref'>
-        <div class='wrapper'>
-          <a class='item refRank'>信号排行</a>
-          <a class='item refx'>个人设置</a>
-          <!-- <a class='item refAnalysis'>行情分析</a> -->
-          <!-- <a class='item refx'>账户信息</a> -->
-          <!-- <a class='item refx'>外汇跟单</a> -->
-          <!-- <a class='item refx'>机构跟单</a> -->
-          <!-- <a class='item refx'>申请提现</a> -->
-          <!-- <a class='item refx'>申请喊单</a> -->
-          <!-- <a class='item refx'>申请业务</a> -->
-          <!-- <a class='item refx'>我的业务</a> -->
-        </div>
+    <div class='header'>
+      <span class='logo'>logo</span>
+      <div class='searchbox'>
+        <input type='text' placeholder='搜索订单' />
+        <span class='btn search'></span>
       </div>
     </div>
-    <div id='Frames'>
-      <div class='contentWrapper'>
-        <div id='Analysis'>
-          <table class='wrapper'>
-            <thead>
-              <tr>
-                <th>名称</th>
-                <th>最新价</th>
-                <th>涨跌</th>
-                <th>涨跌幅</th>
-                <th>今日开盘价</th>
-                <th>最高</th>
-                <th>最低</th>
-              </tr>
-            </thead>
-            <!-- <tfoot>
-              <tr>
-                <td>Sum</td>
-                <td>$180</td>
-              </tr>
-            </tfoot> -->
+    <div class='navigate'>
+      <span class='item'>信号排行</span>
+      <span class='item'>个人设置</span>
+      <span class='item'>申请提现</span>
+      <span class='item'>我的业务</span>
+      <span class='item'>帮助中心</span>
+      <span class='item'>关于我们</span>
+      <!-- <a class='item refAnalysis'>行情分析</a> -->
+      <!-- <a class='item refx'>账户信息</a> -->
+      <!-- <a class='item refx'>外汇跟单</a> -->
+      <!-- <a class='item refx'>机构跟单</a> -->
+      <!-- <a class='item refx'>申请提现</a> -->
+      <!-- <a class='item refx'>申请喊单</a> -->
+      <!-- <a class='item refx'>申请业务</a> -->
+      <!-- <a class='item refx'>我的业务</a> -->
+    </div>
+    <div class='content'>
+      <div class='pathRoute'>
+        <span class='item firstitem'>信号排行</span>
+        <span class='item'>帐号信息</span>
+      </div>
+      <div id='Analysis' style='display:none;'>
+        <table class='wrapper'>
+          <thead>
+            <tr>
+              <th>名称</th>
+              <th>最新价</th>
+              <th>涨跌</th>
+              <th>涨跌幅</th>
+              <th>今日开盘价</th>
+              <th>最高</th>
+              <th>最低</th>
+            </tr>
+          </thead>
+          <!-- <tfoot>
+            <tr>
+              <td>Sum</td>
+              <td>$180</td>
+            </tr>
+          </tfoot> -->
+          <tbody>
+            <tr>
+              <td>USDCHF</td>
+              <td>0.94672</td>
+              <td>-0.01852</td>
+              <td>-0.01919</td>
+              <td>0.96524</td>
+              <td>0.96696</td>
+              <td>0.96380</td>
+            </tr>
+            <tr>
+              <td>USDJPY</td>
+              <td>106.069</td>
+              <td>-3.08600</td>
+              <td>-0.02827</td>
+              <td>109.155</td>
+              <td>109.209</td>
+              <td>108.828</td>
+            </tr>
+            <tr>
+              <td>USDCAD</td>
+              <td>1.30351</td>
+              <td>0.04602</td>
+              <td>0.03660</td>
+              <td>1.25749</td>
+              <td>1.25782</td>
+              <td>1.25341</td>
+            </tr>
+            <tr>
+              <td>GBPUSD</td>
+              <td>1.39830</td>
+              <td>0.11938</td>
+              <td>0.09334</td>
+              <td>1.27892</td>
+              <td>1.28042</td>
+              <td>1.27775</td>
+            </tr>
+            <tr>
+              <td>EURUSD</td>
+              <td>1.23442</td>
+              <td>0.05478</td>
+              <td>0.04644</td>
+              <td>1.17964</td>
+              <td>1.18210</td>
+              <td>1.17955</td>
+            </tr>
+            <tr>
+              <td>AUDUSD</td>
+              <td>0.78513</td>
+              <td>0.00004</td>
+              <td>0.01%</td>
+              <td>0.78509</td>
+              <td>0.78739</td>
+              <td>0.78379</td>
+            </tr>
+            <tr>
+              <td>NZDUSD</td>
+              <td>0.72968</td>
+              <td>0.00852</td>
+              <td>0.01181</td>
+              <td>0.72116</td>
+              <td>0.72334</td>
+              <td>0.71952</td>
+            </tr>
+            <tr>
+              <td>USDHKD</td>
+              <td>7.84150</td>
+              <td>0.01725</td>
+              <td>0.00220</td>
+              <td>7.82425</td>
+              <td>7.82444</td>
+              <td>7.82193</td>
+            </tr>
+            <tr>
+              <td>AUDCAD</td>
+              <td>1.02080</td>
+              <td>0.02866</td>
+              <td>0.02889</td>
+              <td>0.99214</td>
+              <td>0.99302</td>
+              <td>0.99052</td>
+            </tr>
+            <tr>
+              <td>EURCAD</td>
+              <td>1.60909</td>
+              <td>0.12542</td>
+              <td>0.08453</td>
+              <td>1.48367</td>
+              <td>1.48570</td>
+              <td>1.48085</td>
+            </tr>
+            <tr>
+              <td>GBPAUD</td>
+              <td>1.78537</td>
+              <td>0.16484</td>
+              <td>0.10172</td>
+              <td>1.62053</td>
+              <td>1.62117</td>
+              <td>1.61678</td>
+            </tr>
+            <tr>
+              <td>GBPJPY</td>
+              <td>148.282</td>
+              <td>8.67100</td>
+              <td>0.06211</td>
+              <td>139.611</td>
+              <td>139.754</td>
+              <td>139.279</td>
+            </tr>
+            <tr>
+              <td>AUDJPY</td>
+              <td>83.070</td>
+              <td>-3.04900</td>
+              <td>-0.03540</td>
+              <td>86.119</td>
+              <td>86.299</td>
+              <td>86.041</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <table id='SignalRank'>
+        <thead>
+          <tr>
+            <th>策略名</th>
+            <th>月盈利</th>
+            <th>月胜率</th>
+            <th>账户资金</th>
+            <th>月收益率</th>
+            <th>日均单量</th>
+            <th>跟单人数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class='st_name'>Seafly</td>
+            <td class='t_dollars'>787.96</td>
+            <td class='t_percentage'>72</td>
+            <td class='t_dollars'>10503.76</td>
+            <td class='t_percentage'>8.11</td>
+            <td>0.9</td>
+            <td>2650</td>
+          </tr>
+          <tr>
+            <td class='st_name'>NightProfit</td>
+            <td class='t_dollars'>2739.8</td>
+            <td class='t_percentage'>66.67</td>
+            <td class='t_dollars'>63015.1</td>
+            <td class='t_percentage'>4.55</td>
+            <td>0.6</td>
+            <td>1623</td>
+          </tr>
+          <tr>
+            <td class='st_name'>SaRa</td>
+            <td class='t_dollars'>3850</td>
+            <td class='t_percentage'>54.55</td>
+            <td class='t_dollars'>165969.75</td>
+            <td class='t_percentage'>2.37</td>
+            <td>0.8</td>
+            <td>936</td>
+          </tr>
+          <tr>
+            <td class='st_name'>Carefull</td>
+            <td class='t_dollars'>979.2</td>
+            <td class='t_percentage'>41.67</td>
+            <td class='t_dollars'>50315.03</td>
+            <td class='t_percentage'>1.98</td>
+            <td>0.8</td>
+            <td>2162</td>
+          </tr>
+          <tr>
+            <td class='st_name'>MakeMoney</td>
+            <td class='t_dollars'>669.77</td>
+            <td class='t_percentage'>47.92</td>
+            <td class='t_dollars'>36048.2</td>
+            <td class='t_percentage'>1.89</td>
+            <td>1.7</td>
+            <td>1265</td>
+          </tr>
+          <tr>
+            <td class='st_name'>Tony</td>
+            <td class='t_dollars'>3385.33</td>
+            <td class='t_percentage'>60</td>
+            <td class='t_dollars'>210104.81</td>
+            <td class='t_percentage'>1.64</td>
+            <td>0.3</td>
+            <td>982</td>
+          </tr>
+          <tr>
+            <td class='st_name'>Jack.Li</td>
+            <td class='t_dollars'>10.32</td>
+            <td class='t_percentage'>42.86</td>
+            <td class='t_dollars'>36404.64</td>
+            <td class='t_percentage'>0.03</td>
+            <td>0.7</td>
+            <td>1027</td>
+          </tr>
+          <tr>
+            <td class='st_name'>Linda</td>
+            <td class='t_dollars'>486.85</td>
+            <td class='t_percentage'>54.17</td>
+            <td class='t_dollars'>39120.87</td>
+            <td class='t_percentage'>1.26</td>
+            <td>1.7</td>
+            <td>1085</td>
+          </tr>
+          <tr>
+            <td class='st_name'>JIMI</td>
+            <td class='t_dollars'>268.2</td>
+            <td class='t_percentage'>55.56</td>
+            <td class='t_dollars'>51282.07</td>
+            <td class='t_percentage'>0.53</td>
+            <td>0.9</td>
+            <td>1821</td>
+          </tr>
+          <tr>
+            <td class='st_name'>test(勿跟)</td>
+            <td class='t_dollars'>0</td>
+            <td class='t_percentage'>0</td>
+            <td class='t_dollars'>0</td>
+            <td class='t_percentage'>0</td>
+            <td>0</td>
+            <td>1</td>
+          </tr>
+        </tbody>
+      </table>
+      <div id='AccountInfo'>
+        <div class='base'>
+          <div class='profile'><span>Seafly</span></div>
+          <table class='data'>
             <tbody>
               <tr>
-                <td>USDCHF</td>
-                <td>0.94672</td>
-                <td>-0.01852</td>
-                <td>-0.01919</td>
-                <td>0.96524</td>
-                <td>0.96696</td>
-                <td>0.96380</td>
+                <td class='label'>当前余额</td>
+                <td class='value t_dollars'>10503.76</td>
+                <td class='label'>当前净值</td>
+                <td class='value t_dollars'>10503.76</td>
+                <td class='label'>浮动盈亏</td>
+                <td class='value t_dollars'>0</td>
+                <td class='label'>跟随人数</td>
+                <td class='value t_dollars'>2651</td>
               </tr>
               <tr>
-                <td>USDJPY</td>
-                <td>106.069</td>
-                <td>-3.08600</td>
-                <td>-0.02827</td>
-                <td>109.155</td>
-                <td>109.209</td>
-                <td>108.828</td>
-              </tr>
-              <tr>
-                <td>USDCAD</td>
-                <td>1.30351</td>
-                <td>0.04602</td>
-                <td>0.03660</td>
-                <td>1.25749</td>
-                <td>1.25782</td>
-                <td>1.25341</td>
-              </tr>
-              <tr>
-                <td>GBPUSD</td>
-                <td>1.39830</td>
-                <td>0.11938</td>
-                <td>0.09334</td>
-                <td>1.27892</td>
-                <td>1.28042</td>
-                <td>1.27775</td>
-              </tr>
-              <tr>
-                <td>EURUSD</td>
-                <td>1.23442</td>
-                <td>0.05478</td>
-                <td>0.04644</td>
-                <td>1.17964</td>
-                <td>1.18210</td>
-                <td>1.17955</td>
-              </tr>
-              <tr>
-                <td>AUDUSD</td>
-                <td>0.78513</td>
-                <td>0.00004</td>
-                <td>0.01%</td>
-                <td>0.78509</td>
-                <td>0.78739</td>
-                <td>0.78379</td>
-              </tr>
-              <tr>
-                <td>NZDUSD</td>
-                <td>0.72968</td>
-                <td>0.00852</td>
-                <td>0.01181</td>
-                <td>0.72116</td>
-                <td>0.72334</td>
-                <td>0.71952</td>
-              </tr>
-              <tr>
-                <td>USDHKD</td>
-                <td>7.84150</td>
-                <td>0.01725</td>
-                <td>0.00220</td>
-                <td>7.82425</td>
-                <td>7.82444</td>
-                <td>7.82193</td>
-              </tr>
-              <tr>
-                <td>AUDCAD</td>
-                <td>1.02080</td>
-                <td>0.02866</td>
-                <td>0.02889</td>
-                <td>0.99214</td>
-                <td>0.99302</td>
-                <td>0.99052</td>
-              </tr>
-              <tr>
-                <td>EURCAD</td>
-                <td>1.60909</td>
-                <td>0.12542</td>
-                <td>0.08453</td>
-                <td>1.48367</td>
-                <td>1.48570</td>
-                <td>1.48085</td>
-              </tr>
-              <tr>
-                <td>GBPAUD</td>
-                <td>1.78537</td>
-                <td>0.16484</td>
-                <td>0.10172</td>
-                <td>1.62053</td>
-                <td>1.62117</td>
-                <td>1.61678</td>
-              </tr>
-              <tr>
-                <td>GBPJPY</td>
-                <td>148.282</td>
-                <td>8.67100</td>
-                <td>0.06211</td>
-                <td>139.611</td>
-                <td>139.754</td>
-                <td>139.279</td>
-              </tr>
-              <tr>
-                <td>AUDJPY</td>
-                <td>83.070</td>
-                <td>-3.04900</td>
-                <td>-0.03540</td>
-                <td>86.119</td>
-                <td>86.299</td>
-                <td>86.041</td>
+                <td class='label'>平均获利点数</td>
+                <td class='value'>1.79点</td>
+                <td class='label'>交易手数</td>
+                <td class='value'>146.29手</td>
+                <td class='label'>交易笔数</td>
+                <td class='value'>515笔</td>
+                <td class='label'>胜出交易笔数</td>
+                <td class='value'>259笔</td>
               </tr>
             </tbody>
           </table>
-        </div>
-        <div id='Rank'>
-          <table class='wrapper'>
-            <thead>
-              <tr>
-                <th>策略名</th>
-                <th>月盈利</th>
-                <th>月胜率</th>
-                <th>账户资金</th>
-                <th>月收益率</th>
-                <th>日均单量</th>
-                <th>跟单人数</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class='st_name'>Seafly</td>
-                <td class='t_dollars'>787.96</td>
-                <td class='t_percentage'>72</td>
-                <td class='t_dollars'>10503.76</td>
-                <td class='t_percentage'>8.11</td>
-                <td>0.9</td>
-                <td>2650</td>
-              </tr>
-              <tr>
-                <td class='st_name'>NightProfit</td>
-                <td class='t_dollars'>2739.8</td>
-                <td class='t_percentage'>66.67</td>
-                <td class='t_dollars'>63015.1</td>
-                <td class='t_percentage'>4.55</td>
-                <td>0.6</td>
-                <td>1623</td>
-              </tr>
-              <tr>
-                <td class='st_name'>SaRa</td>
-                <td class='t_dollars'>3850</td>
-                <td class='t_percentage'>54.55</td>
-                <td class='t_dollars'>165969.75</td>
-                <td class='t_percentage'>2.37</td>
-                <td>0.8</td>
-                <td>936</td>
-              </tr>
-              <tr>
-                <td class='st_name'>Carefull</td>
-                <td class='t_dollars'>979.2</td>
-                <td class='t_percentage'>41.67</td>
-                <td class='t_dollars'>50315.03</td>
-                <td class='t_percentage'>1.98</td>
-                <td>0.8</td>
-                <td>2162</td>
-              </tr>
-              <tr>
-                <td class='st_name'>MakeMoney</td>
-                <td class='t_dollars'>669.77</td>
-                <td class='t_percentage'>47.92</td>
-                <td class='t_dollars'>36048.2</td>
-                <td class='t_percentage'>1.89</td>
-                <td>1.7</td>
-                <td>1265</td>
-              </tr>
-              <tr>
-                <td class='st_name'>Tony</td>
-                <td class='t_dollars'>3385.33</td>
-                <td class='t_percentage'>60</td>
-                <td class='t_dollars'>210104.81</td>
-                <td class='t_percentage'>1.64</td>
-                <td>0.3</td>
-                <td>982</td>
-              </tr>
-              <tr>
-                <td class='st_name'>Jack.Li</td>
-                <td class='t_dollars'>10.32</td>
-                <td class='t_percentage'>42.86</td>
-                <td class='t_dollars'>36404.64</td>
-                <td class='t_percentage'>0.03</td>
-                <td>0.7</td>
-                <td>1027</td>
-              </tr>
-              <tr>
-                <td class='st_name'>Linda</td>
-                <td class='t_dollars'>486.85</td>
-                <td class='t_percentage'>54.17</td>
-                <td class='t_dollars'>39120.87</td>
-                <td class='t_percentage'>1.26</td>
-                <td>1.7</td>
-                <td>1085</td>
-              </tr>
-              <tr>
-                <td class='st_name'>JIMI</td>
-                <td class='t_dollars'>268.2</td>
-                <td class='t_percentage'>55.56</td>
-                <td class='t_dollars'>51282.07</td>
-                <td class='t_percentage'>0.53</td>
-                <td>0.9</td>
-                <td>1821</td>
-              </tr>
-              <tr>
-                <td class='st_name'>test(勿跟)</td>
-                <td class='t_dollars'>0</td>
-                <td class='t_percentage'>0</td>
-                <td class='t_dollars'>0</td>
-                <td class='t_percentage'>0</td>
-                <td>0</td>
-                <td>1</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div id='Detail'>
-          <div class='wrapper'>
-            <div class='Statistical_report'>
-
-            </div>
-            <div class='Daily_income'>
-
-            </div>
-            <div class='Diurnal_trade_pen'>
-
-            </div>
-            <div class='Proportion_commodity_trading'>
-
-            </div>
-            <div class='Historical_records'>
-
-            </div>
-          </div>
-          <div class='base'>
-            <div class='profile'>
-              <a class='headimg'></a>
-              <a class='nickName'>Seafly</a>
-            </div>
-            <div class='data'>
-              <div class='data_row'>
-                <div class='item'>
-                  <span class='label'>当前余额</span>
-                  <span class='value t_dollars'>10503.76</span>
-                </div>
-                <div class='item'>
-                  <span class='label'>当前净值</span>
-                  <span class='value t_dollars'>10503.76</span>
-                </div>
-                <div class='item'>
-                  <span class='label'>浮动盈亏</span>
-                  <span class='value t_dollars'>0</span>
-                </div>
-                <div class='item'>
-                  <span class='label'>跟随人数</span>
-                  <span class='value'>2651</span>
-                </div>
-              </div>
-              <div class='data_row'>
-                <div class='item'>
-                  <span class='label'>平均获利点数</span>
-                  <span class='value'>1.79点</span>
-                </div>
-                <div class='item'>
-                  <span class='label'>交易手数</span>
-                  <span class='value'>146.29手</span>
-                </div>
-                <div class='item'>
-                  <span class='label'>交易笔数</span>
-                  <span class='value'>515笔</span>
-                </div>
-                <div class='item'>
-                  <span class='label'>胜出交易笔数</span>
-                  <span class='value'>259笔</span>
-                </div>
-              </div>
-            </div>
-            <table class='nav'>
+          <table class='nav'>
             <tbody>
               <tr>
                 <td class='item'>统计报表</td>
@@ -358,23 +322,31 @@
               </tr>
             </tbody>
           </table>
-            <div class='operaBox'>
-              <a class='item pay_attention'>关注</a>
-              <a class='item follow'>跟随</a>
-            </div>
+          <div class='operaBox'>
+            <a class='pay_attention'>关注</a>
+            <a class='follow'>跟随</a>
+          </div>
+        </div>
+        <div class='wrapper'>
+          <div class='Statistical_report'>
+
+          </div>
+          <div class='Daily_income'>
+
+          </div>
+          <div class='Diurnal_trade_pen'>
+
+          </div>
+          <div class='Proportion_commodity_trading'>
+
+          </div>
+          <div class='Historical_records'>
+
           </div>
         </div>
       </div>
-      <div class='taskBar'>
-        <div class='status'>
-          <a class='timeRest'>10:23:12</a>
-          <a class='curDate'>2018/3/13</a>
-        </div>
-        <span class='notification'>You have a new message from Keil!</span>
-      </div>
     </div>
   </div>
-  <script src='js/home/Main.js'></script>
-  <script src='js/home/Rank.js'></script>
+  <script src='js/Home.js'></script>
 </body>
 </html>

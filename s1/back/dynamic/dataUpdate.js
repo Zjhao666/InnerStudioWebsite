@@ -61,7 +61,4 @@ app.post('/account',urlencodedParser,(req,rep)=>{
     rep.end(JSON.stringify({statuscode:201,description:'数据类型不正确',errinfo:util.inspect(err)}));
   }
 });
-app.post('/accountHistory',urlencodedParser,(req,rep)=>{
-  dbAccess.execute('insert into AccountHistory')
-});
 module.exports=app;
