@@ -21,14 +21,17 @@ body{
   background-color: rgb(40,200,200);
   text-align: center;
 }
-#main .header .logo,
+#main .header .logo{
+  display: inline-block;
+  vertical-align: top;
+  width: 100px;height: 100px;
+  background: url(../img/logo.png);
+  background-size: cover;
+}
 #main .header .searchbox{
   display: inline-block;
   vertical-align: top;
-  width: 200px;height: 100px;
-}
-#main .header .searchbox{
-  width: 40%;height: 100px;
+  width: 30%;height: 100px;
   padding-top: 40px;
   text-align: center;
 }
@@ -36,7 +39,7 @@ body{
 #main .header .searchbox .search{
   display: inline-block;
   vertical-align: top;
-  width: 70%;height: 30px;
+  width: 90%;height: 30px;
   margin: 0px;padding: 0px;
   border-radius: 0px;
 }
