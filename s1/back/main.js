@@ -10,6 +10,7 @@ let urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.use(express.static('static'));
 app.use('/login',require('./dynamic/login'));
 app.use('/dataUpdate',require('./dynamic/dataUpdate'));
+app.use('/dataFetch',require('./dynamic/dataFetch'));
 
 // app.use(multer({ dest: '/tmp/'}).array('image'));
 
