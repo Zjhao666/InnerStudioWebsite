@@ -4,7 +4,40 @@ let express=require('express'),
     bodyParser=require('body-parser'),
     util=require('util'),
     urlencodedParser=bodyParser.urlencoded({extended:false});
+
 let app=express();
+app.post('/action',(req,rep)=>{
+  let content='';
+  req.setEncoding('utf8');
+  req.on('data',(chunk)=>content+=chunk);
+  req.on('end',()=>{
+    try{
+      // resovle
+      let tmp=raw.split('&');
+      if(tmp.length<3){
+        rep.end(JSON.stringify({statuscode:201,description:'数据格式不正确'}));
+        return;
+      }
+      let data;
+      for(let i=2,limit=tmp.length;i<limit,i++){
+        let [key,value]=tmp[i].split('=');
+        data[key]=value;
+      }
+      tmp={
+        account:tmp[0].substring(tmp[0].indexOf('=')+1),
+        action:tmp[1].substring(tmp[1].indexOf('=')+1),
+        data:data
+      };
+      // update
+      if(tmp.action==1){
+        sql='insert into '
+      }
+    }catch(err){
+
+    }
+  });
+});
+
 app.post('/trade',urlencodedParser,(req,rep)=>{
   try{
     let account=parseInt(req.body.account),
@@ -60,5 +93,8 @@ app.post('/account',urlencodedParser,(req,rep)=>{
   }catch(err){
     rep.end(JSON.stringify({statuscode:201,description:'数据类型不正确',errinfo:util.inspect(err)}));
   }
+});
+app.post('/accountHistory',urlencodedParser,(req,rep)=>{
+  dbAccess.execute('insert into AccountHistory')
 });
 module.exports=app;

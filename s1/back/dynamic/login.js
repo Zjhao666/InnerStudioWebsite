@@ -21,7 +21,7 @@ app.post('/validate',urlencodedParser,(req,rep)=>{
       password=rsa.decrypt(req.body.cipher_pw,privatePem);
   if(!account||!password) rep.end(JSON.stringify({statuscode:202,description:'null field'}));
   else{
-    dbAccess.execute('select password from Account where account="'+account+'"',(err,row)=>{
+    dbAccess.execute('select password from User where account="'+account+'"',(err,row)=>{
       if(!err&&row&&row.length==1&&row[0].password==password) rep.end(JSON.stringify({statuscode:200}));
       else rep.end(JSON.stringify({statuscode:201}));
     });
@@ -33,7 +33,7 @@ app.post('/regis',urlencodedParser,(req,rep)=>{
       password=rsa.decrypt(req.body.cipher_pw,privatePem);
   if(!account||!password) rep.end(JSON.stringify({statuscode:202,description:'null field'}));
   else{
-    dbAccess.execute('insert into Account(account,password) values("'+account+'","'+password+'")',(err,row)=>{
+    dbAccess.execute('insert into User(account,password) values("'+account+'","'+password+'")',(err,row)=>{
       if(!err) rep.end(JSON.stringify({statuscode:200}));
       else if(err.errno==1062) rep.end(JSON.stringify({statuscode:201,description:'account exists'}));// duplicate account
       else rep.end(JSON.stringify({statuscode:203,description:util.inspect(err)}));
