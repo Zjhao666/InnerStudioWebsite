@@ -68,6 +68,7 @@
         <thead>
           <tr>
             <th>账户</th>
+            <th>公司</th>
             <th>余额</th>
             <th>USD净值</th>
             <th>已用预付款</th>
@@ -80,22 +81,27 @@
       </table>
       <div id='AccountInfo'>
         <div class='base'>
-          <div class='profile'><span></span></div>
+          <div class='profile'>
+            <span class='account'></span>
+            <span class='community'></span>
+          </div>
           <table class='data'>
             <tbody>
               <tr>
                 <td class='label'>余额</td>
-                <td class='value t_dollars'></td>
+                <td class='value rest t_dollars'></td>
                 <td class='label'>USD净值</td>
-                <td class='value t_dollars'></td>
+                <td class='value usd t_dollars'></td>
                 <td class='label'>已用预付款</td>
-                <td class='value t_dollars'></td>
+                <td class='value used t_dollars'></td>
+              </tr>
+              <tr>
                 <td class='label'>可用预付款</td>
-                <td class='value t_dollars'></td>
+                <td class='value valiable t_dollars'></td>
                 <td class='label'>预付款比例</td>
-                <td class='value t_percentage'></td>
+                <td class='value percentage t_percentage'></td>
                 <td class='label'>总获利</td>
-                <td class='value t_dollars'></td>
+                <td class='value totalProfit t_dollars'></td>
               </tr>
             </tbody>
           </table>
@@ -103,8 +109,6 @@
             <tbody>
               <tr>
                 <td class='item'>统计报表</td>
-                <td class='item'>每日收益</td>
-                <td class='item'>日交易笔数</td>
                 <td class='item'>商品交易比例</td>
                 <td class='item'>历史记录</td>
               </tr>
@@ -116,20 +120,23 @@
           </div>
         </div>
         <div class='wrapper'>
-          <div class='Statistical_report'>
-
-          </div>
-          <div class='Daily_income'>
-
-          </div>
-          <div class='Diurnal_trade_pen'>
-
+          <div id='RestTable'>
+            <span class='title'>统计报表</span>
+            <span class='instruction'>图表数据截止于每日24:00点，次日清晨更新（单位：美元）</span>
+            <canvas class='content'></canvas>
           </div>
           <div class='Proportion_commodity_trading'>
 
           </div>
-          <div class='Historical_records'>
+          <div id='TradeHistory'>
+            <table class='content'>
+              <thead>
 
+              </thead>
+              <tbody>
+
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

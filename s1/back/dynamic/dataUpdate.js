@@ -2,6 +2,7 @@
 let express=require('express'),
     dbAccess=require('./lib/dbAccess'),
     bodyParser=require('body-parser'),
+    sillyDate=require('silly-datetime'),
     util=require('util'),
     urlencodedParser=bodyParser.urlencoded({extended:false});
 
@@ -63,15 +64,38 @@ app.post('/',(req,rep)=>{
             rep.end(JSON.stringify({statuscode:203,description:'数据库操作异常',errinfo:util.inspect(err)}));
             console.log(err);return;
           }
+          if(info.action==3){
+            sql=`insert into AccountHistory(account,rest,usd,used,valiable,percentage,time) values(
+              "`+info.account+`",
+              "`+data['余额']+`",
+              "`+data['USD净值']+`",
+              "`+data['已用预付款']+`",
+              "`+data['可用预付款']+`",
+              "`+data['预付款比例']+`",
+              "`+sillyDate.format(new Date(),'YYYY-MM-DD-HH-mm-ss')+`")`;
+            dbAccess.execute(sql,(err,rows)=>rep.end(JSON.stringify({statuscode:200})));
+          }
           else rep.end(JSON.stringify({statuscode:200}));
         });
       }
       // resovle
       let tmp=content.split('&'),info,data={},sql;
+      if(tmp.length<3){
+        rep.end(JSON.stringify({statuscode:201,description:'数据格式不正确'}));
+        console.log(err);return;
+      }
+      if(tmp.action>3||tmp.action<0){
+        rep.end(JSON.stringify({statuscode:202,description:'无效action值'}));
+        console.log(err);return;
+      }
       info={
         account:tmp[0].substring(tmp[0].indexOf('=')+1),
         action:parseInt(tmp[1].substring(tmp[1].indexOf('=')+1)),
       };
+      if(info.account.length==0){
+        rep.end(JSON.stringify({statuscode:203,description:'账户值无效'}));
+        console.log(err);return;
+      }
       if(info.action==3){
         let beNumber=false,ascii,lists=[],start,value;
         for(let i=0,limit=tmp[2].length;i<limit;i++){
@@ -104,14 +128,6 @@ app.post('/',(req,rep)=>{
           let [key,value]=tmp[i].split('=');
           data[key]=value;
         }
-      }
-      if(tmp.length<3){
-        rep.end(JSON.stringify({statuscode:201,description:'数据格式不正确'}));
-        console.log(err);return;
-      }
-      if(tmp.action>3||tmp.action<0){
-        rep.end(JSON.stringify({statuscode:202,description:'无效action值'}));
-        console.log(err);return;
       }
       // query for account
       dbAccess.execute('select account from Account where account="'+info.account+'"',(err,rows)=>{

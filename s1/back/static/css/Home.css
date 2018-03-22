@@ -139,9 +139,9 @@ body{
   background-size: cover;
 }
 #AccountInfo .base .profile span{
-  position: absolute;
   display: block;
-  width: 150px;bottom: 10px;
+  width: 150px;
+  word-break: break-all;
   text-align: center;
   font-weight: bold;
 }
@@ -179,3 +179,14 @@ body{
   cursor: pointer;
 }
 #AccountInfo .base .operaBox .follow{top: 55%;}
+
+#AccountInfo .wrapper #RestTable {display: none;}
+#AccountInfo .wrapper #RestTable .content{
+  display: block;
+}
+#AccountInfo .wrapper #TradeHistory{
+
+}
+#AccountInfo .wrapper #TradeHistory .content{
+
+}

@@ -1,0 +1,109 @@
+#Plan{
+  /* display: none; */
+  width: 98%;height: 100%;
+}
+#Plan .header{
+  width: 70%;
+  margin: 0px auto;
+}
+#Plan .header .nav{width: 100%;}
+#Plan .header .nav td{
+  text-align: center;
+  padding: 0px 3px;
+  text-shadow: 5px 0px 2px black;
+  background-color: rgba(60,120,200,0.8);
+}
+#Plan .header .nav .selected{
+  background-color: rgba(220,220,70,0.8);
+}
+#Plan .wrapper{
+  position: relative;
+  box-sizing: border-box;
+  width: 70%;margin: 10px auto 0px;
+}
+#Plan .wrapper .item{
+  position: absolute;
+  left: 0px;top: 0px;
+  width: 100%;min-height: 100px;
+  border-radius: 10px;
+  box-shadow: 5px 0px 10px black;
+  background-color: rgb(100,60,200);
+}
+#Plan .wrapper .item .title{
+  display: inline-block;
+  padding: 5px;
+  border-radius: 10px 0px 10px 0px;
+  background-color: rgba(60,120,200,0.8);
+  box-shadow: 2px 1px 5px black;
+  font: bold 1.2em 'Fangsong';
+}
+#Plan .wrapper .item .author::before{
+  content: 'Created by: ';
+  font-family: 'Fangsong';
+}
+#Plan .wrapper .item .createTime::before{
+  content: 'Created in: ';
+  font-family: 'Fangsong';
+}
+#Plan .wrapper .item .author,
+#Plan .wrapper .item .createTime{
+  margin: 0px 10px;
+  font: bold 1em 'ArtegraSansExtended';
+}
+#Plan .wrapper .item .introduction{
+  display: block;
+  width: 95%;margin: 0px auto;
+  white-space: pre-line;
+}
+#Plan .wrapper .item .stageList .stage{
+  width: 95%;
+  margin: 10px auto;
+  border-radius: 5px;
+  box-shadow: 2px 0px 5px black;
+  background-color: rgb(120,140,250);
+}
+#Plan .wrapper .item .stageList .stage .deadLine{
+  box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  height: 20px;
+  font-weight: bold;
+  border-radius: 5px 0px 5px 0px;
+  line-height: 20px;padding: 3px;
+  box-shadow: 2px 0px 5px black;
+  background-color: rgb(120,180,255);
+}
+#Plan .wrapper .item .stageList .completed{
+  background-color: rgb(70,180,70);
+}
+#Plan .wrapper .item .stageList .current{
+  background-color: rgb(200,200,80);
+}
+#Plan .wrapper .item .stageList .future{
+  background-color: rgb(100,100,100);
+}
+#Plan .wrapper .item .stageList .stage .s_intro{
+  display: block;
+  width: 95%;margin: 0px auto;
+  white-space: pre-line;
+}
+#Plan .wrapper .item .stageList .stage .commentList{
+
+}
+#Plan .wrapper .item .stageList .stage .commentList .comment{
+  width: 95%;min-height: 100px;
+  border: 1px solid white;border-left: 0px;
+  border-radius: 0px 10px 10px 0px;
+  margin: 0px auto;
+}
+#Plan .wrapper .item .stageList .stage .commentList .comment .c_account{
+
+}
+#Plan .wrapper .item .stageList .stage .commentList .comment .c_time{
+
+}
+#Plan .wrapper .item .stageList .stage .commentList .comment .c_content{
+  display: block;
+  white-space: pre-line;
+}
+#Plan .wrapper .item:nth-of-type(2){top: 30px;}
