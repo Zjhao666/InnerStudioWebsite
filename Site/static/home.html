@@ -344,111 +344,136 @@
           <a class='Submit'>Submit</a>
         </div>
         <div id='Plan'>
-          <div class='header'>
-            <table class='nav'>
-              <tbody>
-                <tr>
-                  <td>News</td>
-                  <td class='selected'>Current</td>
-                  <td>Completed</td>
-                </tr>
-            </table>
-          </div>
+          <table class='nav'>
+            <tbody>
+              <tr>
+                <td class='selected'>Current</td>
+                <td>Completed</td>
+              </tr>
+          </table>
           <div class='wrapper'>
-            <div class='item'>
-              <span class='title'>learn python</span>
-              <span class='author'>Luncert</span>
-              <span class='createTime'>2016-2-10</span>
-            </div>
-            <div class='item'>
-              <span class='title'>Canvas - 文本</span>
-              <span class='author'>Luncert</span>
-              <span class='createTime'>2016-2-13</span>
-              <span class='introduction'>一个画布在网页中是一个矩形框，通过元素来绘制.
-                注意: 标签通常需要指定一个id属性 (脚本中经常引用), width 和 height 属性定义的画布的大小.
-                提示:你可以在HTML页面中使用多个.
-                使用 style 属性来添加边框:
-              </span>
-              <div class='stageList'>
-                <div class='stage'>
-                  <span class='deadLine'>2016-8-10</span>
-                  <span class='s_intro'>什么是 canvas?
-                    HTML5元素用于图形的绘制，通过脚本 (通常是JavaScript)来完成.
-                    标签只是图形容器，您必须使用脚本来绘制图形。
-                    你可以通过多种方法使用 canvas 绘制路径,盒、圆、字符以及添加图像。
+            <div id='PlanCurrent'>
+              <a class='pc_btn'></a>
+              <div id='PlanAction'>
+                <div class='pa_item'>
+                  <img src='img/defaultHeadimg.png'></img>
+                  <div class='pa_right'>
+                    <span class='pa_account'>Luncert</span>
+                    <span class='pa_time'>2016-11-12</span>
+                    <span class='pa_action'>add comment to plan: learn python</span>
+                    <!-- <span class='pn_action'>modified comment of plan: learn python</span> -->
+                    <!-- <span class='pn_action'>commited current stage of plan: learn python</span> -->
+                  </div>
+                </div>
+              </div>
+              <div class='pc_wrapper'>
+                <div class='pc_item'>
+                  <span class='title'>learn python</span>
+                  <span class='author'>Luncert</span>
+                  <span class='createTime'>2016-2-10</span>
+                </div>
+                <div class='pc_item'>
+                  <span class='title'>Canvas - 文本</span>
+                  <span class='author'>Luncert</span>
+                  <span class='createTime'>2016-2-13</span>
+                  <span class='introduction'>一个画布在网页中是一个矩形框，通过元素来绘制.
+                    注意: 标签通常需要指定一个id属性 (脚本中经常引用), width 和 height 属性定义的画布的大小.
+                    提示:你可以在HTML页面中使用多个.
+                    使用 style 属性来添加边框:
                   </span>
-                  <div class='commentList'>
-                    <!-- ajax: get comments -->
-                    <div class='comment'>
-                      <span class='c_account'>Luncert</span>
-                      <span class='c_time'>2016-2-13</span>
-                      <span class='c_content'>什么是 canvas?
+                  <div class='stageList'>
+                    <div class='stage'>
+                      <span class='deadLine'>2016-8-10</span>
+                      <span class='s_intro'>什么是 canvas?
                         HTML5元素用于图形的绘制，通过脚本 (通常是JavaScript)来完成.
                         标签只是图形容器，您必须使用脚本来绘制图形。
                         你可以通过多种方法使用 canvas 绘制路径,盒、圆、字符以及添加图像。
                       </span>
+                      <div class='commentList'>
+                        <!-- ajax: get comments -->
+                        <div class='comment'>
+                          <div class='c_header'>
+                            <span class='c_account'>Luncert</span>
+                            <span class='c_time'>2016-2-13</span>
+                          </div>
+                          <span class='c_content'>什么是 canvas?
+                            HTML5元素用于图形的绘制，通过脚本 (通常是JavaScript)来完成.
+                            标签只是图形容器，您必须使用脚本来绘制图形。
+                            你可以通过多种方法使用 canvas 绘制路径,盒、圆、字符以及添加图像。
+                          </span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+            <div id='PlanCompleted'>
+
+            </div>
           </div>
         </div>
-        <div id='Project' style='display:none'>
-          <div class='showOne'>
-            <span class='title'>project in python</span>
-            <span class='overview'>Hi,there!This plan is about how to earn money fast by take part in software-race.How do you think of my idea?</span>
-            <ul class='list'>
-              <li class='stage future'>
-                <span class='timestamp'>2017/11/24</span>
-                <span class='content'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
-                <div class='comments'>
+        <div id='Project'>
+          <div class='pj_wrapper'>
+            <div class='Pitem'>
+              <span class='title'>project in python</span>
+              <span class='description'>Hi,there!This plan is about how to earn money fast by take part in software-race.How do you think of my idea?</span>
+              <div class='statistics'>
+                <div class='labelData'>
+                  <span class='label'>注册时间</span>
+                  <span class='value'>2018/01/02</span>
                 </div>
-              </li>
-              <li class='stage current'>
-                <span class='timestamp'>2017/11/20</span>
-                <span class='content'>learn HTML5</span>
-                <div class='comments'>
-                  <div class='item'>
-                    <div class='head'>
-                      <img class='headimg' src='img/backgrounds/1.jpg'>
-                      <span class='account'>Luncert</span>
-                      <span class='time'>2017/11/8</span>
-                    </div>
-                    <span class='ncontent'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
-                  </div>
-                  <div class='item'>
-                    <div class='head'>
-                      <img class='headimg' src='img/backgrounds/1.jpg'>
-                      <span class='account'>Luncert</span>
-                      <span class='time'>2017/11/8</span>
-                    </div>
-                    <span class='ncontent'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
-                  </div>
+                <div class='labelData'>
+                  <span class='label'>截止时间</span>
+                  <span class='value'>2018/03/21</span>
                 </div>
-              </li>
-              <li class='stage completed'>
-                <span class='timestamp'>2017/11/24</span>
-                <span class='content'>learn css</span>
-              </li>
-              <li class='stage completed'>
-                <span class='timestamp'>2017/11/18</span>
-                <span class='content'>learn js</span>
-              </li>
-            </ul>
-          </div>
-          <div class='itemlist'>
-            <div class='item pmain'>
-              <span class='title'>Workspace</span>
-              <span class='overview'>Sometime you just need to do somethind to ....</span>
-            </div>
-            <div class='item pimportant'>
-              <span class='title'>Look out</span>
-              <span class='overview'>Wow,it's so diffcult to write some ....</span>
-            </div>
-            <div class='item pcompleted'>
-              <span class='title'>Huawei race</span>
-              <span class='overview'>You know,you know nothing!!!....</span>
+                <div class='labelData'>
+                  <span class='label'>项目时长</span>
+                  <span class='value'>23</span>
+                </div>
+                <div class='labelData'>
+                  <span class='label'>计划阶段数</span>
+                  <span class='value'>13</span>
+                </div>
+                <div class='percentData'>
+                  <span class='label'>项目完成度</span>
+                  <span class='value' style='width: 37%;'>41%</span>
+                </div>
+                <div class='percentData'>
+                  <span class='label'>项目活跃度</span>
+                  <span class='value' style='width: 71%;'>82点</span>
+                </div>
+              </div>
+              <ul class='list'>
+                <li class='stage incompleted'>
+                  <span class='timestamp'>2017/11/24</span>
+                  <span class='content'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
+                </li>
+                <li class='stage current'>
+                  <span class='timestamp'>2017/11/20</span>
+                  <span class='content'>learn HTML5</span>
+                  <div class='comments'>
+                    <div class='item'>
+                      <span class='account'>Luncert</span>
+                      <span class='time'>2017/11/8 12:11:20</span>
+                      <span class='words'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
+                    </div>
+                    <div class='item'>
+                      <span class='account'>Luncert</span>
+                      <span class='time'>2017/11/8 10:12:10</span>
+                      <span class='words'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
+                    </div>
+                  </div>
+                </li>
+                <li class='stage completed'>
+                  <span class='timestamp'>2017/11/24</span>
+                  <span class='content'>learn css</span>
+                </li>
+                <li class='stage completed'>
+                  <span class='timestamp'>2017/11/18</span>
+                  <span class='content'>learn js</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

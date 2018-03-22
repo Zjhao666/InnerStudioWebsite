@@ -1,27 +1,70 @@
 #Plan{
-  /* display: none; */
+  display: none;
   width: 98%;height: 100%;
 }
-#Plan .header{
+#Plan .nav{
   width: 70%;
   margin: 0px auto;
 }
-#Plan .header .nav{width: 100%;}
-#Plan .header .nav td{
+#Plan .nav td{
   text-align: center;
   padding: 0px 3px;
+  width: 50%;
   text-shadow: 5px 0px 2px black;
+  box-shadow: 5px 0px 10px black;
   background-color: rgba(60,120,200,0.8);
 }
-#Plan .header .nav .selected{
+#Plan .nav td:nth-child(1){border-radius: 10px 0px 0px 10px;}
+#Plan .nav td:nth-last-child(1){border-radius: 0px 10px 10px 0px;}
+#Plan .nav .selected{
   background-color: rgba(220,220,70,0.8);
 }
+
 #Plan .wrapper{
   position: relative;
   box-sizing: border-box;
   width: 70%;margin: 10px auto 0px;
 }
-#Plan .wrapper .item{
+
+/* #PlanCurrent{display: none;} */
+#PlanAction{
+  position: absolute;
+  top: 100px;left: -50px;
+  z-index: 1000;
+}
+#PlanAction .pa_item{
+  position: relative;
+  width: 100%;height: 50px;
+  min-width: 300px;
+  border-radius: 5px;
+  box-shadow: 5px 0px 10px black;
+  background-color: rgb(100,60,200);
+}
+#PlanAction .pa_item img{
+  display: inline-block;
+  border-radius: 5px;
+  width: 50px;height: 50px;
+}
+#PlanAction .pa_right{
+  display: inline-block;
+  height: 50px;
+}
+#PlanAction .pa_item .pa_account,
+#PlanAction .pa_item .pa_time{
+  display: inline-block;
+  vertical-align: top;
+  height: 25px;line-height: 25px;
+  font-weight: bold;
+  padding-right: 5px;
+}
+#PlanAction .pa_item .pa_action{
+  display: block;
+  max-width: 400px;height: 25px;line-height: 25px;
+  padding-right: 5px;
+  overflow: hidden;text-overflow: ellipsis;white-space: nowrap;
+}
+
+#PlanCurrent .pc_item{
   position: absolute;
   left: 0px;top: 0px;
   width: 100%;min-height: 100px;
@@ -29,7 +72,7 @@
   box-shadow: 5px 0px 10px black;
   background-color: rgb(100,60,200);
 }
-#Plan .wrapper .item .title{
+#PlanCurrent .pc_item .title{
   display: inline-block;
   padding: 5px;
   border-radius: 10px 0px 10px 0px;
@@ -37,32 +80,34 @@
   box-shadow: 2px 1px 5px black;
   font: bold 1.2em 'Fangsong';
 }
-#Plan .wrapper .item .author::before{
+#PlanCurrent .pc_item .author::before{
   content: 'Created by: ';
   font-family: 'Fangsong';
 }
-#Plan .wrapper .item .createTime::before{
+#PlanCurrent .pc_item .createTime::before{
   content: 'Created in: ';
   font-family: 'Fangsong';
 }
-#Plan .wrapper .item .author,
-#Plan .wrapper .item .createTime{
+#PlanCurrent .pc_item .author,
+#PlanCurrent .pc_item .createTime{
   margin: 0px 10px;
   font: bold 1em 'ArtegraSansExtended';
 }
-#Plan .wrapper .item .introduction{
+#PlanCurrent .pc_item .introduction{
   display: block;
   width: 95%;margin: 0px auto;
   white-space: pre-line;
 }
-#Plan .wrapper .item .stageList .stage{
+
+#PlanCurrent .pc_item .stageList .stage{
   width: 95%;
   margin: 10px auto;
   border-radius: 5px;
   box-shadow: 2px 0px 5px black;
   background-color: rgb(120,140,250);
 }
-#Plan .wrapper .item .stageList .stage .deadLine{
+/* stage status */
+#PlanCurrent .pc_item .stageList .stage .deadLine{
   box-sizing: border-box;
   position: relative;
   display: inline-block;
@@ -73,37 +118,27 @@
   box-shadow: 2px 0px 5px black;
   background-color: rgb(120,180,255);
 }
-#Plan .wrapper .item .stageList .completed{
-  background-color: rgb(70,180,70);
-}
-#Plan .wrapper .item .stageList .current{
-  background-color: rgb(200,200,80);
-}
-#Plan .wrapper .item .stageList .future{
-  background-color: rgb(100,100,100);
-}
-#Plan .wrapper .item .stageList .stage .s_intro{
+#PlanCurrent .pc_item .stageList .stage .s_intro{
   display: block;
   width: 95%;margin: 0px auto;
   white-space: pre-line;
 }
-#Plan .wrapper .item .stageList .stage .commentList{
-
-}
-#Plan .wrapper .item .stageList .stage .commentList .comment{
+#PlanCurrent .pc_item .stageList .stage .commentList .comment{
   width: 95%;min-height: 100px;
   border: 1px solid white;border-left: 0px;
   border-radius: 0px 10px 10px 0px;
   margin: 0px auto;
 }
-#Plan .wrapper .item .stageList .stage .commentList .comment .c_account{
-
+#PlanCurrent .pc_item .stageList .stage .commentList .comment .c_header{
+  display: inline-block;
+  padding: 0px 5px;
+  font-weight: bold;
+  background-color: rgba(120,140,200,0.5);
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+  border-radius: 0px 0px 10px 0px;
 }
-#Plan .wrapper .item .stageList .stage .commentList .comment .c_time{
-
-}
-#Plan .wrapper .item .stageList .stage .commentList .comment .c_content{
+#PlanCurrent .pc_item .stageList .stage .commentList .comment .c_content{
   display: block;
   white-space: pre-line;
 }
-#Plan .wrapper .item:nth-of-type(2){top: 30px;}
