@@ -96,7 +96,6 @@
   position: relative;
   width: 95%;min-height: 30px;
   margin: 10px 2.5%;
-  cursor: pointer;
 }
 #Members .ChatBox .content .item .headimg{
   display: block;

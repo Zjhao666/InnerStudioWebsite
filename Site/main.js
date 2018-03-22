@@ -1,20 +1,30 @@
 
 let express=require('express'),
     util=require('util'),
-    bodyParser=require('body-parser'),
-    multer=require('multer');
+    multer=require('multer'),
+    urlencodedParser=require('body-parser').urlencoded({extended:false});
 
 let app=express();
 require('express-ws')(app);
-let urlencodedParser = bodyParser.urlencoded({ extended: false });
 
+let context=[];
+app.use(require('cookie-parser')());
+app.use((req,rep,next)=>{
+  req.addNewInstance=(key,value)=>context[key]=value;
+  if(req.cookies['MACookie']&&context[req.cookies['MACookie']]){
+    req.session=context[req.cookies['MACookie']];
+    req.allowed=true;
+  }
+  else req.allowed=false;
+  next();
+});
 app.use(express.static('static'));
-app.use(multer({ dest: '/tmp/'}).array('image'));
-
+// app.use(multer({ dest: '/tmp/'}).array('image'));
+let member=require('./dynamic/member');
+app.use('/member',member);
+app.ws('/chat',member.chat);
 app.use('/login',require('./dynamic/login'));
 app.use('/document',require('./dynamic/document'));
-app.use('/member',require('./dynamic/member'));
-// app.ws('/ws/notify',require('./dynamic/notify'));
 
 app.get('/',(req,rep)=>{
   rep.send('Hello,world!');

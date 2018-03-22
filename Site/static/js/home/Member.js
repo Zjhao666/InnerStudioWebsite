@@ -1,11 +1,42 @@
 
-let mmid=1,chatbox=$('#Members .ChatBox .content');
-let ws=new WebSocket('ws://localhost:8081/ws/chat');
+let chatbox=$('#Members .ChatBox .content');
+let ws=new WebSocket('ws://'+window.location.host+'/chat');
 ws.onmessage=(evt)=>{
-  console.log(evt.data);
-};
-// ws.onclose=(evt)=>{};
-// ws.onerror=(evt)=>{};
+  if(evt.data.startsWith('[:MA:]')){
+    // set offline or online
+    let [target,state]=evt.data.replace('[:MA:]','').split('[:MA:]');
+    $('#Members .MemberList .item').each((i,elem)=>{
+      if($(elem).attr('memid')==target){
+        let kl=$(elem)[0].classList;
+        if(state&&kl.contains('offline')) kl.remove('offline');
+        if(!state&&!kl.contains('offline')) kl.add('offline');
+      }
+    });
+  }
+  else chatbox.append(`<div class='item'>
+    <img class='headimg' src='img/defaultHeadimg.png'>
+    <div class='message'><span>`+evt.data.split('[:MA:]')[2]+`</span></div>
+  </div>`);
+}
+ws.onopen=()=>ws.send('[:MA:]'+window.localStorage.memid);
+// send
+let inputfield=$('#Members .ChatBox .inputfield'),chatTarget;
+inputfield.keypress((e)=>{
+  if(e.which==13&&inputfield.val().length>0){
+    chatbox.append(`<div class='item rightitem'>
+      <img class='headimg' src='img/defaultHeadimg.png'>
+      <div class='message'><span>`+inputfield.val()+`</span></div>
+    </div>`);
+    ws.send(window.localStorage.memid+'[:MA:]00000000002[:MA:]'+inputfield.val());
+    inputfield.val('');
+    e.stopPropagation();
+    return false;
+  }
+});
+inputfield.bind('input propertychange','textarea',()=>{
+  inputfield.css('height',20);
+  inputfield.css('height',inputfield[0].scrollHeight);
+});
 
 $(window).on('beforeunload',()=>{
   ws.close();
@@ -18,16 +49,16 @@ const getMemberList=()=>{
     success:(rep)=>{
       let container=$('#Members .MemberList');
       if(rep.statuscode==200&&rep.data.length>0){
-        let tmp='',klass='item',headimg='img/defaultHeadimg.png';
+        let html='';
         for(let item of rep.data){
-          if(!item.isOnline) klass+=' offline';
+          let headimg='img/defaultHeadimg.png';
           if(item.headimg) headimg=item.headimg;
-          tmp+=`<div class='`+klass+`'>
+          html+=`<div class='item offline' memid=`+item.memid+`>
             <img class='headimg' src='`+headimg+`'>
             <a class='account'>`+item.account+`</a>
           </div>`
         }
-        container.html(tmp);
+        container.html(html);
         // memberItemActionBind
         $('#Members .MemberList .item').each((i,elem)=>{
           let mask;
@@ -44,15 +75,10 @@ const getMemberList=()=>{
               mask.appendTo(elem);
               mask.animate({left:0},300);
             },
-            mouseleave:()=>{
-              mask.animate({left:'100%'},300);
-            },
-            mousedown:()=>{
-              mask.css('background-color','rgba(100,80,160,1)');
-            },
-            mouseup:()=>{
-              mask.css('background-color','rgba(100,80,200,0.6)');
-            }
+            mouseleave:()=>mask.animate({left:'100%'},300),
+            mousedown:()=>mask.css('background-color','rgba(100,80,160,1)'),
+            mouseup:()=>mask.css('background-color','rgba(100,80,200,0.6)'),
+            click:()=>chatTarget=$(elem).attr('memid')
           });
         });
       }
@@ -62,10 +88,10 @@ const getMemberList=()=>{
     }
   })
 };
-const chatboxAddItem=(oldmsg)=>{
-  for(let item of oldmsg){
+const chatboxAddItems=(msgs)=>{
+  for(let item of msgs){
     let pos='';
-    if(item.source==mmid) pos='rightitem';
+    if(item.source==window.localStorage.memid) pos='rightitem';
     chatbox.append(`<div class='item `+pos+`'>
       <img class='headimg' src='img/defaultHeadimg.png'>
       <div class='message'><span>`+item.message+`</span></div>
@@ -73,7 +99,7 @@ const chatboxAddItem=(oldmsg)=>{
   }
 };
 const getOldmsg=()=>$.get({
-  url:global_host+'member/getOldmsg?user='+mmid,
+  url:global_host+'member/getOldmsg?user='+window.localStorage.memid,
   dataType:'JSON',
   success:(rep)=>{
     if(rep.statuscode==200) chatboxAddItem(rep.data);
@@ -82,7 +108,7 @@ const getOldmsg=()=>$.get({
   }
 });
 const getNewmsg=()=>$.get({
-  url:global_host+'member/getNewmsg?user='+mmid,
+  url:global_host+'member/getNewmsg?user='+window.localStorage.memid,
   dataType:'JSON',
   success:(rep)=>{
     if(rep.statuscode==200) chatboxAddItem(rep.data);
@@ -93,33 +119,13 @@ const getNewmsg=()=>$.get({
     if(err) console.log(err);
   }
 });
-const sendMsg=(target,msg)=>$.post({
-  url:global_host+'member/sendMsg',
-  data:{
-    source:mmid,
-    target:target,
-    message:msg
-  },
-  success:(rep)=>{
-    if(rep.statuscode==200){
-
-    }
-  }
-});
 const getTargetProfile=(target)=>{
 
 };
 
-let inputfield=$('#Members .ChatBox .inputfield');
-inputfield.bind('input propertychange','textarea',()=>{
-  inputfield.css('height',20);
-  inputfield.css('height',inputfield[0].scrollHeight);
-});
-
 getMemberList();
-// get old msg
-getOldmsg();
-getNewmsg();
+// getOldmsg();
+// getNewmsg();
 
 // 1.chat,redius
 // 2.get detail

@@ -21,6 +21,7 @@ const handleCmd=(cmd)=>{
         if(rep.statuscode==200){
           consoleContent.append(`<br /><span class='line retline'>Validate successfully.</span>`);
           consoleContent.append(`<br /><span class='label'>Guest Sessin:</span>\n<span class='line'></span>`);
+          window.localStorage.memid=rep.memid;
           window.location.href=base+'/home.html';
         }
         else if(rep.statuscode==201||rep.statuscode==202){

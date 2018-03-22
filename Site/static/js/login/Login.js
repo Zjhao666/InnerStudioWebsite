@@ -1,5 +1,5 @@
 
-let base='http://localhost:8081/'
+let base='http://'+window.location.host+'/';
 
 function validate(ac,pw,callback){
   $.get({
