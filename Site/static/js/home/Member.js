@@ -18,7 +18,7 @@ const getMemberList=()=>{
     success:(rep)=>{
       let container=$('#Members .MemberList');
       if(rep.statuscode==200&&rep.data.length>0){
-        let tmp='',klass='item',headimg='img/headimg_default.jpg';
+        let tmp='',klass='item',headimg='img/defaultHeadimg.png';
         for(let item of rep.data){
           if(!item.isOnline) klass+=' offline';
           if(item.headimg) headimg=item.headimg;
@@ -28,7 +28,33 @@ const getMemberList=()=>{
           </div>`
         }
         container.html(tmp);
-        memberItemActionBind();
+        // memberItemActionBind
+        $('#Members .MemberList .item').each((i,elem)=>{
+          let mask;
+          $(elem).bind({
+            mouseenter:()=>{
+              if(mask) mask.remove();
+              mask=$(`<a style='
+              display:block;
+              position:absolute;
+              height:30px;width:100%;
+              left:-100%;top:0px;
+              background:rgba(100,80,200,0.6);
+              '></a>`);
+              mask.appendTo(elem);
+              mask.animate({left:0},300);
+            },
+            mouseleave:()=>{
+              mask.animate({left:'100%'},300);
+            },
+            mousedown:()=>{
+              mask.css('background-color','rgba(100,80,160,1)');
+            },
+            mouseup:()=>{
+              mask.css('background-color','rgba(100,80,200,0.6)');
+            }
+          });
+        });
       }
       else{
         console.log('request for member list failed');
@@ -36,33 +62,6 @@ const getMemberList=()=>{
     }
   })
 };
-const memberItemActionBind=()=>
-  $('#Members .MemberList .item').each((i,elem)=>{
-    let mask;
-    $(elem).bind({
-      mouseenter:()=>{
-        if(mask) mask.remove();
-        mask=$(`<a style='
-        display:block;
-        position:absolute;
-        height:30px;width:100%;
-        left:-100%;top:0px;
-        background:rgba(100,80,200,0.6);
-        '></a>`);
-        mask.appendTo(elem);
-        mask.animate({left:0},300);
-      },
-      mouseleave:()=>{
-        mask.animate({left:'100%'},300);
-      },
-      mousedown:()=>{
-        mask.css('background-color','rgba(100,80,160,1)');
-      },
-      mouseup:()=>{
-        mask.css('background-color','rgba(100,80,200,0.6)');
-      }
-    });
-  });
 const chatboxAddItem=(oldmsg)=>{
   for(let item of oldmsg){
     let pos='';
@@ -73,15 +72,6 @@ const chatboxAddItem=(oldmsg)=>{
     </div>`);
   }
 };
-
-let inputfield=$('#Members .ChatBox .inputfield');
-inputfield.bind('input propertychange','textarea',()=>{
-  inputfield.css('height',20);
-  inputfield.css('height',inputfield[0].scrollHeight);
-});
-
-getMemberList();
-// get old msg
 const getOldmsg=()=>$.get({
   url:global_host+'member/getOldmsg?user='+mmid,
   dataType:'JSON',
@@ -119,6 +109,15 @@ const sendMsg=(target,msg)=>$.post({
 const getTargetProfile=(target)=>{
 
 };
+
+let inputfield=$('#Members .ChatBox .inputfield');
+inputfield.bind('input propertychange','textarea',()=>{
+  inputfield.css('height',20);
+  inputfield.css('height',inputfield[0].scrollHeight);
+});
+
+getMemberList();
+// get old msg
 getOldmsg();
 getNewmsg();
 
