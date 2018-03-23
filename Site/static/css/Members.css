@@ -103,8 +103,6 @@
   left: 0px;top: 0px;
   width: 30px;height: 30px;
   border-radius: 15px;
-  box-shadow: 5px 0px 10px black;
-  background-color: rgba(50,100,200,0.8);
   z-index: 100;
 }
 #Members .ChatBox .content .item .message{
@@ -118,7 +116,6 @@
   box-sizing: border-box;
   padding: 5px;
   max-width: 100%;line-height: 25px;
-  text-shadow: 5px 0px 3px white;
   word-break: break-all;
 }
 #Members .ChatBox .content .rightitem .headimg{
