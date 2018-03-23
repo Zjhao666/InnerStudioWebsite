@@ -1,0 +1,530 @@
+.head{
+    width:100%;
+    height:15vh;
+
+}
+.header{
+    position:fixed;
+    width:99%;
+    margin-top:-10px;
+    height:10vh;
+    z-index: 1;
+}
+
+.wrapper{
+    width:100%;
+    height:100vh;
+    margin:0 auto;
+    overflow: hidden;
+
+}
+div.logo{
+    right:10px;
+    width:100%;
+    background-color: white;
+    padding:0.3em 1em;
+    border-bottom: 1px solid lightgrey;
+    margin-top: 0;
+}
+div.logo div{
+    right:0;
+}
+div.logo.title{
+    font-size: 1.2em;
+}
+/*导航栏样式*/
+ul.nav{
+    top:30px;
+    right:0px;
+    width:100%;
+    margin:0;
+    padding:0;
+    list-style-type: none;
+    float:right;
+    background-color: white;
+    border-bottom: 2px solid lightgrey;
+    max-width: 100%;
+}
+
+ul.nav ul{
+    margin:0;
+    padding:0;
+    list-style-type: none;
+    float:right;
+    background-color: white;
+
+}
+ul.nav li{
+    float:right;
+    width:8em;
+
+
+}
+ul.nav li ul{
+    width:8em;
+    position:absolute;
+    left:-999em;
+}
+
+ul.nav li div{
+    width:100%;
+    height:70vh;
+    background-color:white;
+    position:absolute;
+    left:-999em;
+    border-bottom: 2px solid black;
+}
+.nav li:hover ul{
+  left:auto;
+}
+.nav li:hover div{
+   left:0;
+    overflow: hidden;
+}
+ul.nav a{
+    display:block;
+    color:black;
+    text-decoration: none;
+    padding:0.3em 1em;
+
+}
+ul.nav li li a{
+
+    border-left:0;
+    border-right:0;
+}
+ul.nav li:last-child{
+    border-right: 0;
+    border-bottom: 0;
+}
+ul a:hover,
+ul a:focus{
+    border-bottom: 3px solid darkblue;
+    color:darkblue;
+}
+
+/*三栏分布，导航栏*/
+.nav li:hover div.right{
+    left:75%;
+    padding:1em 1em 1em 2em;
+
+}
+.nav li:hover div.mid{
+    left:50%;
+    width:25%;
+    padding:1em 1em 1em 0;
+
+}
+.nav li:hover div.left{
+    left:0;
+    width:50%;
+    padding:1em 1em 1em 3em;
+
+
+
+
+}
+/*关于我们--导航栏*/
+li.title{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.left ul li div{
+    width:500px;
+    font-size: 0.9em;
+}
+.mid a:hover{
+    border-bottom: none;
+    color:deepskyblue;
+    font-weight: bold;
+}
+.mid li{
+    font-size: 1em;
+    line-height: 2em;
+
+}
+.mid{
+    padding-right: 0;
+}
+.mid ul li div{
+    width:300px;
+    font-size: 0.9em;
+    line-height: normal;
+   padding-top:30px;
+}
+.mid a{
+    font-weight: bold;
+    font-size: 0.9em;
+}
+.mid ul li a.title{
+    font-size: 1em;
+    padding:0.3em 1em;
+}
+.right ul li a{
+    font-size: 0.9em;
+    font-weight: bold;
+}
+.right ul li a:hover{
+    border-bottom: none;
+    color:deepskyblue;
+}
+.right li{
+    line-height: 2em;
+    white-space:nowrap
+    /*强制不换行*/
+
+}
+
+.right ul li a.title{
+    font-size: 1em;
+}
+/*联系我们--导航栏*/
+#ContctUs span{
+    color:red;
+    font-weight: bold;
+    font-size: large;
+}
+
+#ContctUs div.left ul li div{
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1em;
+}
+#ContctUs div.left ul li.title{
+    font-size: 1.2em;
+}
+#ContctUs div.mid fieldset{
+    margin:1em 0em 0em 0em;
+    padding:0.5em;
+    border:1px solid #ccc;
+    height:300px;
+}
+#ContctUs div.mid legend{
+    font-weight: bold;
+}
+#ContctUs div.mid label{
+    display: block;
+    cursor: pointer;
+}
+#ContctUs div.mid input{
+    width:15em;
+}
+#ContctUs div fieldset div{
+    margin:0em 1em 1em 1em;
+    height:auto;
+
+}
+#ContctUs div.mid textarea{
+    width:100%;
+    height:10em;
+}
+#button{
+    height:auto;
+
+}
+#ContctUs ul{
+    width:90%;
+}
+#ContctUs li{
+    width:100%;
+    font-size: 0.9em;
+}
+#ContctUs div.right{
+    padding:3em 1em 1em 3em;
+}
+button{
+    border:none;
+    background: none;
+    cursor:pointer;
+}
+#firstPage{
+   height:100vh;
+    width:100%;
+    background-image: url("../imag/background1.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+}
+/*首页 -提示向下浏览的链接*/
+ #link{
+    font-size: xx-large;
+    color: white;
+    width:auto;
+    position:absolute;
+    margin-top: 50vh ;
+     margin-left: 35%;
+     z-index: 0;
+     text-align: center;
+}
+ #link span{
+     font-size: 1.5em;
+     font-weight: bold;
+ }
+ #link a:link,a:visited{
+     text-decoration: none;
+     color:white;
+ }
+/*第二页，容器布局*/
+#second{
+    width:100%;
+    height:auto;
+}
+#secondPage{
+    width:100%;
+    height:50vh;
+    margin-top:0;
+    position: relative;
+}
+#secondPage div.left{
+    height:100%;
+    width: 30%;
+
+    float:left;
+}
+#secondPage div.right{
+    height:100%;
+    width:70%;
+    float:right;
+}
+#secondPage div.top{
+    width:100%;
+    height:80%;
+    top:0;
+}
+#secondPage div.bottom{
+    width:100%;
+    height:20%;
+    bottom:0;
+}
+#secondPage ul{
+    margin:0;
+    list-style-type: none;
+    float: left;
+    width: 100%;
+    padding:0 10% 10% 10%;
+}
+#secondPage ul li{
+    float: left;
+    width:15%;
+
+}
+#secondPage div.left div{
+    font: 2em "Comic Sans MS";
+    font-weight: lighter;
+    padding: 10%;
+    text-align: center;
+}
+#secondPage div.right div.top div{
+    padding:5% 10% 10% 10%;
+    font: 1em "Comic Sans MS";
+    font-weight: lighter;
+    line-height: 2em;
+}
+#secondPage a{
+    font-size: 1.2em;
+    color: deepskyblue;
+    font-weight: lighter;
+}
+#secondPage a:link{
+    text-decoration: none;
+
+}
+#secondPage a:hover,a:focus,a:active{
+    text-decoration: underline;
+    font-weight: bold;
+}
+/*第三页--新闻*/
+#thirdPage{
+    width:100%;
+    height:100vh;
+}
+/*第四页--研究方向*/
+#forthPage{
+    width:100%;
+    height:100vh;
+}
+#forthPage div.head{
+    height:10vh;
+}
+#forthPage div.content{
+    height:90vh;
+
+}
+#forthPage table{
+    width:100%;
+    height:100%;
+}
+#forthPage tr{
+    width:100%;
+
+}
+#forthPage td{
+    width:25%;
+
+}
+#forthPage td.text{
+    background-color: black;
+    color: white;
+    text-align: center;
+    font: 1.8em "Comic Sans MS";
+    font-weight:lighter;
+}
+#direction-1{
+    background-image: url("../imag/direction2.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+#direction-2{
+    background-image: url("../imag/direction1.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+#direction-3{
+    background-image: url("../imag/direction3.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+#direction-4{
+    background-image: url("../imag/direction4.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+/*第五页--项目进度*/
+#fifthPage{
+    width:100%;
+    height: 110vh;
+}
+#programmes{
+    width:100%;
+    height:15vh;
+}
+#programmes div{
+    font-size: 2em  ;
+    padding:1em;
+    font-weight: lighter;
+}
+#fifthPage div.content{
+    width:100%;
+    height:100vh;
+}
+#fifthPage div.box{
+    width:25%;
+    height:90%;
+    float:left;
+    display:inline;
+    margin-left: 6%;
+    border: 1px solid black;
+}
+#fifthPage div.pic{
+    width:100%;
+    height:40%;
+    top: 0;
+    border-bottom: 1px solid black;
+}
+#fifthPage div.text{
+    padding:2em;
+    font-size: 2em;
+    font-weight: lighter;
+}
+#fifthPage span{
+    line-height: 2em;
+    font-size:0.6em;
+}
+#fifthPage a:link,#fifthPage a:visited{
+    font-size: 0.6em;
+    font-weight: lighter;
+    color:deepskyblue;
+    text-decoration: none;
+    line-height: 3em;
+}
+#fifthPage a:hover,#fifthPage a:focus,#fifthPage a:active{
+    text-decoration: underline;
+}
+/*返回顶部*/
+#backtotop{
+    position: fixed;
+    bottom:100px;
+    right:0;
+    display:none;
+}
+/*新闻-图片切换*/
+#list {
+    position: absolute;
+    width: 9000px;
+    height: 100vh;
+}
+
+#list img {
+    float: left;
+    width: 1280px;
+    height:900px;
+}
+
+#buttons {
+    position: absolute;
+    left: 45%;
+    bottom: 20px;
+    z-index: 2;
+    height: 10px;
+    width: 100px;
+}
+
+#buttons span {
+    float: left;
+    margin-right: 5px;
+    width: 10px;
+    height: 10px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background: #333;
+    cursor: pointer;
+}
+
+#buttons .on {
+    background: orangered;
+}
+
+.arrow {
+    position: absolute;
+    top:50vh;
+    z-index: 2;
+    display: none;
+    width: 40px;
+    height: 40px;
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 39px;
+    text-align: center;
+    color: #fff;
+    background-color: RGBA(0, 0, 0, .3);
+    cursor: pointer;
+}
+
+.arrow:hover {
+    background-color: RGBA(0, 0, 0, .7);
+}
+
+#container:hover .arrow {
+    display: block;
+}
+
+#prev {
+    left: 5%;
+}
+
+#next {
+    right: 5%;
+}
+footer{
+    text-align: center;
+    height:20vh;
+    margin-top: 20px;
+    padding-top: 20px;
+    background-color: #333333;
+    color:white;
+}
+.pic{
+    background: url("../imag/project_1.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
