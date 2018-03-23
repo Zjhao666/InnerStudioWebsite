@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Research&Project</title>
+    <link rel="stylesheet" href="style/Resaerch.css">
+</head>
+<body>
+
+ <div class="wrapper" id="top">
+     <p id="backtotop"><a href="#top"><img src="imag/toTop.png"></a></p>
+     <header>Research&Project</header>
+     <div class="secondary" id="secondary">
+     <ul class="nav">
+         <li><a href="index.html">返回主页</a></li>
+         <li><a>研究方向</a>
+            <ul>
+                <li><a href="#java_web">Java Web</a></li>
+                <li><a href="# algorithm">算法</a></li>
+                <li><a href="#data_mining">数据挖掘</a></li>
+            </ul>
+         <li><a>项目跟踪</a>
+            <ul>
+                <li><a href="#project_1">高校赞助平台</a></li>
+                <li><a href="#project_2">知识产权情报系统</a></li>
+                <li><a href="#project_3">工作室网站</a></li>
+            </ul>
+     </li>
+         </li>
+     </ul>
+     </div>
+     <div class="primary" id="primary">
+         <div class="content" id="java_web" name="java_web"></div>
+         <div class="content" id=" algorithm" name="algorithm"></div>
+         <div class="content" id="data_mining" name="data_mining"></div>
+         <div class="content" id="project_1" name="project_1"></div>
+         <div class="content" id="project_2" name="project_2"></div>
+         <div class="content" id="project_3" name="project_3"></div>
+     </div>
+ </div>
+ <footer>
+     电子科技大学沙河校区<br>@成都市建设北路二段四号
+ </footer>
+<script src="scripts/BackToTop.js"></script>
+ <script>
+    var height= document.getElementById("primary").offsetHeight;
+    var heightStr=height+"px";
+    document.getElementById("secondary").style.height=heightStr;
+ </script>
+</body>
+</html>

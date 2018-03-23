@@ -1,0 +1,45 @@
+body{
+    font-size: 62.5%;
+    text-align: center;
+}
+.wrapper{
+    width:92em;
+    max-width: 95%;
+    margin:0 auto;
+    text-align: left;
+    height: 100vh;
+    background-color: darkblue;
+}
+.head{
+    width:100%;
+    top:0;
+    height:20vh;
+    background-color: red;
+    text-align: left;
+
+}
+.content .primary{
+    width:80%;
+    float:right;
+    display:inline;
+    background-color: deepskyblue;
+    min-height: 80vh;
+    padding-top: 10px;
+
+}
+.content .secondary{
+    width:20%;
+    float:left;
+    display:inline;
+    background-color: #cccccc;
+    min-height: 80vh;
+    padding-top: 10px;
+    text-align: center;
+}
+.secondary a{
+    font-size: 160%;
+}
+.head div{
+   padding:25px;
+   font: 380% "Comic Sans MS";
+}

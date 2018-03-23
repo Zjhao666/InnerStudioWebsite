@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TeacherIntroduction</title>
+    <link rel="stylesheet" href="style/teacher.css">
+    <script src="scripts/jquery-3.1.1.js"></script>
+</head>
+<body>
+<p id="backtotop"><a href="#top"><img src="imag/toTop.png"></a></p>
+<div class="wrapper">
+
+    <header id="top">教师信息</header>
+    <div class="content">
+        <div class="secondary" id="secondary">
+            <ul>
+                <li><a href="index.html" >返回主页</a></li>
+                <li><a href="Members.html">成员介绍</a></li>
+            </ul>
+        </div>
+        <div class="primary"id="primary" >
+            <div class="basic" id="teacher1" name="teacher1">
+                <img src="imag/teacher1.jpg">
+                <div class="basic_info">
+                    <div class="name"></div>
+                    <div class="title">
+                        <span>职称：</span>
+                    </div>
+                    <div class="office">
+                        <span>办公室:</span>
+                    </div>
+                    <div class="degree">
+                        <span>学历:</span>
+                    </div>
+                    <div class="contact">
+                        <span>联系方式:</span>
+                    </div>
+                </div>
+            </div>
+            <div class="researchDirection">
+                <div class="left">研究方向：</div>
+                <div class="right"></div>
+            </div>
+            <div class="profile">
+                <div class="left">个人简历:</div>
+                <div class="right"></div>
+            </div>
+
+            <div class="research">
+                <div class="left">科研项目:</div>
+                <div class="right"></div>
+            </div>
+
+            <div class="teaching">
+                <div class="left">讲授课程:</div>
+                <div class="right"></div>
+            </div>
+            <div class="award">
+                <div class="left">获奖记录:</div>
+                <div class="right"></div>
+            </div>
+
+            <div class="basic" id="teacher2" name="teacher2">
+                <img src="imag/teacher2.jpg">
+                <div class="basic_info">
+                    <div class="name"></div>
+                    <div class="title">
+                        <span>职称：</span>
+                    </div>
+                    <div class="office">
+                        <span>办公室:</span>
+                    </div>
+                    <div class="degree">
+                        <span>学历:</span>
+                    </div>
+                    <div class="contact">
+                        <span>联系方式:</span>
+                    </div>
+                </div>
+            </div>
+            <div class="researchDirection">
+                <div class="left">研究方向：</div>
+                <div class="right"></div>
+            </div>
+            <div class="profile">
+                <div class="left">个人简历:</div>
+                <div class="right"></div>
+            </div>
+
+            <div class="research">
+                <div class="left">科研项目:</div>
+                <div class="right"></div>
+            </div>
+
+            <div class="teaching">
+                <div class="left">讲授课程:</div>
+                <div class="right"></div>
+            </div>
+            <div class="award">
+                <div class="left">获奖记录:</div>
+                <div class="right"></div>
+            </div>
+        </div>
+        </div>
+
+</div>
+<footer>
+    电子科技大学沙河校区<br>@成都市建设北路二段四号
+</footer>
+<script src="scripts/get-teacher2.js"></script>
+<script src="scripts/BackToTop.js"></script>
+<script>
+    var height= document.getElementById("primary").offsetHeight;
+    var heightStr=height+"px";
+    document.getElementById("secondary").style.height=heightStr;
+</script>
+</body>
+</html>

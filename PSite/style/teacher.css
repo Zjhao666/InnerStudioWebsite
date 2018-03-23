@@ -1,0 +1,142 @@
+body{
+    background-color: whitesmoke;
+}
+.wrapper{
+    width:80%;
+    height:auto;
+    min-height:400vh;
+    background-color: white;
+    margin:0 auto;
+}
+header{
+    background-color: #0a9fff;
+    height:10vh;
+    color:white;
+    font-size: 2em;
+    padding:10px 20px;
+}
+.secondary{
+    width:25%;
+    height:auto;
+    min-height:100vh;
+    background-color:lightgrey;
+   float:left;
+
+}
+ul{
+    margin: 0;
+    padding:0;
+    list-style-type: none;
+    width: 100%;
+    border: none;
+    font-size:200%;
+}
+li{
+    margin:0;
+    padding:0;
+}
+ul a{
+    display: block;
+    text-decoration: none;
+    font-size: 0.6em;
+    text-align: center;
+    height:1.2em;
+    padding:0.3em 1em;
+    margin-top: 0;
+    color:black;
+}
+a:hover,a:focus,a:visited{
+    background-color: white;
+    color: black;
+    font-size: 0.6em;
+}
+.primary{
+    float:right;
+    width:75%;
+    height:auto;
+    min-height: 100vh;
+}
+.basic,.research,.researchDirection,.profile,.teaching,.award{
+    width:95%;
+    height:auto;
+    min-height: 20vh;
+    margin:10px auto;
+    background-color:whitesmoke;
+}
+.basic img{
+   max-width:200px;
+    width:22%;
+    top:0;
+    left:0;
+    position: relative;
+}
+.basic{
+    margin-top: 30px;
+}
+.basic_info{
+    width:75%;
+   height:30vh;
+   float:right;
+
+}
+.name{
+    width:100%;
+    height:25%;
+    border-bottom: 1px solid gray;
+    text-align: left;
+    font-size: 1.5em;
+    color:deepskyblue;
+    font-weight: lighter;
+}
+.title,.degree{
+    width:50%;
+    height:37%;
+    float:left;
+    font-weight: lighter;
+
+}
+.office,.contact{
+    width:49.5%;
+    height:37%;
+    float:right;
+    font-weight: lighter;
+}
+span{
+    font-weight: normal;
+}
+.left{
+    width:22%;
+    min-height:20vh;
+    float:left;
+    text-align: left;
+    padding-top: 10px;
+    font-size: 1.1em;
+}
+.right{
+    width:78%;
+    height:auto;
+    position: relative;
+    top: 0;
+    margin-left: 22%;
+    line-height:1.2em;
+    font-weight: lighter;
+    padding-top: 5px;
+    padding-right: 5px;
+}
+footer{
+    width:100%;
+    background-color: black;
+    color:white;
+    text-align: center;
+    padding: 20px;
+
+}
+#backtotop{
+    position: fixed;
+    bottom:100px;
+    right:0;
+    display:none;
+}
+#backtotop a:hover,#backtotop a:focus,#backtotop a:visited{
+    background-color: transparent;
+}
