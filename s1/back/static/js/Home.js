@@ -41,10 +41,31 @@ navigate.children('.item').each((i,elem)=>{
     }
   });
 });
+let btn_payAttention=$('#AccountInfo').find('.btn_payAttention'),
+    btn_follow=$('#AccountInfo').find('.btn_follow'),
+    nav_statistics=$('#AccountInfo').find('.nav_statistics'),
+    nav_history=$('#AccountInfo').find('.nav_history');
+btn_payAttention.click(()=>{
+  alert('pay attention');
+});
+btn_follow.click(()=>{
+  alert('follow');
+});
+nav_statistics.click(()=>{
+  if($('#TradeHistory').css('display').includes('block')) $('#TradeHistory').css('display','none');
+  $('#Statistics').css('display','block');
+});
+nav_history.click(()=>{
+  if($('#Statistics').css('display').includes('block')) $('#Statistics').css('display','none');
+  $('#TradeHistory').css('display','block');
+});
 
+const makeColor=()=>{
+  return ''+(Math.random()*100+140)+','+(Math.random()*100+140)+','+(Math.random()*100+140);
+}
 const drawRestTable=(data,minRest,maxRest)=>{
   // console.log(rep);
-  let content=$('#RestTable .content');
+  let content=$('#Statistics .content');
   content[0].height=$(document).height()*0.4;
   content[0].width=$(document).width()*0.6;
   content.height(content.height[0]);
@@ -161,6 +182,66 @@ const getAccountHistory=(account)=>{
     error:(err)=>console.log(rep)
   })
 };
+const getTradeHistory=(account)=>{
+  $.get({
+    url:base+'dataFetch/tradeHistory?account='+account,
+    dataType:'JSON',
+    success:(rep)=>{
+      if(rep.statuscode==200){
+        let html='';
+        for(let item of rep.data)
+          html+=`
+            <tr>
+              <td>`+item.dingDan+`</td>
+              <td>`+item.openTime+`</td>
+              <td>`+item.flatTime+`</td>
+              <td>`+item.openPrice+`</td>
+              <td>`+item.flatTime+`</td>
+              <td>`+item.type+`</td>
+              <td>`+item.tradeNum+`</td>
+              <td class='tradeVariety'>`+item.tradeVariety+`</td>
+              <td>`+item.stopLoss+`</td>
+              <td>`+item.zyProfit+`</td>
+              <td>`+item.inventoryFee+`</td>
+              <td>`+item.actualProfit+`</td>
+            </tr>
+            `;
+        $('#TradeHistory .content tbody').html(html);
+      }else console.log(rep);
+    }
+  })
+}
+const getTradeVarietyPercentage=(account)=>{
+  $.get({
+    url:base+'dataFetch/tradeVarietyPercentage?account='+account,
+    dataType:'JSON',
+    success:(rep)=>{
+      if(rep.statuscode==200){
+        let sum=0,html='';
+        for(let item of rep.data) sum+=item.num;
+        for(let item of rep.data){
+          html+=`<span class='item' tradeVariety='`+item.tradeVariety+`' style='width:`+item.num*100/sum+`%;background-color:rgb(`+makeColor()+`);'></span>`
+        }
+        $('#Statistics .tradeVarietyPercentage .tvpWrapper').html(html);
+        $('#Statistics .tradeVarietyPercentage .tvpWrapper .item').each((i,elem)=>{
+          $(elem).bind({
+            mouseenter:(e)=>{
+              $('#Statistics .tradeVarietyPercentage .tvpLable').html($(elem).attr('tradeVariety'));
+              e.stopPropagation();
+            },
+            mouseleave:(e)=>{
+              $('#Statistics .tradeVarietyPercentage .tvpLable').html('');
+              e.stopPropagation();
+            }
+          });
+        });
+      } else console.log(rep);
+    }
+  });
+};
 // getAccountList();
-getAccountInfo('1182391: GuanwandaGroup-Demo');
+let account='1182519: GuanwandaGroup-Demo';
+getAccountInfo(account);
+getTradeHistory(account);
+getTradeVarietyPercentage(account);
 drawRestTable();

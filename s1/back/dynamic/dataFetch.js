@@ -50,4 +50,32 @@ app.get('/profitStatisics',(req,rep)=>{
   }
   // dbAccess.execute('select actualProfit from TradeHistory where account="'+account+'"');
 });
+app.get('/tradeVarietyPercentage',(req,rep)=>{
+  let account=req.query.account;
+  if(account.length==0){
+    rep.end(JSON.stringify({statuscode:202,description:'field account is undefined'}));
+    return
+  }
+  dbAccess.execute('select tradeVariety,count(account) as num from Trade where account="'+account+'" group by tradeVariety',(err,rows)=>{
+    if(err){
+      rep.end(JSON.stringify({statuscode:201,description:'failed to operate database',errinfo:util.inspect(err)}));
+      console.log(err);
+    }
+    else rep.end(JSON.stringify({statuscode:200,data:rows}));
+  });
+});
+app.get('/tradeHistory',(req,rep)=>{
+  let account=req.query.account;
+  if(account.length==0){
+    rep.end(JSON.stringify({statuscode:202,description:'field account is undefined'}));
+    return
+  }
+  dbAccess.execute('select dingDan,openTime,type,tradeNum,tradeVariety,openPrice,stopLoss,zyProfit,flatTime,inventoryFee,actualProfit,flatPrice from TradeHistory where account="'+account+'"',(err,rows)=>{
+    if(err){
+      rep.end(JSON.stringify({statuscode:201,description:'failed to operate database',errinfo:util.inspect(err)}));
+      console.log(err);
+    }
+    else rep.end(JSON.stringify({statuscode:200,data:rows}));
+  });
+});
 module.exports=app;

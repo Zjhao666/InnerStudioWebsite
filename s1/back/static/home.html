@@ -108,34 +108,43 @@
           <table class='nav'>
             <tbody>
               <tr>
-                <td class='item'>统计报表</td>
-                <td class='item'>商品交易比例</td>
-                <td class='item'>历史记录</td>
+                <td class='item btn_payAttention'>关注</td>
+                <td class='item btn_follow'>跟随</td>
+                <td class='item nav_statistics'>统计报表</td>
+                <td class='item nav_history'>历史记录</td>
               </tr>
             </tbody>
           </table>
-          <div class='operaBox'>
-            <a class='pay_attention'>关注</a>
-            <a class='follow'>跟随</a>
-          </div>
         </div>
         <div class='wrapper'>
-          <div id='RestTable'>
+          <div id='Statistics'>
             <span class='title'>统计报表</span>
             <span class='instruction'>图表数据截止于每日24:00点，次日清晨更新（单位：美元）</span>
             <canvas class='content'></canvas>
-          </div>
-          <div class='Proportion_commodity_trading'>
-
+            <div class='tradeVarietyPercentage'>
+              <span class='tvpLable'></span>
+              <div class='tvpWrapper'></div>
+            </div>
           </div>
           <div id='TradeHistory'>
             <table class='content'>
               <thead>
-
+                <tr>
+                  <td>交易号</td>
+                  <td>开仓时间</td>
+                  <td>平仓时间</td>
+                  <td>开仓价</td>
+                  <td>平仓价</td>
+                  <td>类型</td>
+                  <td>手数</td>
+                  <td>交易种类</td>
+                  <td>止损</td>
+                  <td>止盈获利</td>
+                  <td>库存费</td>
+                  <td>实际获利</td>
+                </tr>
               </thead>
-              <tbody>
-
-              </tbody>
+              <tbody></tbody>
             </table>
           </div>
         </div>
