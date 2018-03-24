@@ -13,6 +13,7 @@
   text-shadow: 5px 0px 2px black;
   box-shadow: 5px 0px 10px black;
   background-color: rgba(60,120,200,0.8);
+  cursor: pointer;
 }
 #Plan .nav td:nth-child(1){border-radius: 10px 0px 0px 10px;}
 #Plan .nav td:nth-last-child(1){border-radius: 0px 10px 10px 0px;}
@@ -28,6 +29,7 @@
 
 /* #PlanCurrent{display: none;} */
 #PlanAction{
+  display: none;
   position: absolute;
   top: 100px;left: -50px;
   z-index: 1000;
@@ -71,6 +73,7 @@
   border-radius: 10px;
   box-shadow: 5px 0px 10px black;
   background-color: rgb(100,60,200);
+  cursor: pointer;
 }
 #PlanCurrent .pc_item .title{
   display: inline-block;
@@ -80,15 +83,15 @@
   box-shadow: 2px 1px 5px black;
   font: bold 1.2em 'Fangsong';
 }
-#PlanCurrent .pc_item .author::before{
-  content: 'Created by: ';
-  font-family: 'Fangsong';
-}
 #PlanCurrent .pc_item .createTime::before{
   content: 'Created in: ';
   font-family: 'Fangsong';
 }
-#PlanCurrent .pc_item .author,
+#PlanCurrent .pc_item .expectTime::before{
+  content: 'Expect to complete before: ';
+  font-family: 'Fangsong';
+}
+#PlanCurrent .pc_item .expectTime,
 #PlanCurrent .pc_item .createTime{
   margin: 0px 10px;
   font: bold 1em 'ArtegraSansExtended';
@@ -107,6 +110,18 @@
   background-color: rgb(120,140,250);
 }
 /* stage status */
+#PlanCurrent .pc_item .stageList .current .deadLine{
+  /* 0 */
+  background-color: rgb(120,255,180) !important;
+}
+#PlanCurrent .pc_item .stageList .incompleted .deadLine{
+  /* -1 */
+  background-color: rgb(100,100,100) !important;
+}
+#PlanCurrent .pc_item .stageList .completed .deadLine{
+  /* 1 */
+  background-color: rgb(120,255,180) !important;
+}
 #PlanCurrent .pc_item .stageList .stage .deadLine{
   box-sizing: border-box;
   position: relative;
@@ -123,11 +138,14 @@
   width: 95%;margin: 0px auto;
   white-space: pre-line;
 }
+#PlanCurrent .pc_item .stageList .stage .commentList{
+  padding: 10px 0px;
+}
 #PlanCurrent .pc_item .stageList .stage .commentList .comment{
-  width: 95%;min-height: 100px;
+  width: 95%;min-height: 10px;
   border: 1px solid white;border-left: 0px;
   border-radius: 0px 10px 10px 0px;
-  margin: 0px auto;
+  margin: 10px auto;
 }
 #PlanCurrent .pc_item .stageList .stage .commentList .comment .c_header{
   display: inline-block;

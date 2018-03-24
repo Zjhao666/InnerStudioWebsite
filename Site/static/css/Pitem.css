@@ -5,7 +5,7 @@
   border: 1px solid white;
   box-sizing: border-box;
   padding: 10px;background-color: rgba(100,80,155,0.4);
-  border-left: 0px;border-radius: 0px 20px 20px 0px;
+  border-radius: 20px;
 }
 
 .Pitem .title{

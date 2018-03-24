@@ -98,7 +98,6 @@ const getOldmsg=()=>$.get({
   url:global_host+'member/getOldmsg?',
   dataType:'JSON',
   success:(rep)=>{
-    console.log(rep)
     if(rep.statuscode==200) chatboxAddItems(rep.data);
     else if(rep.statuscode==201) console.log('no old msg');// no old msg
     else notify(rep.description);// error

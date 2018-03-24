@@ -11,7 +11,7 @@ app.get('/getOldmsg',(req,rep)=>{
   if(req.allowed){
     dbAccess.execute('select source,target,message,timestamp from Oldmsg where source='+req.session.memid+' or target='+req.session.memid,(err,ret)=>{
       if(err){
-        rep.end(JSON.stringify({statuscode:201,description:util.inspect(err)}));
+        rep.end(JSON.stringify({statuscode:201,errinfo:util.inspect(err)}));
         console.log(err);
       }
       else rep.end(JSON.stringify({statuscode:200,data:ret}));
@@ -22,7 +22,7 @@ app.get('/getNewmsg',(req,rep)=>{
   if(req.allowed){
     dbAccess.execute('select source,target,message,timestamp from Newmsg where source='+req.session.memid+' or target='+req.session.memid,(err,ret)=>{
       if(err){
-        rep.end(JSON.stringify({statuscode:202,description:util.inspect(err)}));
+        rep.end(JSON.stringify({statuscode:202,errinfo:util.inspect(err)}));
         console.log(err);
       }
       else rep.end(JSON.stringify({statuscode:200,data:ret}));

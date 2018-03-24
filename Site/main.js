@@ -23,6 +23,8 @@ app.use(express.static('static'));
 let member=require('./dynamic/member');
 app.use('/member',member);
 app.ws('/chat',member.chat);
+app.use('/plan',require('./dynamic/plan'));
+app.use('/project',require('./dynamic/project'));
 app.use('/login',require('./dynamic/login'));
 app.use('/document',require('./dynamic/document'));
 
