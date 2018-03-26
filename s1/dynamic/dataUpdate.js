@@ -64,17 +64,6 @@ app.post('/',(req,rep)=>{
             rep.end(JSON.stringify({statuscode:203,description:'数据库操作异常',errinfo:util.inspect(err)}));
             console.log(err);return;
           }
-          if(info.action==3){
-            sql=`insert into AccountHistory(account,rest,usd,used,valiable,percentage,time) values(
-              "`+info.account+`",
-              "`+data['余额']+`",
-              "`+data['USD净值']+`",
-              "`+data['已用预付款']+`",
-              "`+data['可用预付款']+`",
-              "`+data['预付款比例']+`",
-              "`+sillyDate.format(new Date(),'YYYY-MM-DD-HH-mm-ss')+`")`;
-            dbAccess.execute(sql,(err,rows)=>rep.end(JSON.stringify({statuscode:200})));
-          }
           else rep.end(JSON.stringify({statuscode:200}));
         });
       }

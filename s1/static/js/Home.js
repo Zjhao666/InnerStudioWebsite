@@ -162,26 +162,6 @@ const getAccountInfo=(account)=>{
     error:(err)=>console.log(err)
   })
 }
-const getAccountHistory=(account)=>{
-  $.get({
-    url:base+'dataFetch/accountHistory',
-    dataType:'JSON',
-    success:(rep)=>{
-      if(rep.statuscode==200){
-        let maxRest,minRest;
-        for(let item of rep){
-          if(maxRest&&item.rest>maxRest||!maxRest) maxRest=item.rest;
-          if(minRest&&item.rest<minRest||!minRest) minRest=item.rest;
-          item.i=parseInt(item.time.replace('-',''));
-        }
-        rep.sort((a,b)=>{return a.i-b.i});
-        drawRestTable(rep,minRest,maxRest);
-      }
-      else console.log(rep);
-    },
-    error:(err)=>console.log(rep)
-  })
-};
 const getTradeHistory=(account)=>{
   $.get({
     url:base+'dataFetch/tradeHistory?account='+account,
@@ -240,7 +220,7 @@ const getTradeVarietyPercentage=(account)=>{
   });
 };
 // getAccountList();
-let account='1182519: GuanwandaGroup-Demo';
+let account='1182642: GuanwandaGroup-Demo';
 getAccountInfo(account);
 getTradeHistory(account);
 getTradeVarietyPercentage(account);
