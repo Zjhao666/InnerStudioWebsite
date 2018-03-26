@@ -1,7 +1,7 @@
 
 #Profile{
   /* display: none; */
-  width: 80%;
+  width: 80%;min-height: 100%;
   margin: 0px auto;
 }
 
@@ -22,4 +22,38 @@
 #Profile .CurrentProject,
 #Profile .CompletedProjects{
   display: none;
+}
+
+#Profile .Details{
+  box-sizing: border-box;
+  display: block;
+  overflow: hidden;
+  margin: 10px auto;
+  width: 100%;height: 100%;
+  border-radius: 10px;
+  background-color: rgba(255,255,255,0.5);
+  color: black;
+}
+#Profile .Details .left{
+  display: inline-block;
+  position: relative;
+  width: 20%;height: 100%;
+}
+#Profile .Details .left .headimg{
+  display: block;
+  margin: 10px auto;
+  width: 200px;height: 200px;
+  border-radius: 10px;
+}
+#Profile .Details .left .pertag,
+#Profile .Details .left .account{
+  display: block;
+  width: 200px;
+  margin: 0px auto;
+  color: rgb(40,40,40);
+}
+#Profile .Details .left .account{
+  font-weight: bold;
+  color: black;
+  font-size: 1.5em;
 }
