@@ -74,4 +74,4 @@ $('#Profile .Navigate').children('.item').each((i,elem)=>{
   });
 });
 
-window.onload=()=>$('#Profile .Navigate').children('.item').eq(1).click();
+window.onload=()=>$('#Profile .Navigate').children('.item').eq(0).click();
