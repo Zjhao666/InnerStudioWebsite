@@ -19,20 +19,20 @@
   cursor: pointer;
 }
 
-#Profile .CurrentProject,
 #Profile .CompletedProjects{
   display: none;
 }
-
+/* Details */
 #Profile .Details{
+  display: none;
   box-sizing: border-box;
-  display: block;
   overflow: hidden;
   margin: 10px auto;
   width: 100%;height: 100%;
   border-radius: 10px;
-  background-color: rgba(255,255,255,0.5);
-  color: black;
+  background-color: rgba(100,80,155,0.5);
+  white-space: nowrap;
+  text-shadow: 2px 0px 5px black;
 }
 #Profile .Details .left{
   display: inline-block;
@@ -48,12 +48,295 @@
 #Profile .Details .left .pertag,
 #Profile .Details .left .account{
   display: block;
-  width: 200px;
+  width: 200px;height: auto;
   margin: 0px auto;
-  color: rgb(40,40,40);
+  overflow: hidden;
+  white-space: normal;
 }
 #Profile .Details .left .account{
   font-weight: bold;
-  color: black;
   font-size: 1.5em;
+}
+
+#Profile .Details .right{
+  display: inline-block;
+  padding: 10px 0px;
+  vertical-align: top;
+  max-width: -webkit-calc(100% - 240px);
+  max-width: -moz-calc(100% - 240px);
+  max-width: calc(100% - 240px);
+}
+#Profile .Details .right .base{
+  width: 100%;
+  white-space: normal;
+  margin-bottom: 10px;
+}
+#Profile .Details .right .base::before{
+  content: 'Base';
+  display: block;
+  margin-bottom: 5px;
+  color: white;
+  font: bold 1em 'Fangsong';
+  border-bottom: 1px solid white;
+}
+#Profile .Details .right .base .item{
+  display: inline-block;
+  border-radius: 10px;
+}
+#Profile .Details .right .base .value,
+#Profile .Details .right .base .label{
+  display: inline-block;
+  height: 20px;line-height: 20px;
+  padding: 0px 5px;
+  background-color: rgba(200,200,200,0.5);
+}
+#Profile .Details .right .base .label{background-color: rgb(200,200,200);}
+
+#Profile .Details .right .allProjects{
+  width: 100%;
+  /* overflow: hidden; */
+  word-break: break-all;
+  margin-bottom: 10px;
+  text-align: center;
+}
+#Profile .Details .right .allProjects::before{
+  content: 'All Projects';
+  display: block;
+  margin-bottom: 5px;
+  color: white;
+  font: bold 1em 'Fangsong';
+  text-align: left;
+  border-bottom: 1px solid white;
+}
+#Profile .Details .right .allProjects .item{
+  display: inline-block;
+  box-sizing: border-box;
+  width: 47%;padding: 10px;margin: 0px 10px;
+  border: 1px solid rgb(200,200,200);
+  border-radius: 10px;
+  text-align: left;
+}
+#Profile .Details .right .allProjects .item .title,
+#Profile .Details .right .allProjects .item .description,
+#Profile .Details .right .allProjects .item .data{
+  display: block;
+  width: 100%;margin: 5px 0px;
+  overflow: hidden;text-overflow: ellipsis;white-space: nowrap;
+}
+#Profile .Details .right .allProjects .item .title{
+  color: rgb(70,180,250);
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 1.2em;
+}
+#Profile .Details .right .allProjects .item .data{
+  margin-top: 10px;
+}
+#Profile .Details .right .allProjects .item .data .memberNum,
+#Profile .Details .right .allProjects .item .data .status,
+#Profile .Details .right .allProjects .item .data .createTime{
+  margin-right: 10px;
+}
+#Profile .Details .right .allProjects .item .data .createTime::before{
+  content: '';
+  display: inline-block;
+  vertical-align: top;
+  width: 20px;height: 20px;
+  background: url(../img/icon/createTime.png);
+  background-size: cover;
+}
+#Profile .Details .right .allProjects .item .data .memberNum::before{
+  content: '';
+  display: inline-block;
+  vertical-align: top;
+  width: 20px;height: 20px;
+  background: url(../img/icon/member.png);
+  background-size: cover;
+}
+#Profile .Details .right .allProjects .item .data .status::before{
+  content: '';
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  margin-top: 2px;margin-right: 2px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.8);
+  width: 16px;height: 16px;
+}
+#Profile .Details .right .allProjects .item .data .s_Ongoing::before{background-color: rgba(250,250,120,0.5);}
+#Profile .Details .right .allProjects .item .data .s_Completed::before{background-color: rgba(80,200,120,0.5);}
+#Profile .Details .right .allProjects .item .data .memberNum{
+}
+
+#Profile .Details .right .activity{
+  margin-bottom: 10px;
+}
+#Profile .Details .right .activity::before{
+  content: 'Activity';
+  display: block;
+  margin-bottom: 5px;
+  color: white;
+  font: bold 1em 'Fangsong';
+  border-bottom: 1px solid white;
+}
+/* Schedule */
+#Profile .Schedule{
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: rgba(100,80,155,0.5);
+  text-shadow: 2px 0px 5px black;
+}
+#Profile .Schedule .projectInfo{
+  border-bottom: 1px solid gray;
+  margin-bottom: 10px;padding-bottom: 10px;
+}
+#Profile .Schedule .projectInfo .description,
+#Profile .Schedule .projectInfo .title{
+  display: block;
+  width: 100%;margin: 5px 0px;
+  font-size: 1.5em;
+}
+#Profile .Schedule .projectInfo .title{
+  font-size: 2em;
+  font-weight: bold;
+  color: rgb(70,180,250);
+  text-transform: capitalize;
+}
+#Profile .Schedule .projectInfo .proInfoData{
+  width: 90%;
+  position: relative;
+  margin: 0px auto;
+  font-family: 'Fangsong';
+}
+#Profile .Schedule .projectInfo .proInfoData::before{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 3%;
+  top: 0px;left: -5%;
+  border: 2px solid white;
+  border-left: 0px;
+  border-radius: 0px 10px 10px 0px;
+}
+#Profile .Schedule .projectInfo .proInfoData .labelData{
+  display: inline-block;
+  vertical-align: bottom;
+  height: 20px;
+}
+#Profile .Schedule .projectInfo .proInfoData .labelData .label,
+#Profile .Schedule .projectInfo .proInfoData .labelData .value{
+  display: block;
+  float: left;
+  height: 20px;
+  line-height: 20px;
+  padding: 0px 5px;
+  background-color: rgb(80,180,200);
+  border-radius: 6px 0px 0px 6px;
+}
+#Profile .Schedule .projectInfo .proInfoData .labelData .value{
+  background-color: rgb(200,200,200);
+  border-radius:  0px 6px 6px 0px;
+}
+#Profile .Schedule .projectInfo .proInfoData .percentData{
+  display: block;
+  position: relative;
+  height: 20px;width: 85%;
+  margin: 10px 0px;
+  border-radius: 6px;
+  border: 1px solid rgb(80,180,200);
+  overflow: hidden;
+}
+#Profile .Schedule .projectInfo .proInfoData .percentData .label{
+  box-sizing: border-box;
+  display: block;
+  float: left;
+  height: 20px;width: 100px;
+  overflow: hidden;
+  line-height: 20px;
+  background-color: rgb(80,180,220);
+  padding: 0px 5px;
+}
+#Profile .Schedule .projectInfo .proInfoData .percentData .value{
+  display: block;
+  box-sizing: border-box;
+  float: left;
+  height: 100%;width: 0px; /* 87%*x% */
+  padding: 0px 5px;
+  background-color: rgb(200,200,200);
+  text-align: right;
+}
+#Profile .Schedule .stageList{
+  list-style: none;
+  border-bottom: 1px solid gray;
+  margin-bottom: 10px;padding-bottom: 10px;
+}
+#Profile .Schedule .stageList .stage{
+  position: relative;
+  margin: 0px 20px 10px 20px;
+}
+#Profile .Schedule .stageList .stage::before{
+  content: '';
+  position: absolute;
+  top: 5px;left: -20px;
+  box-sizing: border-box;
+  width: 20px;height: 20px;
+  border-radius: 10px;
+  border: 2px solid gray;
+  background-color: black;
+}
+#Profile .Schedule .stageList .stage::after{
+  content: '';
+  position: absolute;
+  top: 15px;left: 0px;
+  width: 7px;height: 1px;
+  background-color: white;
+}
+#Profile .Schedule .stageList .completed::before{
+  background-color: rgb(80,255,120);
+}
+#Profile .Schedule .stageList .incompleted::before{
+  background-color: rgb(60,60,60);
+}
+#Profile .Schedule .stageList .current::before{
+  background-color: yellow;
+}
+#Profile .Schedule .stageList .stage .timestamp{
+  display: inline-block;
+  box-sizing: border-box;
+  height: 20px;line-height: 20px;
+  margin: 5px 5px 0px 5px;padding: 1px 2px 0px;
+  border-radius: 5px;
+  border: 2px solid white;
+  font: bold 0.9em 'Fangsong';
+}
+#Profile .Schedule .stageList .stage .content{
+  font-weight: bold;
+}
+#Profile .Schedule .stageList .stage .comments{
+  margin: 10px;
+  overflow: hidden;
+}
+#Profile .Schedule .stageList .stage .comments .item{
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  padding: 5px;margin-bottom: 10px;
+  border-radius: 10px;
+  border: 2px solid white;
+}
+#Profile .Schedule .stageList .stage .comments .item .account{
+  vertical-align: middle;
+  font: bold 1em 'Fangsong';
+  animation: AccountShining 4s linear infinite;
+}
+#Profile .Schedule .stageList .stage .comments .item .time{
+  vertical-align: middle;
+  font-family: 'Fangsong';
+}
+#Profile .Schedule .stageList .stage .comments .item .words{
+  display: block;
+  text-indent: 1em;
+  word-break: break-all;
+  vertical-align: bottom;
+  font-weight: bold;
 }

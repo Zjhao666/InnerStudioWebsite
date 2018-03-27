@@ -71,7 +71,7 @@
         <div id='Profile'>
           <div class='Navigate'>
             <a class='item'>Details</a>
-            <a class='item'>Current</a>
+            <a class='item'>Schedule</a>
             <a class='item'>Completed</a>
           </div>
           <div class='Details'>
@@ -82,56 +82,82 @@
             </div>
             <div class='right'>
               <div class='base'>
-                <span class='label'>学历</span>
-                <span class='value'>本科一年级</span>
-                <span class='label'>专业方向</span>
-                <span class='value'>计算机科学与技术</span>
-                <span class='label'>技能方向</span>
-                <span class='value'>前端</span>
+                <div class='item'>
+                  <span class='label'>真实姓名</span><span class='value'>李经纬</span>
+                </div>
+                <div class='item'>
+                  <span class='label'>学历</span><span class='value'>本科一年级</span>
+                </div>
+                <div class='item'>
+                  <span class='label'>技能方向</span><span class='value'>前端</span>
+                </div>
+                <div class='item'>
+                  <span class='label'>专业方向</span><span class='value'>计算机科学与技术</span>
+                </div>
+                <div class='item'>
+                  <span class='label'>加入工作室时间</span><span class='value'>2016-2-10</span>
+                </div>
               </div>
               <div class='allProjects'>
-                [allProjects]
+                <div class='item'>
+                  <span class='title'>project in python</span>
+                  <span class='description'>Hi,there!This plan is about how to earn money fast by take part in software-race.How do you think of my idea?</span>
+                  <div class='data'>
+                    <span class='status s_Ongoing'>Ongoing</span>
+                    <span class='createTime'>2017-1-1</span>
+                    <span class='memberNum'>3</span>
+                  </div>
+                </div>
+                <div class='item'>
+                  <span class='title'>project in python</span>
+                  <span class='description'>Hi,there!This plan is about how to earn money fast by take part in software-race.How do you think of my idea?</span>
+                  <div class='data'>
+                    <span class='status s_Completed'>Completed</span>
+                    <span class='createTime'>2017-1-1</span>
+                    <span class='memberNum'>3</span>
+                  </div>
+                </div>
               </div>
-              <div class='activityTable'>
-                [activityTable]
-              </div>
+              <div class='activity'>[activity]</div>
             </div>
           </div>
-          <div class='Pitem CurrentProject'>
-            <span class='title'>project in python</span>
-            <span class='description'>Hi,there!This plan is about how to earn money fast by take part in software-race.How do you think of my idea?</span>
-            <div class='statistics'>
-              <div class='labelData'>
-                <span class='label'>注册时间</span>
-                <span class='value'>2018/01/02</span>
-              </div>
-              <div class='labelData'>
-                <span class='label'>截止时间</span>
-                <span class='value'>2018/03/21</span>
-              </div>
-              <div class='labelData'>
-                <span class='label'>项目时长</span>
-                <span class='value'>23</span>
-              </div>
-              <div class='labelData'>
-                <span class='label'>计划阶段数</span>
-                <span class='value'>13</span>
-              </div>
-              <div class='percentData'>
-                <span class='label'>项目完成度</span>
-                <span class='value' style='width: 37%;'>41%</span>
-              </div>
-              <div class='percentData'>
-                <span class='label'>项目活跃度</span>
-                <span class='value' style='width: 71%;'>82点</span>
+          <div class='Schedule'>
+            <div class='projectInfo'>
+              <span class='title'>project in python</span>
+              <span class='description'>Hi,there!This plan is about how to earn money fast by take part in software-race.How do you think of my idea?</span>
+              <div class='proInfoData'>
+                <div class='labelData'>
+                  <span class='label'>注册时间</span>
+                  <span class='value'>2018/01/02</span>
+                </div>
+                <div class='labelData'>
+                  <span class='label'>截止时间</span>
+                  <span class='value'>2018/03/21</span>
+                </div>
+                <div class='labelData'>
+                  <span class='label'>项目时长</span>
+                  <span class='value'>23</span>
+                </div>
+                <div class='labelData'>
+                  <span class='label'>计划阶段数</span>
+                  <span class='value'>13</span>
+                </div>
+                <div class='percentData'>
+                  <span class='label'>项目完成度</span>
+                  <span class='value' style='width: 37%;'>41%</span>
+                </div>
+                <div class='percentData'>
+                  <span class='label'>项目活跃度</span>
+                  <span class='value' style='width: 71%;'>82点</span>
+                </div>
               </div>
             </div>
-            <ul class='list'>
-              <li class='stage incompleted'>
+            <ul class='stageList'>
+              <li class='stage stateIcon future'>
                 <span class='timestamp'>2017/11/24</span>
-                <span class='content'>The problem is when i run project in Netbeans,netbenas could build project successflly,and start tomcat successfully,but just...</span>
+                <span class='content'>learn HTTP protocal</span>
               </li>
-              <li class='stage current'>
+              <li class='stage stateIcon current'>
                 <span class='timestamp'>2017/11/20</span>
                 <span class='content'>learn HTML5</span>
                 <div class='comments'>
@@ -147,15 +173,19 @@
                   </div>
                 </div>
               </li>
-              <li class='stage completed'>
+              <li class='stage stateIcon completed'>
                 <span class='timestamp'>2017/11/24</span>
                 <span class='content'>learn css</span>
               </li>
-              <li class='stage completed'>
+              <li class='stage stateIcon completed lastStage'>
                 <span class='timestamp'>2017/11/18</span>
                 <span class='content'>learn js</span>
               </li>
             </ul>
+            <div class='taskList'>
+
+            </div>
+            <a class='publishTask'></a>
           </div>
           <div class='CompletedProjects'>
             <div class='Pitem'>
