@@ -79,3 +79,44 @@ $('#Profile .Navigate').children('.item').each((i,elem)=>{
 });
 
 window.onload=()=>$('#Profile .Navigate').children('.item').eq(1).click();
+
+// calendar
+$(document).ready(function(){
+  // CALENDAR
+  $('#Calendar #calendar').datepicker({
+    onSelect:(time,inst)=>{
+      console.log(time);
+      console.log(inst);
+    }
+  });
+  // TIME & DATE
+  var days = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+  var months = ['JAN','FEB','MAR','APR','MAY','JUNE','JULY','AUG','SEP','OCT','NOV','DEC'];
+  var d = new Date(); var year = d.getFullYear();
+  function getTime() {
+    var date = new Date(), hour = date.getHours();
+    var dd = 'AM'; var h = hour;
+    if ( h > 12 ) { h = hour - 12; dd = 'PM'; }
+    if ( h == 0 ) { h = 12; }
+    return {
+      day: days[date.getDay()],
+      date: date.getDate(),
+      month: months[date.getMonth()],
+      hour: appendZero(h),
+      minute: appendZero(date.getMinutes()),
+      dd: dd
+    };
+  };
+  function appendZero(num) {
+    if ( num < 10 ) { return '0' + num; }
+    return num;
+  };
+  function refreshClock() {
+    var now = getTime();
+    $('#Calendar #date_time').html('<div class="time">' + now.hour + ':' + now.minute + ' ' + now.dd + '</div><div class="date">' + now.day + ', ' + now.month + ' ' + now.date + ', ' + year + '</div>');
+    setTimeout(function(){
+      refreshClock();
+    });
+  };
+  refreshClock();
+});

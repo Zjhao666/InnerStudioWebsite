@@ -3,6 +3,7 @@
   /* display: none; */
   width: 80%;min-height: 100%;
   margin: 0px auto;
+  padding: 10px 0px;
 }
 
 #Profile .Navigate{
@@ -37,7 +38,7 @@
 #Profile .Details .left{
   display: inline-block;
   position: relative;
-  width: 20%;height: 100%;
+  width: 220px;height: 100%;
 }
 #Profile .Details .left .headimg{
   display: block;
@@ -280,10 +281,9 @@
   position: relative;
   width: 50%;height: 80%;
   margin-top: 1%;
-  border-radius: 10px;
   text-align: center;
-  box-shadow: 2px 0px 10px black;
-  background-color: rgba(150,130,255,0.6);
+  box-shadow: 2px 0px 10px rgba(0,0,0,0.8);
+  background-color: rgba(50,180,180,0.2);
 }
 #Profile .Schedule .timeAxis .ta_display .baseData .expectedTime{font: bold 1em 'Fangsong';}
 #Profile .Schedule .timeAxis .ta_display .baseData .content{
@@ -320,3 +320,213 @@
 #Profile .Schedule .timeAxis .ta_wrapper .s_Incompleted{background-color: rgb(150,150,150);}
 #Profile .Schedule .timeAxis .ta_wrapper .point .expectedTime,
 #Profile .Schedule .timeAxis .ta_wrapper .point .content{display: none;}
+#Profile .Schedule .taskList{
+  padding-bottom: 10px;
+}
+#Calendar {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 10px;
+  width: 350px;height: 380px;
+  box-shadow: 2px 0px 10px rgba(0,0,0,0.8);
+  background-color: rgba(50,180,180,0.2);
+}
+#Calendar #date_time {
+  cursor: default;
+  position: relative;
+  height: 45px;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 80%;
+  color: rgba(255, 255, 255, 0.6);
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.15);
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+}
+#Calendar #date_time .time {
+  position: relative;
+  float: left;
+  width: 40%;
+  height: 100%;
+  display: box;
+  box-pack: center;
+  box-align: center;
+  display: -ms-flexbox;
+  -ms-flex-pack: center;
+  -ms-flex-align: center;
+  display: -moz-box;
+  -moz-box-pack: center;
+  -moz-box-align: center;
+  display: -webkit-box;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+}
+#Calendar #date_time .date {
+  position: relative;
+  float: left;
+  width: 60%;
+  height: 100%;
+  display: box;
+  box-pack: center;
+  box-align: center;
+  display: -ms-flexbox;
+  -ms-flex-pack: center;
+  -ms-flex-align: center;
+  display: -moz-box;
+  -moz-box-pack: center;
+  -moz-box-align: center;
+  display: -webkit-box;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  box-shadow: -1px 0 rgba(255, 255, 255, 0.6), inset 1px 0 rgba(0, 0, 0, 0.15);
+}
+#Calendar #calendar .ui-datepicker {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 80%;
+  color: rgba(255, 255, 255, 0.6);
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.15);
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+}
+#Calendar #calendar .ui-datepicker .ui-datepicker-header {
+  cursor: default;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: inset 0 1px rgba(0, 0, 0, 0.15), inset 0 -1px rgba(255, 255, 255, 0.6), 0 1px rgba(0, 0, 0, 0.15), 0 -1px rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: normal;
+  text-transform: uppercase;
+}
+#Calendar #calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-month {
+  height: 50px;
+  font-size: 140%;
+  line-height: 50px;
+}
+#Calendar #calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-year {
+  display: none;
+}
+#Calendar #calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-prev, #Calendar #calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-next {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  border-radius: 0;
+}
+#Calendar #calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-prev {
+  left: 0;
+}
+#Calendar #calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-next {
+  right: 0;
+}
+#Calendar #calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-prev:hover, #Calendar #calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-next:hover {
+  border: 0;
+  background: transparent;
+}
+#Calendar #calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-prev .ui-icon, #Calendar #calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-next .ui-icon {
+  position: absolute;
+  top: 0;
+  left: 5px;
+  right: 0;
+  bottom: 0;
+  width: 8px;
+  height: 8px;
+  margin: auto;
+  border-width: 3px 0 0 3px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.6);
+  background: transparent;
+  transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+#Calendar #calendar .ui-datepicker .ui-datepicker-header .ui-datepicker-next .ui-icon {
+  left: -5px;
+  border-width: 3px 3px 0 0;
+  transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+#Calendar #calendar .ui-datepicker .ui-datepicker-calendar {
+  margin: 0;
+  overflow: hidden;
+}
+#Calendar #calendar .ui-datepicker .ui-datepicker-calendar .ui-datepicker-today a{
+  text-shadow: 0px 0px 10px white;
+}
+#Calendar #calendar .ui-datepicker thead th {
+  cursor: default;
+  height: 25px;
+  padding: 0;
+  margin: 0;
+  box-shadow: inset 0 -1px rgba(255, 255, 255, 0.6), 0 1px rgba(0, 0, 0, 0.15);
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: normal;
+  line-height: 25px;
+  text-transform: uppercase;
+}
+#Calendar #calendar .ui-datepicker thead th:first-child.ui-datepicker-week-end {
+  box-shadow: inset -1px 0 rgba(255, 255, 255, 0.6), 1px 0 rgba(0, 0, 0, 0.15);
+}
+#Calendar #calendar .ui-datepicker thead th:last-child.ui-datepicker-week-end {
+  box-shadow: inset 1px 0 rgba(0, 0, 0, 0.15), -1px 0 rgba(255, 255, 255, 0.6);
+}
+#Calendar #calendar .ui-datepicker tbody td {
+  padding: 0;
+  margin: 0;
+}
+#Calendar #calendar .ui-datepicker tbody td a.ui-state-default {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  display: box;
+  box-pack: center;
+  box-align: center;
+  display: -ms-flexbox;
+  -ms-flex-pack: center;
+  -ms-flex-align: center;
+  display: -moz-box;
+  -moz-box-pack: center;
+  -moz-box-align: center;
+  display: -webkit-box;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+}
+#Calendar #calendar .ui-datepicker tbody td a.ui-state-default:hover, #Calendar #calendar .ui-datepicker tbody td a.ui-state-active, #Calendar #calendar .ui-datepicker tbody td a.ui-state-highlight {
+  font-size: 130%;
+  font-weight: bold;
+}
+#Profile .Schedule .taskList .task{
+  display: inline-block;
+  vertical-align: middle;
+  box-sizing: border-box;
+  width: calc(100% - 375px);height: 380px;
+  padding: 10px 20px 0px;
+  list-style: none;
+  box-shadow: 2px 0px 10px rgba(0,0,0,0.8);
+  background-color: rgba(50,180,180,0.2);
+}
+#Profile .Schedule .taskList .task .task_item::before{
+  content: '';
+  display: inline-block;
+  vertical-align: top;
+  border-radius: 10px;
+  height: 20px;width: 20px;
+  background-color: white;
+}

@@ -7,6 +7,7 @@
   <link rel="shortcut icon" href="img/logo/single.png">
   <script src='js/lib/jquery-3.2.1.min.js'></script>
   <script src='js/lib/jquery.cookie.js'></script>
+  <script src='jquery-ui/jquery-ui.min.js'></script>
   <link rel='stylesheet' href='css/Clear.css' />
   <link rel='stylesheet' href='css/Main.css' />
   <link rel='stylesheet' href='css/HomeNavigate.css' />
@@ -19,6 +20,9 @@
   <link rel='stylesheet' href='css/Documents.css' />
   <link rel='stylesheet' href='css/Plan.css' />
   <link rel='stylesheet' href='css/Project.css' />
+  <!-- calendar -->
+  <link rel='stylesheet' href='jquery-ui/jquery-ui.css'>
+  <link rel="stylesheet" href="css/calendar/main.css" media="screen" type="text/css" />
 </head>
 <body>
   <div id='main'>
@@ -177,12 +181,15 @@
               </div>
             </div>
             <div class='taskList'>
-              <div class='calendar'>
-
+              <div id='Calendar'>
+                <div id='date_time'></div>
+                <div id='calendar'></div>
               </div>
-              <div class='task'>
-
-              </div>
+              <ul class='task'>
+                <li class='task_item'>finish create xxx....</li>
+                <li class='task_item'>finish create xxx....</li>
+                <li class='task_item'>finish create xxx....</li>
+              </ul>
             </div>
             <a class='publishTask'></a>
           </div>

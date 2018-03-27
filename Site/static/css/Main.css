@@ -24,14 +24,16 @@ body{
   left: 250px;top: 0px;
   box-sizing: border-box;
   width: 0px;height: 100%;
+  padding: 10px 0px;
   color: white;
   overflow: hidden;
 }
 #Frames .contentWrapper{
   position: relative;
   box-sizing: border-box;
-  width: 105%;height: 97%;
-  margin-top: 10px;padding: 10px;padding-right: 50px;
+  width: 105%;
+  height: calc(100% - 10px);
+  padding-right: 5%;
   overflow-y: scroll;
 }
 #Frames .taskBar{
