@@ -265,78 +265,58 @@
   background-color: rgb(200,200,200);
   text-align: right;
 }
-#Profile .Schedule .stageList{
-  list-style: none;
+#Profile .Schedule .timeAxis{
+  position: relative;
   border-bottom: 1px solid gray;
   margin-bottom: 10px;padding-bottom: 10px;
 }
-#Profile .Schedule .stageList .stage{
+#Profile .Schedule .timeAxis .ta_display{
+  width: 100%;height: 300px;
+  text-align: center;
+  white-space: nowrap;
+}
+#Profile .Schedule .timeAxis .ta_display .ta_card{
+  display: inline-block;
   position: relative;
-  margin: 0px 20px 10px 20px;
-}
-#Profile .Schedule .stageList .stage::before{
-  content: '';
-  position: absolute;
-  top: 5px;left: -20px;
-  box-sizing: border-box;
-  width: 20px;height: 20px;
+  width: 50%;height: 80%;
+  margin-top: 1%;
   border-radius: 10px;
-  border: 2px solid gray;
-  background-color: black;
+  text-align: center;
+  box-shadow: 2px 0px 10px black;
+  background-color: rgba(150,130,255,0.6);
 }
-#Profile .Schedule .stageList .stage::after{
-  content: '';
+#Profile .Schedule .timeAxis .ta_display .baseData .expectedTime{font: bold 1em 'Fangsong';}
+#Profile .Schedule .timeAxis .ta_display .baseData .content{
+  display: block;
+}
+#Profile .Schedule .timeAxis .ta_display .appendContent{font: bold 1em 'Fangsong';}
+#Profile .Schedule .timeAxis .ta_wrapper{
   position: absolute;
-  top: 15px;left: 0px;
-  width: 7px;height: 1px;
-  background-color: white;
+  width: 100%;height: 20px;
+  bottom: 10px;left: 0px;
+  text-align: center;
 }
-#Profile .Schedule .stageList .completed::before{
-  background-color: rgb(80,255,120);
+#Profile .Schedule .timeAxis .ta_wrapper::before{
+  content: '';
+  height: 2px;width: 90%;/* set by js */
+  position: absolute;
+  top: 9px;left: 5%;
+  background-color: rgba(200,200,200,0.9);
 }
-#Profile .Schedule .stageList .incompleted::before{
-  background-color: rgb(60,60,60);
-}
-#Profile .Schedule .stageList .current::before{
-  background-color: yellow;
-}
-#Profile .Schedule .stageList .stage .timestamp{
+#Profile .Schedule .timeAxis .ta_wrapper .point{
+  position: relative;
   display: inline-block;
   box-sizing: border-box;
-  height: 20px;line-height: 20px;
-  margin: 5px 5px 0px 5px;padding: 1px 2px 0px;
-  border-radius: 5px;
-  border: 2px solid white;
-  font: bold 0.9em 'Fangsong';
-}
-#Profile .Schedule .stageList .stage .content{
-  font-weight: bold;
-}
-#Profile .Schedule .stageList .stage .comments{
-  margin: 10px;
-  overflow: hidden;
-}
-#Profile .Schedule .stageList .stage .comments .item{
-  box-sizing: border-box;
-  position: relative;
-  width: 100%;
-  padding: 5px;margin-bottom: 10px;
+  border: 1px solid white;
   border-radius: 10px;
-  border: 2px solid white;
+  margin-left: 10px;
+  width: 20px;height: 20px;
+  cursor: pointer;
 }
-#Profile .Schedule .stageList .stage .comments .item .account{
-  vertical-align: middle;
-  font: bold 1em 'Fangsong';
-  animation: AccountShining 4s linear infinite;
+#Profile .Schedule .timeAxis .ta_wrapper .s_Ongoing{
+  background-color: rgb(250,250,120);
 }
-#Profile .Schedule .stageList .stage .comments .item .time{
-  vertical-align: middle;
-  font-family: 'Fangsong';
-}
-#Profile .Schedule .stageList .stage .comments .item .words{
-  display: block;
-  text-indent: 1em;
-  word-break: break-all;
-  vertical-align: bottom;
-  font-weight: bold;
-}
+#Profile .Schedule .timeAxis .ta_wrapper .s_Completed{background-color: rgb(80,200,120);}
+#Profile .Schedule .timeAxis .ta_wrapper .s_Incompleted{background-color: rgb(150,150,150);}
+#Profile .Schedule .timeAxis .ta_wrapper .point .expectedTime,
+#Profile .Schedule .timeAxis .ta_wrapper .point .content{display: none;}
