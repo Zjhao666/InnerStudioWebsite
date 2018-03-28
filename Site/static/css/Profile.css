@@ -1,6 +1,6 @@
 
 #Profile{
-  /* display: none; */
+  display: none;
   width: 80%;min-height: 100%;
   margin: 0px auto;
   padding: 10px 0px;
@@ -15,7 +15,7 @@
   display: inline-block;
   margin: 0px 5px;
   height: 30px;
-  font-weight: bold;
+  font-weight: bold;font-family: 'Fangsong';
   border: 0px solid rgb(220,120,80);
   cursor: pointer;
 }
@@ -185,7 +185,7 @@
   margin-top: 10px;
   border-radius: 10px;
   background-color: rgba(100,80,155,0.5);
-  text-shadow: 2px 0px 5px black;
+  text-shadow: 2px 0px 2px black;
 }
 #Profile .Schedule .projectInfo{
   border-bottom: 1px solid gray;
@@ -204,20 +204,18 @@
   text-transform: capitalize;
 }
 #Profile .Schedule .projectInfo .proInfoData{
-  width: 90%;
+  width: 96%;
   position: relative;
   margin: 0px auto;
   font-family: 'Fangsong';
 }
 #Profile .Schedule .projectInfo .proInfoData::before{
-  content: '';
-  position: absolute;
-  height: 100%;
-  width: 3%;
-  top: 0px;left: -5%;
-  border: 2px solid white;
-  border-left: 0px;
-  border-radius: 0px 10px 10px 0px;
+  content: 'Statistics';
+  display: block;
+  margin-bottom: 5px;
+  color: white;
+  font: bold 1em 'Fangsong';
+  border-bottom: 1px solid white;
 }
 #Profile .Schedule .projectInfo .proInfoData .labelData{
   display: inline-block;
@@ -231,20 +229,17 @@
   height: 20px;
   line-height: 20px;
   padding: 0px 5px;
-  background-color: rgb(80,180,200);
-  border-radius: 6px 0px 0px 6px;
+  background-color: rgb(200,200,200);
 }
 #Profile .Schedule .projectInfo .proInfoData .labelData .value{
-  background-color: rgb(200,200,200);
-  border-radius:  0px 6px 6px 0px;
+  background-color: rgba(200,200,200,0.5);
 }
 #Profile .Schedule .projectInfo .proInfoData .percentData{
   display: block;
   position: relative;
   height: 20px;width: 85%;
   margin: 10px 0px;
-  border-radius: 6px;
-  border: 1px solid rgb(80,180,200);
+  border: 1px solid rgb(200,200,200);
   overflow: hidden;
 }
 #Profile .Schedule .projectInfo .proInfoData .percentData .label{
@@ -254,7 +249,7 @@
   height: 20px;width: 100px;
   overflow: hidden;
   line-height: 20px;
-  background-color: rgb(80,180,220);
+  background-color: rgb(200,200,200);
   padding: 0px 5px;
 }
 #Profile .Schedule .projectInfo .proInfoData .percentData .value{
@@ -263,33 +258,30 @@
   float: left;
   height: 100%;width: 0px; /* 87%*x% */
   padding: 0px 5px;
-  background-color: rgb(200,200,200);
+  background-color: rgba(200,200,200,0.5);
   text-align: right;
 }
+/* timeAxis */
 #Profile .Schedule .timeAxis{
   position: relative;
   border-bottom: 1px solid gray;
   margin-bottom: 10px;padding-bottom: 10px;
+  overflow: hidden;
 }
 #Profile .Schedule .timeAxis .ta_display{
-  width: 100%;height: 300px;
-  text-align: center;
-  white-space: nowrap;
+  box-sizing: border-box;
+  width: calc(100% + 20px);height: 300px;
+  padding: 0px 20px 10px 10px;margin-bottom: 20px;
+  overflow-y: scroll;
 }
-#Profile .Schedule .timeAxis .ta_display .ta_card{
-  display: inline-block;
-  position: relative;
-  width: 50%;height: 80%;
-  margin-top: 1%;
-  text-align: center;
-  box-shadow: 2px 0px 10px rgba(0,0,0,0.8);
-  background-color: rgba(50,180,180,0.2);
+#Profile .Schedule .timeAxis .ta_display .expectedTime{font: bold 1em 'Fangsong';}
+#Profile .Schedule .timeAxis .ta_display .expectedTime::before{
+  content: 'Expected Time: ';
+  font: normal 1em 'Fangsong';
 }
-#Profile .Schedule .timeAxis .ta_display .baseData .expectedTime{font: bold 1em 'Fangsong';}
-#Profile .Schedule .timeAxis .ta_display .baseData .content{
+#Profile .Schedule .timeAxis .ta_display .content{
   display: block;
 }
-#Profile .Schedule .timeAxis .ta_display .appendContent{font: bold 1em 'Fangsong';}
 #Profile .Schedule .timeAxis .ta_wrapper{
   position: absolute;
   width: 100%;height: 20px;
@@ -320,8 +312,10 @@
 #Profile .Schedule .timeAxis .ta_wrapper .s_Incompleted{background-color: rgb(150,150,150);}
 #Profile .Schedule .timeAxis .ta_wrapper .point .expectedTime,
 #Profile .Schedule .timeAxis .ta_wrapper .point .content{display: none;}
+/* tasklist */
 #Profile .Schedule .taskList{
   padding-bottom: 10px;
+  border-bottom: 1px solid gray;
 }
 #Calendar {
   display: inline-block;
@@ -517,10 +511,14 @@
   vertical-align: middle;
   box-sizing: border-box;
   width: calc(100% - 375px);height: 380px;
-  padding: 10px 20px 0px;
   list-style: none;
+}
+#Profile .Schedule .taskList .task .task_item{
+  width: 90%;
+  border-radius: 10px 0px 0px 10px;
   box-shadow: 2px 0px 10px rgba(0,0,0,0.8);
   background-color: rgba(50,180,180,0.2);
+  margin: 10px auto;
 }
 #Profile .Schedule .taskList .task .task_item::before{
   content: '';
@@ -529,4 +527,92 @@
   border-radius: 10px;
   height: 20px;width: 20px;
   background-color: white;
+}
+/* project space */
+#Profile .Schedule .projectSpace{
+
+}
+#Profile .Schedule .projectSpace .controller{
+  width: 100%;
+  height: 30px;
+}
+#Profile .Schedule .projectSpace .controller .item{
+  float: left;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  background-size: cover;
+  border-radius: 7px;
+}
+#Profile .Schedule .projectSpace .controller .input_path{
+  box-sizing: border-box;
+  float: left;
+  width: 400px;height: 24px;
+  padding: 0px;margin: 3px 0px;
+  text-indent: 0.3em;
+  font-size: 1.2em;
+  border-radius: 0px 10px 10px 0px;
+  border: 1px solid rgb(80,160,220);
+  border-left: none;
+  background-color: rgba(0,0,0,0);
+  color: white;
+}
+#Profile .Schedule .projectSpace .controller .path_back{
+  background-image: url(../../img/btn/path_back.png);
+}
+#Profile .Schedule .projectSpace .controller .path_forward{
+  background-image: url(../../img/btn/path_forward.png);
+}
+#Profile .Schedule .projectSpace .controller .btn_select{
+  background-image: url(../../img/btn/btn_select.png);
+}
+#Profile .Schedule .projectSpace .controller .btn_download{
+  background-image: url(../../img/btn/btn_download.png);
+  background-size: cover;
+}
+#Profile .Schedule .projectSpace .controller .btn_upload{
+  background-image: url(../../img/btn/btn_upload.png);
+  background-size: cover;
+}
+#Profile .Schedule .projectSpace .content{
+  box-sizing: border-box;
+  width: 100%;min-height: 100px;
+  padding-left: 10px;
+  -moz-user-select: none;
+}
+#Profile .Schedule .projectSpace .content .item{
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: 50px;height: 50px;
+  margin-top: 10px;
+  cursor: pointer;
+  background-size: cover;
+}
+#Profile .Schedule .projectSpace .content .item span{
+  position: absolute;
+  display: block;
+  top: 50px;left: 0px;
+  width: 50px;height: 15px;
+  font-size: 0.6em;
+  text-align: center;
+  word-break: break-all;
+  overflow: hidden;text-overflow: ellipsis;white-space: nowrap;
+}
+#Profile .Schedule .projectSpace .content .selected::after{
+  box-sizing: border-box;
+  content: '';
+  position: absolute;
+  display: block;
+  width: 100%;height: 100%;
+  border: 1px solid rgb(80,120,220);
+}
+#Profile .Schedule .projectSpace .content .file_dir{
+  background-image: url(../../img/icon/dir_fileicon.png);
+}
+#Profile .Schedule .projectSpace .content .file_pdf{
+  background-image: url(../../img/icon/pdf_fileicon.png);
+}
+#Profile .Schedule .projectSpace .content .file_file{
+  background-image: url(../../img/icon/file_fileicon.png);
 }

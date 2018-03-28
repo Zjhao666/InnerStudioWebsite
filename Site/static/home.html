@@ -158,12 +158,32 @@
             </div>
             <div class='timeAxis'>
               <div class='ta_display'>
-                <div class='ta_card baseData'>
-                  <span class='expectedTime'>2017-10-2</span>
-                  <span class='content'>learn HTTP protocal</span>
-                </div>
-                <span class='ta_card appendContent'>No append content</span>
-                <!-- <div class='commentList'></div> -->
+                <span class='expectedTime'>2017-10-2</span>
+                <span class='content'>
+1、  工作背景
+
+研究linux-0.11已有月余，代码看了好几遍，虽然能看懂，却总感觉如隔靴搔痒一般。这当然是正常的，毕竟不是自己写的东西，毕竟这是个操作系统。但若能亲自修改并调试一番，对其的理解就能更加深刻了。然而在linux-0.11的编译要在装有gcc1.4的系统里进行，那个系统太老了，修改起来也不方便，又没法安装源码阅读器. . . 那能不能在Ubuntu下用高版本的gcc编译并运行呢？
+
+2、  工作意义
+
+简单讲下本文所描述工作以及撰写本文的意义吧。
+
+Linux-0.11在高版本gcc-4.6.11下编译调试并能正常运行可以使学习linux-0.11更加方便、容易，也为进一步研究linux2.6奠定基础。更加重要的是，本项工作的过程其实就是一个深入学习的过程，对了解新旧版本gcc之间的差异、linux内核运行机制、linux调试方法有很大帮助。另外，对于linux-0.11在高版本gcc下的编译工作，网上已有不少先驱者，但大都没能让编译过后的os正常运行起来，偶有高人完成，也未能提供足够的调试材料，这让不少初学者对此失去了兴趣。现在有兴趣于此的大哥mm们High起来吧！
+
+当然这项工作在很多人眼里并没多重要，他们认为它一没有科研创新价值，而没有商业盈利价值，还耗费不少时间，他们有更重要的事情去做。这个浮躁的社会里，人们做什么事情总要讲究足够的理由。对此我只能说，你们是没错的。
+
+然我道中人终究还有不少，撰写本文也是希望跟我相同想法的人能从中获得他们需要的帮助，并借此与他们互相勉励一下。有句老话怎么说来着？重要的不是目的地，而是沿途的风景。
+
+当然若有高人前辈路过，愿意批评指正的，望不吝赐教，我将不甚感激涕零。
+
+3、工作目的：
+
+       本文工作的目的在ubuntu-11中使用gcc-4.61成功编译linux-0.11源码，并经过调试使之能正常运行。由于时间关系，并未解决系统中所有存在的bug，十分遗憾，若有大哥mm们愿继续完成，我将非常高兴。虽如此，拥有了在这个过程中学到的这些东西，我的工作已有足够的意义。本文的特点是图文并茂，对错误原因解释详细，关键地方有对linux一些机制的阐述，尽量减少读者的理解障碍。
+
+代码包来源：赵炯博士网站http://oldlinux.org/Linux.old中下载bochs安装文件、linux-0.11.tar.Z源码包、linux-0.11-devel-040923.zip源码包（该源码在gcc1.4下编译通过，作为对照使用）。
+
+平台搭建：我使用的环境是VirtualBox中安装ubuntu-11，与win7共享工作文件夹（其中存有linux-0.11源码），win7中使用editplus和source insight进行源码的编辑和阅读。</span>
+                <div class='commentList'>[commentList]</div>
               </div>
               <div class='ta_wrapper'>
                 <div class='point s_Incompleted'>
@@ -190,6 +210,17 @@
                 <li class='task_item'>finish create xxx....</li>
                 <li class='task_item'>finish create xxx....</li>
               </ul>
+            </div>
+            <div class='projectSpace'>
+              <div class='content'></div>
+              <div class='controller'>
+                <input class='input_path' type='text' value="/home/Doc" disabled='disabled'/>
+                <a class='item path_back'></a>
+                <a class='item path_forward'></a>
+                <!-- <a class='item btn_select'></a> -->
+                <a class='item btn_download'></a>
+                <a class='item btn_upload'></a>
+              </div>
             </div>
             <a class='publishTask'></a>
           </div>
@@ -410,7 +441,6 @@
           </table>
           <div class='wrapper'>
             <div id='PlanCurrent'>
-              <a class='pc_btn'></a>
               <div id='PlanAction'>
                 <div class='pa_item'>
                   <img src='img/defaultHeadimg.png'></img>

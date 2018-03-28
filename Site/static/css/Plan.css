@@ -1,5 +1,5 @@
 #Plan{
-  display: none;
+  /* display: none; */
   width: 98%;height: 100%;
 }
 #Plan .nav{
@@ -11,14 +11,15 @@
   padding: 0px 3px;
   width: 50%;
   text-shadow: 5px 0px 2px black;
-  box-shadow: 5px 0px 10px black;
-  background-color: rgba(60,120,200,0.8);
+  box-shadow: 2px 0px 5px black;
+  font-family: 'Fangsong';
+  background-color: rgba(100,80,155,0.5);
   cursor: pointer;
 }
 #Plan .nav td:nth-child(1){border-radius: 10px 0px 0px 10px;}
 #Plan .nav td:nth-last-child(1){border-radius: 0px 10px 10px 0px;}
 #Plan .nav .selected{
-  background-color: rgba(220,220,70,0.8);
+  background-color: rgba(120,220,70,0.8);
 }
 
 #Plan .wrapper{
@@ -67,33 +68,43 @@
 }
 
 #PlanCurrent .pc_item{
-  position: absolute;
-  left: 0px;top: 0px;
+  margin-bottom: 10px;
   width: 100%;min-height: 100px;
   border-radius: 10px;
-  box-shadow: 5px 0px 10px black;
-  background-color: rgb(100,60,200);
+  box-shadow: 2px 0px 10px black;
+  background-color: rgba(100,80,155,0.5);
   cursor: pointer;
 }
 #PlanCurrent .pc_item .title{
   display: inline-block;
   padding: 5px;
   border-radius: 10px 0px 10px 0px;
-  background-color: rgba(60,120,200,0.8);
+  background-color: rgba(60,120,180,0.6);
   box-shadow: 2px 1px 5px black;
   font: bold 1.2em 'Fangsong';
 }
 #PlanCurrent .pc_item .createTime::before{
-  content: 'Created in: ';
-  font-family: 'Fangsong';
+  content: '';
+  display: inline-block;
+  vertical-align: top;
+  width: 20px;height: 20px;
+  background: url(../img/icon/createTime.png);
+  background-size: cover;
 }
 #PlanCurrent .pc_item .expectTime::before{
-  content: 'Expect to complete before: ';
-  font-family: 'Fangsong';
+  content: '';
+  display: inline-block;
+  vertical-align: top;
+  width: 20px;height: 20px;
+  background: url(../img/icon/deadLine.png);
+  background-size: cover;
 }
 #PlanCurrent .pc_item .expectTime,
 #PlanCurrent .pc_item .createTime{
-  margin: 0px 10px;
+  display: inline-block;
+  vertical-align: top;
+  height: 20px;line-height: 20px;
+  margin: 10px 10px 0px;
   font: bold 1em 'ArtegraSansExtended';
 }
 #PlanCurrent .pc_item .introduction{
