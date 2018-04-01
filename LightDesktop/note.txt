@@ -1,0 +1,10 @@
+will mount
+render
+did mount
+should update?
+will update
+render
+did update
+unmount
+
+* receive props

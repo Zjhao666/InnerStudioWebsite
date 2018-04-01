@@ -1,0 +1,17 @@
+{
+  "name": "light-desktop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron src/index.js"
+  },
+  "repository": "",
+  "keywords": [
+    "desktop"
+  ],
+  "author": "HiQiQi428",
+  "devDependencies": {
+    "electron": "^1.8.4"
+  }
+}

@@ -15,11 +15,10 @@ import net.sf.json.JSONObject;
 
 
 public class Login extends HttpServlet {
-    
+
 
     public void AddCookie(String account, String pw, HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException
-    {
+            throws ServletException, IOException{
         boolean exist = false;
         Cookie[] cookies = request.getCookies();
         if(cookies == null)
@@ -50,10 +49,9 @@ public class Login extends HttpServlet {
             }
         }
     }
-    
-    public int check(String account, String password, HttpServletRequest request, HttpServletResponse response) 
-            throws ServletException, IOException
-    {
+
+    public int check(String account, String password, HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException{
         try{
             ConnectDatabase C = new ConnectDatabase();
             Statement statement = C.conn.createStatement();
@@ -64,7 +62,7 @@ public class Login extends HttpServlet {
             }
             else
             {
-                pw=rs.getString("password");   
+                pw=rs.getString("password");
                 if(!pw.equals(password))//incorrect password
                {
                     rs.close();
@@ -77,17 +75,16 @@ public class Login extends HttpServlet {
                     return 200;
                }
             }
-            
-            
+
+
         }catch(SQLException e){
             System.err.println(e);
             return 0;
         }
-        
+
     }
-    
-    public boolean checkAdministrator(String account, String password, HttpServletRequest request, HttpServletResponse response)
-    {
+
+    public boolean checkAdministrator(String account, String password, HttpServletRequest request, HttpServletResponse response){
         try
         {
             ConnectDatabase C = new ConnectDatabase();
@@ -107,7 +104,7 @@ public class Login extends HttpServlet {
         }
         return false;
     }
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -137,8 +134,8 @@ public class Login extends HttpServlet {
             System.err.println(e);
         }
     }
-    
-    public void destroy(HttpServletRequest request, HttpServletResponse response) 
+
+    public void destroy(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException{
         String account = request.getParameter("ac");
         try{
