@@ -1,0 +1,4 @@
+
+expr    : term((ADD | SUB) term)*
+term    : facter((MUL | DIV) factor)*
+factor  : INTEGER
