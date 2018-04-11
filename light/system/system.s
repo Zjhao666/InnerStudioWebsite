@@ -4,7 +4,28 @@
 .section .text
 
 start:
-  jmp initGDT
+  # read machine info, save to 0x8=7c00
+
+  # get mem size(kb)
+  movb $0x88,%ah
+  int $0x15
+  movw %ax,(0x7c00)
+
+  # get video-card data
+  movb $0x0f,%ah
+  int $0x10
+  movw %bx,(0x7c02) # bh = display page
+  movw %ax,(0x7c04) # al = video mode, ah = window width
+
+  # check for EGA/VGA and some config paramters
+  movb $0x12,%ah
+  movb $0x10,%bl
+  int $0x10
+  movw %ax,(0x7c06)
+  movw %bx,(0x7c08)
+  movw %cx,(0x7c0a)
+
+  # get hard disk info
 
 initGDT:
   movl gdt_loc,%eax

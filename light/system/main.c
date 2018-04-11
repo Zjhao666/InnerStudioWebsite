@@ -1,13 +1,14 @@
 
-#include "include/output.h"
+#include "include/io.h"
 #include "include/interrupt.h"
 #include "include/asm.h"
 
 
 void SysMain(){
+  clearDisplay();
   enableIDT();
-  puts("Hello,Light!");
-  asm_int(0x21);
+
+  asm_int(0x1);
   while(1) asm_hlt();
   return;
 }

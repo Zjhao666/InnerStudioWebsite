@@ -1,10 +1,13 @@
 
 memory map:
 
-  0x7c00:   boot(1kb)
+  0x7c00:   boot(1kb) / machine info
   0x8000:   system(96kb)
-  0x20000:  GDT(4kb)
-  0x21000:  IDT
+  0x20000:  GDT(2kb)
+  0x21000:  IDT(2kb)
+
+interrupt:
+
 
 gcc inner assemble:
 
