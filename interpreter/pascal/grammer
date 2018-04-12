@@ -1,0 +1,27 @@
+
+program : compound_statement DOT
+
+compound_statement  : BEGIN statment_list END
+
+statment_list : statement
+              | statement SEMI statment_list
+
+statement     : compound_statement
+              | assignment_statment
+              | empty
+
+assignment_statment : variable ASSIGN expr
+
+empty :
+
+expr  : term ( ( PLUS | MINUS ) term )*
+
+term  : factor ( ( MUL | DIV ) factor )*
+
+factor  : PLUS factor
+        | MINUS factor
+        | INTEGER
+        | LPAREN expr RPAREN
+        | variable
+
+variable  : ID
