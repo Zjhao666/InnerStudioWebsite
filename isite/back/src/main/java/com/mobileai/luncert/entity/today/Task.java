@@ -9,6 +9,7 @@ public class Task {
     private Date endTime;
     private boolean checked;
     private boolean success;
+    private boolean timeout;
 
     public void setId(int id) { this.id = id; }
     public int getId() { return id; }
@@ -22,6 +23,8 @@ public class Task {
     public boolean getChecked() { return checked; }
     public void setSuccess(boolean success) { this.success = success; }
     public boolean getSuccess() { return success; }
+    public void setTimeout(boolean timeout) { this.timeout = timeout; }
+    public boolean getTimeout() { return timeout; }
 
     public Task() {}
     public Task(int user, String content, Date endTime) {

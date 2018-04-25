@@ -3,8 +3,6 @@ package com.mobileai.luncert.service.today;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 import com.mobileai.luncert.entity.today.Task;
 import com.mobileai.luncert.mapper.today.TaskMapper;
@@ -12,26 +10,58 @@ import com.mobileai.luncert.mapper.today.TaskMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
 @Service
 public class TaskService {
 
     @Autowired
     private TaskMapper taskMapper;
 
+    private Date calcDatetime(int days) {
+        Date date = new Date();
+        Calendar now = Calendar.getInstance();
+        now.setTime(date);
+        now.add(Calendar.DAY_OF_YEAR, days);
+        return now.getTime();
+    }
+
+    private String history(int user, int days) {
+        JSONArray ret = new JSONArray();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        for (Task item : taskMapper.history(user, calcDatetime(days))) {
+            JSONObject obj = new JSONObject();
+            obj.put("id", item.getId());
+            obj.put("content", item.getContent());
+            obj.put("endTime", formatter.format(item.getEndTime()));
+            ret.add(obj);
+        }
+        return ret.toString();
+    }
+
     public void addTask(int user, String content, Date endTime) {
         taskMapper.add(new Task(user, content, endTime));
     }
     
-    public Map<String, String> lastWeek(int user) {
-        Date date = new Date();
-        Calendar now = Calendar.getInstance();
-        now.setTime(date);
-        now.add(Calendar.DAY_OF_YEAR, -7);
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        Map<String, String> ret = new HashMap<>();
-        for (Task item : taskMapper.lastWeek(user, now.getTime())) {
-            ret.put(item.getContent(),formatter.format(item.getEndTime()));
+    public String lastWeek(int user) {
+        return history(user, -7);
+    }
+
+    public String lastMonth(int user) {
+        return history(user, -30);
+    }
+
+    public String lastThreeMonth(int user) {
+        return history(user, -30);
+    }
+
+    public void check(int id, boolean success) {
+        if (taskMapper.beTimeout(id)) {
+            taskMapper.setTimeout(id);
         }
-        return ret;
+        else if(!taskMapper.beChecked(id)) {
+            taskMapper.check(id, success);
+        }
     }
 }

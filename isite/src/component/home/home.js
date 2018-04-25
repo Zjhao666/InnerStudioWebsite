@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Menu, Icon } from 'antd';
 import 'antd/dist/antd.css';
 import Schedule from './schedule';
+import Profile from './profile';
 
 const SubMenu = Menu.SubMenu;
 
@@ -27,8 +28,7 @@ export default class Home extends Component {
         style = {{
           width: 200,
           height: '100%'
-        }}
-      >
+        }}>
         <Menu.Item key="1">
           <Icon type="profile" />
           <span>Me</span>
@@ -53,7 +53,7 @@ export default class Home extends Component {
         width: 'calc(100% - 200px)',
         height: '100%'
       }}>
-        <Schedule />
+        <Profile />
       </div>
     </div>;
   }

@@ -23,17 +23,41 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
+    private String response(int code, String desc, Object data) {
+        JSONObject json = new JSONObject();
+        json.put("code", code);
+        if (desc != null) json.put("desc", desc);
+        if (data != null) json.put("data", data);
+        return json.toString();
+    }
+
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public void addTask(@RequestBody String raw) throws ParseException {
+    public String addTask(@RequestBody String raw) throws ParseException {
         JSONObject jsonObject = JSONObject.fromObject(raw);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         taskService.addTask(jsonObject.getInt("user"), jsonObject.getString("content"), formatter.parse(jsonObject.getString("endTime")));
+        return response(200, null, null);
     }
 
-    @RequestMapping(value = "/lastWeek", method = RequestMethod.GET)
+    @RequestMapping("/lastWeek")
     public String lastWeek(int user) {
-        JSONArray jsonArray = JSONArray.fromObject(taskService.lastWeek(user));
-        return jsonArray.toString();
+        return taskService.lastWeek(user);
+    }
+
+    @RequestMapping("/lastMonth")
+    public String lastMonth(int user) {
+        return taskService.lastMonth(user);
+    }
+
+    @RequestMapping("/lastThreeMonth")
+    public String lastThreeMonth(int user) {
+        return taskService.lastThreeMonth(user);
+    }
+
+    @RequestMapping("/check")
+    public String check(int id, boolean success) {
+        taskService.check(id, success);
+        return response(200, null, null);
     }
 
 }

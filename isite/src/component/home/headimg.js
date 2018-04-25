@@ -7,9 +7,9 @@ export default class Headimg extends Component {
   render() {
     let img = this.props.src;
     return <img src = {require('../../img/headimg.png')} style = {{
-      width: 300,
-      height: 300,
-      borderRadius: 150,
+      width: 260,
+      height: 260,
+      borderRadius: 130,
       backgroundSize: 'cover'
     }}></img>;
   }
