@@ -1,0 +1,22 @@
+{
+    "run": [
+        {
+            "name": "luncert",
+            "projectName": "luncert",
+            "workingDirectory": "/home/luncert/github/InnerStudioWebsite/isite/back",
+            "args": [],
+            "vmargs": [],
+            "preLaunchTask": ""
+        }
+    ],
+    "debug": [
+        {
+            "name": "luncert",
+            "projectName": "luncert",
+            "workingDirectory": "/home/luncert/github/InnerStudioWebsite/isite/back",
+            "args": [],
+            "vmargs": [],
+            "preLaunchTask": ""
+        }
+    ]
+}
