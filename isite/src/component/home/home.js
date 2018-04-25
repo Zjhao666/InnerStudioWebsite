@@ -50,7 +50,7 @@ export default class Home extends Component {
         display: 'block',
         padding: 10,
         boxSizing: 'border-box',
-        width: 'calc(100% - 200)',
+        width: 'calc(100% - 200px)',
         height: '100%'
       }}>
         <Schedule />

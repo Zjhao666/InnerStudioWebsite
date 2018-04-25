@@ -1,48 +1,66 @@
 import React, { Component } from 'react';
 import reqwest from 'reqwest';
+import { Icon } from 'antd';
+import 'antd/dist/antd.css';
+import SelectBar from '../util/selectbar';
+import Button from '../util/button';
+import Label from '../util/label';
 import Headimg from './headimg';
-import Button from './button';
 
-const fakeDataUrl = 'https://randomuser.me/api/?results=5&inc=name,gender,email,nat&noinfo';
+const CircleButton = Button.CircleButton;
+const NALabel = Label.NALabel;
 
 export default class Schedule extends Component {
   constructor() {
     super();
     this.state = {
+      data: [{content: ' learning python', completed: true, time: '12:50'},
+      {content: ' learning python', completed: false, time: '22:00'}]
     };
   }
   render() {
-    let items = [{content: ' learning python', completed: 'false', time: '12:50'},
-    {content: ' learning python', completed: 'false', time: '22:00'}];
     let itemList = [];
-    for (let item of items) {
+    for (let i = 0; i < this.state.data.length; i++) {
+      let item = this.state.data[i];
       itemList.push(<span style = {{
           display: 'block',
           position: 'relative',
-          backgroundColor: 'rgb(140, 220, 150)',
-          height: 80, width: 600,
-          marginTop: 20,
+          backgroundColor: (item.completed) ? 'rgb(120, 200, 130)' : 'rgb(200, 200, 80)',
+          width: '100%',
           color: 'white',
-          boxShadow: '2px 2px 3px rgb(130, 160, 140)',
-          font: 'normal 2em ArtegraSansExtended'
-        }}>
+          font: 'bold 1.2em ArtegraSansExtended'
+        }} key = { i }>
           { item.content }
-          <Button icon = 'check' style = {{
-            display: 'block',
-            position: 'absolute',
-            bottom: 30, right: 0,
-          }}/>
-          <Button status = { true } content = { item.time } style = {{
-            display: 'block',
-            position: 'absolute',
-            bottom: 0, right: 0,
-            font: 'normal 0.8em ArtegraSansExtended',
-            textShadow: '1px 1px 0px gray',
-          }} />
+          { !item.completed ? <CircleButton icon = 'check' style = {{ position: 'absolute', bottom: 0, right: 60, width: 22, height: 22 }}/> : null }
+          <NALabel content = { item.time } style = {{ position: 'absolute', bottom: 0, right: 0 }}/>
       </span>);
     }
+    let history = [];
     return <div style = {{width: '100%'}}>
-      <div>{ itemList }</div>
+      <div style = {{
+        display: 'inline-block',
+        width: 'calc(60% - 20px)',
+        marginLeft: 10, marginRight: 10,
+      }}>{ itemList }</div>
+      <div style = {{
+        display: 'inline-block',
+        verticalAlign: 'top',
+        width: 'calc(40% - 20px)',
+        marginLeft: 10, marginRight: 10,
+      }}>
+        <div style = {{margin: '0px 0px 20px'}}>
+          <div style = {{
+            display: 'inline-block',
+            height: 30, paddingTop: 5,
+            verticalAlign: 'top',
+            backgroundColor: 'rgb(120, 190, 255)',
+            color: 'white'
+          }}><Icon type = 'bars' />
+          </div>
+        </div>
+        { history }
+      </div>
     </div>
+    // <SelectBar items = { ['last week', 'last month', 'last 3 month'] } />
   }
 }
