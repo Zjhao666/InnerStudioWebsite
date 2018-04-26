@@ -1,1 +1,1 @@
-python3 testToday.py
+python3 test.py
