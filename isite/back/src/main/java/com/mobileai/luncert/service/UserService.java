@@ -13,16 +13,19 @@ public class UserService {
     private UserMapper userMapper;
 
     public User validate(String name, String password) {
-        User user = userMapper.queryByName(name);
-        if (password.equals(user.getPassword())) return user;
-        else return null;
+        try {
+            return userMapper.queryByPassword(name, password);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
-    public boolean validateByPass(String pass) {
+    public boolean validateByPass(int user, String pass) {
         try {
-            userMapper.queryByPass(pass);
+            userMapper.queryByPass(user, pass);
             return true;
         } catch (Exception e) {
+            System.out.println(e);
             return false;
         }
     }

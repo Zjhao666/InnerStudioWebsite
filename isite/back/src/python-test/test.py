@@ -28,13 +28,13 @@ def addTask():
     submit(url, data)
 
 def getLaskWeek():
-    query(base + '/todaytask/lastWeek?user=1')
+    query(base + '/today/task/lastWeek?user=4&pass=e1e12a37273d67167db04e02545e160b')
 
 def getLastMonth():
-    query(base + '/todaytask/lastMonth?user=1')
+    query(base + '/today/task/lastMonth?user=1')
 
 def getLastThreeMonth():
-    query(base + '/todaytask/lastThreeMonth?user=1')
+    query(base + '/today/task/lastThreeMonth?user=1')
 
 def doCheck():
     query(base + '/today/task/check?id=20&success=true')
@@ -54,8 +54,9 @@ def uploadHeadimg():
     rep = post(url, headers = headers, data = data)
     print(rep.text)
 
-# getLaskWeek()
+getLaskWeek()
 # getLastMonth()
 # getLastThreeMonth()
 # doCheck()
-validate()
+
+# validate()
