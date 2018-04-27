@@ -34,6 +34,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private ChatController chatController;
+
     private String response(int code, String desc, Object data) {
         JSONObject json = new JSONObject();
         json.put("code", code);
@@ -63,6 +66,7 @@ public class UserController {
             String pass = genPass(name, password);
             userService.setPass(name, pass);
             user.setPass(pass);
+            chatController.regisPass(user.getId(), pass);
             return response(200, null, JSONObject.fromObject(user));
         }
         else return response(201, "validate failed", null);

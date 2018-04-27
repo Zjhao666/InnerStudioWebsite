@@ -1,4 +1,4 @@
-package com.mobileai.luncert.entity.chat.interfaces;
+package com.mobileai.luncert.core.chat.interfaces;
 
 
 
@@ -12,17 +12,19 @@ public interface Message {
 
 	public static final char CREATE_GROUP = 3;
 
-	public static final char SELECT_GROUP = 4;
+	public static final char JOIN_GROUP = 4;
 
-	public static final char SELECT_LAST_GROUP = 5;
+	public static final char MESSAGE = 5;
 
-	public static final char MESSAGE= 6;
+	public static final char ACK = 6;
 
-	public void setType(char type);
+	public static final char NAK = 7;
+
+	public static final char NOTIFY_NEWMEMBER = 8;
 
 	public char getType();
 
-	public void setContentLength(int contentLength);
+	public int getSource();
 
 	public int getContentLength();
 
@@ -31,5 +33,7 @@ public interface Message {
 	public char[] getContent();
 	
 	public String getContentString();
+
+	public char[] getCharArray();
 
 }

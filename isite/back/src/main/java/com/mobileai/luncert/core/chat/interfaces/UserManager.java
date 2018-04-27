@@ -1,4 +1,4 @@
-package com.mobileai.luncert.entity.chat.interfaces;
+package com.mobileai.luncert.core.chat.interfaces;
 
 
 
@@ -8,6 +8,10 @@ public interface UserManager {
 
     public boolean registed(int user);
 
+    public void regisPass(int user, String pass);
+
     public void regisUser(int userId, User user);
-    
+
+    public void unRegisUser(User user) throws Exception;
+
 }

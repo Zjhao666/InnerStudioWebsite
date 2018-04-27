@@ -37,7 +37,7 @@ public class Config implements WebMvcConfigurer {
 
 	@Bean
 	public AuthInterceptor authInterceptor() {
-		// note spring isn't response to manage customized Interceptor
+		// note spring doesn't response to manage customized Interceptor
 		return new AuthInterceptor();
 	}
 
