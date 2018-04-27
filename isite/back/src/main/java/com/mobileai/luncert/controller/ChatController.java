@@ -46,8 +46,7 @@ public class ChatController implements InitializingBean, Runnable {
             while (true) {
                 try {
                     Socket conn = server.accept();
-                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                    Message message = new MessageImplement(in);
+                    Message message = new MessageImplement(conn.getInputStream());
                     if (message.getType() == Message.SIGN_IN) {
                         int userId = message.getSource();
                         String pass = message.getContentString();

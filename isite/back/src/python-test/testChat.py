@@ -3,8 +3,8 @@ from socket import *
 import json
 import time
 
-SIGN_IN = 0;
-SIGN_OUT = 1;
+SIGN_OUT = 0;
+SIGN_IN = 1;
 QUERY_GROUP = 2;
 CREATE_GROUP = 3;
 JOIN_GROUP = 4;
@@ -47,18 +47,16 @@ class Message(object):
         count = 0
         header = ''
         while count < 9:
-            tmp = conn.recv(9 - count)
-            count += len(tmp)
-            header += tmp
+            header += conn.recv(9 - count)
+            count = len(header)
+        print(' '.join([str(ord(i)) for i in header]))
         source = convertToInt(header, 1)
         contentLength = convertToInt(header, 5)
         count = 0
         content = ''
-        print(' '.join([str(ord(i)) for i in header]))
         while count < contentLength:
-            tmp = conn.recv(contentLength - count)
-            count += len(tmp)
-            content += tmp
+            content += conn.recv(contentLength - count)
+            count = len(content)
         print(' '.join([str(ord(i)) for i in content]))
         return Message(ord(header[0]), source, content)
 
@@ -80,7 +78,7 @@ ackMsg = Message.fromConn(s)
 print(ackMsg.type, ackMsg.source, ackMsg.content)
 print(ackMsg.content)
 
-s.send(Message(CREATE_GROUP, 4, 'ya this is my space ya').message())
+s.send(Message(CREATE_GROUP, 4, 'this is my room').message())
 ackMsg = Message.fromConn(s)
 print(ackMsg.type, ackMsg.source, ackMsg.content)
 print(ackMsg.content)

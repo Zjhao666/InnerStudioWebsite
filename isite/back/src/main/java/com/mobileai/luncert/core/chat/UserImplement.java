@@ -1,12 +1,14 @@
 package com.mobileai.luncert.core.chat;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.Socket;
 import java.util.Date;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import javax.imageio.IIOException;
 
 import com.mobileai.luncert.core.chat.interfaces.Team;
 import com.mobileai.luncert.core.chat.interfaces.TeamManager;
@@ -28,9 +30,9 @@ public class UserImplement implements User{
 
 	private Team team;
 	
-	private BufferedReader in;
+	private InputStream in;
 
-	private PrintWriter out;
+	private OutputStream out;
 
 	private UserManager userManager;
 	
@@ -50,18 +52,28 @@ public class UserImplement implements User{
 
 	/**
 	 * called by Group to broadcast Message
+	 * @throws IOException
 	 */
 	@Override
 	public void send(Message message) {
-		out.print(message.getCharArray());
-		out.flush();
+		try {
+			out.write(message.toBytes());
+			out.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+			try {
+				out.close();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
 	}
 
-	private void send(char type) {
+	private void send(byte type) {
 		send(new MessageImplement(type, this.id));
 	}
 
-	private void send(char type, String data) throws Exception {
+	private void send(byte type, String data) throws Exception {
 		send(new MessageImplement(type, this.id, data));
 	}
     
@@ -74,16 +86,14 @@ public class UserImplement implements User{
 	@Override
 	public void run() {
 		try {
-			in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-			out = new PrintWriter(conn.getOutputStream());
+			in = conn.getInputStream();
+			out = conn.getOutputStream();
 			// log in ack
 			send(Message.ACK, this.name);
 			while (true) {
 				Message message = new MessageImplement(in);
 				int type = message.getType();
 				if (type == Message.SIGN_OUT) {
-					// log out ack
-					send(Message.ACK);
 					System.out.println("--> end");
 					break;
 				}
@@ -115,7 +125,7 @@ public class UserImplement implements User{
 					team.broadcast(message);
 					send(Message.ACK);
 				}
-				else send(Message.NAK);
+				else send(Message.NAK); // !bug : when client closed socket, trying to read a message with type = 0 will not throw an exception, and server will send too much NAK message :(
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
