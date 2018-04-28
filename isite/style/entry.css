@@ -1,0 +1,35 @@
+
+.entry {
+  display: none;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+  color: white;
+  text-align: center;
+  /* opacity: 0; */
+}
+
+.entry h4:nth-child(1) {
+  text-shadow: 3px 5px 2px gray;
+  font: bold 5em 'ChalkLineOutline';
+}
+
+.entry h4:nth-child(2) {
+  text-shadow: 1px 3px 2px gray;
+  font: normal 3em 'Precious';
+}
+
+.entry .nameBox,
+.entry .passBox {
+  width: 250px; height: 40px;
+  margin: 0px auto; padding: 0px 10px;
+  font-size: 1.3em;
+  text-align: center;
+  border-bottom: 1px solid white;
+}
+
+.entry .signInBtn {
+  margin-top: 8px;
+  width: 250px;
+}

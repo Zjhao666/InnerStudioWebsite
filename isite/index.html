@@ -3,67 +3,74 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
-    <style>
-      @font-face{
-        font-family: 'ArtegraSansExtended';
-        src: url('../res/ArtegraSansExtended-ExtLtI.otf') format('OpenType');
-      }
-      @font-face{
-        font-family: 'ChalkLineOutline';
-        src: url('../res/ChalkLineOutline.ttf') format('OpenType');
-      }
-      @font-face{
-        font-family: 'Precious';
-        src: url('../res/Precious.ttf') format('OpenType');
-      }
-
-      html, body, #root {
-        padding: 0px; margin: 0px;
-        width: 100%;height: 100%;
-        background-color: rgb(100, 160, 200);
-        overflow: hidden;
-      }
-
-      #Entry {
-        position: absolute;
-        color: white;
-        display: inline-block;
-      }
-      #Entry .title {
-        display: block;
-        font: bold 5em 'ChalkLineOutline';
-        text-shadow: 3px 5px 2px black;
-      }
-      #Entry .slogan {
-        opacity: 1;
-        display: block;
-        font: normal 3em 'Precious';
-        text-shadow: 2px 3px 2px black;
-        text-align: right;
-        animation: showSlogan 5s;
-      }
-      @keyframes showSlogan{
-        0% {
-          opacity: 1;
-        }
-        1% {
-          opacity: 0;
-        }
-        50% {
-          opacity: 0;
-        }
-        100% {
-          opacity: 1;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="style/base.css">
+    <link rel="stylesheet" href="style/components/menu.css">
+    <link rel="stylesheet" href="style/entry.css">
+    <link rel="stylesheet" href="style/home.css">
   </head>
   <body>
-    <div id='root'></div>
+    <div id='root'>
+      <div class='entry'>
+        <h4>Mobile AI</h4>
+        <h4>to the best of you</h4>
+        <input class='nameBox' placeholder='name' value='lijingwei'/>
+        <input class='passBox' placeholder='pass' value='123456'/>
+        <a class='btn signInBtn'>sign in</a>
+      </div>
+      <div class='home'>
+      </div>
+    </div>
     <script>
-      let $ = require('jquery');
-      console.log($('#root'));
-      $('#root').html('123');
+      const $ = require('jquery');
+      const User = require('./src/model/user').User;
+      const Menu = require('./src/menu');
+
+      const baseUrl = 'http://localhost:8080';
+
+      let user = null;
+      let root = $('#root');
+
+      function showHome() {
+        entry.animate({opacity: 0}, 500);
+        setTimeout(() => {
+
+        }, 500);
+      }
+
+      function onTeamInfo(data) {
+        console.log(data);
+      }
+
+      function onTeamHistory(data) {
+        console.log(data);
+      }
+
+      function validate(name, password) {
+        $.get({
+          url: baseUrl + '/user/validate?name=' + name + '&password=' + password,
+          dataType: 'JSON',
+          success: (rep) => {
+            if (rep.code == 200) {
+              showHome();
+              // user = new User(rep.data.id, rep.data.pass, onTeamInfo, onTeamHistory);
+            } else { console.log('failed!'); }
+          }
+        });
+      }
+    </script>
+    <script>
+      // entry
+      let entry = root.children('.entry');
+      let nameBox = entry.children('.nameBox');
+      let passBox = entry.children('.passBox');
+      let signInBtn = entry.children('.signInBtn');
+      signInBtn.click(() => validate(nameBox.val(), passBox.val()));
+    </script>
+    <script>
+      // home
+      let home = root.children('.home');
+      let menu = new Menu();
+      menu.appendTo(home);
     </script>
   </body>
 </html>
