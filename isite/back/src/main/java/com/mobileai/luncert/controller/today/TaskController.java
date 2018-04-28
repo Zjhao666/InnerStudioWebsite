@@ -8,6 +8,7 @@ import com.mobileai.luncert.service.today.TaskService;
 import com.mobileai.luncert.annotation.AuthAnnotation;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +18,7 @@ import net.sf.json.JSONObject;
 
 
 @RestController
+@CrossOrigin
 @RequestMapping(value = "/today/task")
 public class TaskController {
 
@@ -61,8 +63,8 @@ public class TaskController {
     @AuthAnnotation
     @RequestMapping("/check")
     public String check(int id, boolean success) {
-        taskService.check(id, success);
-        return response(200, null, null);
+        if (taskService.check(id, success)) return response(200, null, null);
+        else return response(201, "check failed", null);
     }
 
 }

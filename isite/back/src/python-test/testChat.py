@@ -3,15 +3,18 @@ from socket import *
 import json
 import time
 
-SIGN_OUT = 0;
-SIGN_IN = 1;
-QUERY_GROUP = 2;
-CREATE_GROUP = 3;
-JOIN_GROUP = 4;
-MESSAGE = 5;
-ACK = 6;
-NAK = 7;
-NOTIFY_NEWMEMBER = 8;
+SIGN_OUT = 0
+SIGN_IN = 1
+QUERY_TEAM = 2
+CREATE_TEAM = 3
+JOIN_TEAM = 4
+MESSAGE = 5
+REP = 6
+ERR = 7
+NOTIFY_MEMBER_IN = 8
+NOTIFY_MEMBER_OUT = 9
+
+typeIdentity = ['SIGN_OUT', 'SIGN_IN', 'QUERY_TEAM', 'CREATE_TEAM', 'JOIN_TEAM', 'MESSAGE', 'REP', 'ERR', 'NOTIFY_MEMBER_IN', 'NOTIFY_MEMBER_OUT']
 
 base = 'http://localhost:8080/'
 
@@ -27,7 +30,7 @@ class Message(object):
             self.content = None
     def convertInt(self, sour):
         ret = bytearray()
-        for i in range(4):
+        for _ in range(4):
             ret.append(sour % 256)
             sour = int((sour - sour % 256) / 256)
         return ret
@@ -49,7 +52,7 @@ class Message(object):
         while count < 9:
             header += conn.recv(9 - count)
             count = len(header)
-        print(' '.join([str(ord(i)) for i in header]))
+        # print(' '.join([str(ord(i)) for i in header]))
         source = convertToInt(header, 1)
         contentLength = convertToInt(header, 5)
         count = 0
@@ -57,30 +60,42 @@ class Message(object):
         while count < contentLength:
             content += conn.recv(contentLength - count)
             count = len(content)
-        print(' '.join([str(ord(i)) for i in content]))
+        # print(' '.join([str(ord(i)) for i in content]))
         return Message(ord(header[0]), source, content)
 
-# mes = Message(65, 15120, 'hi')
+class Chat(object):
+    def __init__(self, id, name):
+        self.id = id
+        self.name = name
+        self.server = socket()
+        self.server.connect(('127.0.0.1', 10983))
 
-# validate
-r = get(base + 'user/validate?name=lijingwei&password=123456')
-print(r.status_code, r.text)
+    def getPass(self):
+        r = get(base + 'user/validate?name=' + self.name + '&password=123456')
+        return json.loads(r.text)['data']['pass']
 
-s = socket()
-s.connect(('127.0.0.1', 10983))
-s.send(Message(SIGN_IN, 4, json.loads(r.text)['data']['pass']).message())
-ackMsg = Message.fromConn(s)
-print(ackMsg.type, ackMsg.source, ackMsg.content)
-print(ackMsg.content)
+    def recv(self):
+        ackMsg = Message.fromConn(self.server)
+        print(typeIdentity[ackMsg.type], ackMsg.source)
+        print(ackMsg.content)
 
-s.send(Message(QUERY_GROUP, 4).message())
-ackMsg = Message.fromConn(s)
-print(ackMsg.type, ackMsg.source, ackMsg.content)
-print(ackMsg.content)
+    def send(self, type, content = None):
+        self.server.send(Message(type, self.id, content).message())
 
-s.send(Message(CREATE_GROUP, 4, 'this is my room').message())
-ackMsg = Message.fromConn(s)
-print(ackMsg.type, ackMsg.source, ackMsg.content)
-print(ackMsg.content)
+    def signIn(self, mypass):
+        self.send(SIGN_IN, mypass)
 
-s.close()
+    def signOut(self):
+        self.send(SIGN_OUT)
+
+    def queryTeam(self):
+        self.send(QUERY_TEAM)
+
+    def createTeam(self, name):
+        self.send(CREATE_TEAM, name)
+
+    def joinTeam(self, tid):
+        self.send(JOIN_TEAM, str(tid))
+
+    def message(self, content):
+        self.send(MESSAGE, content)

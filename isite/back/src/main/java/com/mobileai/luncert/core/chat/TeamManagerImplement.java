@@ -44,6 +44,7 @@ public class TeamManagerImplement implements TeamManager {
 
 	@Override
 	public int createTeam(String name) {
+		if (teamMap == null) doInit();
 		if (name.length() == 0) return -1;
 		// access db to create group, then get the id and put into groupMap
 		synchronized (this) {
@@ -57,6 +58,7 @@ public class TeamManagerImplement implements TeamManager {
 
 	@Override
 	public Team joinTeam(int teamId, User user) throws Exception {
+		if (teamMap == null) doInit();
 		Team team = teamMap.get(teamId);
 		team.addMember(user);
 		return team;

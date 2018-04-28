@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import javax.imageio.IIOException;
+import java.util.logging.SimpleFormatter;
 
 import com.mobileai.luncert.core.chat.interfaces.Team;
 import com.mobileai.luncert.core.chat.interfaces.TeamManager;
@@ -18,7 +18,6 @@ import com.mobileai.luncert.core.chat.interfaces.UserManager;
 import com.mobileai.luncert.util.GenerateName;
 
 import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
 public class UserImplement implements User{
 
@@ -88,8 +87,8 @@ public class UserImplement implements User{
 		try {
 			in = conn.getInputStream();
 			out = conn.getOutputStream();
-			// log in ack
-			send(Message.ACK, this.name);
+			// response wth random name
+			send(Message.REP, this.name);
 			while (true) {
 				Message message = new MessageImplement(in);
 				int type = message.getType();
@@ -97,35 +96,35 @@ public class UserImplement implements User{
 					System.out.println("--> end");
 					break;
 				}
-				else if (type == Message.QUERY_GROUP) {
+				else if (type == Message.QUERY_TEAM) {
 					Map<Integer, String> teams = teamManager.queryTeam();
 					JSONArray data = new JSONArray();
 					for (Entry<Integer, String> entry : teams.entrySet()) {
 						data.add(entry);
 					}
-					send(Message.ACK, data.toString());
+					send(Message.REP, data.toString());
 				}
-				else if (type == Message.CREATE_GROUP) {
+				else if (type == Message.CREATE_TEAM) {
 					String name = message.getContentString();
 					int teamId = teamManager.createTeam(name);
 					if (teamId != -1) {
 						// create successfully
 						team = teamManager.joinTeam(teamId, this);
-						send(Message.ACK);
-					} else send(Message.NAK);
+						send(Message.REP);
+					} else send(Message.ERR);
 				}
-				else if (type == Message.JOIN_GROUP) {
+				else if (type == Message.JOIN_TEAM) {
+					if (team != null) team.delMember(this);
 					int teamId = Integer.valueOf(message.getContentString());
 					team = teamManager.joinTeam(teamId, this);
-					Map<Date, String> history = team.getHistory();
-					JSONObject data = JSONObject.fromObject(history);
-					send(Message.ACK, data.toString());
+					Map<String, String> history = team.getHistory();
+					JSONArray data = JSONArray.fromObject(history);
+					send(Message.REP, data.toString());
 				}
 				else if (type == Message.MESSAGE) {
 					team.broadcast(message);
-					send(Message.ACK);
 				}
-				else send(Message.NAK); // !bug : when client closed socket, trying to read a message with type = 0 will not throw an exception, and server will send too much NAK message :(
+				else send(Message.ERR); // !bug : when client closed socket, trying to read a message with type = 0 will not throw an exception, and server will send too much NAK message :(
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

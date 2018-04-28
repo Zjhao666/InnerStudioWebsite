@@ -22,7 +22,7 @@ public interface TeamHistoryMapper {
     })
     public List<TeamHistory> fetchAll(int teamId);
 
-    @Insert("insert into TeamHistory(teamId, userId, content, ptime) values(#{param1}, #{param2}, #{param3}, #{param4}")
+    @Insert("insert into TeamHistory(teamId, userId, content, ptime) values(#{param1}, #{param2}, #{param3}, #{param4})")
     public void addHistory(int teamId, int userId, String content, Date ptime);
 
 }

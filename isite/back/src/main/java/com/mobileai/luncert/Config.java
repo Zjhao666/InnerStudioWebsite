@@ -29,7 +29,7 @@ public class Config implements WebMvcConfigurer {
 	@Bean
 	public MultipartResolver multipartResolver() throws IOException {
 		CommonsMultipartResolver resolver = new CommonsMultipartResolver();
-		resolver.setUploadTempDir(new FileSystemResource("/home/lijingwei/Desktop"));
+		resolver.setUploadTempDir(new FileSystemResource("/home/luncert/Desktop"));
 		resolver.setMaxUploadSize(MAXFILESIZE);
 		resolver.setMaxInMemorySize(40960);
 		return resolver;

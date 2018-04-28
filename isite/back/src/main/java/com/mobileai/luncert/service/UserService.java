@@ -25,7 +25,6 @@ public class UserService {
             userMapper.queryByPass(user, pass);
             return true;
         } catch (Exception e) {
-            System.out.println(e);
             return false;
         }
     }

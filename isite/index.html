@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <style>
+      @font-face{
+        font-family: 'ArtegraSansExtended';
+        src: url('../res/ArtegraSansExtended-ExtLtI.otf') format('OpenType');
+      }
+      @font-face{
+        font-family: 'ChalkLineOutline';
+        src: url('../res/ChalkLineOutline.ttf') format('OpenType');
+      }
+      @font-face{
+        font-family: 'Precious';
+        src: url('../res/Precious.ttf') format('OpenType');
+      }
+
+      html, body, #root {
+        padding: 0px; margin: 0px;
+        width: 100%;height: 100%;
+        background-color: rgb(100, 160, 200);
+        overflow: hidden;
+      }
+
+      #Entry {
+        position: absolute;
+        color: white;
+        display: inline-block;
+      }
+      #Entry .title {
+        display: block;
+        font: bold 5em 'ChalkLineOutline';
+        text-shadow: 3px 5px 2px black;
+      }
+      #Entry .slogan {
+        opacity: 1;
+        display: block;
+        font: normal 3em 'Precious';
+        text-shadow: 2px 3px 2px black;
+        text-align: right;
+        animation: showSlogan 5s;
+      }
+      @keyframes showSlogan{
+        0% {
+          opacity: 1;
+        }
+        1% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id='root'></div>
+    <script>
+      let $ = require('jquery');
+      console.log($('#root'));
+      $('#root').html('123');
+    </script>
+  </body>
+</html>

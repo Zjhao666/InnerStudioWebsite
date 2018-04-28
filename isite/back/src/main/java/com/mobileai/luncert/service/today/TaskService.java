@@ -53,15 +53,26 @@ public class TaskService {
     }
 
     public String lastThreeMonth(int user) {
-        return history(user, -30);
+        return history(user, -90);
     }
 
-    public void check(int id, boolean success) {
+    /**
+     * 1. checking over timeout
+     * 2. repeating check
+     * 3. check with status success
+     * 4. check with status failed
+     * if check() return false, client should reload this task
+     */
+    public boolean check(int id, boolean success) {
         if (taskMapper.beTimeout(id)) {
             taskMapper.setTimeout(id);
+            taskMapper.check(id, false);
+            return false;
         }
         else if(!taskMapper.beChecked(id)) {
             taskMapper.check(id, success);
+            return true;
         }
+        return false;
     }
 }

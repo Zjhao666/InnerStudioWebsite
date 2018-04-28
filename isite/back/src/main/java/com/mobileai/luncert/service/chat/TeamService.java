@@ -19,7 +19,7 @@ public class TeamService {
      */
     private boolean beValidName(String name) {
         try {
-            teamMapper.fetchOne(name);
+            teamMapper.fetchOne(name).getName();
             return false;
         } catch (Exception e) {
             return true;

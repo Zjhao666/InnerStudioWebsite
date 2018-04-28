@@ -8,19 +8,21 @@ public interface Message {
 
 	public static final byte SIGN_IN = 1;
     
-	public static final byte QUERY_GROUP = 2;
+	public static final byte QUERY_TEAM = 2;
 
-	public static final byte CREATE_GROUP = 3;
+	public static final byte CREATE_TEAM = 3;
 
-	public static final byte JOIN_GROUP = 4;
+	public static final byte JOIN_TEAM = 4;
 
 	public static final byte MESSAGE = 5;
 
-	public static final byte ACK = 6;
+	public static final byte REP = 6;
 
-	public static final byte NAK = 7;
+	public static final byte ERR = 7;
 
-	public static final byte NOTIFY_NEWMEMBER = 8;
+	public static final byte NOTIFY_MEMBER_IN = 8;
+
+	public static final byte NOTIFY_MEMBER_OUT = 9;
 
 	public byte getType();
 
