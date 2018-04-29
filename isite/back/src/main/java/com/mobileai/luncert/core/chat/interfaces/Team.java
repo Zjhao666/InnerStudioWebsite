@@ -1,7 +1,8 @@
 package com.mobileai.luncert.core.chat.interfaces;
 
-import java.util.Map;
+import java.util.List;
 
+import com.mobileai.luncert.entity.chat.TeamHistory;
 import com.mobileai.luncert.service.chat.TeamHistoryService;
 
 
@@ -13,7 +14,7 @@ public interface Team {
 
     public void doInit(TeamHistoryService teamHistoryService);
 
-    public Map<String, String> getHistory();
+    public List<TeamHistory> getHistorys();
 
     public void addMember(User user) throws Exception;
 

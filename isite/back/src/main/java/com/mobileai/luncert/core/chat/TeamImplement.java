@@ -1,6 +1,5 @@
 package com.mobileai.luncert.core.chat;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -12,6 +11,8 @@ import com.mobileai.luncert.core.chat.interfaces.Message;
 import com.mobileai.luncert.core.chat.interfaces.User;
 import com.mobileai.luncert.entity.chat.TeamHistory;
 import com.mobileai.luncert.service.chat.TeamHistoryService;
+
+import net.sf.json.JSONObject;
 
 public class TeamImplement implements Team {
 
@@ -42,10 +43,11 @@ public class TeamImplement implements Team {
 
 	@Override
 	public void addMember(User user) throws Exception {
-
 		// notify new member joined
-		Message message = new MessageImplement(Message.NOTIFY_MEMBER_IN, user.getId());
-		for (User item : members.values()) item.send(message);
+		Message message = new MessageImplement(Message.NOTIFY_MEMBER_IN, user.getId(), user.getName());
+		for (User item : members.values()) {
+			item.send(message);
+		}
 
 		synchronized (this) {
 			members.put(user.getId(), user);
@@ -61,7 +63,9 @@ public class TeamImplement implements Team {
 
 		// notify member left
 		Message message = new MessageImplement(Message.NOTIFY_MEMBER_OUT, user.getId());
-		for (User item : members.values()) item.send(message);
+		for (User item : members.values()) {
+			item.send(message);
+		}
 
 		// add newHistory to mysql and historys
 		if (newHistory.size() > 0) {
@@ -75,7 +79,13 @@ public class TeamImplement implements Team {
 	@Override
 	public void broadcast(Message message) {
 		// add to newHistory
-		newHistory.add(new TeamHistory(id, message.getSource(), message.getContentString(), new Date()));
+		int userId = message.getSource();
+		newHistory.add(new TeamHistory(id, userId, new String(message.getContent()), new Date(), members.get(userId).getName()));
+		// add sender's name to message content
+		JSONObject json = new JSONObject();
+		json.put("content", new String(message.getContent()));
+		json.put("name", members.get(userId).getName());
+		message.setContent(json.toString().getBytes());
 		for (User user : members.values()) {
 			if (user.getId() == message.getSource()) continue;
 			user.send(message);
@@ -83,11 +93,8 @@ public class TeamImplement implements Team {
 	}
 
 	@Override
-	public Map<String, String> getHistory() {
-		Map<String, String> ret = new HashMap<>();
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		for(TeamHistory item : historys) ret.put(formatter.format(item.getPtime()), item.getContent());
-		return ret;
+	public List<TeamHistory> getHistorys() {
+		return historys;
 	}
 
 	/**

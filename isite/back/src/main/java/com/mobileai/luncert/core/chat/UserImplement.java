@@ -1,14 +1,12 @@
 package com.mobileai.luncert.core.chat;
 
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.logging.SimpleFormatter;
 
 import com.mobileai.luncert.core.chat.interfaces.Team;
 import com.mobileai.luncert.core.chat.interfaces.TeamManager;
@@ -92,10 +90,7 @@ public class UserImplement implements User{
 			while (true) {
 				Message message = new MessageImplement(in);
 				int type = message.getType();
-				if (type == Message.SIGN_OUT) {
-					System.out.println("--> end");
-					break;
-				}
+				if (type == Message.SIGN_OUT) break;
 				else if (type == Message.QUERY_TEAM) {
 					Map<Integer, String> teams = teamManager.queryTeam();
 					JSONArray data = new JSONArray();
@@ -105,7 +100,7 @@ public class UserImplement implements User{
 					send(Message.REP, data.toString());
 				}
 				else if (type == Message.CREATE_TEAM) {
-					String name = message.getContentString();
+					String name = new String(message.getContent());
 					int teamId = teamManager.createTeam(name);
 					if (teamId != -1) {
 						// create successfully
@@ -115,10 +110,9 @@ public class UserImplement implements User{
 				}
 				else if (type == Message.JOIN_TEAM) {
 					if (team != null) team.delMember(this);
-					int teamId = Integer.valueOf(message.getContentString());
+					int teamId = Integer.valueOf(new String(message.getContent()));
 					team = teamManager.joinTeam(teamId, this);
-					Map<String, String> history = team.getHistory();
-					JSONArray data = JSONArray.fromObject(history);
+					JSONArray data = JSONArray.fromObject(team.getHistorys());
 					send(Message.REP, data.toString());
 				}
 				else if (type == Message.MESSAGE) {
@@ -126,6 +120,8 @@ public class UserImplement implements User{
 				}
 				else send(Message.ERR); // !bug : when client closed socket, trying to read a message with type = 0 will not throw an exception, and server will send too much NAK message :(
 			}
+		} catch (EOFException e) { 
+			System.out.println("--> client quited");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

@@ -19,7 +19,7 @@ public class TeamHistoryService {
     }
 
     public void addHistory(TeamHistory item) {
-        teamHistoryMapper.addHistory(item.getTeamId(), item.getUserId(), item.getContent(), item.getPtime());
+        teamHistoryMapper.addHistory(item.getTeamId(), item.getUserId(), item.getContent(), item.getPtime(), item.getName());
     }
 
     public void addHistoryList(List<TeamHistory> list) {

@@ -24,7 +24,8 @@ html * {
   color: white;
 }
 
-input {
+input,
+textarea {
   box-sizing: border-box;
   display: block;
   border: none;

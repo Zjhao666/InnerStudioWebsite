@@ -1,0 +1,21 @@
+
+icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 22px; height: 22px;
+  margin: 4px;
+  box-sizing: border-box;
+}
+
+.icon-chat {
+  background-image: url(../../res/chat.png);
+  background-size: cover;
+}
+.icon-task {
+  background-image: url(../../res/task.png);
+  background-size: cover;
+}
+.icon-team {
+  background-image: url(../../res/team.png);
+  background-size: cover;
+}

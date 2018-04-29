@@ -47,7 +47,7 @@ public class ChatController implements InitializingBean, Runnable {
                     Message message = new MessageImplement(conn.getInputStream());
                     if (message.getType() == Message.SIGN_IN) {
                         int userId = message.getSource();
-                        String pass = message.getContentString();
+                        String pass = new String(message.getContent());
                         // if user registed or validate failed, end session
                         if (!userManager.registed(userId) && userManager.validate(userId, pass)) {
                             User user = new UserImplement(conn, userId);

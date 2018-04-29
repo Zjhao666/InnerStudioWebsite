@@ -28,8 +28,7 @@ class Message {
     this.type = type;
     this.source = source;
     if (content) {
-      if (typeof(content) != 'string') this.content = new Buffer(content).toString();
-      else this.content = content;
+      this.content = new Buffer(content); // .utf8Slice();
       this.contentLength = this.content.length;
     } else {
       this.contentLength = 0;
@@ -74,22 +73,27 @@ class User {
     this.requireQueue.push(callback);
   }
   msgHandle(msg) {
-    if (this.requireQueue.length > 0) {
-      switch(msg.type) {
-        case REP:
+    switch(msg.type) {
+      case REP:
+        if (this.requireQueue.length > 0) {
           this.requireQueue.shift()(msg);
-          break;
-        case ERR:
-          console.log(msg);
-          break;
-        case NOTIFY_MEMBER_IN:
-          console.log(msg);
-          break;
-        case NOTIFY_MEMBER_OUT:
-          console.log(msg);
-          break;
-      }
-    } else; // ignore
+        } else; // ignore
+        break;
+      case ERR:
+        console.log('error: ', msg);
+        break;
+      case NOTIFY_MEMBER_IN:
+        if (this.listener.memberIn) this.listener.memberIn(msg);
+        break;
+      case NOTIFY_MEMBER_OUT:
+        if (this.listener.memberOut) this.listener.memberOut(msg);
+        break;
+      case MESSAGE:
+        if (this.listener.message) this.listener.message(msg);
+        break;
+      default:
+        console.log(msg);
+    }
   }
   connect() {
     const bytesToInt = (source, offset) => {
@@ -117,7 +121,16 @@ class User {
               this.msgHandle(new Message(msgbuf[0], bytesToInt(msgbuf, 1), msgbuf.slice(9, msgbuf.length)));
               msgbuf = [];
             }
-            if (stepCounter == STEP_CONTENT) byteCounter = bytesToInt(msgbuf, msgbuf.length - 4);
+            if (stepCounter == STEP_CONTENT) {
+              byteCounter = bytesToInt(msgbuf, msgbuf.length - 4);
+              // finish this message's recv because there is no more bytes
+              if (byteCounter == 0) {
+                stepCounter = STEP_TYPE;
+                byteCounter = step_byte_num[stepCounter];
+                this.msgHandle(new Message(msgbuf[0], bytesToInt(msgbuf, 1), msgbuf.slice(9, msgbuf.length)));
+                msgbuf = [];
+              }
+            }
             else byteCounter = step_byte_num[stepCounter];
           }
           else {

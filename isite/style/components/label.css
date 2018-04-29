@@ -1,0 +1,9 @@
+
+label {
+  display: inline-block;
+  vertical-align: middle;
+  height: 22px;
+  line-height: 22px;
+  margin: 4px;
+  box-sizing: border-box;
+}

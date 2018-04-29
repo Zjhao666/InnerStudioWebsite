@@ -30,10 +30,10 @@ public interface Message {
 
 	public int getContentLength();
 
+	public void setContent(byte[] content);
+
 	public byte[] getContent();
 	
-	public String getContentString();
-
 	public byte[] toBytes();
 
 }

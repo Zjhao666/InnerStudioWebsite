@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <title>Hello World!</title>
     <link rel="stylesheet" href="style/base.css">
+    <link rel="stylesheet" href="style/components/icon.css">
+    <link rel="stylesheet" href="style/components/label.css">
     <link rel="stylesheet" href="style/components/menu.css">
+    <link rel="stylesheet" href="style/components/chatbox.css">
     <link rel="stylesheet" href="style/entry.css">
     <link rel="stylesheet" href="style/home.css">
   </head>
@@ -18,33 +21,27 @@
         <a class='btn signInBtn'>sign in</a>
       </div>
       <div class='home'>
+        <menu>
+          <!-- <menu-item>
+            <icon class='icon-task'></icon>
+            <label>Today</label>
+          </menu-item> -->
+          <menu-sub></menu-sub>
+        </menu>
+        <content>
+          <chat-show></chat-show>
+          <textarea class='chat-input'></textarea>
+        </content>
       </div>
     </div>
     <script>
+      // lib
       const $ = require('jquery');
-      const User = require('./src/model/user').User;
-      const Menu = require('./src/menu');
-
+      const User = require('./user').User;
       const baseUrl = 'http://localhost:8080';
 
-      let user = null;
       let root = $('#root');
-
-      function showHome() {
-        entry.animate({opacity: 0}, 500);
-        setTimeout(() => {
-
-        }, 500);
-      }
-
-      function onTeamInfo(data) {
-        console.log(data);
-      }
-
-      function onTeamHistory(data) {
-        console.log(data);
-      }
-
+      let user = null, pass = null, userMapper = null;
       function validate(name, password) {
         $.get({
           url: baseUrl + '/user/validate?name=' + name + '&password=' + password,
@@ -52,25 +49,119 @@
           success: (rep) => {
             if (rep.code == 200) {
               showHome();
-              // user = new User(rep.data.id, rep.data.pass, onTeamInfo, onTeamHistory);
+              pass = rep.data.pass;
+              user = new User(rep.data.id, pass,
+                (data) => updateTeamInfo(JSON.parse(data), true),
+                (data) => loadHistory(JSON.parse(data)));
+              user.on('message', (msg) => {
+                // update user name
+                let obj = JSON.parse(msg.content);
+                userMapper[msg.source] = obj.name;
+                addMessage(null, userMapper[msg.source], obj.content);
+              });
+              user.on('memberIn', (msg) => {
+                userMapper[msg.source] = msg.content;
+                addNotification(msg.content + ' joined');
+              });
+              user.on('memberOut', (msg) => {
+                addNotification(userMapper[msg.source] + ' left');
+              });
             } else { console.log('failed!'); }
           }
         });
       }
-    </script>
-    <script>
+
       // entry
       let entry = root.children('.entry');
       let nameBox = entry.children('.nameBox');
       let passBox = entry.children('.passBox');
       let signInBtn = entry.children('.signInBtn');
       signInBtn.click(() => validate(nameBox.val(), passBox.val()));
-    </script>
-    <script>
+
       // home
       let home = root.children('.home');
-      let menu = new Menu();
-      menu.appendTo(home);
+      let menu = home.children('menu');
+      let menuChat = menu.children('menu-sub');
+      let content = home.children('content');
+      let chatShow = content.children('chat-show');
+      let chatInput = content.children('textarea');
+      const autoScrollChatShow = () => chatShow.scrollTop(chatShow[0].scrollHeight - chatShow.height());
+      function showHome() {
+        entry.animate({opacity: 0}, 500);
+        setTimeout(() => {
+          entry.css('display', 'none');
+          home.css('display', 'block');
+          home.animate({opacity: 1}, 500);
+        }, 500);
+      }
+      function updateTeamInfo(data, beFirst) {
+        menuChat.html(`
+          <div class='head'>
+            <icon class='icon-chat'></icon>
+            <label>Chat</label>
+          </div>`);
+        let selected;
+        for (let team of data) {
+          let tmp = $(`
+          <menu-sub-item teamId=` + team.key + `>
+            <icon class='icon-team'></icon>
+            <label>` + team.value + `</label>
+          </menu-sub-item>`);
+          tmp.click(() => {
+            tmp.attr('class', 'menu-item-selecterd');
+            if (selected) selected.attr('class', '');
+            selected = tmp;
+            user.joinTeam(team.key, (msg) => loadHistory(JSON.parse(msg.content)));
+          });
+          menuChat.append(tmp);
+        }
+        // set Mobile AI's style
+        if (beFirst) {
+          selected = menuChat.children('menu-sub-item').eq(0);
+          selected.attr('class', 'menu-item-selecterd');
+        }
+      }
+      function loadHistory(data) {
+        chatShow.html('');
+        /* {"content":"hi","id":1,"name":"xxx","ptime":{"date":4,"day":0,"hours":0,"minutes":0,"month":1,"seconds":0,"time":1517673600000,"timezoneOffset":-480,"year":118},"teamId":1,"userId":2}
+        */
+        userMapper = [];
+        for (let msg of data) {
+          userMapper[msg.userId] = msg.name;
+          addMessage(null, msg.name, msg.content, msg.userId == user.id);
+        }
+        // !bug: without setTimeout, the chatShow on't scroll to the bottom :(
+        setTimeout(autoScrollChatShow, 500);
+      }
+      function addNotification(content) {
+        chatShow.append('<notification>' + content + '</notification>');
+        autoScrollChatShow();
+      }
+      function addMessage(userImg, userName, content, beRight) {
+        let labelName;
+        if (beRight) labelName = 'message-right';
+        else labelName = 'message';
+        if (!userImg) userImg = 'res/account.png';
+        chatShow.append($(`
+          <` + labelName + `>
+            <user-img style='background-image: url(` + userImg + `); background-size: cover;'></user-img>
+            <user-name>` + userName + `</user-name>
+            <message-content>` + content + `</message-content>
+          </` + labelName + `>`));
+        autoScrollChatShow();
+      }
+      function sendMessage(content) {
+        user.message(content);
+        addMessage(null, user.name, content, true);
+        autoScrollChatShow();
+      }
+      chatInput.keypress((e) => {
+        let ctrlKey = e.ctrlKey || e.metaKey;
+        if (ctrlKey && e.which == 19 && chatInput.val().length > 0) {
+          sendMessage(chatInput.val());
+          chatInput.val('');
+        }
+      });
     </script>
   </body>
 </html>

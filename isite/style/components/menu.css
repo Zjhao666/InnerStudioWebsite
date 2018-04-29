@@ -1,13 +1,49 @@
 
-.menu {
-  list-style: none;
+menu {
+  display: block;
+  float: left;
   margin: 0px; padding: 0px;
+  list-style: none;
   width: 200px; height: 100%;
-  border: 1px solid white;
+  background-color: rgba(100, 120, 220, 0.6);
+  user-select: none;
+  box-shadow: 0px 0px 3px black;
 }
 
-.menu .item {
+menu-item,
+menu-sub,
+menu-sub-item {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
   margin: 0px; padding: 0px;
   width: 100%; height: 30px;
   line-height: 30px;
+  cursor: pointer;
+}
+
+menu-sub {
+  height: auto;
+  cursor: default;
+}
+menu-sub-item {
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid rgb(100, 220, 200);
+}
+
+menu-sub .head{
+  display: block;
+  width: 100%; height: 30px;
+  cursor: pointer;
+}
+
+menu-item:hover,
+menu-sub .head:hover,
+menu-sub-item:hover {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu-item-selecterd {
+  background-color: rgba(100, 180, 255, 0.6);
 }
