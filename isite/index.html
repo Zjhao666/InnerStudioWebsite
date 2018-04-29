@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style/components/label.css">
     <link rel="stylesheet" href="style/components/menu.css">
     <link rel="stylesheet" href="style/components/chatbox.css">
+    <link rel="stylesheet" href="style/components/notify.css">
     <link rel="stylesheet" href="style/entry.css">
     <link rel="stylesheet" href="style/home.css">
   </head>
@@ -33,6 +34,7 @@
           <textarea class='chat-input'></textarea>
         </content>
       </div>
+      <notify-container></notify-container>
     </div>
     <script>
       // lib
@@ -40,7 +42,6 @@
       const User = require('./user').User;
       const baseUrl = 'http://localhost:8080';
 
-      let root = $('#root');
       let user = null, pass = null, userMapper = null;
       function validate(name, password) {
         $.get({
@@ -66,9 +67,30 @@
               user.on('memberOut', (msg) => {
                 addNotification(userMapper[msg.source] + ' left');
               });
-            } else { console.log('failed!'); }
+            } else if (rep.code == 201) notify(NOTIFY_ERROR, 'User is online!');
+            else notify(NOTIFY_ERROR, 'Validate failed!');
           }
         });
+      }
+
+      let root = $('#root');
+      let notifyContainer = root.children('notify-container');
+      const NOTIFY_INFO = 0;
+      const NOTIFY_ERROR = 1;
+      function notify(type, content) {
+        let style = (type == NOTIFY_INFO) ? 'notify-info' : 'notify-error';
+        let tmp = $('<notify>' + content + '</notify>');
+        notifyContainer.prepend(tmp);
+        tmp.attr('class', style);
+        tmp.css({
+          opacity: 1,
+          height: tmp[0].clientHeight,
+          transform: 'scale(1, 1)'
+        });
+        setTimeout(() => {
+          tmp.css({opacity: 0});
+          setTimeout(() => tmp.remove(), 600);
+        }, 2500);
       }
 
       // entry

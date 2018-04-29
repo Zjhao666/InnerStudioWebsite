@@ -20,7 +20,7 @@ import com.mobileai.luncert.core.chat.UserImplement;
 
 @Component
 @Scope("singleton")
-public class ChatController implements InitializingBean, Runnable {
+public class ChatComponent implements InitializingBean, Runnable {
 
     private final int PORT = 10983;
     
@@ -33,6 +33,10 @@ public class ChatController implements InitializingBean, Runnable {
 
     public void regisPass(int user, String pass) {
         userManager.regisPass(user, pass);
+    }
+
+    public boolean registed(int user) {
+        return userManager.registed(user);
     }
 
     @Override
