@@ -1,0 +1,32 @@
+
+profile {
+  display: none;
+  opacity: 0;
+  width: 50%; height: 70%;
+  margin: 10% auto; padding-top: 5%;
+  background-color: rgba(100, 120, 220, 0.6);
+  box-shadow: 0px 0px 3px black;
+  transition: all .6s;
+}
+
+headimg {
+  display: block;
+  width: 200px; height: 200px;
+  margin: 0px auto;
+  background-image: url(../../res/account.png);
+  background-size: cover;
+  background-position: 50%;
+  cursor: pointer;
+}
+
+profile .proName,
+profile .proPassword {
+  display: inline-block;
+  text-align: center;
+  font: bold 1.4em 'ArtegraSansExtended';
+  cursor: pointer;
+}
+
+profile .password {
+
+}

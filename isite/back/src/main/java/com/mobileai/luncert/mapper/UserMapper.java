@@ -1,5 +1,7 @@
 package com.mobileai.luncert.mapper;
 
+import java.util.List;
+
 import com.mobileai.luncert.entity.User;
 
 import org.apache.ibatis.annotations.Result;
@@ -33,4 +35,20 @@ public interface UserMapper {
     @Result(column = "headimg", javaType = String.class)
     public String getHeadimg(int user);
     
+    @Select("select name from User where id = #{param1}")
+    @Result(column = "name", javaType = String.class)
+    public String getName(int user);
+
+    @Update("update User set password = #{param2} where id = #{param1}")
+    public void setPassword(int user, String newPassword);
+
+    @Update("update User set name = #{param2} where id = #{param1}")
+    public void setName(int user, String newName);
+
+    @Select("select id, name from User")
+    @Results({
+        @Result(property = "id", column = "id", javaType = Integer.class),
+        @Result(property = "name", column = "name", javaType = String.class)
+    })
+    public List<User> fetchAll();
 }

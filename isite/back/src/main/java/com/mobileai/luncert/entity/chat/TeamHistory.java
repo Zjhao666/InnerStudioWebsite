@@ -14,16 +14,13 @@ public class TeamHistory {
 
     private Date ptime;
 
-    private String name;
-
     public TeamHistory() {}
 
-    public TeamHistory(int teamId, int userId, String content, Date ptime, String name) {
+    public TeamHistory(int teamId, int userId, String content, Date ptime) {
         this.teamId = teamId;
         this.userId = userId;
         this.content = content;
         this.ptime = ptime;
-        this.name = name;
     }
 
     public void setId(int id) { this.id = id; }
@@ -36,8 +33,6 @@ public class TeamHistory {
 
     public void setPtime(Date ptime) { this.ptime = ptime; }
 
-    public void setName(String name) { this.name =  name; }
-
     public int getId() { return id; }
 
     public int getTeamId() { return teamId; }
@@ -48,6 +43,4 @@ public class TeamHistory {
 
     public Date getPtime() { return ptime; }
 
-    public String getName() { return name; }
-    
 }

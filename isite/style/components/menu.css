@@ -21,6 +21,8 @@ menu-sub-item {
   line-height: 30px;
   cursor: pointer;
 }
+menu-item * { cursor: pointer; }
+menu-sub-item * { cursor: pointer; }
 
 menu-sub {
   height: auto;
@@ -47,3 +49,25 @@ menu-sub-item:hover {
 .menu-item-selecterd {
   background-color: rgba(100, 180, 255, 0.6);
 }
+
+team-create,
+team-delete {
+  box-sizing: border-box;
+  display: block;
+  float: right;
+  opacity: 0;
+  width: 16px; height: 16px;
+  border-radius: 8px;
+  border: 1px solid white;
+  margin: 6px;
+}
+
+team-create {
+  background: url(../../res/create.png);
+  background-size: cover;
+}
+
+/* team-delete {
+  background: url(../../res/delete.png);
+  background-size: cover;
+} */

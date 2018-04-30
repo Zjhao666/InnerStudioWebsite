@@ -16,6 +16,7 @@ import com.mobileai.luncert.core.chat.interfaces.UserManager;
 import com.mobileai.luncert.util.GenerateName;
 
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 public class UserImplement implements User{
 
@@ -35,10 +36,10 @@ public class UserImplement implements User{
 	
 	private TeamManager teamManager;
 
-	public UserImplement(Socket conn, int id) throws Exception {
+	public UserImplement(Socket conn, int id, String name) throws Exception {
 		this.conn = conn;
 		this.id = id;
-		this.name = GenerateName.generateName();
+		this.name = name;
 	}
 
 	@Override
@@ -112,7 +113,11 @@ public class UserImplement implements User{
 					if (team != null) team.delMember(this);
 					int teamId = Integer.valueOf(new String(message.getContent()));
 					team = teamManager.joinTeam(teamId, this);
-					JSONArray data = JSONArray.fromObject(team.getHistorys());
+					JSONArray historys = JSONArray.fromObject(team.getHistorys());
+					JSONArray members = JSONArray.fromObject(team.getMembers());
+					JSONObject data = new JSONObject();
+					data.put("historys", historys);
+					data.put("members", members);
 					send(Message.REP, data.toString());
 				}
 				else if (type == Message.MESSAGE) {

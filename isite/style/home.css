@@ -11,3 +11,11 @@ content {
   box-sizing: border-box;
   width: calc(100% - 200px); height: 100%;
 }
+
+.team-name-input {
+  width: 80%;
+  border-bottom: 1px solid white;
+  margin: 0px auto;
+  text-align: center;
+  font-size: 1.2em;
+}

@@ -1,10 +1,13 @@
 package com.mobileai.luncert.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
@@ -15,10 +18,13 @@ import com.mobileai.luncert.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -79,22 +85,49 @@ public class UserController {
      * this method should be debug after deploying on server, i should check if the new headimgs could be access
      */
     @AuthAnnotation
-    @RequestMapping(value = "/uploadHeadimg", method = RequestMethod.POST)
-    public String uploadHeadimg(@RequestPart("headimg") Part headimg, @RequestParam("user") int user) throws IOException {
-        if (headimg.getSubmittedFileName().length() == 0) throw new NullPointerException("part: headimg is null");
-        StringBuilder builder = new StringBuilder();
-        String orgFileName = headimg.getSubmittedFileName();
-        builder.append(request.getSession().getServletContext().getRealPath("/")).append("res/headimg/").append(user).append(orgFileName.substring(orgFileName.lastIndexOf(".")));
+    @PostMapping(value = "/uploadHeadimg")
+    public String uploadHeadimg(@RequestParam("headimg") MultipartFile headimg, @RequestParam("user") int user) throws IOException {
+        if (headimg.getOriginalFilename().length() == 0) throw new NullPointerException("part: headimg is null");
+        String orgFileName = headimg.getOriginalFilename();
+        StringBuilder builder = new StringBuilder().append("static/headimg/").append(user).append(orgFileName.substring(orgFileName.lastIndexOf(".")));
         String url = builder.toString();
-        headimg.write(url);
+        builder.insert(0, ClassLoader.getSystemResource(""));
+        String path = builder.toString();
+        if (path.startsWith("file:")) path = path.substring(5);
+        File img = new File(path);
+        img.createNewFile();
+        headimg.transferTo(img);
         userService.setHeadimg(user, url);
-        return response(200, null, null);
+        return response(200, null, url);
     }
 
     @AuthAnnotation
     @RequestMapping(value = "/getHeadimg")
     public String getHeadimg(int user) {
         return userService.getHeadimg(user);
+    }
+
+    @AuthAnnotation
+    @RequestMapping(value = "/setPassword")
+    public void setPassword(int user, String newPassword) {
+        userService.setPassword(user, newPassword);
+    }
+
+    @AuthAnnotation
+    @RequestMapping(value = "/setName")
+    public void setName(int user, String newName) {
+        userService.setName(user, newName);
+    }
+
+    @AuthAnnotation
+    @RequestMapping(value = "/getUserNames")
+    public String getUserNames() {
+        Map<Integer, String> data = userService.getUserNames();
+        JSONArray ret = new JSONArray();
+        for(Entry<Integer, String> item : data.entrySet()) {
+            ret.add(item);
+        }
+        return ret.toString();
     }
 
 }

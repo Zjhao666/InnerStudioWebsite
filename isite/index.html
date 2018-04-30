@@ -8,17 +8,21 @@
     <link rel="stylesheet" href="style/components/label.css">
     <link rel="stylesheet" href="style/components/menu.css">
     <link rel="stylesheet" href="style/components/chatbox.css">
+    <link rel="stylesheet" href="style/components/profile.css">
     <link rel="stylesheet" href="style/components/notify.css">
+    <link rel="stylesheet" href="style/components/dialog.css">
     <link rel="stylesheet" href="style/entry.css">
     <link rel="stylesheet" href="style/home.css">
   </head>
   <body>
     <div id='root'>
+      <notify-container></notify-container>
+      <dialog-container></dialog-container>
       <div class='entry'>
         <h4>Mobile AI</h4>
         <h4>to the best of you</h4>
-        <input class='nameBox' placeholder='name' value='lijingwei'/>
-        <input class='passBox' placeholder='pass' value='123456'/>
+        <input class='nameBox' placeholder='name'/>
+        <input class='passBox' placeholder='pass'/>
         <a class='btn signInBtn'>sign in</a>
       </div>
       <div class='home'>
@@ -27,14 +31,31 @@
             <icon class='icon-task'></icon>
             <label>Today</label>
           </menu-item> -->
+          <menu-item>
+            <icon class='icon-account'></icon>
+            <label>Me</label>
+          </menu-item>
           <menu-sub></menu-sub>
         </menu>
         <content>
-          <chat-show></chat-show>
-          <textarea class='chat-input'></textarea>
+          <profile>
+            <input id='headimgInput' type='file' style='display:none' />
+            <headimg></headimg>
+            <div style='text-align: center; margin: 10px 0px;'>
+              <label>name</label>
+              <label class='proName'></label>
+            </div>
+            <div style='text-align: center; margin: 10px 0px;'>
+              <label>password</label>
+              <label class='proPassword'></label>
+            </div>
+          </profile>
+          <chatBox>
+            <chat-show></chat-show>
+            <textarea class='chat-input' placeholder='press ctrl+s to send'></textarea>
+          </chatBox>
         </content>
       </div>
-      <notify-container></notify-container>
     </div>
     <script>
       // lib
@@ -42,7 +63,8 @@
       const User = require('./user').User;
       const baseUrl = 'http://localhost:8080';
 
-      let user = null, pass = null, userMapper = null;
+      let user = null, pass = null;
+      let userMapper = [], teamMapper = [];
       function validate(name, password) {
         $.get({
           url: baseUrl + '/user/validate?name=' + name + '&password=' + password,
@@ -50,15 +72,16 @@
           success: (rep) => {
             if (rep.code == 200) {
               showHome();
+              // init User
               pass = rep.data.pass;
-              user = new User(rep.data.id, pass,
-                (data) => updateTeamInfo(JSON.parse(data), true),
-                (data) => loadHistory(JSON.parse(data)));
+              user = new User(rep.data.id, pass, password,
+                (data) => updateTeamInfo(JSON.parse(data), 1),
+                afterJoinTeam(1));
               user.on('message', (msg) => {
-                // update user name
                 let obj = JSON.parse(msg.content);
+                // update user name
                 userMapper[msg.source] = obj.name;
-                addMessage(null, userMapper[msg.source], obj.content);
+                addMessage(msg.source, obj.content);
               });
               user.on('memberIn', (msg) => {
                 userMapper[msg.source] = msg.content;
@@ -67,14 +90,43 @@
               user.on('memberOut', (msg) => {
                 addNotification(userMapper[msg.source] + ' left');
               });
+              initUserMapper();
             } else if (rep.code == 201) notify(NOTIFY_ERROR, 'User is online!');
             else notify(NOTIFY_ERROR, 'Validate failed!');
           }
         });
       }
+      function initUserMapper() {
+        $.get({
+          url: baseUrl + '/user/getUserNames?user=' + user.id + '&pass=' + user.pass,
+          dataType: 'JSON',
+          success: (data) => {
+            for (let item of data) userMapper[item.key] = item.value;
+          }
+        });
+      }
+      function afterJoinTeam(id) {
+        return (msg) => {
+          let obj = JSON.parse(msg.content);
+          notify(NOTIFY_INFO, 'join in team: ' + teamMapper[id]);
+          loadMember(obj.members);
+          loadHistory(obj.historys);
+        };
+      }
+      function getUserHeadimg(id, onDid) {
+        $.get({
+          url: baseUrl + '/user/getHeadimg?user=' + id,
+          success: (rep) => {
+            if (rep) onDid(rep);
+          },
+          error: (err) => console.log(err)
+        });
+      }
 
       let root = $('#root');
+      let selected; // team selected
       let notifyContainer = root.children('notify-container');
+      let dialogContainer = root.children('dialog-container');
       const NOTIFY_INFO = 0;
       const NOTIFY_ERROR = 1;
       function notify(type, content) {
@@ -92,6 +144,44 @@
           setTimeout(() => tmp.remove(), 600);
         }, 2500);
       }
+      function dialog(children, bind) {
+        let base = $('<dialog></dialog>');
+        for (let item of children) base.append(item);
+        dialogContainer.css('display', 'block');
+        dialogContainer.css('opacity', 1);
+        dialogContainer.append(base);
+        base.css({
+          opacity: 1,
+          height: base[0].clientHeight
+        });
+        bind(() => {
+          base.css('opacity', 0);
+          dialogContainer.css('opacity', 0);
+          setTimeout(() => {
+            base.remove();
+            dialogContainer.css('display', 'none');
+          }, 600);
+        });
+      }
+      function standardDialog(title, onSubmit) {
+        let label = $(`<label>` + title + `</label>`);
+        let input = $(`<input class='team-name-input' />`);
+        let btnBar = $(`<div style='margin-top: 10px;'>
+          <a class='btn'>submit</a>
+          <a class='btn'>cancel</a>
+        </div>`);
+        let submit = btnBar.children('.btn').eq(0);
+        let cancel = btnBar.children('.btn').eq(1);
+        dialog([label, input, btnBar], (onCancel) => {
+          input.focus();
+          submit.click(() => {
+            if (input.val().length > 0) {
+              if (onSubmit(input.val())) cancel.click();
+            } else input.focus();
+          });
+          cancel.click(onCancel)
+        });
+      }
 
       // entry
       let entry = root.children('.entry');
@@ -103,11 +193,7 @@
       // home
       let home = root.children('.home');
       let menu = home.children('menu');
-      let menuChat = menu.children('menu-sub');
       let content = home.children('content');
-      let chatShow = content.children('chat-show');
-      let chatInput = content.children('textarea');
-      const autoScrollChatShow = () => chatShow.scrollTop(chatShow[0].scrollHeight - chatShow.height());
       function showHome() {
         entry.animate({opacity: 0}, 500);
         setTimeout(() => {
@@ -116,13 +202,121 @@
           home.animate({opacity: 1}, 500);
         }, 500);
       }
-      function updateTeamInfo(data, beFirst) {
+
+      let menuProfile = menu.children('menu-item').eq(0);
+      let menuChat = menu.children('menu-sub').eq(0);
+      menuProfile.click(() => hideChatbox(showProfile));
+      menuChat.click(() => hideProfile(showChatbox));
+
+      let profile = content.children('profile');
+      let headimgInput = profile.children('#headimgInput');
+      let proName = profile.find('.proName');
+      let proPassword = profile.find('.proPassword');
+      profile.children('headimg').click(() => headimgInput.click());
+      headimgInput.change(() => {
+        // upload headimg
+        let fd = new FormData();
+        fd.append('headimg', headimgInput[0].files[0]);
+        fd.append('user', user.id);
+        $.ajax({
+          type: 'POST',
+          dataType: 'text',
+          processData: false,
+          contentType: false,
+          data: fd,
+          dataType: 'JSON',
+          url: baseUrl + '/user/uploadHeadimg?user=' + user.id + '&pass=' + user.pass,
+          success: (rep) => console.log(rep),
+          error: (err) => console.log(err)
+        });
+      });
+      proName.click(() => standardDialog('input your new name', (value) => {
+        if (value != user.name) {
+          $.get({
+            url: baseUrl + '/user/setName?user=' + user.id + '&newName=' + value + '&pass=' + user.pass,
+            success: () => location.reload(),
+            error: (err) => {
+              notify(NOTIFY_ERROR, 'failed to change name, open console for more details');
+              console.log(err);
+            }
+          });
+          return true;
+        } else {
+          notify(NOTIFY_INFO, 'the two name is the same :)');
+          return false;
+        }
+      }));
+      proPassword.click(() => standardDialog('input your new password', (value) => {
+        if (value != user.password) {
+          $.get({
+            url: baseUrl + '/user/setPassword?user=' + user.id + '&newPassword=' + value + '&pass=' + user.pass,
+            success: () => location.reload(),
+            error: (err) => {
+              notify(NOTIFY_ERROR, 'failed to change password, open console for more details');
+              console.log(err);
+            }
+          });
+          return true;
+        } else {
+          notify(NOTIFY_INFO, 'the two password is the same :)');
+          return false;
+        }
+      }));
+      function showProfile(onDid) {
+        profile.css('display', 'block');
+        profile.css('opacity', 1);
+        // init profile
+        getUserHeadimg(user.id, (url) => {
+          profile.children('headimg').css({
+            backgroundImage: 'url(' + (url.startsWith('/') ? (baseUrl + url) : (baseUrl + '/' + url)) + ')',
+            backgroundSize: 'cover'
+          });
+        });
+        proName.html(user.name);
+        proPassword.html(user.password);
+        setTimeout(() => {
+          if (onDid) onDid();
+        }, 600);
+      }
+      function hideProfile(onDid) {
+        profile.css('opacity', 0);
+        setTimeout(() => {
+          profile.css('display', 'none');
+          if (onDid) onDid();
+        }, 600);
+      }
+
+      let chatBox = content.children('chatBox');
+      let chatShow = chatBox.children('chat-show');
+      let chatInput = chatBox.children('textarea');
+      const autoScrollChatShow = () => chatShow.scrollTop(chatShow[0].scrollHeight - chatShow.height());
+      function showChatbox(onDid) {
+        chatBox.css('display', 'block');
+        chatBox.css('opacity', 1);
+        setTimeout(() => {
+          if (onDid) onDid();
+        }, 600);
+      }
+      function hideChatbox(onDid) {
+        chatBox.css('opacity', 0);
+        setTimeout(() => {
+          chatBox.css('display', 'none');
+          if (onDid) onDid();
+        }, 600);
+      }
+      function updateTeamInfo(data, teamId) {
         menuChat.html(`
           <div class='head'>
             <icon class='icon-chat'></icon>
             <label>Chat</label>
+            <team-create></team-create>
           </div>`);
-        let selected;
+        let head = menuChat.children('.head');
+        head.bind({
+          mouseenter: () => head.children('team-create').animate({opacity: 1}, 200),
+          mouseleave: () => head.children('team-create').animate({opacity: 0}, 200)
+        });
+        head.children('team-create').click(createTeam);
         for (let team of data) {
           let tmp = $(`
           <menu-sub-item teamId=` + team.key + `>
@@ -130,27 +324,44 @@
             <label>` + team.value + `</label>
           </menu-sub-item>`);
           tmp.click(() => {
-            tmp.attr('class', 'menu-item-selecterd');
-            if (selected) selected.attr('class', '');
-            selected = tmp;
-            user.joinTeam(team.key, (msg) => loadHistory(JSON.parse(msg.content)));
+            if (selected.attr('teamId') == tmp.attr('teamId')) return;
+            else {
+              tmp.attr('class', 'menu-item-selecterd');
+              if (selected) selected.attr('class', '');
+              selected = tmp;
+              user.joinTeam(team.key, afterJoinTeam(team.key));
+            }
           });
           menuChat.append(tmp);
+          teamMapper[team.key] = team.value;
         }
-        // set Mobile AI's style
-        if (beFirst) {
-          selected = menuChat.children('menu-sub-item').eq(0);
-          selected.attr('class', 'menu-item-selecterd');
+        // set team's style which's id equals id
+        menuChat.children('menu-sub-item').each((index, elem) => {
+          let tmp = $(elem);
+          if (parseInt(tmp.attr('teamId')) == teamId) {
+            selected = tmp;
+            selected.attr('class', 'menu-item-selecterd');
+          }
+        })
+      }
+      function createTeam() {
+        standardDialog("input new team's name", (value) => {
+          user.createTeam(value, () => {
+            user.queryTeam((msg) => updateTeamInfo(JSON.parse(msg.content), selected.attr('teamId')));
+          });
+          return true;
+        });
+      }
+      function loadMember(data) {
+        for (let user of data) {
+          userMapper[user.id] = user.name;
+          // add data to online members box
         }
       }
       function loadHistory(data) {
         chatShow.html('');
-        /* {"content":"hi","id":1,"name":"xxx","ptime":{"date":4,"day":0,"hours":0,"minutes":0,"month":1,"seconds":0,"time":1517673600000,"timezoneOffset":-480,"year":118},"teamId":1,"userId":2}
-        */
-        userMapper = [];
         for (let msg of data) {
-          userMapper[msg.userId] = msg.name;
-          addMessage(null, msg.name, msg.content, msg.userId == user.id);
+          if (msg) addMessage(msg.userId, msg.content, msg.userId == user.id);
         }
         // !bug: without setTimeout, the chatShow on't scroll to the bottom :(
         setTimeout(autoScrollChatShow, 500);
@@ -159,22 +370,26 @@
         chatShow.append('<notification>' + content + '</notification>');
         autoScrollChatShow();
       }
-      function addMessage(userImg, userName, content, beRight) {
-        let labelName;
-        if (beRight) labelName = 'message-right';
-        else labelName = 'message';
-        if (!userImg) userImg = 'res/account.png';
-        chatShow.append($(`
+      function addMessage(id, content, beRight) {
+        let labelName = beRight ? 'message-right' : 'message';
+        let tmp = $(`
           <` + labelName + `>
-            <user-img style='background-image: url(` + userImg + `); background-size: cover;'></user-img>
-            <user-name>` + userName + `</user-name>
+            <user-img style='background-image: url(res/account.png); background-size: cover;'></user-img>
+            <user-name>` + userMapper[id] + `</user-name>
             <message-content>` + content + `</message-content>
-          </` + labelName + `>`));
+          </` + labelName + `>`);
+        getUserHeadimg(id, (url) => {
+          tmp.children('user-img').css({
+            backgroundImage: 'url(' + (url.startsWith('/') ? (baseUrl + url) : (baseUrl + '/' + url)) + ')',
+            backgroundSize: 'cover'
+          });
+        });
+        chatShow.append(tmp);
         autoScrollChatShow();
       }
       function sendMessage(content) {
         user.message(content);
-        addMessage(null, user.name, content, true);
+        addMessage(user.id, content, true);
         autoScrollChatShow();
       }
       chatInput.keypress((e) => {

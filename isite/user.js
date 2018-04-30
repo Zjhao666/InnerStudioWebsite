@@ -52,9 +52,11 @@ class Message {
 }
 
 class User {
-  constructor(id, pass, onTeamInfo, onTeamHistory) {
+  constructor(id, pass, password, onTeamInfo, onTeamHistory) {
     this.id = id;
     this.pass = pass;
+    this.password = password;
+    this.name = null;
     // set callback to submit data to view
     this.onTeamInfo = onTeamInfo;
     this.onTeamHistory = onTeamHistory;
@@ -145,13 +147,11 @@ class User {
     conn.connect(PORT, HOST, () => {
       // after connection established
       this.signIn((msg) => {
-        this.name = msg.content;
+        this.name = msg.content.utf8Slice();
         this.queryTeam((msg) => {
           this.onTeamInfo(msg.content);
           // join team: 'Mobile AI'
-          this.joinTeam(1, (msg) => {
-            this.onTeamHistory(msg.content);
-          });
+          this.joinTeam(1, this.onTeamHistory);
         });
       });
     });

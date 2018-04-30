@@ -53,6 +53,13 @@ public class TeamImplement implements Team {
 			members.put(user.getId(), user);
 		}
 
+		// add newHistory to mysql and historys
+		if (newHistory.size() > 0) {
+			teamHistoryService.addHistoryList(newHistory);
+			for (TeamHistory item : newHistory) historys.add(item);
+			newHistory = new ArrayList<>();
+		}
+
 	}
 
 	@Override
@@ -80,7 +87,7 @@ public class TeamImplement implements Team {
 	public void broadcast(Message message) {
 		// add to newHistory
 		int userId = message.getSource();
-		newHistory.add(new TeamHistory(id, userId, new String(message.getContent()), new Date(), members.get(userId).getName()));
+		newHistory.add(new TeamHistory(id, userId, new String(message.getContent()), new Date()));
 		// add sender's name to message content
 		JSONObject json = new JSONObject();
 		json.put("content", new String(message.getContent()));
@@ -95,6 +102,18 @@ public class TeamImplement implements Team {
 	@Override
 	public List<TeamHistory> getHistorys() {
 		return historys;
+	}
+
+	@Override
+	public List<JSONObject> getMembers() {
+		List<JSONObject> ret = new ArrayList<>();
+		for (User user : members.values()) {
+			JSONObject obj = new JSONObject();
+			obj.put("id", user.getId());
+			obj.put("name", user.getName());
+			ret.add(obj);
+		}
+		return ret;
 	}
 
 	/**

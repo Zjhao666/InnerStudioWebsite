@@ -18,12 +18,11 @@ public interface TeamHistoryMapper {
         @Result(property = "teamId", column = "teamId", javaType = int.class),
         @Result(property = "userId", column = "userId", javaType = int.class),
         @Result(property = "content", column = "content", javaType = String.class),
-        @Result(property = "ptime", column = "ptime", javaType = Date.class),
-        @Result(property = "name", column = "name", javaType = String.class)
+        @Result(property = "ptime", column = "ptime", javaType = Date.class)
     })
     public List<TeamHistory> fetchAll(int teamId);
 
-    @Insert("insert into TeamHistory(teamId, userId, content, ptime, name) values(#{param1}, #{param2}, #{param3}, #{param4}, #{param5})")
-    public void addHistory(int teamId, int userId, String content, Date ptime, String name);
+    @Insert("insert into TeamHistory(teamId, userId, content, ptime) values(#{param1}, #{param2}, #{param3}, #{param4})")
+    public void addHistory(int teamId, int userId, String content, Date ptime);
 
 }

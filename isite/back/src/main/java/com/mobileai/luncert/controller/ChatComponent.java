@@ -9,6 +9,7 @@ import java.util.concurrent.Executors;
 import com.mobileai.luncert.core.chat.interfaces.Message;
 import com.mobileai.luncert.core.chat.interfaces.User;
 import com.mobileai.luncert.core.chat.interfaces.UserManager;
+import com.mobileai.luncert.service.UserService;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class ChatComponent implements InitializingBean, Runnable {
 
 	@Autowired(required = true)
     private UserManager userManager;
+
+	@Autowired(required = true)
+    private UserService userService;
 
     public void regisPass(int user, String pass) {
         userManager.regisPass(user, pass);
@@ -54,7 +58,7 @@ public class ChatComponent implements InitializingBean, Runnable {
                         String pass = new String(message.getContent());
                         // if user registed or validate failed, end session
                         if (!userManager.registed(userId) && userManager.validate(userId, pass)) {
-                            User user = new UserImplement(conn, userId);
+                            User user = new UserImplement(conn, userId, userService.getName(userId));
                             userManager.regisUser(userId, user);
                             threadPool.execute(user);
                         } else conn.close();

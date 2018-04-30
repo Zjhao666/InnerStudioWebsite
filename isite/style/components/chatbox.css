@@ -1,6 +1,14 @@
 
+chatBox {
+  display: block;
+  opacity: 1;
+  width: 100%; height: 100%;
+  transition: all .6s;
+}
+
 chat-show,
 .chat-input {
+  display: block;
   resize: none;
   background-color: rgba(100, 120, 220, 0.6);
   margin: 20px 5%;padding: 0px 5px;
@@ -10,7 +18,6 @@ chat-show,
 }
 
 chat-show {
-  display: block;
   padding: 0px;
   width: 90%; height: calc(100% - 210px);
   font-size: 1em;

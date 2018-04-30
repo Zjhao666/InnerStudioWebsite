@@ -7,6 +7,10 @@ icon {
   box-sizing: border-box;
 }
 
+.icon-account {
+  background-image: url(../../res/account.png);
+  background-size: cover;
+}
 .icon-chat {
   background-image: url(../../res/chat.png);
   background-size: cover;
