@@ -68,7 +68,7 @@ class Chat(object):
         self.id = id
         self.name = name
         self.server = socket()
-        self.server.connect(('127.0.0.1', 10983))
+        self.server.connect(('101.200.37.220', 10983))
 
     def getPass(self):
         r = get(base + 'user/validate?name=' + self.name + '&password=123456')

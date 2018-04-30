@@ -5,7 +5,7 @@ let net = require('net');
 const Socket = net.Socket;
 
 const PORT = 10983;
-const HOST = '127.0.0.1';
+const HOST = '101.200.37.220';
 
 const SIGN_OUT = 0;
 const SIGN_IN = 1;

@@ -91,9 +91,9 @@ public class UserController {
         String orgFileName = headimg.getOriginalFilename();
         StringBuilder builder = new StringBuilder().append("static/headimg/").append(user).append(orgFileName.substring(orgFileName.lastIndexOf(".")));
         String url = builder.toString();
-        builder.insert(0, ClassLoader.getSystemResource(""));
+        // ! ClassLoader.getSystemResource("") = null
+        builder.insert(0, "/usr/tomcat/webapps/ISite/WEB-INF/classes/");
         String path = builder.toString();
-        if (path.startsWith("file:")) path = path.substring(5);
         File img = new File(path);
         img.createNewFile();
         headimg.transferTo(img);
